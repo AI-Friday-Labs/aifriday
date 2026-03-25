@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday &mdash; New Orleans</title>
+  <meta name="description" content="A monthly Friday morning meetup for startup founders and operators figuring out AI together. New Orleans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+</head>
+<body>
+  <div class="container">
+
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+      </a>
+      <div class="nav-links">
+        <a href="/brief/">Briefs</a>
+        <a href="/meetings/">Meetings</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-editorial">
+      <h1>A Friday morning meetup<br>in <em>New Orleans</em></h1>
+      <div class="prose">
+        <p>
+          We get together once a month to show what we&rsquo;re building with AI,
+          help each other get unstuck, and talk about what&rsquo;s new. Some people
+          demo things. Some people ask questions. It&rsquo;s low-key.
+        </p>
+      </div>
+      <div class="cta-row">
+        <a href="https://join.slack.com/t/ai-friday/shared_invite/zt-3ti8nvrbm-2bt_oPFJ5k8FZ1soO2m8oQ" class="btn btn-primary">Join us on Slack</a>
+      </div>
+    </section>
+
+    <!-- Next Meeting -->
+    {{if .NextMeeting}}
+    <section class="about">
+      <div class="about-card">
+        <h2>Next Meeting</h2>
+        <p class="meeting-date-big">{{.NextMeeting.Date}}</p>
+        <p class="text-secondary">{{.NextMeeting.Location}}</p>
+        <div style="margin-top: var(--space-md);">
+          <a href="/meetings/" class="link-arrow">See all meetings &rarr;</a>
+        </div>
+      </div>
+    </section>
+    {{end}}
+
+    <!-- Subscribe -->
+    <section class="about">
+      <div class="about-card">
+        <h2>Get updates about upcoming meetings</h2>
+        <p class="text-secondary" style="margin-bottom: var(--space-lg);">Plus the daily brief &mdash; curated AI news for builders. No spam, unsubscribe anytime.</p>
+        <form
+          action="https://buttondown.com/api/emails/embed-subscribe/aifriday"
+          method="post"
+          class="subscribe-form"
+        >
+          <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
+          <input type="submit" value="Subscribe" />
+        </form>
+        <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--muted);">
+          <a href="https://buttondown.com/refer/aifriday" target="_blank" style="color: var(--muted);">Powered by Buttondown</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Latest Brief -->
+    {{if .LatestBrief}}
+    <section class="about">
+      <div class="about-card">
+        <h2><a href="/brief/{{.LatestBrief.DatePath}}/" style="color: inherit; text-decoration: none;">Latest Brief &mdash; {{.LatestBrief.Date}}</a></h2>
+        <div class="brief-lede">{{.LatestBrief.Lede}}</div>
+        <div style="margin-top: var(--space-md);">
+          <a href="/brief/{{.LatestBrief.DatePath}}/" class="link-arrow">Read the full brief &rarr;</a>
+        </div>
+      </div>
+    </section>
+    {{end}}
+
+  </div>
+</body>
+</html>

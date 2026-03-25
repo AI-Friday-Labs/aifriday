@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday &mdash; Meetings</title>
+  <meta name="description" content="AI Friday meeting schedule for 2026. Monthly meetups in New Orleans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+</head>
+<body>
+  <div class="container">
+
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-back">&larr; Home</a>
+      </div>
+    </nav>
+
+    <header class="brief-header">
+      <h1 class="brief-date">Meetings</h1>
+      <p class="brief-theme">Monthly on Fridays in New Orleans. Come build with us.</p>
+    </header>
+
+    {{if .Upcoming}}
+    <section class="meetings-section">
+      <h2 class="meetings-section-title">Upcoming</h2>
+      <div class="meetings-list">
+        {{range $i, $m := .Upcoming}}
+        <div class="meeting-card{{if eq $i 0}} meeting-card--next{{end}}">
+          <div class="meeting-card-date">{{$m.Date}}</div>
+          <div class="meeting-card-location">{{$m.Location}}</div>
+          {{if eq $i 0}}<span class="meeting-badge">Next</span>{{end}}
+        </div>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+
+    {{if .Past}}
+    <section class="meetings-section">
+      <h2 class="meetings-section-title">Past</h2>
+      <div class="meetings-list">
+        {{range .Past}}
+        <div class="meeting-card meeting-card--past">
+          <div class="meeting-card-date">{{.Date}}</div>
+          <div class="meeting-card-location">{{.Location}}</div>
+        </div>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+
+  </div>
+</body>
+</html>
