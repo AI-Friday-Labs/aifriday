@@ -985,3 +985,30 @@ code {
   margin-bottom: var(--space-xs);
   font-variation-settings: 'opsz' 28;
 }
+
+/* --- Latest Brief (home page) -------------------------------------------- */
+.latest-brief {
+  padding: var(--space-xl) 0;
+}
+
+.latest-brief-heading {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+}
+
+.latest-brief-heading a {
+  color: var(--muted);
+}
+
+.latest-brief-heading a:hover {
+  color: var(--text);
+}
+
+.latest-brief .brief-lede {
+  margin-bottom: var(--space-md);
+}

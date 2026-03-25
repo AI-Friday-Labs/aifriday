@@ -62,14 +62,10 @@
 
     <!-- Latest Brief -->
     {{if .LatestBrief}}
-    <section class="about">
-      <div class="about-card">
-        <h2><a href="/brief/{{.LatestBrief.DatePath}}/" style="color: inherit; text-decoration: none;">Latest Brief &mdash; {{.LatestBrief.Date}}</a></h2>
-        <div class="brief-lede">{{.LatestBrief.Lede}}</div>
-        <div style="margin-top: var(--space-md);">
-          <a href="/brief/{{.LatestBrief.DatePath}}/" class="link-arrow">Read the full brief &rarr;</a>
-        </div>
-      </div>
+    <section class="latest-brief">
+      <h2 class="latest-brief-heading"><a href="/brief/{{.LatestBrief.DatePath}}/">{{.LatestBrief.Date}}</a></h2>
+      <div class="brief-lede">{{.LatestBrief.Lede}}</div>
+      <a href="/brief/{{.LatestBrief.DatePath}}/" class="link-arrow">Read the full brief &rarr;</a>
     </section>
     {{end}}
 
