@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday — Design Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FDF6EE;
+      --surface: #FFFFFF;
+      --text: #2C1810;
+      --text-secondary: #5A3D2E;
+      --muted: #8B7355;
+      --accent: #D4663A;
+      --accent-hover: #C05A32;
+      --secondary: #5B8A72;
+      --border: #E8DDD0;
+      --border-subtle: #F0E6D8;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+    /* --- Preview Banner --- */
+    .preview-banner {
+      background: var(--text);
+      color: var(--bg);
+      font-family: var(--font-code);
+      font-size: 12px;
+      text-align: center;
+      padding: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+    }
+    .preview-banner a { color: var(--accent); }
+
+    /* --- Nav --- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .logo-ai { color: var(--text); }
+    .logo-friday { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .nav-links a { color: var(--muted); font-weight: 500; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* --- Page Divider --- */
+    .page-divider {
+      border: none;
+      border-top: 2px solid var(--accent);
+      width: 40px;
+      margin: 64px auto;
+    }
+    .page-divider-full {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* --- Homepage --- */
+    .hero-editorial {
+      padding: 64px 0 0;
+    }
+    .hero-editorial h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero-editorial h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .prose {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+    .prose p + p { margin-top: 16px; }
+    .prose a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+    .prose a:hover { text-decoration-color: var(--accent); }
+
+    .cta-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+    .link-quiet { color: var(--muted); font-size: 14px; }
+    .link-quiet:hover { color: var(--text); }
+
+    /* --- Today's Brief Section --- */
+    .brief-preview {
+      padding: 0;
+    }
+    .section-label {
+      font-family: var(--font-code);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .brief-preview h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .brief-preview .lede {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .brief-preview .lede a {
+      color: var(--secondary);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+    }
+    .brief-items {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .brief-item {
+      font-size: 15px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+    .brief-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .brief-item a { color: var(--accent); font-weight: 500; }
+    .read-more {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    /* --- Next Meeting --- */
+    .next-meeting {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+    .next-meeting h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .meeting-date {
+      font-family: var(--font-code);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .meeting-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .meeting-questions {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .meeting-questions li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .meeting-questions li:last-child { border-bottom: none; }
+    .meeting-questions .q-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* --- Newsletter --- */
+    .newsletter-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .newsletter-row input {
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--text);
+      flex: 1;
+      min-width: 200px;
+    }
+    .newsletter-row input::placeholder { color: var(--muted); }
+    .newsletter-row input:focus { outline: none; border-color: var(--accent); }
+
+    /* --- Meetings Index --- */
+    .meetings-list {
+      list-style: none;
+    }
+    .meetings-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .meetings-list li:first-child { padding-top: 0; }
+    .meetings-list .meeting-num {
+      font-family: var(--font-code);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .meetings-list .meeting-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .meetings-list .meeting-title a { color: var(--text); }
+    .meetings-list .meeting-title a:hover { color: var(--accent); }
+    .meetings-list .meeting-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* --- Meeting Detail --- */
+    .meeting-detail h1 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .meeting-detail .meta {
+      font-family: var(--font-code);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .meeting-detail h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 28px;
+      margin-bottom: 8px;
+    }
+    .attendees {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .attendee {
+      font-size: 13px;
+      background: var(--border-subtle);
+      padding: 4px 12px;
+      border-radius: 100px;
+      color: var(--text-secondary);
+    }
+    .links-mentioned {
+      list-style: none;
+    }
+    .links-mentioned li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 15px;
+    }
+    .links-mentioned li:last-child { border-bottom: none; }
+    .links-mentioned .who {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      padding: 40px 0 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 64px;
+    }
+    .footer-fleur { display: block; font-size: 18px; margin-bottom: 8px; }
+
+    /* --- Responsive --- */
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .next-meeting { padding: 20px; }
+      .newsletter-row { flex-direction: column; }
+      .newsletter-row input { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-banner">
+  DESIGN PREVIEW — not live. Showing homepage, meeting index, and meeting detail.
+</div>
+
+<!-- ====================================================================
+     PAGE 1: HOMEPAGE
+     ==================================================================== -->
+<div class="container">
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+    </a>
+    <div class="nav-links">
+      <a href="#meetings-page">Meetings</a>
+      <a href="#">Briefs</a>
+    </div>
+  </nav>
+
+  <section class="hero-editorial">
+    <h1>A Friday morning meetup<br>in <em>New Orleans</em></h1>
+    <div class="prose">
+      <p>
+        We get together once a month to show what we're building with AI,
+        help each other get unstuck, and talk about what's new. Some people
+        demo things. Some people ask questions. It's low-key.
+      </p>
+      <p>
+        Mostly startup founders and people who work at startups. You don't
+        need to be technical. You don't need to have something to show.
+        You just need to be curious enough to give up a Friday morning.
+      </p>
+    </div>
+    <div class="cta-row">
+      <a href="#" class="btn-primary">Join us on Slack</a>
+      <a href="#" class="link-quiet">Next meeting: July 11 &rarr;</a>
+    </div>
+  </section>
+
+  <hr class="page-divider">
+
+  <!-- Next Meeting -->
+  <section class="next-meeting">
+    <div class="section-label">Next Meeting</div>
+    <h2>Meeting #2 &mdash; Show &amp; Tell</h2>
+    <div class="meeting-date">Friday, July 11, 2025 &middot; 9:00&ndash;11:00 AM &middot; TBD</div>
+    <p class="meeting-desc">
+      Bring something you've been working on, or just come hang out.
+      We're also looking for someone who's used Perplexity for research
+      to walk us through their setup.
+    </p>
+    <ul class="meeting-questions">
+      <li><span class="q-label">Do you have something to demo?</span> Even half-finished is great.</li>
+      <li><span class="q-label">Any topics you want covered?</span> We'll try to find someone.</li>
+      <li><span class="q-label">Know anyone using Perplexity?</span> We'd love a quick walkthrough.</li>
+    </ul>
+    <a href="#" class="btn-primary">RSVP &amp; Answer Questions</a>
+  </section>
+
+  <hr class="page-divider-full">
+
+  <!-- Today's Brief -->
+  <section class="brief-preview">
+    <div class="section-label">Today's Brief &middot; March 25, 2026</div>
+    <p class="lede">
+      Anthropic shipped a <a href="#">new version of Claude</a> that's meaningfully
+      better at code. Google quietly released <a href="#">Gemma 3</a>, their smallest
+      open model yet. And Simon Willison wrote a <a href="#">good rundown</a> of every
+      MCP server worth trying right now.
+    </p>
+    <div class="brief-items">
+      <div class="brief-item"><a href="#">Claude 4 Opus</a> &mdash; Anthropic's best model yet, especially for long code tasks</div>
+      <div class="brief-item"><a href="#">Gemma 3 1B</a> &mdash; runs on a phone, surprisingly good at summarization</div>
+      <div class="brief-item"><a href="#">Simon's MCP roundup</a> &mdash; 40+ servers ranked by actual usefulness</div>
+      <div class="brief-item"><a href="#">Cursor 0.50</a> &mdash; background agents that keep working after you close the tab</div>
+      <div class="brief-item"><a href="#">Show HN: PromptFoo</a> &mdash; test your prompts like unit tests</div>
+    </div>
+    <div class="read-more"><a href="#">Read the full brief &rarr;</a></div>
+  </section>
+
+  <hr class="page-divider-full">
+
+  <!-- Newsletter -->
+  <section>
+    <div class="section-label">Stay in the loop</div>
+    <p class="prose" style="margin-bottom: 16px; font-size: 15px;">
+      We'll email you when the next meeting is scheduled. That's it.
+    </p>
+    <div class="newsletter-row">
+      <input type="email" placeholder="you@startup.com">
+      <a href="#" class="btn-primary">Subscribe</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ====================================================================
+     PAGE 2: MEETINGS INDEX
+     ==================================================================== -->
+<div class="container">
+  <hr class="page-divider">
+  <div class="preview-banner" style="position:static; margin-bottom: 24px; border-radius: 6px;">
+    PAGE 2: /meetings
+  </div>
+
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+    </a>
+    <div class="nav-links">
+      <a href="#">Meetings</a>
+      <a href="#">Briefs</a>
+    </div>
+  </nav>
+
+  <h1 style="font-family: var(--font-display); font-size: 28px; font-weight: 500; margin-bottom: 32px;">Meetings</h1>
+
+  <ul class="meetings-list">
+    <li>
+      <span class="meeting-num">#2</span>
+      <div class="meeting-title"><a href="#meeting-detail">Show &amp; Tell</a></div>
+      <div class="meeting-meta">July 11, 2025 &middot; 8 people &middot; 6 demos</div>
+    </li>
+    <li>
+      <span class="meeting-num">#1</span>
+      <div class="meeting-title"><a href="#meeting-detail">Kickoff</a></div>
+      <div class="meeting-meta">June 13, 2025 &middot; 12 people &middot; 4 demos</div>
+    </li>
+  </ul>
+
+</div>
+
+<!-- ====================================================================
+     PAGE 3: MEETING DETAIL
+     ==================================================================== -->
+<div class="container" id="meeting-detail">
+  <hr class="page-divider">
+  <div class="preview-banner" style="position:static; margin-bottom: 24px; border-radius: 6px;">
+    PAGE 3: /meetings/1
+  </div>
+
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+    </a>
+    <div class="nav-links">
+      <a href="#meetings-page">&larr; All Meetings</a>
+    </div>
+  </nav>
+
+  <section class="meeting-detail">
+    <h1>Meeting #1 &mdash; Kickoff</h1>
+    <div class="meta">Friday, June 13, 2025 &middot; 9:00&ndash;11:00 AM &middot; Mojo Coffee, Magazine St</div>
+
+    <div class="prose">
+      <p>
+        First meeting. Twelve people showed up, which was more than expected.
+        Good mix of founders and ops people. A few devs. Went about 90 minutes.
+      </p>
+    </div>
+
+    <h3>Who was there</h3>
+    <div class="attendees">
+      <span class="attendee">Andrew D.</span>
+      <span class="attendee">Eli A.</span>
+      <span class="attendee">Sarah M.</span>
+      <span class="attendee">James K.</span>
+      <span class="attendee">Nina P.</span>
+      <span class="attendee">Chris L.</span>
+      <span class="attendee">Devon R.</span>
+      <span class="attendee">Priya S.</span>
+      <span class="attendee">Marcus T.</span>
+      <span class="attendee">Leigh B.</span>
+      <span class="attendee">Oscar W.</span>
+      <span class="attendee">Ava C.</span>
+    </div>
+
+    <h3>Demos &amp; Discussion</h3>
+    <div class="prose">
+      <p>
+        Andrew showed the AI Friday daily brief bot. It pulls from RSS feeds
+        and newsletters, scores items, and posts a curated summary to Slack
+        every morning. Built with Go and Claude.
+      </p>
+      <p>
+        Eli walked through how he's using Claude Code to scaffold entire
+        features from a single prompt. The group got into a good discussion
+        about when to trust AI-generated code vs. when to rewrite.
+      </p>
+      <p>
+        Sarah demoed a Perplexity workflow for competitive research. She
+        chains 3-4 queries and exports to Notion. Took about 10 minutes,
+        replaced what used to take her half a day.
+      </p>
+    </div>
+
+    <h3>Links mentioned</h3>
+    <ul class="links-mentioned">
+      <li><a href="#">Claude Code</a> <span class="who">&mdash; Eli</span></li>
+      <li><a href="#">Perplexity Pro</a> <span class="who">&mdash; Sarah</span></li>
+      <li><a href="#">Simon Willison's blog</a> <span class="who">&mdash; Andrew</span></li>
+      <li><a href="#">Cursor</a> <span class="who">&mdash; James, Devon</span></li>
+      <li><a href="#">NotebookLM</a> <span class="who">&mdash; Nina</span></li>
+      <li><a href="#">v0 by Vercel</a> <span class="who">&mdash; Chris</span></li>
+    </ul>
+  </section>
+
+</div>
+
+</body>
+</html>
