@@ -146,8 +146,8 @@ func (b *Bot) handleSlashCommand(cmd slack.SlashCommand) {
 func (b *Bot) PostDailyBrief(briefText string) error {
 	_, _, err := b.API.PostMessage(DailyBriefChannel,
 		slack.MsgOptionText(briefText, false),
-		slack.MsgOptionUsername("AI Friday"),
-		slack.MsgOptionIconEmoji(":robot_face:"),
+		slack.MsgOptionDisableLinkUnfurl(),
+		slack.MsgOptionDisableMediaUnfurl(),
 	)
 	return err
 }
