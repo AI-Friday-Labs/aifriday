@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday &mdash; Monday, March 24, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="nav-logo"><span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span></a>
+      <div class="nav-links"><a href="/brief/" class="nav-back">&larr; All Briefs</a></div>
+    </nav>
+    <header class="brief-header">
+      <h1 class="brief-date">Monday, March 24, 2026</h1>
+    </header>
+    <div class="brief-lede"><strong>Sora is dead.</strong> OpenAI's video generation product <a href="https://twitter.com/soraofficialapp/status/2036532795984715896">announced its shutdown</a> today, which didn't stop OpenAI from also unveiling <a href="https://openai.com/index/powering-product-discovery-in-chatgpt">shopping inside ChatGPT</a> via something called the Agentic Commerce Protocol. Meanwhile, Anthropic shipped <a href="https://claude.com/blog/auto-mode">auto mode for Claude Code</a>, a safer alternative to <code>--dangerously-skip-permissions</code> that uses a separate classifier model to gate actions. On the local inference front, people are now <a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">running 1 trillion parameter models in 96GB of RAM</a> on a Mac by streaming MoE weights from SSD. And three solid Show HNs today, including <a href="https://github.com/ssrajadh/sentrysearch">sub-second video search</a> built on Gemini's new native video embeddings.</div>
+    <div class="brief-content">
+      <section class="brief-section">
+  <h2>Big Moves</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://twitter.com/soraofficialapp/status/2036532795984715896">Goodbye to Sora</a></h3>
+  <div class="item-body"><strong>OpenAI is shutting down Sora</strong>, their video generation tool. 987 points on HN, which tells you people had feelings about this one. Sora launched to enormous hype, and now it's gone. The video generation space has gotten crowded and Sora never really found its footing after the initial demo reel.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://claude.com/blog/auto-mode">Auto Mode for Claude Code</a></h3>
+  <div class="item-body">Anthropic introduced <strong>auto mode</strong>, a new permissions mode in Claude Code. Instead of approving every action or using <code>--dangerously-skip-permissions</code>, Claude now makes permission decisions on your behalf with a safety net: a separate <strong>Claude Sonnet 4.6</strong> classifier reviews each action before it runs. <a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything">Simon Willison has the breakdown</a>. This is a good middle ground — the constant permission prompts were the main reason people reached for the dangerous flag in the first place.</div>
+  <span class="item-via">Simon Willison</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://openai.com/index/powering-product-discovery-in-chatgpt">OpenAI Puts Shopping in ChatGPT</a></h3>
+  <div class="item-body">ChatGPT now does product discovery and side-by-side comparisons, powered by something OpenAI is calling the <strong>Agentic Commerce Protocol</strong>. Merchants can integrate directly. So ChatGPT is a shopping assistant now. The name is a lot.</div>
+  <span class="item-via">OpenAI Blog</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>Things People Built</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://github.com/ssrajadh/sentrysearch">Show HN: SentrySearch — Sub-second video search with Gemini</a></h3>
+  <div class="item-body"><strong>Gemini can now natively embed video</strong>, and someone immediately built a sub-second video search tool on top of it. 407 points on HN. This is the kind of thing that was a multi-month research project two years ago and is now a weekend Show HN.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://github.com/AmElmo/proofshot">Show HN: ProofShot — AI coding agents that check their own UI</a></h3>
+  <div class="item-body"><strong>ProofShot</strong> gives AI coding agents the ability to screenshot and verify the UI they generate. Simple idea, obvious in retrospect: if the agent can see what it built, it can catch its own mistakes. 140 points.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://opper.ai/ai-roundtable/">Show HN: AI Roundtable — 200 models debate your question</a></h3>
+  <div class="item-body">Throw a question at <strong>200 models</strong> and watch them argue about it. Fun to poke at, and occasionally useful for seeing where models disagree.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>Running Models Locally</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">Streaming Experts: 1 Trillion Parameters in 96GB of RAM</a></h3>
+  <div class="item-body">Simon Willison wrote up the latest on <strong>streaming MoE expert weights from SSD</strong>. Five days ago Dan Woods was running <strong>Qwen3.5-397B</strong> in 48GB of RAM. Now @seikixtc is running <strong>Kimi K2.5</strong> — a 1 trillion parameter model with 32B active weights — in 96GB of RAM on a Mac. The trick: stream only the expert weights you need for each token from SSD instead of holding the whole model in memory. Slow, but it works, and it's getting faster.</div>
+  <span class="item-via">Simon Willison</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://github.com/t8/hypura">Hypura — LLM inference scheduler for Apple Silicon</a></h3>
+  <div class="item-body">A <strong>storage-tier-aware inference scheduler</strong> built specifically for Apple Silicon's unified memory architecture. 213 points on HN. If you're running models on a Mac, this is worth a look — it's aware of the difference between memory and SSD tiers and schedules accordingly.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>Tooling &amp; Infrastructure</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://gofastmcp.com/getting-started/welcome">FastMCP</a></h3>
+  <div class="item-body"><strong>FastMCP</strong> is a framework for building MCP servers. Clean getting-started docs. If you've been meaning to build an MCP server and wanted something more structured than rolling your own, this is the on-ramp.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://blog.cloudflare.com/dynamic-workers/">Sandboxing AI Agents, 100x Faster</a></h3>
+  <div class="item-body"><strong>Cloudflare</strong> announced <strong>Dynamic Workers</strong> for sandboxing AI agent code execution. The pitch: spin up an isolated environment for each agent action, 100x faster than container-based approaches. As agents get more autonomy (see: Claude Code auto mode above), sandboxing matters more.</div>
+  <span class="item-via">Cloudflare Blog</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>Worth Reading</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://www.answer.ai/posts/2026-03-12-so-where-are-all-the-ai-apps.html">So Where Are All the AI Apps?</a></h3>
+  <div class="item-body">From <strong>Answer.AI</strong> (Jeremy Howard's lab). 428 points on HN. The question is genuine, not rhetorical — where are the apps that actually use these capabilities well? Good discussion in the comments about what's missing between "impressive demo" and "thing people use every day."</div>
+  <span class="item-via">Answer.AI</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://dnhkng.github.io/posts/rys-ii/">LLM Neuroanatomy II: Hints of a Universal Language?</a></h3>
+  <div class="item-body">Deep dive into <strong>LLM internal representations</strong> and what happens when you poke at them. Dense, technical, and the kind of post you bookmark and read on a Saturday. 135 points.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+      <section class="brief-section quick-links">
+        <h2>Also</h2>
+        <ul><li><a href="https://huggingface.co/blog/ServiceNow-AI/eva">EVA: Evaluating Voice Agents</a> &mdash; <span class="ql-note">New framework from ServiceNow and Hugging Face for evaluating voice agent performance.</span></li>
+<li><a href="https://nelson.cloud/i-created-my-first-ai-assisted-pull-request-and-i-feel-like-a-fraud/">&quot;I created my first AI-assisted pull request&quot;</a> &mdash; <span class="ql-note">Honest personal account of using AI for coding for the first time. 86 points on HN.</span></li>
+<li><a href="https://openai.com/index/update-on-the-openai-foundation">Update on the OpenAI Foundation</a> &mdash; <span class="ql-note">OpenAI Foundation plans to invest $1B+ in disease research, economic opportunity, and AI resilience.</span></li></ul>
+      </section>
+    </div>
+    <section class="sources">
+      <h2 class="sources-title">Today&rsquo;s Sources</h2>
+      <ul class="sources-list"><li><a href="https://simonwillison.net">Simon Willison</a></li>
+<li><a href="https://news.ycombinator.com">Hacker News</a></li>
+<li><a href="https://openai.com/blog">OpenAI Blog</a></li>
+<li><a href="https://blog.cloudflare.com">Cloudflare Blog</a></li>
+<li><a href="https://www.answer.ai">Answer.AI</a></li>
+<li><a href="https://huggingface.co/blog">Hugging Face</a></li></ul>
+    </section>
+    <nav class="brief-nav"><a href="/brief/2026/03/23/" class="brief-nav-link brief-nav-link--prev">
+        <span class="brief-nav-label">&larr; Previous</span>
+        <span class="brief-nav-date">2026/03/23</span>
+      </a><a href="/brief/2026/03/25/" class="brief-nav-link brief-nav-link--next">
+        <span class="brief-nav-label">Next &rarr;</span>
+        <span class="brief-nav-date">2026/03/25</span>
+      </a></nav>
+    <footer class="footer"><span class="footer-fleur">⚜️</span>New Orleans, LA</footer>
+  </div>
+</body>
+</html>

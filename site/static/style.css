@@ -649,6 +649,78 @@ code {
   flex: 1;
 }
 
+/* --- Index Pages ------------------------------------------------------------- */
+.index-list {
+  padding: 0 0 var(--space-2xl);
+}
+
+.index-item {
+  margin-bottom: var(--space-md);
+}
+
+.index-item a {
+  display: block;
+  padding: var(--space-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.index-item a:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+.index-date {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-xs);
+  font-variation-settings: 'opsz' 24;
+}
+
+.index-preview {
+  font-size: var(--text-body);
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.year-month {
+  margin-bottom: var(--space-xl);
+}
+
+.year-month h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.year-days {
+  font-size: var(--text-body-lg);
+  line-height: 2;
+}
+
+.year-days a {
+  color: var(--accent);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.year-days a:hover {
+  border-color: var(--accent);
+  background: rgba(212, 102, 58, 0.04);
+}
+
 /* --- Responsive ---------------------------------------------------------- */
 @media (max-width: 640px) {
   :root {
