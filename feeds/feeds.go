@@ -45,11 +45,7 @@ func DefaultFeeds() []FeedSource {
 			URL:  "https://openai.com/blog/rss.xml",
 			Tags: []string{"blog", "ai", "openai"},
 		},
-		{
-			Name: "Anthropic Blog",
-			URL:  "https://www.anthropic.com/rss.xml",
-			Tags: []string{"blog", "ai", "anthropic"},
-		},
+		// Anthropic has no RSS feed as of March 2026
 		{
 			Name: "Hugging Face Blog",
 			URL:  "https://huggingface.co/blog/feed.xml",

@@ -76,7 +76,7 @@ def render_brief(data):
       <ul class="sources-list">{sources_html}</ul>
     </section>
     <nav class="brief-nav">{prev_html}{next_html}</nav>
-    <footer class="footer"><span class="footer-fleur">⚜️</span>New Orleans, LA</footer>
+
   </div>
 </body>
 </html>'''
@@ -143,7 +143,7 @@ def render_index(briefs):
     <div class="index-list">
       {chr(10).join(items)}
     </div>
-    <footer class="footer"><span class="footer-fleur">⚜️</span>New Orleans, LA</footer>
+
   </div>
 </body>
 </html>'''
@@ -191,7 +191,7 @@ def render_year_index(year, months_with_days):
     <div class="brief-content">
       {chr(10).join(items)}
     </div>
-    <footer class="footer"><span class="footer-fleur">⚜️</span>New Orleans, LA</footer>
+
   </div>
 </body>
 </html>'''
