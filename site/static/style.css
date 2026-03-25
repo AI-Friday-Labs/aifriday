@@ -1012,3 +1012,13 @@ code {
 .latest-brief .brief-lede {
   margin-bottom: var(--space-md);
 }
+
+/* --- Hero aside (location) ----------------------------------------------- */
+.hero-aside {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 10px;
+  font-variation-settings: 'opsz' 18;
+}
