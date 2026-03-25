@@ -145,7 +145,7 @@ func (b *Bot) handleSlashCommand(cmd slack.SlashCommand) {
 // BriefURL returns the full URL for a brief on the given date.
 // date should be in YYYY/MM/DD format.
 func BriefURL(date string) string {
-	return "https://aifriday.exe.xyz:8000/brief/" + date + "/"
+	return "https://aifri.day/brief/" + date + "/"
 }
 
 // PostDailyBrief sends a formatted brief to #daily-brief.
