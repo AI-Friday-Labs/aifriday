@@ -8,10 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/style.css">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
@@ -22,13 +18,13 @@
     <header class="brief-header">
       <h1 class="brief-date">Saturday, March 22, 2026</h1>
     </header>
-    <div class="brief-lede"><a href="https://simonwillison.net/2026/Mar/22/starlette/#atom-everything"><strong>Starlette 1.0</strong></a> shipped—the ASGI framework underneath <strong>FastAPI</strong> that's been running in production for years. Christopher Meiklejohn wrote up <a href="https://christophermeiklejohn.com/ai/zabriskie/development/android/ios/2026/03/22/teaching-claude-to-qa-a-mobile-app.html">teaching Claude to do mobile app QA testing</a>, showing real work instead of toy examples. <a href="https://revise.io"><strong>Revise</strong></a> launched as a Show HN—an AI-powered document editor. The Rust project <a href="https://nikomatsakis.github.io/rust-project-perspectives-on-ai/feb27-summary.html">collected perspectives on AI</a> from contributors and maintainers, interesting spread of views.</div>
+    <div class="brief-lede"><a href="https://simonwillison.net/2026/Mar/22/starlette/#atom-everything"><strong>Starlette 1.0</strong></a> shipped—the web framework underneath <strong>FastAPI</strong> that's been running in production for years. Christopher Meiklejohn wrote up <a href="https://christophermeiklejohn.com/ai/zabriskie/development/android/ios/2026/03/22/teaching-claude-to-qa-a-mobile-app.html">teaching Claude to do mobile app QA testing</a>, showing real work instead of toy examples. <a href="https://revise.io"><strong>Revise</strong></a> launched as a Show HN—an AI-powered document editor. The Rust project <a href="https://nikomatsakis.github.io/rust-project-perspectives-on-ai/feb27-summary.html">collected perspectives on AI</a> from contributors and maintainers, interesting spread of views.</div>
     <div class="brief-content">
       <section class="brief-section">
   <h2>Releases &amp; New Tools</h2>
   <div class="item">
   <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/22/starlette/#atom-everything">Starlette 1.0</a></h3>
-  <div class="item-body"><strong>Starlette 1.0</strong> is out. It's the ASGI framework that <strong>FastAPI</strong> is built on, along with a bunch of other tools. Kim Christie started it in 2018. A lot of production code runs on Starlette even if developers don't realize it—this is a bigger deal than it looks.</div>
+  <div class="item-body"><strong>Starlette 1.0</strong> is out. It's the web framework that powers <strong>FastAPI</strong>, along with a bunch of other tools. Kim Christie started it in 2018. A lot of production code runs on Starlette even if developers don't realize it—this is a bigger deal than it looks.</div>
   <span class="item-via">Simon Willison</span>
 </div>
 <div class="item">
@@ -37,8 +33,8 @@
   <span class="item-via">Hacker News</span>
 </div>
 <div class="item">
-  <h3 class="item-title"><a href="https://sashiko.dev/">Sashiko: Agentic Linux Kernel Code Review</a></h3>
-  <div class="item-body"><strong>Sashiko</strong> is an agentic code review system built specifically for the Linux kernel. Very niche, very specific use case.</div>
+  <h3 class="item-title"><a href="https://sashiko.dev/">Sashiko: AI-powered code review for the Linux kernel</a></h3>
+  <div class="item-body"><strong>Sashiko</strong> is an AI-powered code review tool built specifically for the Linux kernel. Very niche, very specific use case.</div>
   <span class="item-via">Hacker News</span>
 </div>
 </section>
@@ -51,7 +47,7 @@
 </div>
 <div class="item">
   <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/22/manyana/#atom-everything">Merge State Visualizer</a></h3>
-  <div class="item-body">Bram Cohen wrote about the future of version control using CRDTs, illustrated with 470 lines of Python. Simon fed it to <strong>Claude</strong> and got an interactive <strong>Pyodide</strong>-based UI for exploring the algorithms. Good example of making academic concepts tangible.</div>
+  <div class="item-body">Bram Cohen wrote about a new approach to version control, illustrated with 470 lines of Python. Simon fed it to <strong>Claude</strong> and got an interactive browser demo for exploring the algorithms. Good example of making academic concepts tangible.</div>
   <span class="item-via">Simon Willison</span>
 </div>
 <div class="item">
@@ -67,21 +63,20 @@
   <div class="item-body">Niko Matsakis collected views on AI from Rust project contributors and maintainers. Wide range of opinions on how AI affects development work, what's useful, what's concerning. Thoughtful takes from people actually building things.</div>
   <span class="item-via">Hacker News</span>
 </div>
-<div class="item">
-  <h3 class="item-title"><a href="https://magazine.sebastianraschka.com/p/visual-attention-variants">A Visual Guide to Attention Variants in Modern LLMs</a></h3>
-  <div class="item-body">Sebastian Raschka's visual guide to different attention mechanisms in modern LLMs. Good reference material for understanding how different models handle attention.</div>
-  <span class="item-via">Hacker News</span>
-</div>
 </section>
       <section class="brief-section quick-links">
         <h2>Also</h2>
-        <ul><li><a href="https://simonwillison.net/2026/Mar/22/dns/#atom-everything">DNS Lookup Tool</a> &mdash; <span class="ql-note">Simon had Claude build a UI for Cloudflare&#x27;s CORS-enabled DNS JSON API</span></li>
-<li><a href="https://simonwillison.net/2026/Mar/22/javascript-sandboxing-research/#atom-everything">JavaScript Sandboxing Research</a> &mdash; <span class="ql-note">Claude Code comparison of isolated-vm, vm2, quickjs-emscripten, QuickJS-NG, ShadowRealm, and Deno Workers</span></li></ul>
+        <ul><li><a href="https://simonwillison.net/2026/Mar/22/dns/#atom-everything">DNS Lookup Tool</a> &mdash; <span class="ql-note">Simon had Claude build a UI for a DNS lookup tool</span></li>
+<li><a href="https://simonwillison.net/2026/Mar/22/javascript-sandboxing-research/#atom-everything">JavaScript Sandboxing Research</a> &mdash; <span class="ql-note">Claude Code comparison of different ways to safely run untrusted JavaScript</span></li>
+<li><a href="https://magazine.sebastianraschka.com/p/visual-attention-variants">A Visual Guide to Attention Variants in Modern LLMs</a> &mdash; <span class="ql-note">Visual reference for how different AI models process information internally.</span></li></ul>
       </section>
     </div>
     <section class="sources">
       <h2 class="sources-title">Today&rsquo;s Sources</h2>
-      <ul class="sources-list"></ul>
+      <ul class="sources-list"><li><a href="https://simonwillison.net">Simon Willison</a></li>
+<li><a href="https://news.ycombinator.com">Hacker News</a></li>
+<li><a href="https://magazine.sebastianraschka.com">Sebastian Raschka</a></li>
+<li><a href="https://christophermeiklejohn.com">Christopher Meiklejohn</a></li></ul>
     </section>
     <nav class="brief-nav"><a href="/brief/2026/03/21/" class="brief-nav-link brief-nav-link--prev">
         <span class="brief-nav-label">&larr; Previous</span>

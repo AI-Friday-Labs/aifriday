@@ -15,6 +15,42 @@ and want practical things they can apply. Not researchers, not executives — **
 - **No politics.** Skip regulation/policy unless it directly impacts what builders can ship.
 - **No personality worship.** Focus on the work, not the people.
 
+## Accessibility & Tone Calibration
+
+The audience uses AI tools daily but doesn't train models or manage GPU clusters.
+Every item should pass these filters before publishing:
+
+- **Jargon check.** If a term wouldn't be understood by someone who uses ChatGPT
+  and the CLI but has never fine-tuned a model, either explain it in ≤5 words inline
+  or skip it.
+  - ❌ Needs explanation: MoE, quantization, VRAM, embeddings, ASGI, CRDT,
+    unified memory architecture, mechanistic interpretability, attention heads,
+    MCP (first mention), GGUF, LoRA
+  - ✅ Fine as-is: API, open source, CLI, model, prompt, fine-tune, chatbot, GitHub,
+    token, plug-in, agent, app
+
+- **Lead with outcomes, not architecture.** The reader wants to know what they can
+  *do*, not how it works under the hood.
+  - ✅ "Search video in under a second"
+  - ❌ "Native video embeddings over the actual video signal"
+  - ✅ "Run big AI models on a normal laptop"
+  - ❌ "Streaming MoE expert weights from SSD"
+
+- **The cofounder test.** Before including an item, ask: *"Would my non-engineer
+  cofounder find this interesting?"* If no, it's either too niche or needs
+  reframing. This doesn't mean dumbing down — it means finding the angle that
+  matters to people who build products, not just people who build infrastructure.
+
+- **De-prioritize plumbing.** Local inference tuning, model internals, attention
+  mechanism papers, kernel-level code review tools — these belong in the "Also"
+  quick links at most. They shouldn't be full items unless the practical payoff
+  is obvious to anyone (e.g., "You can now run GPT-4-class models on your laptop
+  for free").
+
+- **One technical detail max per item.** If you need to explain *why* something
+  is cool, you get one technical detail. Make it count. The rest should be about
+  what it means for the reader.
+
 ## What Makes the Cut
 
 ### ✅ INCLUDE
@@ -116,8 +152,8 @@ Each candidate item gets scored 0-10:
 - Import AI newsletter
 
 ## Cadence
-- **Daily** at **7:00 AM CT** (Central Time, New Orleans)
-- No brief on weekends unless something major drops
+- **Daily, 7 days a week** at **7:00 AM CT** (Central Time, New Orleans)
+- Weekend briefs can be lighter if the news is lighter
 - Weekend recap on Monday if needed
 
 ## Feedback Loop

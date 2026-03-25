@@ -11,7 +11,6 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
@@ -22,7 +21,7 @@
     <header class="brief-header">
       <h1 class="brief-date">Monday, March 24, 2026</h1>
     </header>
-    <div class="brief-lede"><strong>Sora is dead.</strong> OpenAI's video generation product <a href="https://twitter.com/soraofficialapp/status/2036532795984715896">announced its shutdown</a> today, which didn't stop OpenAI from also unveiling <a href="https://openai.com/index/powering-product-discovery-in-chatgpt">shopping inside ChatGPT</a> via something called the Agentic Commerce Protocol. Meanwhile, Anthropic shipped <a href="https://claude.com/blog/auto-mode">auto mode for Claude Code</a>, a safer alternative to <code>--dangerously-skip-permissions</code> that uses a separate classifier model to gate actions. On the local inference front, people are now <a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">running 1 trillion parameter models in 96GB of RAM</a> on a Mac by streaming MoE weights from SSD. And three solid Show HNs today, including <a href="https://github.com/ssrajadh/sentrysearch">sub-second video search</a> built on Gemini's new native video embeddings.</div>
+    <div class="brief-lede"><strong>Sora is dead.</strong> OpenAI's video generation product <a href="https://twitter.com/soraofficialapp/status/2036532795984715896">announced its shutdown</a> today, which didn't stop OpenAI from also unveiling <a href="https://openai.com/index/powering-product-discovery-in-chatgpt">shopping inside ChatGPT</a> via something called the Agentic Commerce Protocol. Meanwhile, Anthropic shipped <a href="https://claude.com/blog/auto-mode">auto mode for Claude Code</a>, a safer alternative to <code>--dangerously-skip-permissions</code> that uses a safety check that reviews each action. On the local inference front, people are now <a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">running massive AI models on a regular Mac</a> by loading only what they need from disk. And three solid Show HNs today, including <a href="https://github.com/ssrajadh/sentrysearch">sub-second video search</a>.</div>
     <div class="brief-content">
       <section class="brief-section">
   <h2>Big Moves</h2>
@@ -33,7 +32,7 @@
 </div>
 <div class="item">
   <h3 class="item-title"><a href="https://claude.com/blog/auto-mode">Auto Mode for Claude Code</a></h3>
-  <div class="item-body">Anthropic introduced <strong>auto mode</strong>, a new permissions mode in Claude Code. Instead of approving every action or using <code>--dangerously-skip-permissions</code>, Claude now makes permission decisions on your behalf with a safety net: a separate <strong>Claude Sonnet 4.6</strong> classifier reviews each action before it runs. <a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything">Simon Willison has the breakdown</a>. This is a good middle ground — the constant permission prompts were the main reason people reached for the dangerous flag in the first place.</div>
+  <div class="item-body">Anthropic introduced <strong>auto mode</strong>, a new permissions mode in Claude Code. Instead of approving every action or using <code>--dangerously-skip-permissions</code>, Claude now makes permission decisions on your behalf with a safety net: a separate AI reviews each action for safety before it runs. <a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything">Simon Willison has the breakdown</a>. This is a good middle ground — the constant permission prompts were the main reason people reached for the dangerous flag in the first place.</div>
   <span class="item-via">Simon Willison</span>
 </div>
 <div class="item">
@@ -46,7 +45,7 @@
   <h2>Things People Built</h2>
   <div class="item">
   <h3 class="item-title"><a href="https://github.com/ssrajadh/sentrysearch">Show HN: SentrySearch — Sub-second video search with Gemini</a></h3>
-  <div class="item-body"><strong>Gemini can now natively embed video</strong>, and someone immediately built a sub-second video search tool on top of it. 407 points on HN. This is the kind of thing that was a multi-month research project two years ago and is now a weekend Show HN.</div>
+  <div class="item-body"><strong>Gemini can now understand video</strong>, and someone immediately built a sub-second video search tool on top of it. 407 points on HN. This is the kind of thing that was a multi-month research project two years ago and is now a weekend Show HN.</div>
   <span class="item-via">Hacker News</span>
 </div>
 <div class="item">
@@ -61,28 +60,15 @@
 </div>
 </section>
 <section class="brief-section">
-  <h2>Running Models Locally</h2>
-  <div class="item">
-  <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">Streaming Experts: 1 Trillion Parameters in 96GB of RAM</a></h3>
-  <div class="item-body">Simon Willison wrote up the latest on <strong>streaming MoE expert weights from SSD</strong>. Five days ago Dan Woods was running <strong>Qwen3.5-397B</strong> in 48GB of RAM. Now @seikixtc is running <strong>Kimi K2.5</strong> — a 1 trillion parameter model with 32B active weights — in 96GB of RAM on a Mac. The trick: stream only the expert weights you need for each token from SSD instead of holding the whole model in memory. Slow, but it works, and it's getting faster.</div>
-  <span class="item-via">Simon Willison</span>
-</div>
-<div class="item">
-  <h3 class="item-title"><a href="https://github.com/t8/hypura">Hypura — LLM inference scheduler for Apple Silicon</a></h3>
-  <div class="item-body">A <strong>storage-tier-aware inference scheduler</strong> built specifically for Apple Silicon's unified memory architecture. 213 points on HN. If you're running models on a Mac, this is worth a look — it's aware of the difference between memory and SSD tiers and schedules accordingly.</div>
-  <span class="item-via">Hacker News</span>
-</div>
-</section>
-<section class="brief-section">
-  <h2>Tooling &amp; Infrastructure</h2>
+  <h2>Tools &amp; Platforms</h2>
   <div class="item">
   <h3 class="item-title"><a href="https://gofastmcp.com/getting-started/welcome">FastMCP</a></h3>
-  <div class="item-body"><strong>FastMCP</strong> is a framework for building MCP servers. Clean getting-started docs. If you've been meaning to build an MCP server and wanted something more structured than rolling your own, this is the on-ramp.</div>
+  <div class="item-body"><strong>FastMCP</strong> is a framework for building MCP (a standard for connecting AI to your apps) servers. Clean getting-started docs. If you've been meaning to build one and wanted something more structured than rolling your own, this is the on-ramp.</div>
   <span class="item-via">Hacker News</span>
 </div>
 <div class="item">
   <h3 class="item-title"><a href="https://blog.cloudflare.com/dynamic-workers/">Sandboxing AI Agents, 100x Faster</a></h3>
-  <div class="item-body"><strong>Cloudflare</strong> announced <strong>Dynamic Workers</strong> for sandboxing AI agent code execution. The pitch: spin up an isolated environment for each agent action, 100x faster than container-based approaches. As agents get more autonomy (see: Claude Code auto mode above), sandboxing matters more.</div>
+  <div class="item-body"><strong>Cloudflare</strong> announced <strong>Dynamic Workers</strong> for safely running AI agent code in isolation. The pitch: spin up a contained environment for each agent action, 100x faster than traditional approaches. As agents get more autonomy (see: Claude Code auto mode above), keeping each action safely walled off matters more.</div>
   <span class="item-via">Cloudflare Blog</span>
 </div>
 </section>
@@ -93,15 +79,13 @@
   <div class="item-body">From <strong>Answer.AI</strong> (Jeremy Howard's lab). 428 points on HN. The question is genuine, not rhetorical — where are the apps that actually use these capabilities well? Good discussion in the comments about what's missing between "impressive demo" and "thing people use every day."</div>
   <span class="item-via">Answer.AI</span>
 </div>
-<div class="item">
-  <h3 class="item-title"><a href="https://dnhkng.github.io/posts/rys-ii/">LLM Neuroanatomy II: Hints of a Universal Language?</a></h3>
-  <div class="item-body">Deep dive into <strong>LLM internal representations</strong> and what happens when you poke at them. Dense, technical, and the kind of post you bookmark and read on a Saturday. 135 points.</div>
-  <span class="item-via">Hacker News</span>
-</div>
 </section>
       <section class="brief-section quick-links">
         <h2>Also</h2>
-        <ul><li><a href="https://huggingface.co/blog/ServiceNow-AI/eva">EVA: Evaluating Voice Agents</a> &mdash; <span class="ql-note">New framework from ServiceNow and Hugging Face for evaluating voice agent performance.</span></li>
+        <ul><li><a href="https://simonwillison.net/2026/Mar/24/streaming-experts/#atom-everything">Running a trillion-parameter AI model on a Mac</a> &mdash; <span class="ql-note">Slow but getting faster.</span></li>
+<li><a href="https://github.com/t8/hypura">Makes AI models run faster on Macs by being smart about memory.</a> &mdash; <span class="ql-note">213 points on HN.</span></li>
+<li><a href="https://dnhkng.github.io/posts/rys-ii/">LLM Neuroanatomy II: Hints of a Universal Language?</a> &mdash; <span class="ql-note">Deep dive into what's happening inside AI models. Dense weekend reading. 135 points.</span></li>
+<li><a href="https://huggingface.co/blog/ServiceNow-AI/eva">EVA: Evaluating Voice Agents</a> &mdash; <span class="ql-note">New framework from ServiceNow and Hugging Face for evaluating voice agent performance.</span></li>
 <li><a href="https://nelson.cloud/i-created-my-first-ai-assisted-pull-request-and-i-feel-like-a-fraud/">&quot;I created my first AI-assisted pull request&quot;</a> &mdash; <span class="ql-note">Honest personal account of using AI for coding for the first time. 86 points on HN.</span></li>
 <li><a href="https://openai.com/index/update-on-the-openai-foundation">Update on the OpenAI Foundation</a> &mdash; <span class="ql-note">OpenAI Foundation plans to invest $1B+ in disease research, economic opportunity, and AI resilience.</span></li></ul>
       </section>

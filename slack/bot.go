@@ -142,10 +142,20 @@ func (b *Bot) handleSlashCommand(cmd slack.SlashCommand) {
 	// TODO: implement /brief, /subscribe, etc.
 }
 
-// PostDailyBrief sends a formatted brief to #daily-brief
-func (b *Bot) PostDailyBrief(briefText string) error {
+// BriefURL returns the full URL for a brief on the given date.
+// date should be in YYYY/MM/DD format.
+func BriefURL(date string) string {
+	return "https://aifriday.exe.xyz:8000/brief/" + date + "/"
+}
+
+// PostDailyBrief sends a formatted brief to #daily-brief.
+// date is the brief date in YYYY/MM/DD format (e.g. "2026/03/25").
+// briefText is the Slack-formatted summary. A link to the full brief
+// on the website is appended automatically.
+func (b *Bot) PostDailyBrief(date, briefText string) error {
+	fullText := briefText + "\n\n" + "📖 Full brief: " + BriefURL(date)
 	_, _, err := b.API.PostMessage(DailyBriefChannel,
-		slack.MsgOptionText(briefText, false),
+		slack.MsgOptionText(fullText, false),
 		slack.MsgOptionDisableLinkUnfurl(),
 		slack.MsgOptionDisableMediaUnfurl(),
 	)

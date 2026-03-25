@@ -11,7 +11,6 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
@@ -22,13 +21,13 @@
     <header class="brief-header">
       <h1 class="brief-date">Tuesday, March 25, 2026</h1>
     </header>
-    <div class="brief-lede"><strong>Sora is dead.</strong> OpenAI's video generation tool <a href='https://twitter.com/soraofficialapp/status/2036532795984715896'>posted its goodbye</a> yesterday, and the HN thread has almost a thousand points. Meanwhile, the builders keep building: a <a href='https://github.com/ssrajadh/sentrysearch'>Show HN using Gemini's native video embeddings</a> for sub-second video search hit 400 points, <a href='https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything'>Simon Willison wrote up Claude Code's new auto mode</a> which uses a separate Sonnet 4.6 classifier to approve actions, and Google dropped both <a href='https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/'>TurboQuant</a> for extreme model compression and <a href='https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/'>Lyria 3</a> for music generation via the Gemini API. Good day for people who like to try things.</div>
+    <div class="brief-lede"><strong>Sora is dead.</strong> OpenAI's video generation tool <a href='https://twitter.com/soraofficialapp/status/2036532795984715896'>posted its goodbye</a> yesterday, and the HN thread has almost a thousand points. Meanwhile, the builders keep building: a <a href='https://github.com/ssrajadh/sentrysearch'>Show HN using Gemini-powered sub-second video search</a> hit 400 points, <a href='https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything'>Simon Willison wrote up Claude Code's new auto mode</a> which uses a safety layer that reviews each action, and Google dropped both <a href='https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/'>TurboQuant</a> to help fit bigger AI models on cheaper hardware and <a href='https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/'>Lyria 3</a> for music generation via the Gemini API. Good day for people who like to try things.</div>
     <div class="brief-content">
       <section class="brief-section">
   <h2>Things People Built</h2>
   <div class="item">
   <h3 class="item-title"><a href="https://github.com/ssrajadh/sentrysearch">Show HN: SentrySearch — sub-second video search using Gemini&#x27;s native video embeddings</a></h3>
-  <div class="item-body">Gemini can now natively embed video (not just frames or transcripts), and <strong>ssrajadh</strong> built a search tool on top of it. You point it at video footage and query it in natural language. The interesting bit is that the embeddings are over the actual video signal, not extracted text or keyframes. <strong>400 points</strong> on HN, which for a Show HN is a lot. <a href='https://news.ycombinator.com/item?id=47503617'>HN discussion</a>.</div>
+  <div class="item-body">Gemini can now understand video directly — not just screenshots or captions — and this tool lets you search footage by describing what you're looking for. Point it at video footage, type a query in plain English, and it finds the right moment. <strong>ssrajadh</strong> built this as a Show HN. <strong>400 points</strong> on HN, which for a Show HN is a lot. <a href='https://news.ycombinator.com/item?id=47503617'>HN discussion</a>.</div>
   <span class="item-via">Hacker News</span>
 </div>
 <div class="item">
@@ -43,43 +42,30 @@
 </div>
 <div class="item">
   <h3 class="item-title"><a href="https://github.com/ivan-magda/swift-claude-code">Building a coding agent in Swift from scratch</a></h3>
-  <div class="item-body">A Claude Code-style coding agent written entirely in <strong>Swift</strong>. If you're in the Apple dev world and want to understand how coding agents work under the hood, this is a clean reference implementation. <a href='https://news.ycombinator.com/item?id=47515605'>HN discussion</a>.</div>
+  <div class="item-body">A Claude Code-style coding agent written entirely in <strong>Swift</strong>. If you're in the Apple dev world and want to understand how coding agents work under the hood, this is a clean example you can learn from. <a href='https://news.ycombinator.com/item?id=47515605'>HN discussion</a>.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://ente.com/blog/ensu/">Ensu: privacy-focused AI app that runs on your device</a></h3>
+  <div class="item-body"><strong>Ente</strong>, the privacy-focused photo storage company, built a local AI app called <strong>Ensu</strong>. Everything runs on your device — nothing is sent to the cloud. Ente has a solid track record with privacy-first design, so this is a credible entry in the keep-your-data-local space. <a href='https://news.ycombinator.com/item?id=47516650'>HN discussion</a>.</div>
   <span class="item-via">Hacker News</span>
 </div>
 </section>
 <section class="brief-section">
-  <h2>Running Models Locally</h2>
-  <div class="item">
-  <h3 class="item-title"><a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">TurboQuant: extreme compression for LLMs</a></h3>
-  <div class="item-body">New from <strong>Google Research</strong>. TurboQuant pushes model quantization further than the usual 4-bit approaches. If you're running models on your own hardware and care about fitting bigger models into less VRAM, this is the kind of research that actually trickles down to your <code>llama.cpp</code> setup within a few months. <strong>377 points</strong> on HN. <a href='https://news.ycombinator.com/item?id=47513475'>HN discussion</a>.</div>
-  <span class="item-via">Hacker News</span>
-</div>
-<div class="item">
-  <h3 class="item-title"><a href="https://ente.com/blog/ensu/">Ensu: Local LLM app by Ente</a></h3>
-  <div class="item-body"><strong>Ente</strong>, the privacy-focused photo storage company, built a local LLM app called <strong>Ensu</strong>. Everything runs on-device. Ente has a good track record with privacy-first design, so this is a credible entry in the local-first AI space. <a href='https://news.ycombinator.com/item?id=47516650'>HN discussion</a>.</div>
-  <span class="item-via">Hacker News</span>
-</div>
-<div class="item">
-  <h3 class="item-title"><a href="https://github.com/t8/hypura">Hypura — storage-tier-aware LLM inference scheduler for Apple Silicon</a></h3>
-  <div class="item-body">If you're running LLMs on a Mac, <strong>Hypura</strong> is aware of Apple Silicon's unified memory architecture and schedules inference accordingly across storage tiers (RAM vs. SSD swap). <strong>212 points</strong> on HN, which suggests people are actually finding it useful. <a href='https://news.ycombinator.com/item?id=47504695'>HN discussion</a>.</div>
-  <span class="item-via">Hacker News</span>
-</div>
-</section>
-<section class="brief-section">
-  <h2>Developer Tools &amp; Infrastructure</h2>
+  <h2>Tools &amp; Platforms</h2>
   <div class="item">
   <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything">Auto mode for Claude Code</a></h3>
-  <div class="item-body"><strong>Simon Willison</strong> wrote up the new auto mode in <strong>Claude Code</strong>, which is Anthropic's answer to <code>--dangerously-skip-permissions</code>. Instead of blindly approving everything, a separate <strong>Claude Sonnet 4.6</strong> classifier reviews each action before it runs. So you get the speed of auto-approve with a safety net. Whether that safety net is good enough is an open question, but it's a better design than a binary yes/no on all permissions.</div>
+  <div class="item-body"><strong>Simon Willison</strong> wrote up the new auto mode in <strong>Claude Code</strong>, which is Anthropic's answer to running the agent without stopping to ask permission every few seconds. Instead of blindly approving everything, a separate AI that checks each action for safety reviews it before it runs. You get the speed of fully-automatic mode with a safety net. Whether that safety net is good enough is an open question, but it's a better design than a simple on/off switch.</div>
   <span class="item-via">Simon Willison</span>
 </div>
 <div class="item">
   <h3 class="item-title"><a href="https://gofastmcp.com/getting-started/welcome">FastMCP</a></h3>
-  <div class="item-body">A framework for building <strong>MCP (Model Context Protocol)</strong> servers quickly. If you've been wanting to wire up your own tools to Claude or other MCP-compatible clients but found the boilerplate annoying, this is aimed at you. <a href='https://news.ycombinator.com/item?id=47508149'>HN discussion</a>.</div>
+  <div class="item-body">A framework for building <strong>MCP (a standard for connecting AI tools to your apps)</strong> servers quickly. If you've been wanting to wire up your own tools to Claude or other compatible clients but found the boilerplate annoying, this is aimed at you. <a href='https://news.ycombinator.com/item?id=47508149'>HN discussion</a>.</div>
   <span class="item-via">Hacker News</span>
 </div>
 <div class="item">
-  <h3 class="item-title"><a href="https://blog.cloudflare.com/dynamic-workers/">Cloudflare: Sandboxing AI agents, 100x faster</a></h3>
-  <div class="item-body"><strong>Cloudflare</strong> announced dynamic Workers for sandboxing AI agent execution. The pitch: spin up an isolated environment for each agent action in single-digit milliseconds instead of seconds. Relevant if you're building anything where an agent needs to run untrusted code. <a href='https://news.ycombinator.com/item?id=47502448'>HN discussion</a>.</div>
+  <h3 class="item-title"><a href="https://blog.cloudflare.com/dynamic-workers/">Cloudflare: running AI agent code safely, 100x faster</a></h3>
+  <div class="item-body"><strong>Cloudflare</strong> announced dynamic Workers for running AI agent code safely. The pitch: spin up an isolated environment for each agent action in single-digit milliseconds instead of seconds. Relevant if you're building anything where an agent needs to run untrusted code. <a href='https://news.ycombinator.com/item?id=47502448'>HN discussion</a>.</div>
   <span class="item-via">Hacker News</span>
 </div>
 </section>
@@ -104,11 +90,6 @@
 <section class="brief-section">
   <h2>Research &amp; Reading</h2>
   <div class="item">
-  <h3 class="item-title"><a href="https://dnhkng.github.io/posts/rys-ii/">LLM Neuroanatomy II: Modern LLM Hacking and Hints of a Universal Language?</a></h3>
-  <div class="item-body">A long, detailed post about what's going on inside LLMs at the representation level. Picks up where the first LLM Neuroanatomy post left off. If you're interested in mechanistic interpretability or just want to understand what "features" actually look like inside a model, this is good weekend reading. <a href='https://news.ycombinator.com/item?id=47500709'>HN discussion</a>.</div>
-  <span class="item-via">Hacker News</span>
-</div>
-<div class="item">
   <h3 class="item-title"><a href="https://www.answer.ai/posts/2026-03-12-so-where-are-all-the-ai-apps.html">So where are all the AI apps?</a></h3>
   <div class="item-body">From <strong>Answer.AI</strong> (Jeremy Howard's lab). Asks why we don't see more standalone AI apps despite the capabilities being there. <strong>426 points</strong> on HN. The framing is constructive rather than cynical — it's more "here are the gaps" than "AI is a bubble." <a href='https://news.ycombinator.com/item?id=47503006'>HN discussion</a>.</div>
   <span class="item-via">Hacker News</span>
@@ -118,7 +99,10 @@
         <h2>Also</h2>
         <ul><li><a href="https://www.bbc.com/future/article/20260324-i-tried-to-prove-im-not-an-ai-deepfake">I tried to prove I&#x27;m not AI. My aunt wasn&#x27;t convinced.</a> &mdash; <span class="ql-note">BBC piece on the social side of deepfake paranoia. Funny and a little unsettling.</span></li>
 <li><a href="https://openai.com/index/our-approach-to-the-model-spec">OpenAI updates the Model Spec</a> &mdash; <span class="ql-note">Public framework for how OpenAI models should behave. Policy doc, not a tool.</span></li>
-<li><a href="https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/">Lyria 3 Pro for longer tracks</a> &mdash; <span class="ql-note">The pro tier of Google&#x27;s music model. Longer output, more integration points.</span></li></ul>
+<li><a href="https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/">Lyria 3 Pro for longer tracks</a> &mdash; <span class="ql-note">The pro tier of Google&#x27;s music model. Longer output, more integration points.</span></li>
+<li><a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">TurboQuant</a> &mdash; <span class="ql-note">Google's new way to shrink AI models so they run on cheaper hardware. 377 points on HN.</span></li>
+<li><a href="https://github.com/t8/hypura">Hypura</a> &mdash; <span class="ql-note">Makes AI models run faster on Macs. 212 points on HN.</span></li>
+<li><a href="https://dnhkng.github.io/posts/rys-ii/">LLM Neuroanatomy II</a> &mdash; <span class="ql-note">Deep dive into how AI models work internally. Dense reading. 135 points on HN.</span></li></ul>
       </section>
     </div>
     <section class="sources">
