@@ -52,6 +52,7 @@ def render_brief(data):
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
@@ -127,6 +128,7 @@ def render_index(briefs):
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
@@ -136,7 +138,7 @@ def render_index(briefs):
     </nav>
     <header class="brief-header">
       <h1 class="brief-date">Daily Briefs</h1>
-      <p class="brief-theme">Curated AI news and tools for builders. Updated weekdays.</p>
+      <p class="brief-theme">Curated AI news and tools for builders. Updated daily.</p>
     </header>
     <div class="index-list">
       {chr(10).join(items)}
@@ -175,6 +177,7 @@ def render_year_index(year, months_with_days):
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
 </head>
 <body>
   <div class="container">
