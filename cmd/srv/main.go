@@ -4,13 +4,15 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
+	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
+	"runtime"
 	"syscall"
 
 	"github.com/joho/godotenv"
 	slackbot "srv.exe.dev/slack"
-	"srv.exe.dev/srv"
 )
 
 var flagListenAddr = flag.String("listen", ":8000", "address to listen on")
@@ -25,21 +27,14 @@ func main() {
 func run() error {
 	flag.Parse()
 
-	// Load .env file
 	if err := godotenv.Load(); err != nil {
 		slog.Warn("no .env file found", "error", err)
 	}
 
-	hostname, err := os.Hostname()
-	if err != nil {
-		hostname = "unknown"
-	}
-
-	// Start HTTP server
-	server, err := srv.New("db.sqlite3", hostname)
-	if err != nil {
-		return fmt.Errorf("create server: %w", err)
-	}
+	// Resolve site directory relative to this source file
+	_, thisFile, _, _ := runtime.Caller(0)
+	projectRoot := filepath.Dir(filepath.Dir(filepath.Dir(thisFile)))
+	siteDir := filepath.Join(projectRoot, "site")
 
 	// Start Slack bot
 	bot, err := slackbot.New()
@@ -49,9 +44,12 @@ func run() error {
 
 	errCh := make(chan error, 2)
 
+	// Static file server
 	go func() {
-		slog.Info("starting HTTP server", "addr", *flagListenAddr)
-		errCh <- server.Serve(*flagListenAddr)
+		mux := http.NewServeMux()
+		mux.Handle("/", http.FileServer(http.Dir(siteDir)))
+		slog.Info("starting HTTP server", "addr", *flagListenAddr, "site_dir", siteDir)
+		errCh <- http.ListenAndServe(*flagListenAddr, mux)
 	}()
 
 	go func() {
@@ -59,7 +57,6 @@ func run() error {
 		errCh <- bot.Run()
 	}()
 
-	// Wait for signal or error
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
