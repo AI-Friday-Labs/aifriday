@@ -275,7 +275,7 @@ code {
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--text);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xs);
   font-variation-settings: 'opsz' 72;
 }
 
