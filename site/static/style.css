@@ -852,3 +852,58 @@ code {
     padding: var(--space-md) 0;
   }
 }
+
+/* --- Subscribe Form ------------------------------------------------------ */
+.subscribe-form {
+  display: flex;
+  gap: var(--space-sm);
+  max-width: 460px;
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+
+.subscribe-form input[type="email"]::placeholder {
+  color: var(--muted);
+}
+
+.subscribe-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(212, 102, 58, 0.1);
+}
+
+.subscribe-form input[type="submit"] {
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.subscribe-form input[type="submit"]:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 102, 58, 0.3);
+}
+
+@media (max-width: 640px) {
+  .subscribe-form {
+    flex-direction: column;
+  }
+}
