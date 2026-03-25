@@ -23,7 +23,6 @@
       </a>
       <div class="nav-links">
         <a href="/brief/">Briefs</a>
-        <a href="/meetings/">Meetings</a>
       </div>
     </nav>
 
@@ -42,25 +41,11 @@
       </div>
     </section>
 
-    <!-- Next Meeting -->
-    {{if .NextMeeting}}
-    <section class="about">
-      <div class="about-card">
-        <h2>Next Meeting</h2>
-        <p class="meeting-date-big">{{.NextMeeting.Date}}</p>
-        <p class="text-secondary">{{.NextMeeting.Location}}</p>
-        <div style="margin-top: var(--space-md);">
-          <a href="/meetings/" class="link-arrow">See all meetings &rarr;</a>
-        </div>
-      </div>
-    </section>
-    {{end}}
-
     <!-- Subscribe -->
     <section class="about">
       <div class="about-card">
         <h2>Get updates about upcoming meetings</h2>
-        <p class="text-secondary" style="margin-bottom: var(--space-lg);">Plus the daily brief &mdash; curated AI news for builders. No spam, unsubscribe anytime.</p>
+
         <form
           action="https://buttondown.com/api/emails/embed-subscribe/aifriday"
           method="post"
