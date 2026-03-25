@@ -1,3 +1,5 @@
+.env
+.env.*
 ai-friday-bot
 gen-brief
 db.sqlite3
