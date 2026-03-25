@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday Brief — Tuesday, March 25, 2026</title>
+  <meta name="description" content="AI Friday daily brief for Tuesday, March 25, 2026. Curated AI news and tools for builders.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-back">← Home</a>
+      </div>
+    </nav>
+
+    <header class="brief-header">
+      <h1 class="brief-date">Tuesday, March 25, 2026</h1>
+      <p class="brief-theme">The stack is maturing fast — music generation APIs, smarter coding agents, and a whole wave of tools making local inference actually practical. Less hype, more shipping.</p>
+    </header>
+
+    <section class="brief-items">
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🎵</span>
+          <h3 class="brief-card-title">
+            <a href="https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/" target="_blank" rel="noopener">Google launches Lyria 3 — music generation via the Gemini API</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">Google&#x27;s newest music generation model is now available in paid preview through the Gemini API and testable in AI Studio. Lyria 3 Pro brings longer tracks and tighter integration into professional creation tools.</p>
+          <p class="brief-card-why">Music gen just got a proper API. If you&#x27;re building anything with audio, this is your on-ramp.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🤖</span>
+          <h3 class="brief-card-title">
+            <a href="https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything" target="_blank" rel="noopener">Auto mode for Claude Code</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">Claude Code now has an &#x27;auto mode&#x27; where Claude makes permission decisions on your behalf — with a separate Sonnet 4.6 classifier reviewing each action before it runs. It&#x27;s the middle ground between full manual approval and `--dangerously-skip-permissions`.</p>
+          <p class="brief-card-why">A real step toward coding agents you can trust to run without babysitting every shell command.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🗜️</span>
+          <h3 class="brief-card-title">
+            <a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/" target="_blank" rel="noopener">TurboQuant: Google&#x27;s extreme model compression</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">New research from Google pushes quantization to its limits, dramatically shrinking model sizes while keeping quality surprisingly intact. This is the kind of work that makes bigger models fit on smaller hardware.</p>
+          <p class="brief-card-why">If you care about running models locally or cutting inference costs, this is the research to watch.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🔍</span>
+          <h3 class="brief-card-title">
+            <a href="https://github.com/ssrajadh/sentrysearch" target="_blank" rel="noopener">SentrySearch — sub-second video search powered by Gemini&#x27;s native video embeddings</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">A Show HN project that takes advantage of Gemini&#x27;s new native video embedding capability to build blazing-fast semantic video search. Point it at your footage and query naturally.</p>
+          <p class="brief-card-why">Gemini can natively embed video now — and this is a clean demo of what you can build with it.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🍎</span>
+          <h3 class="brief-card-title">
+            <a href="https://github.com/t8/hypura" target="_blank" rel="noopener">Hypura — storage-tier-aware LLM inference for Apple Silicon</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">An open-source scheduler that understands your Mac&#x27;s memory hierarchy (unified memory, SSD swap, etc.) to run LLM inference more efficiently. Designed specifically for Apple Silicon&#x27;s quirks.</p>
+          <p class="brief-card-why">Finally, someone built inference tooling that actually respects how Apple Silicon manages memory.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">⚡</span>
+          <h3 class="brief-card-title">
+            <a href="https://gofastmcp.com/getting-started/welcome" target="_blank" rel="noopener">FastMCP — the fast way to build MCP servers</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">A clean, batteries-included framework for building Model Context Protocol servers. If you&#x27;ve been wanting to expose your tools and data to AI agents via MCP, this smooths out the rough edges.</p>
+          <p class="brief-card-why">MCP is becoming the standard agent-to-tool protocol. FastMCP makes it easy to actually ship one.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">👁️</span>
+          <h3 class="brief-card-title">
+            <a href="https://github.com/AmElmo/proofshot" target="_blank" rel="noopener">ProofShot — give AI coding agents eyes to verify their own UI</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">A neat Show HN project that screenshots the UI an AI agent just built and feeds it back for visual verification. Closes the loop between &#x27;generate code&#x27; and &#x27;does this actually look right.&#x27;</p>
+          <p class="brief-card-why">Coding agents are great at generating UI — and terrible at checking it. This fixes the feedback loop.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">📦</span>
+          <h3 class="brief-card-title">
+            <a href="https://blog.cloudflare.com/dynamic-workers/" target="_blank" rel="noopener">Cloudflare Dynamic Workers — sandbox AI agents 100x faster</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">Cloudflare introduces dynamic workers that spin up isolated sandboxes for AI agents in milliseconds. Each agent action runs in its own container with no cross-contamination.</p>
+          <p class="brief-card-why">As agents get more autonomous, sandboxing goes from nice-to-have to essential. This makes it cheap and fast.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🔒</span>
+          <h3 class="brief-card-title">
+            <a href="https://ente.com/blog/ensu/" target="_blank" rel="noopener">Ente&#x27;s local LLM app — private AI on your own hardware</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">The privacy-focused team behind Ente (encrypted photo storage) ships a local LLM app. Everything runs on-device, nothing phones home. Classic Ente vibes.</p>
+          <p class="brief-card-why">A credible privacy-first team building local AI tools — worth keeping on your radar if you care about data sovereignty.</p>
+        </div>
+      </article>
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">🛡️</span>
+          <h3 class="brief-card-title">
+            <a href="https://simonwillison.net/2026/Mar/24/package-managers-need-to-cool-down/#atom-everything" target="_blank" rel="noopener">Package managers need dependency cooldowns — here&#x27;s how</a>
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">After the LiteLLM supply chain attack (a credential stealer hidden in a PyPI package), Simon Willison revisits dependency cooldowns — waiting a few days before installing new versions so the community can spot compromises.</p>
+          <p class="brief-card-why">Supply chain attacks are the quiet crisis in AI tooling. Cooldowns are a simple, practical defense you can adopt today.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="sources">
+      <h2 class="sources-title">Today's Sources</h2>
+      <ul class="sources-list">
+        <li><a href="https://simonwillison.net" target="_blank" rel="noopener">Simon Willison</a></li>
+        <li><a href="https://news.ycombinator.com" target="_blank" rel="noopener">Hacker News</a></li>
+        <li><a href="https://openai.com/blog" target="_blank" rel="noopener">OpenAI Blog</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">Google AI Blog</a></li>
+        <li><a href="https://huggingface.co/blog" target="_blank" rel="noopener">Hugging Face</a></li>
+        <li><a href="https://tldr.tech/ai" target="_blank" rel="noopener">TLDR AI</a></li>
+        <li><a href="https://bensbites.com" target="_blank" rel="noopener">Ben&#x27;s Bites</a></li>
+        <li><a href="https://www.theneurondaily.com" target="_blank" rel="noopener">The Neuron</a></li>
+        <li><a href="https://www.therundown.ai" target="_blank" rel="noopener">The Rundown AI</a></li>
+        <li><a href="https://www.futuretools.io" target="_blank" rel="noopener">FutureTools</a></li>
+      </ul>
+    </section>
+
+    <nav class="brief-nav">
+      <div class="brief-nav-placeholder"></div>
+      <div class="brief-nav-placeholder"></div>
+    </nav>
+
+    <footer class="footer">
+      <span class="footer-fleur">⚜️</span>
+      New Orleans, LA
+    </footer>
+  </div>
+</body>
+</html>

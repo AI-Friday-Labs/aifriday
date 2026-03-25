@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday Brief — {{.Date}}</title>
+  <meta name="description" content="AI Friday daily brief for {{.Date}}. Curated AI news and links.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-back">← Home</a>
+      </div>
+    </nav>
+
+    <!-- Brief Header -->
+    <header class="brief-header">
+      <h1 class="brief-date">{{.Date}}</h1>
+      {{if .Theme}}
+      <p class="brief-theme">{{.Theme}}</p>
+      {{end}}
+    </header>
+
+    <!-- Brief Items -->
+    <section class="brief-items">
+      {{range .Items}}
+      <article class="brief-card">
+        <div class="brief-card-header">
+          <span class="brief-card-emoji">{{.Emoji}}</span>
+          <h3 class="brief-card-title">
+            {{if .URL}}<a href="{{.URL}}" target="_blank" rel="noopener">{{.Title}}</a>{{else}}{{.Title}}{{end}}
+          </h3>
+        </div>
+        <div class="brief-card-body">
+          <p class="brief-card-description">{{.Description}}</p>
+          {{if .WhyItMatters}}
+          <p class="brief-card-why">{{.WhyItMatters}}</p>
+          {{end}}
+        </div>
+      </article>
+      {{end}}
+    </section>
+
+    <!-- Sources -->
+    {{if .Sources}}
+    <section class="sources">
+      <h2 class="sources-title">Today’s Sources</h2>
+      <ul class="sources-list">
+        {{range .Sources}}
+        <li><a href="{{.URL}}" target="_blank" rel="noopener">{{.Name}}</a></li>
+        {{end}}
+      </ul>
+    </section>
+    {{end}}
+
+    <!-- Prev / Next Navigation -->
+    <nav class="brief-nav">
+      {{if .PrevDate}}
+      <a href="/brief/{{.PrevDate}}" class="brief-nav-link brief-nav-link--prev">
+        <span class="brief-nav-label">← Previous</span>
+        <span class="brief-nav-date">{{.PrevDate}}</span>
+      </a>
+      {{else}}
+      <div class="brief-nav-placeholder"></div>
+      {{end}}
+
+      {{if .NextDate}}
+      <a href="/brief/{{.NextDate}}" class="brief-nav-link brief-nav-link--next">
+        <span class="brief-nav-label">Next →</span>
+        <span class="brief-nav-date">{{.NextDate}}</span>
+      </a>
+      {{else}}
+      <div class="brief-nav-placeholder"></div>
+      {{end}}
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer-fleur">⚜️</span>
+      New Orleans, LA
+    </footer>
+
+  </div>
+</body>
+</html>
