@@ -263,6 +263,51 @@ code {
   line-height: 1.7;
 }
 
+/* --- Hero Editorial ------------------------------------------------------ */
+.hero-editorial {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.hero-editorial h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+  font-variation-settings: 'opsz' 72;
+}
+
+.hero-editorial h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-aside {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-body-lg);
+  color: var(--muted);
+  margin-bottom: var(--space-md);
+  font-variation-settings: 'opsz' 18;
+}
+
+.hero-editorial .prose {
+  font-size: var(--text-body-lg);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.cta-row {
+  margin-top: var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
 /* --- Buttons ------------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -338,6 +383,72 @@ code {
 
 .about-card p + p {
   margin-top: var(--space-md);
+}
+
+/* --- Latest Brief (homepage) --------------------------------------------- */
+.latest-brief {
+  padding: 0 0 var(--space-3xl);
+}
+
+.latest-brief-heading {
+  margin-bottom: var(--space-sm);
+}
+
+.latest-brief-heading a {
+  color: var(--text);
+  transition: color 0.15s ease;
+}
+
+.latest-brief-heading a:hover {
+  color: var(--accent);
+}
+
+.brief-lede {
+  font-size: var(--text-body-lg);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+/* --- Subscribe Form ------------------------------------------------------ */
+.subscribe-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.subscribe-form input[type="email"]:focus {
+  border-color: var(--accent);
+}
+
+.subscribe-form input[type="submit"] {
+  padding: 12px 24px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+  background: var(--accent-hover);
 }
 
 /* --- Footer -------------------------------------------------------------- */
@@ -624,5 +735,13 @@ code {
 
   .nav {
     padding: var(--space-md) 0;
+  }
+
+  .hero-editorial {
+    padding: var(--space-2xl) 0 var(--space-xl);
+  }
+
+  .subscribe-form {
+    flex-direction: column;
   }
 }
