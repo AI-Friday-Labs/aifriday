@@ -244,7 +244,7 @@ code {
   font-weight: 500;
   line-height: 1.2;
   color: var(--text);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xs);
 }
 
 .hero-editorial h1 em {
