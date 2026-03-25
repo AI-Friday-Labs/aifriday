@@ -19,7 +19,10 @@ import (
 	"strings"
 	"time"
 
+	"database/sql"
+
 	"github.com/joho/godotenv"
+	"srv.exe.dev/db"
 	"srv.exe.dev/feeds"
 	slackbot "srv.exe.dev/slack"
 )
@@ -71,12 +74,24 @@ func run() error {
 		return fmt.Errorf("brief for %s already exists at %s", datePath, htmlPath)
 	}
 
+	// Open database for Slack community links
+	dbPath := filepath.Join(projectRoot, "aifriday.db")
+	database, err := db.Open(dbPath)
+	if err != nil {
+		slog.Warn("could not open db for Slack links", "error", err)
+	} else {
+		defer database.Close()
+		if err := db.RunMigrations(database); err != nil {
+			slog.Warn("db migrations", "error", err)
+		}
+	}
+
 	// Step 1: Fetch feeds
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
 	defer cancel()
 
 	slog.Info("fetching feeds...")
-	articles, err := fetchAllSources(ctx)
+	articles, err := fetchAllSources(ctx, database)
 	if err != nil {
 		return fmt.Errorf("fetch feeds: %w", err)
 	}
@@ -143,7 +158,7 @@ func run() error {
 // Feed fetching
 // ---------------------------------------------------------------------------
 
-func fetchAllSources(ctx context.Context) ([]feeds.Article, error) {
+func fetchAllSources(ctx context.Context, database *sql.DB) ([]feeds.Article, error) {
 	var allArticles []feeds.Article
 
 	// RSS feeds (last 36 hours to catch overnight stuff)
@@ -160,6 +175,17 @@ func fetchAllSources(ctx context.Context) ([]feeds.Article, error) {
 		slog.Warn("HN fetch error", "error", err)
 	} else {
 		allArticles = append(allArticles, hnArticles...)
+	}
+
+	// Slack community links (last 36 hours)
+	if database != nil {
+		slackArticles, err := feeds.SlackLinkArticles(database, 36*time.Hour)
+		if err != nil {
+			slog.Warn("Slack links fetch error", "error", err)
+		} else {
+			allArticles = append(allArticles, slackArticles...)
+			slog.Info("fetched Slack community links", "count", len(slackArticles))
+		}
 	}
 
 	// Sort by points (HN) then recency
@@ -262,7 +288,15 @@ Important:
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
 - Follow the RULEBOOK strictly for tone, audience, and content selection
-- Output ONLY the JSON object, no markdown fences, no explanation`,
+- Output ONLY the JSON object, no markdown fences, no explanation
+
+Community Links:
+- Articles with source "AI Friday Slack" were shared by community members in the AI Friday Slack.
+- Give these a STRONG boost in selection — they reflect what the community is actually talking about.
+- If there are any community links worth including, add a dedicated section titled "From the Community" with these items.
+- For community items, set "via" to the sharer's name (shown in the Author field), e.g. "via dunn in #ai-friday"
+- Community links don't need to pass the same novelty bar as other sources — if someone shared it, it's worth considering.
+- Still apply the RULEBOOK tone and accessibility rules to community items.`,
 		dateHuman, datePath, prevDate,
 		string(rulebook),
 		articleList.String(),
@@ -360,7 +394,7 @@ func postToSlack(briefJSON []byte, datePath string) error {
 		return fmt.Errorf("no slack_text in brief JSON")
 	}
 
-	bot, err := slackbot.New()
+	bot, err := slackbot.New(nil)
 	if err != nil {
 		return fmt.Errorf("create slack bot: %w", err)
 	}

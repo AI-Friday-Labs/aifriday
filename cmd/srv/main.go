@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
+	"srv.exe.dev/db"
 	slackbot "srv.exe.dev/slack"
 	"golang.org/x/net/html"
 )
@@ -99,7 +100,18 @@ func run() error {
 		}
 	}()
 
-	bot, err := slackbot.New()
+	// Open database for Slack link capture
+	dbPath := filepath.Join(projectRoot, "aifriday.db")
+	database, err := db.Open(dbPath)
+	if err != nil {
+		return fmt.Errorf("open db: %w", err)
+	}
+	defer database.Close()
+	if err := db.RunMigrations(database); err != nil {
+		return fmt.Errorf("migrations: %w", err)
+	}
+
+	bot, err := slackbot.New(database)
 	if err != nil {
 		return fmt.Errorf("create slack bot: %w", err)
 	}

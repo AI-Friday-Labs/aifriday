@@ -593,6 +593,18 @@ code {
   font-style: italic;
 }
 
+/* Community section — links shared by AI Friday Slack members */
+.community-section {
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-lg);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 4%, transparent), transparent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.community-section h2::before {
+  content: '💬 ';
+}
+
 /* Quick links section */
 .quick-links ul {
   list-style: none;

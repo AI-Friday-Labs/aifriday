@@ -116,8 +116,12 @@ Each candidate item gets scored 0-10:
 - Usefulness (0-3): Can someone do something with this today?
 - Coolness (0-2): Would this make someone say "oh that's cool"?
 - Credibility (0-2): Is the source reliable?
+- Community boost (+2): Item was shared by an AI Friday Slack member
 
 **Threshold: 5+ to include.** Max 12 items per daily brief.
+
+Items from the AI Friday Slack community get an automatic +2 scoring boost.
+These are things real members found interesting enough to share — that signal matters.
 
 ## Tone
 - Upbeat and practical
@@ -144,6 +148,11 @@ Each candidate item gets scored 0-10:
 - TAAFT (There's An AI For That)
 - FutureTools
 - Lenny's Newsletter
+
+### AI Friday Slack Community
+The bot monitors all AI Friday Slack channels and captures links shared by members.
+These community-sourced links get a scoring boost (+2) and appear in a dedicated
+"From the Community" section on the website when included.
 
 ### Future additions
 - Anthropic blog (need correct RSS URL)

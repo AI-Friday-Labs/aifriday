@@ -13,7 +13,8 @@ def render_brief(data):
     sections_html = []
     for section in data["sections"]:
         items_html = "\n".join(_render_item(item) for item in section["items"])
-        sections_html.append(f'''<section class="brief-section">
+        extra_class = " community-section" if _is_community_section(section["title"]) else ""
+        sections_html.append(f'''<section class="brief-section{extra_class}">
   <h2>{escape(section["title"])}</h2>
   {items_html}
 </section>''')
@@ -90,6 +91,12 @@ def _render_item(item):
   <div class="item-body">{item["body"]}</div>
   {via_html}
 </div>'''
+
+
+def _is_community_section(title):
+    """Check if a section title indicates community-sourced content."""
+    lower = title.lower()
+    return "community" in lower or "slack" in lower
 
 
 def _render_quick_link(ql):
