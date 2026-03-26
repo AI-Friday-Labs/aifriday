@@ -224,7 +224,7 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 		}
 		fmt.Fprintf(&articleList, "%d. [%s] %s\n   URL: %s\n", i+1, a.Source, a.Title, a.URL)
 		if a.Points > 0 {
-			fmt.Fprintf(&articleList, "   HN Points: %d | Comments: %s\n", a.Points, a.CommentURL)
+			fmt.Fprintf(&articleList, "   HN Points: %d (internal use only — do NOT include in output) | Comments: %s\n", a.Points, a.CommentURL)
 		}
 		if a.Summary != "" {
 			summary := a.Summary
@@ -292,6 +292,7 @@ Important:
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
 - Follow the RULEBOOK strictly for tone, audience, and content selection
+- Do NOT mention Hacker News point counts in any output (lede, body, notes, slack_text). HN points are provided to help you rank/select stories but should never appear in the published brief.
 - Output ONLY the JSON object, no markdown fences, no explanation
 
 Community Links:

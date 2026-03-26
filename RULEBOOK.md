@@ -116,6 +116,11 @@ Don't force it — most days there won't be anything. That's fine.
 - Never put `<blockquote>` inside a sentence — use curly quotes \u201c...\u201d instead
 - Keep HTML simple: no `<div>`, `<span>`, or nested structures in body text
 
+## HN Point Counts
+Do not display Hacker News point counts in the brief. Points are used internally
+for story selection and ranking, but they add noise for readers and age poorly.
+Say "popular on HN" or link to the discussion — never cite a specific number.
+
 ## Scoring (internal, not shown to users)
 Each candidate item gets scored 0-10:
 - Novelty (0-3): Is this actually new?
