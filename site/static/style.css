@@ -327,6 +327,14 @@ code {
   opacity: 0.9;
 }
 
+.form-subtext {
+  font-size: var(--text-small);
+  color: var(--muted);
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+  opacity: 1;
+}
+
 .log-content .brief-lede {
   padding: 0;
   border: 0;

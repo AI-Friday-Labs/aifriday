@@ -42,7 +42,6 @@
         <div class="log-label">Next Meeting</div>
         <div class="log-content">
           <h3 class="log-heading">{{.NextMeeting.Date}}</h3>
-          <p>{{.NextMeeting.Location}}</p>
         </div>
       </div>
       {{end}}
@@ -50,7 +49,7 @@
       <div class="log-entry">
         <div class="log-label">Get Updates</div>
         <div class="log-content">
-          <h3 class="log-heading">Stay in the loop</h3>
+          <h3 class="log-heading">Sign up to hear about upcoming meetings</h3>
           <form
             action="https://buttondown.com/api/emails/embed-subscribe/aifriday"
             method="post"
@@ -59,6 +58,7 @@
             <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
             <input type="submit" value="Subscribe" />
           </form>
+          <p class="form-subtext">No spam or promotion. Just emails about events.</p>
         </div>
       </div>
 
