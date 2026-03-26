@@ -28,7 +28,6 @@ var flagListenAddr = flag.String("listen", ":8000", "address to listen on")
 type Meeting struct {
 	Date     string // "Friday, March 27, 2026"
 	Short    string // "Mar 27"
-	Location string
 	DatePath string // "2026/03/27"
 	IsPast   bool
 }
@@ -36,6 +35,7 @@ type Meeting struct {
 // BriefSummary is extracted from a brief's static HTML.
 type BriefSummary struct {
 	Date     string        // "Tuesday, March 25, 2026"
+	Short    string        // "Mar 25"
 	DatePath string        // "2026/03/25"
 	Lede     template.HTML // inner HTML of brief-lede div
 	Preview  string        // plain-text truncation
@@ -204,28 +204,27 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 
 var meetingSchedule = []struct {
-	Year     int
-	Month    time.Month
-	Day      int
-	Location string
+	Year  int
+	Month time.Month
+	Day   int
 }{
-	{2026, time.March, 27, "Hello Gravel offices"},
-	{2026, time.April, 24, "Hello Gravel offices"},
-	{2026, time.May, 22, "Hello Gravel offices"},
-	{2026, time.June, 19, "Hello Gravel offices"},
-	{2026, time.July, 17, "Hello Gravel offices"},
-	{2026, time.August, 21, "Hello Gravel offices"},
-	{2026, time.September, 18, "Hello Gravel offices"},
-	{2026, time.October, 16, "Hello Gravel offices"},
-	{2026, time.November, 20, "Hello Gravel offices"},
+	{2026, time.March, 27},
+	{2026, time.April, 17},
+	{2026, time.May, 15},
+	{2026, time.June, 26},
+	{2026, time.July, 17},
+	{2026, time.August, 14},
+	{2026, time.September, 18},
+	{2026, time.October, 16},
+	{2026, time.November, 13},
+	{2026, time.December, 18},
 }
 
-func buildMeeting(year int, month time.Month, day int, loc string, now time.Time) Meeting {
+func buildMeeting(year int, month time.Month, day int, now time.Time) Meeting {
 	t := time.Date(year, month, day, 0, 0, 0, 0, time.Local)
 	return Meeting{
 		Date:     t.Format("Monday, January 2, 2006"),
 		Short:    t.Format("Jan 2"),
-		Location: loc,
 		DatePath: fmt.Sprintf("%d/%02d/%02d", year, month, day),
 		IsPast:   t.Before(now.Truncate(24 * time.Hour)),
 	}
@@ -234,7 +233,7 @@ func buildMeeting(year int, month time.Month, day int, loc string, now time.Time
 func nextMeeting() *Meeting {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Year, m.Month, m.Day, m.Location, now)
+		mt := buildMeeting(m.Year, m.Month, m.Day, now)
 		if !mt.IsPast {
 			return &mt
 		}
@@ -245,7 +244,7 @@ func nextMeeting() *Meeting {
 func splitMeetings() (upcoming, past []Meeting) {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Year, m.Month, m.Day, m.Location, now)
+		mt := buildMeeting(m.Year, m.Month, m.Day, now)
 		if mt.IsPast {
 			past = append(past, mt)
 		} else {
@@ -356,8 +355,15 @@ func parseBriefFile(path, year, month, day string) (BriefSummary, error) {
 		plain = plain[:157] + "…"
 	}
 
+	// Build short date like "Mar 25"
+	var shortDate string
+	if t, err := time.Parse("2006/01/02", year+"/"+month+"/"+day); err == nil {
+		shortDate = t.Format("Jan 2")
+	}
+
 	return BriefSummary{
 		Date:     dateStr,
+		Short:    shortDate,
 		DatePath: year + "/" + month + "/" + day,
 		Lede:     template.HTML(ledeHTML),
 		Preview:  plain,

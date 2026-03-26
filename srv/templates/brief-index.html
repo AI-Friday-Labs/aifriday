@@ -7,8 +7,8 @@
   <meta name="description" content="Curated AI news and tools for builders. Updated daily.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=3">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -19,26 +19,25 @@
 
     <nav class="nav">
       <a href="/" class="nav-logo">
-        <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+        <span class="logo-ai">AI</span><span class="logo-friday">Friday</span>
+        <span class="logo-location">New Orleans</span>
       </a>
-      <div class="nav-links">
-        <a href="/" class="nav-back">&larr; Home</a>
-      </div>
     </nav>
 
-    <header class="brief-header">
-      <h1 class="brief-date">Daily Briefs</h1>
-      <p class="brief-theme">Curated AI news and tools for builders. Updated daily.</p>
-    </header>
+    <section class="intro-section">
+      <h1 class="page-title">Daily Briefs</h1>
+      <p class="intro-text">Curated AI news and tools for builders. Updated daily.</p>
+    </section>
 
     <div class="index-list">
       {{range .Briefs}}
-      <div class="index-item">
-        <a href="/brief/{{.DatePath}}/">
-          <div class="index-date">{{.Date}}</div>
+      <a href="/brief/{{.DatePath}}/" class="index-item">
+        <div class="index-date">{{.Short}}</div>
+        <div class="index-body">
+          <h3 class="index-heading">{{.Date}}</h3>
           <p class="index-preview">{{.Preview}}</p>
-        </a>
-      </div>
+        </div>
+      </a>
       {{end}}
     </div>
 
