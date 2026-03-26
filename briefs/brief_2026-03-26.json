@@ -1,0 +1,128 @@
+{
+  "date": "Thursday, March 26, 2026",
+  "date_path": "2026/03/26",
+  "lede": "Google just dropped \u003ca href='https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/'\u003e\u003cstrong\u003eTurboQuant\u003c/strong\u003e\u003c/a\u003e, a breakthrough that lets you run massive AI models on regular hardware through extreme compression. Meanwhile, \u003ca href='https://ente.com/blog/ensu/'\u003e\u003cstrong\u003eEnsu\u003c/strong\u003e\u003c/a\u003e brings local LLMs to your desktop with a privacy-first approach, and \u003ca href='https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/'\u003e\u003cstrong\u003eGitHub updated Copilot's data policy\u003c/strong\u003e\u003c/a\u003e with clearer opt-out controls. Plus: Google's \u003ca href='https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/'\u003e\u003cstrong\u003eLyria 3\u003c/strong\u003e\u003c/a\u003e music generation model is now available through the Gemini API, and the community's sharing solid podcasts for staying current.",
+  "next_date": "",
+  "prev_date": "2026/03/25",
+  "quick_links": [
+    {
+      "note": "Public framework for balancing safety and user freedom",
+      "title": "OpenAI details its Model Spec approach",
+      "url": "https://openai.com/index/our-approach-to-the-model-spec"
+    },
+    {
+      "note": "For the Swift enthusiasts out there",
+      "title": "Building a coding agent in Swift from scratch",
+      "url": "https://github.com/ivan-magda/swift-claude-code"
+    },
+    {
+      "note": "Go from ticket to PR using Kubernetes",
+      "title": "Optio: Orchestrate AI coding agents in K8s",
+      "url": "https://github.com/jonwiggins/optio"
+    },
+    {
+      "note": "Simon Willison on the PyPI compromise impact",
+      "title": "LiteLLM hack affected 47,000 downloads",
+      "url": "https://simonwillison.net/2026/Mar/25/litellm-hack/#atom-everything"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "Google Research released \u003cstrong\u003eTurboQuant\u003c/strong\u003e, a compression technique that lets you run huge AI models on normal hardware without crushing performance. The key innovation is extreme quantization (making models smaller by simplifying how they store numbers) that maintains quality while slashing memory requirements. This could be the breakthrough that makes powerful models practical for everyday machines. \u003ca href='https://news.ycombinator.com/item?id=47513475'\u003ePopular discussion on HN\u003c/a\u003e.",
+          "title": "TurboQuant: Redefining AI efficiency with extreme compression",
+          "url": "https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "GitHub updated how Copilot handles your interaction data, giving users \u003cstrong\u003emore transparent opt-out controls\u003c/strong\u003e for data used to improve the product. The changes clarify what gets collected, how it's used, and how to turn it off completely. If you've been wary about what Copilot does with your code sessions, this is worth reviewing. \u003ca href='https://news.ycombinator.com/item?id=47521799'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "GitHub Copilot gets clearer data usage controls",
+          "url": "https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Google's \u003cstrong\u003eLyria 3\u003c/strong\u003e music generation model is now available through the Gemini API and for testing in AI Studio. This is their latest music AI, and you can start building with it today if you're on a paid plan. The timing coincides with \u003ca href='https://blog.google/innovation-and-ai/technology/ai/lyria-3-pro/'\u003eLyria 3 Pro\u003c/a\u003e rolling out to professional creative tools for longer track creation.",
+          "title": "Lyria 3: Google's new music generation model now in paid preview",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/",
+          "via": "Google AI Blog"
+        }
+      ],
+      "title": "💥 Big Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "The team behind Ente (the privacy-focused photo app) built \u003cstrong\u003eEnsu\u003c/strong\u003e, a desktop app for running LLMs entirely on your machine. No cloud, no data leaving your computer. It's designed for people who want AI assistance without sacrificing privacy. Clean UI, works with popular open models, and it's free to try. \u003ca href='https://news.ycombinator.com/item?id=47516650'\u003eActive discussion on HN\u003c/a\u003e.",
+          "title": "Ensu: Local LLM app from Ente",
+          "url": "https://ente.com/blog/ensu/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A clever \u003cstrong\u003eplain-text framework\u003c/strong\u003e for giving Claude more structured reasoning capabilities. The approach uses simple text files to define memory, goals, and decision-making patterns—no complex setup required. It's surprisingly effective for building more reliable agents. \u003ca href='https://news.ycombinator.com/item?id=47524704'\u003eCheck the HN thread\u003c/a\u003e for examples.",
+          "title": "Show HN: A plain-text cognitive architecture for Claude",
+          "url": "https://lab.puga.com.br/cog/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A \u003cstrong\u003eTypeScript library\u003c/strong\u003e that uses LLMs to reliably extract structured data from messy websites. Handles dynamic content, navigation, and pagination automatically. Good for anyone scraping data at scale who's tired of brittle selectors breaking. \u003ca href='https://news.ycombinator.com/item?id=47526486'\u003eShow HN thread\u003c/a\u003e.",
+          "title": "Robust LLM extractor for websites in TypeScript",
+          "url": "https://github.com/lightfeed/extractor",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "🛠️ Tools \u0026 Releases"
+    },
+    {
+      "items": [
+        {
+          "body": "The \u003cstrong\u003eAI Daily Brief podcast\u003c/strong\u003e breaks down Claude's recent feature updates with practical examples and a feature checklist. If you've been overwhelmed by all the new Claude capabilities, this episode is a solid 20-minute explainer. The show consistently delivers useful, builder-focused content.",
+          "title": "AI Daily Brief episode: How to use Claude's massive new upgrades",
+          "url": "https://play.aidailybrief.ai/episodes/how-to-use-claudes-massive-new-upgrades/",
+          "via": "dunn in AI Friday Slack"
+        },
+        {
+          "body": "Two podcast recommendations from the community: \u003cstrong\u003eDwarkesh Patel\u003c/strong\u003e does deep technical interviews with AI leaders (Anthropic CEO, etc.) every few weeks, and \u003cstrong\u003eMarketing Against the Grain\u003c/strong\u003e from HubSpot covers AI in knowledge work with demos and practical guides. Both worth adding to your rotation. \u003ca href='https://www.youtube.com/@MATGpod/videos'\u003eMATG channel here\u003c/a\u003e.",
+          "title": "Podcast recommendations: Dwarkesh Patel and Marketing Against the Grain",
+          "url": "https://www.youtube.com/@DwarkeshPatel/videos",
+          "via": "dunn in AI Friday Slack"
+        }
+      ],
+      "title": "📚 From the Community"
+    },
+    {
+      "items": [
+        {
+          "body": "Someone scraped GitHub and found that \u003cstrong\u003e90% of repositories\u003c/strong\u003e with Claude attribution messages have fewer than 2 stars. It's a fascinating dataset that shows how most AI-generated code lives in private or low-visibility projects, not the showcase repos we see on Twitter. \u003ca href='https://news.ycombinator.com/item?id=47521157'\u003eInteresting discussion on HN\u003c/a\u003e about what this means.",
+          "title": "90% of Claude-linked code goes to repos with under 2 stars",
+          "url": "https://www.claudescode.dev/?window=since_launch",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "📊 Weird Data"
+    }
+  ],
+  "slack_text": "🌞 *AI Friday Daily Brief — Thursday, March 26, 2026*\n\n💥 *Big Moves*\n• \u003chttps://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/|TurboQuant from Google\u003e — extreme compression that lets you run huge models on normal hardware\n• \u003chttps://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/|GitHub Copilot data policy update\u003e — clearer opt-out controls for your interaction data\n• \u003chttps://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/|Lyria 3 music generation\u003e — now available in paid preview through Gemini API\n\n🛠️ *Tools \u0026 Releases*\n• \u003chttps://ente.com/blog/ensu/|Ensu local LLM app\u003e — run AI models entirely on your machine, zero cloud\n• \u003chttps://lab.puga.com.br/cog/|Plain-text cognitive architecture for Claude\u003e — simple framework for more reliable agents\n• \u003chttps://github.com/lightfeed/extractor|LLM-powered web extractor\u003e — robust data extraction from messy websites in TypeScript\n\n📚 *From the Community*\n• \u003chttps://play.aidailybrief.ai/episodes/how-to-use-claudes-massive-new-upgrades/|AI Daily Brief: Claude's new features\u003e — practical walkthrough with checklist\n• \u003chttps://www.youtube.com/@DwarkeshPatel/videos|Dwarkesh Patel podcast\u003e — deep interviews with AI leaders every few weeks\n\n📊 *Weird Data*\n• \u003chttps://www.claudescode.dev/?window=since_launch|90% of Claude code\u003e — goes to repos with under 2 stars",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison's Blog",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/blog"
+    },
+    {
+      "name": "AI Friday Slack",
+      "url": "https://aifriday.ai"
+    }
+  ]
+}
