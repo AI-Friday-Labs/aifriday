@@ -110,6 +110,12 @@ This lets people react (🔥/👎) to individual items without cluttering the ch
 Include a `🎺 NOLA Spotlight` section only when there's genuinely something local.
 Don't force it — most days there won't be anything. That's fine.
 
+### HTML Body Rules
+- Use `<strong>`, `<a href>`, `<code>` in item bodies
+- For direct quotes, use `<blockquote>` as a **block element** (not inline)
+- Never put `<blockquote>` inside a sentence — use curly quotes \u201c...\u201d instead
+- Keep HTML simple: no `<div>`, `<span>`, or nested structures in body text
+
 ## Scoring (internal, not shown to users)
 Each candidate item gets scored 0-10:
 - Novelty (0-3): Is this actually new?

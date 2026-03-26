@@ -158,6 +158,14 @@ code {
   padding: 2px 6px;
 }
 
+blockquote {
+  border-left: 3px solid var(--line);
+  margin: var(--space-md) 0;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 /* --- Layout -------------------------------------------------------------- */
 .container {
   position: relative;

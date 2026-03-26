@@ -52,14 +52,18 @@ func run() error {
 	_, thisFile, _, _ := runtime.Caller(0)
 	projectRoot := filepath.Dir(filepath.Dir(filepath.Dir(thisFile)))
 
-	// Determine date
-	now := time.Now()
+	// Determine date — always use Central time for the brief date
+	centralTZ, err := time.LoadLocation("America/Chicago")
+	if err != nil {
+		return fmt.Errorf("load Central timezone: %w", err)
+	}
+	now := time.Now().In(centralTZ)
 	briefDate := now
 	if *flagDate != "" {
-		var err error
-		briefDate, err = time.Parse("2006-01-02", *flagDate)
-		if err != nil {
-			return fmt.Errorf("invalid date %q: %w", *flagDate, err)
+		var parseErr error
+		briefDate, parseErr = time.ParseInLocation("2006-01-02", *flagDate, centralTZ)
+		if parseErr != nil {
+			return fmt.Errorf("invalid date %q: %w", *flagDate, parseErr)
 		}
 	}
 
