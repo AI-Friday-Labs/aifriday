@@ -77,34 +77,29 @@ Every item should pass these filters before publishing:
 
 ## Formatting Rules
 
-### Daily Brief Structure
-Post one summary message to the channel, then each item as a reply in the thread.
+### Slack Message Format
+Post a single message to #daily-brief. No threading. The system automatically
+appends a link to the full brief on the website — do NOT add one yourself.
 
-**Main message:**
+Every bullet item MUST include a Slack link (`<url|text>`) so readers can click
+through. Aim for 8-10 linked items total.
+
 ```
 🌞 AI Friday Daily Brief — {date}
 
-{count} items today • React in the thread 🔥👎
+💥 Big Moves
+• <url|Headline> — one-line description
+• <url|Headline> — one-line description
 
-💥 Big Moves (0-2 items)
-• headline summaries
+🛠️ Tools & Releases
+• <url|Headline> — one-line description
+• <url|Headline> — one-line description
 
-🛠️ Tools & Releases (2-5 items)
-• headline summaries
-
-📚 Worth a Look (1-3 items)
-• headline summaries
+📚 Worth a Look
+• <url|Headline> — one-line description
 ```
 
-**Thread replies (one per item):**
-```
-🛠️ [Tool] **Tool Name**
-One-liner description.
-→ Why it's interesting (one line)
-🔗 link
-```
-
-This lets people react (🔥/👎) to individual items without cluttering the channel.
+No "React in the thread", no "details in thread", no footer. Keep it clean.
 
 ### NOLA Spotlight
 Include a `🎺 NOLA Spotlight` section only when there's genuinely something local.

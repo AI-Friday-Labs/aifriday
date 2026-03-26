@@ -281,14 +281,15 @@ Generate the daily brief as a JSON object. The JSON must have this exact structu
   "sources": [
     {"name": "Source Name", "url": "https://..."}
   ],
-  "slack_text": "Plain text Slack message (no HTML). Use emoji. Include the 🌞 header, section headers with emoji, and bullet points for each item. Keep it scannable. This goes to #daily-brief as the main message."
+  "slack_text": "Slack message for #daily-brief. Use Slack formatting (*bold*, _italic_, <url|text>). Every bullet item MUST have a clickable Slack link in <url|Headline> format. Aim for 8-10 linked items grouped into 2-3 sections with emoji headers. No HTML. No 'React in the thread' line. No 'details in thread' footer. The system appends the website link automatically — do NOT include one. Keep it scannable and punchy."
 }
 
 Important:
 - Pick 5-10 items for the main sections, plus 3-5 quick links
 - The "body" field in items uses HTML (not Markdown)
 - The "lede" field uses HTML (not Markdown)  
-- The "slack_text" field is plain text with Slack formatting (*bold*, _italic_, <url|text>)
+- The "slack_text" field uses Slack mrkdwn: *bold*, _italic_, <url|text> for links. Every item MUST include a <url|Headline> link. No HTML in slack_text.
+- Do NOT include any footer like 'details in thread' or 'full brief' in slack_text — the system appends the website URL automatically
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
 - Follow the RULEBOOK strictly for tone, audience, and content selection
