@@ -186,7 +186,7 @@ code {
   letter-spacing: -0.04em;
   display: flex;
   align-items: baseline;
-  gap: var(--space-md);
+  gap: 0;
   line-height: 1;
 }
 
@@ -196,6 +196,7 @@ code {
 
 .logo-ai {
   color: var(--text);
+  margin-right: 5px;
 }
 
 .logo-friday {
@@ -215,6 +216,7 @@ code {
   text-transform: uppercase;
   letter-spacing: 0.11em;
   color: var(--muted);
+  margin-left: var(--space-md);
 }
 
 .nav-links {
