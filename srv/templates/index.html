@@ -7,8 +7,8 @@
   <meta name="description" content="A monthly Friday morning meetup for startup founders and operators figuring out AI together. New Orleans.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=3">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -20,55 +20,75 @@
     <nav class="nav">
       <a href="/" class="nav-logo">
         <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
+        <span class="logo-location">New Orleans</span>
       </a>
-      <div class="nav-links">
-        <a href="/brief/">Briefs</a>
-      </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero-editorial">
-      <h1>Figuring out AI, <em>together</em></h1>
-      <div class="hero-aside">⚜ in New Orleans</div>
-      <div class="prose">
-        <p>
-          We get together once a month to show what we&rsquo;re building with AI,
-          help each other get unstuck, and talk about what&rsquo;s new. Some people
-          demo things. Some people ask questions. It&rsquo;s low-key.
-        </p>
-      </div>
-      <div class="cta-row">
-        <a href="https://join.slack.com/t/ai-friday/shared_invite/zt-3ti8nvrbm-2bt_oPFJ5k8FZ1soO2m8oQ" class="btn btn-primary">Join us on Slack</a>
-      </div>
+    <!-- Intro -->
+    <section class="intro-section">
+      <p class="intro-text">
+        AI is moving at a disorienting pace.
+        <strong>We get together once a month to share and learn.</strong>
+        We&rsquo;re here to learn from each other, help beginners, and discuss.
+        We&rsquo;re not engineers.
+      </p>
     </section>
 
-    <!-- Subscribe -->
-    <section class="about">
-      <div class="about-card">
-        <h2>Get updates about upcoming meetings</h2>
+    <!-- How to get involved -->
+    <section class="log-entries">
 
-        <form
-          action="https://buttondown.com/api/emails/embed-subscribe/aifriday"
-          method="post"
-          class="subscribe-form"
-        >
-          <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
-          <input type="submit" value="Subscribe" />
-        </form>
-        <p style="margin-top: var(--space-sm); font-size: var(--text-small); color: var(--muted);">
-          <a href="https://buttondown.com/refer/aifriday" target="_blank" style="color: var(--muted);">Powered by Buttondown</a>
-        </p>
+      {{if .NextMeeting}}
+      <div class="log-entry">
+        <div class="log-label">Next Meeting</div>
+        <div class="log-content">
+          <h3 class="log-heading">{{.NextMeeting.Date}}</h3>
+          <p>{{.NextMeeting.Location}}</p>
+        </div>
       </div>
+      {{end}}
+
+      <div class="log-entry">
+        <div class="log-label">Get Updates</div>
+        <div class="log-content">
+          <h3 class="log-heading">Stay in the loop</h3>
+          <form
+            action="https://buttondown.com/api/emails/embed-subscribe/aifriday"
+            method="post"
+            class="subscribe-form"
+          >
+            <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
+            <input type="submit" value="Subscribe" />
+          </form>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-label">Join Us</div>
+        <div class="log-content">
+          <h3 class="log-heading">Come say hello</h3>
+          <p>Our Slack is where the conversation continues between meetings.</p>
+          <a href="https://join.slack.com/t/ai-friday/shared_invite/zt-3ti8nvrbm-2bt_oPFJ5k8FZ1soO2m8oQ" class="btn btn-primary" style="margin-top: var(--space-sm);">Join Slack</a>
+        </div>
+      </div>
+
+      {{if .LatestBrief}}
+      <div class="log-entry">
+        <div class="log-label">Daily Brief</div>
+        <div class="log-content">
+          <h3 class="log-heading"><a href="/brief/{{.LatestBrief.DatePath}}/">{{.LatestBrief.Date}}</a></h3>
+          <div class="brief-lede">{{.LatestBrief.Lede}}</div>
+          <a href="/brief/{{.LatestBrief.DatePath}}/" class="link-arrow">Read the full brief &rarr;</a>
+        </div>
+      </div>
+      {{end}}
+
     </section>
 
-    <!-- Latest Brief -->
-    {{if .LatestBrief}}
-    <section class="latest-brief">
-      <h2 class="latest-brief-heading"><a href="/brief/{{.LatestBrief.DatePath}}/">{{.LatestBrief.Date}}</a></h2>
-      <div class="brief-lede">{{.LatestBrief.Lede}}</div>
-      <a href="/brief/{{.LatestBrief.DatePath}}/" class="link-arrow">Read the full brief &rarr;</a>
-    </section>
-    {{end}}
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer-fleur">&#9884;&#65039;</span>
+      New Orleans, LA
+    </footer>
 
   </div>
 </body>
