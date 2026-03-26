@@ -281,15 +281,16 @@ Generate the daily brief as a JSON object. The JSON must have this exact structu
   "sources": [
     {"name": "Source Name", "url": "https://..."}
   ],
-  "slack_text": "Slack message for #daily-brief. Use Slack formatting (*bold*, _italic_, <url|text>). Every bullet item MUST have a clickable Slack link in <url|Headline> format. Aim for 8-10 linked items grouped into 2-3 sections with emoji headers. No HTML. No 'React in the thread' line. No 'details in thread' footer. The system appends the website link automatically — do NOT include one. Keep it scannable and punchy."
+  "slack_text": "Conversational Slack message for #daily-brief. Write like a smart friend catching people up over coffee. Start with a warm greeting ('Good morning, NOLA!' or similar) + date + a 1-2 sentence vibe-check on the day. Then 2-3 sections separated by --- with emoji headers. Each item gets a bullet with a <url|linked headline> plus 1-3 conversational sentences about WHY it matters. Not a dry list — give personality and editorial voice. Aim for 8-10 linked items total. Use Slack mrkdwn (*bold*, _italic_, <url|text>). No HTML. The system appends the website link automatically — do NOT add one."
 }
 
 Important:
 - Pick 5-10 items for the main sections, plus 3-5 quick links
 - The "body" field in items uses HTML (not Markdown)
 - The "lede" field uses HTML (not Markdown)  
-- The "slack_text" field uses Slack mrkdwn: *bold*, _italic_, <url|text> for links. Every item MUST include a <url|Headline> link. No HTML in slack_text.
+- The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <url|text> for links. Every item MUST have a <url|linked headline>. Use --- between sections. No HTML.
 - Do NOT include any footer like 'details in thread' or 'full brief' in slack_text — the system appends the website URL automatically
+- Diversify sources: don't let more than half the items come from Hacker News. Pull from tech press, newsletters, blogs, and community links too
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
 - Follow the RULEBOOK strictly for tone, audience, and content selection

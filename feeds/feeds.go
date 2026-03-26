@@ -35,6 +35,7 @@ type Article struct {
 // DefaultFeeds returns the initial set of feeds to monitor
 func DefaultFeeds() []FeedSource {
 	return []FeedSource{
+		// --- Blogs & Labs ---
 		{
 			Name: "Simon Willison",
 			URL:  "https://simonwillison.net/atom/everything/",
@@ -47,14 +48,48 @@ func DefaultFeeds() []FeedSource {
 		},
 		// Anthropic has no RSS feed as of March 2026
 		{
+			Name: "Google AI Blog",
+			URL:  "https://blog.google/technology/ai/rss/",
+			Tags: []string{"blog", "ai", "google"},
+		},
+		{
 			Name: "Hugging Face Blog",
 			URL:  "https://huggingface.co/blog/feed.xml",
 			Tags: []string{"blog", "ai", "open-source"},
 		},
 		{
-			Name: "Google AI Blog",
-			URL:  "https://blog.google/technology/ai/rss/",
-			Tags: []string{"blog", "ai", "google"},
+			Name: "Latent Space",
+			URL:  "https://latent.space/feed",
+			Tags: []string{"newsletter", "ai"},
+		},
+
+		// --- Tech Press (AI sections) ---
+		{
+			Name: "TechCrunch AI",
+			URL:  "https://techcrunch.com/category/artificial-intelligence/feed/",
+			Tags: []string{"news", "ai", "business"},
+		},
+		{
+			Name: "The Verge AI",
+			URL:  "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+			Tags: []string{"news", "ai", "consumer"},
+		},
+		{
+			Name: "Ars Technica AI",
+			URL:  "https://arstechnica.com/ai/feed/",
+			Tags: []string{"news", "ai"},
+		},
+		{
+			Name: "MIT Technology Review AI",
+			URL:  "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
+			Tags: []string{"news", "ai", "research"},
+		},
+
+		// --- Newsletters ---
+		{
+			Name: "Ben's Bites",
+			URL:  "https://bensbites.com/feed",
+			Tags: []string{"newsletter", "ai"},
 		},
 	}
 }

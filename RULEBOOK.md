@@ -10,10 +10,15 @@ and want practical things they can apply. Not researchers, not executives — **
 
 ## Editorial Skew
 - **Positive and constructive.** Lead with what's new, useful, and exciting.
-- **Tools-first.** Prioritize things people can try, install, or build with today.
+- **Mix of practical and interesting.** Balance hands-on tools with industry moves,
+  product launches, interesting business angles, and things that make people think.
+  Not every item needs to be something you can `pip install` today.
 - **Skip the negativity.** No doom, no drama, no "AI is going to kill us all."
 - **No politics.** Skip regulation/policy unless it directly impacts what builders can ship.
 - **No personality worship.** Focus on the work, not the people.
+- **Diverse sources.** Don't let HN dominate. Pull from tech press, newsletters,
+  community links, and blogs. If more than half the items come from one source,
+  rebalance.
 
 ## Accessibility & Tone Calibration
 
@@ -55,13 +60,15 @@ Every item should pass these filters before publishing:
 
 ### ✅ INCLUDE
 - **New AI tools and products** — especially ones you can try right now
-- **CLI tools and developer utilities** — MCP servers, agents, coding assistants, workflow tools
 - **Major model releases** — new models, significant updates, new capabilities
+- **Industry moves** — acquisitions, shutdowns, major pivots, big launches
+- **Product updates that matter** — things that change how people work day-to-day
+- **Interesting business angles** — how companies are actually using AI, what's working
+- **Good podcasts and essays** — things worth listening to or reading this week
 - **Open-source releases** — new libraries, frameworks, model weights people can run
-- **Practical tutorials** — that teach something actionable in <30 min
 - **Interesting demos and Show HNs** — cool things people built
-- **API & platform changes** — new endpoints, pricing changes that affect builders
 - **Funding rounds >$50M** — signals where the industry is heading (briefly, no hype)
+- **Community links** — anything shared by AI Friday Slack members gets a strong boost
 
 ### ❌ EXCLUDE
 - Hype pieces with no substance ("AI will change everything")
@@ -81,25 +88,41 @@ Every item should pass these filters before publishing:
 Post a single message to #daily-brief. No threading. The system automatically
 appends a link to the full brief on the website — do NOT add one yourself.
 
-Every bullet item MUST include a Slack link (`<url|text>`) so readers can click
-through. Aim for 8-10 linked items total.
+**Conversational, not robotic.** The Slack message should read like a smart friend
+catching you up over coffee. Open with a friendly greeting and a 1-2 sentence
+vibe-check on the day's news. Then use 2-3 short sections separated by `---`.
 
+Within each section, use bullet points with `<url|linked text>` for every item,
+but write 1-3 conversational sentences per item explaining *why it matters*.
+Don't just list headlines — give people a reason to care.
+
+Aim for 8-10 linked items total across all sections.
+
+Example tone:
 ```
-🌞 AI Friday Daily Brief — {date}
+☕ Good morning, NOLA! {day}, {date}. Today's vibe: {one sentence summary}.
 
-💥 Big Moves
-• <url|Headline> — one-line description
-• <url|Headline> — one-line description
+---
 
-🛠️ Tools & Releases
-• <url|Headline> — one-line description
-• <url|Headline> — one-line description
+💬 Section Name
 
-📚 Worth a Look
-• <url|Headline> — one-line description
+• The big one: <url|Sora is officially shutting down>. Turns out a
+  first-mover advantage in video gen doesn't mean much when the
+  competition catches up fast.
+
+• On a brighter note, Google dropped <url|Lyria 3 for developers> —
+  their latest music generation model. If you've been wanting to
+  prototype anything with generated audio, the barrier just got lower.
+
+---
+
+📚 From the Community
+
+• @dunn shared <url|this great podcast episode> walking through
+  Claude's new features with a checklist.
 ```
 
-No "React in the thread", no "details in thread", no footer. Keep it clean.
+No "React in the thread", no "details in thread", no footer. Keep it warm.
 
 ### NOLA Spotlight
 Include a `🎺 NOLA Spotlight` section only when there's genuinely something local.
@@ -145,15 +168,12 @@ These are things real members found interesting enough to share — that signal 
 - Google AI blog
 - Hugging Face blog
 - Hacker News (via Firebase API, AI-filtered, 30+ points)
-
-### Email Newsletters
-- TLDR AI
+- TechCrunch AI
+- The Verge AI
+- Ars Technica AI
+- MIT Technology Review AI
 - Ben's Bites
-- The Neuron
-- The Rundown AI
-- TAAFT (There's An AI For That)
-- FutureTools
-- Lenny's Newsletter
+- Latent Space
 
 ### AI Friday Slack Community
 The bot monitors all AI Friday Slack channels and captures links shared by members.
@@ -161,10 +181,11 @@ These community-sourced links get a scoring boost (+2) and appear in a dedicated
 "From the Community" section on the website when included.
 
 ### Future additions
-- Anthropic blog (need correct RSS URL)
+- Anthropic blog (no RSS feed as of March 2026)
 - ArXiv (cs.AI, cs.CL) — only notable papers
-- Latent Space podcast/newsletter
 - Import AI newsletter
+- The Rundown AI (Cloudflare blocks RSS)
+- every.to (no RSS feed)
 
 ## Cadence
 - **Daily, 7 days a week** at **7:00 AM CT** (Central Time, New Orleans)
