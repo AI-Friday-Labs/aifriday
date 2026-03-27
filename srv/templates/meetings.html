@@ -22,6 +22,9 @@
         <span class="logo-ai">AI</span><span class="logo-friday">Friday</span>
         <span class="logo-location">New Orleans</span>
       </a>
+      <div class="nav-links">
+        <a href="/brief/">Briefs</a>
+      </div>
     </nav>
 
     <section class="intro-section">
@@ -51,7 +54,12 @@
         <div class="log-content">
           {{range .Past}}
           <div class="meeting-row meeting-row--past">
+            {{if .HasRecap}}
+            <h3 class="meeting-date"><a href="/meetings/{{.Number}}">AI Friday #{{.Number}}</a></h3>
+            <p class="meeting-date-sub">{{.Date}}</p>
+            {{else}}
             <h3 class="meeting-date">{{.Date}}</h3>
+            {{end}}
           </div>
           {{end}}
         </div>

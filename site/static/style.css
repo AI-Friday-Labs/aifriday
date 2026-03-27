@@ -1037,3 +1037,94 @@ blockquote {
   margin-top: var(--space-xs);
 }
 
+
+/* --- Meeting Recap ------------------------------------------------------- */
+.meeting-date-sub {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: var(--space-xs);
+  margin-bottom: 0;
+}
+
+.meeting-row--past .meeting-date a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.meeting-row--past .meeting-date a:hover {
+  color: var(--accent-hover);
+}
+
+.meeting-row--past:has(a) {
+  opacity: 1;
+}
+
+.meeting-row--past:has(a) .meeting-date {
+  font-weight: 700;
+}
+
+.meeting-recap {
+  padding: var(--space-lg) 0 var(--space-xl);
+}
+
+.recap-section {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--line);
+}
+
+.recap-section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-lg);
+}
+
+.recap-section p {
+  font-size: var(--text-body-lg);
+  line-height: 1.84;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.recap-item {
+  padding: var(--space-md) 0;
+}
+
+.recap-item + .recap-item {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.recap-tools,
+.recap-attendees {
+  list-style: none;
+  padding: 0;
+}
+
+.recap-tools li,
+.recap-attendees li {
+  font-size: var(--text-body-lg);
+  line-height: 1.84;
+  padding: var(--space-xs) 0;
+}
+
+.recap-tools li + li,
+.recap-attendees li + li {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.recap-attendees {
+  column-count: 2;
+  column-gap: var(--space-xl);
+}
+
+@media (max-width: 640px) {
+  .recap-attendees {
+    column-count: 1;
+  }
+}

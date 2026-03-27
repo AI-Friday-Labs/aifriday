@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday #{{.Number}} &mdash; Meetings</title>
+  <meta name="description" content="Recap of AI Friday meeting #{{.Number}} in New Orleans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=5">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+</head>
+<body>
+  <div class="container">
+
+    <nav class="nav">
+      <a href="/" class="nav-logo">
+        <span class="logo-ai">AI</span><span class="logo-friday">Friday</span>
+        <span class="logo-location">New Orleans</span>
+      </a>
+      <div class="nav-links">
+        <a href="/meetings/">&larr; Meetings</a>
+      </div>
+    </nav>
+
+    <section class="intro-section">
+      <h1 class="page-title">AI Friday #{{.Number}}</h1>
+      <p class="intro-text text-muted">{{.Date}}</p>
+    </section>
+
+    <section class="meeting-recap">
+      {{.RecapHTML}}
+    </section>
+
+  </div>
+</body>
+</html>

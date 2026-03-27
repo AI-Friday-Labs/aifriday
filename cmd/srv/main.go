@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"syscall"
@@ -26,10 +27,12 @@ var flagListenAddr = flag.String("listen", ":8000", "address to listen on")
 
 // Meeting represents a scheduled meetup.
 type Meeting struct {
+	Number   int    // sequential meeting number (0 = not yet held)
 	Date     string // "Friday, March 27, 2026"
 	Short    string // "Mar 27"
 	DatePath string // "2026/03/27"
 	IsPast   bool
+	HasRecap bool   // true if a recap file exists
 }
 
 // BriefSummary is extracted from a brief's static HTML.
@@ -51,6 +54,12 @@ type MeetingsData struct {
 	Past     []Meeting
 }
 
+type MeetingDetailData struct {
+	Number   int
+	Date     string
+	RecapHTML template.HTML
+}
+
 type BriefIndexData struct {
 	Briefs []BriefSummary
 }
@@ -58,6 +67,7 @@ type BriefIndexData struct {
 type site struct {
 	siteDir     string
 	templateDir string
+	recapsDir   string
 	mu          sync.RWMutex
 	briefs      []BriefSummary
 }
@@ -81,9 +91,12 @@ func run() error {
 	siteDir := filepath.Join(projectRoot, "site")
 	templateDir := filepath.Join(projectRoot, "srv", "templates")
 
+	recapsDir := filepath.Join(projectRoot, "srv", "recaps")
+
 	s := &site{
 		siteDir:     siteDir,
 		templateDir: templateDir,
+		recapsDir:   recapsDir,
 	}
 
 	if err := s.scanBriefs(); err != nil {
@@ -124,6 +137,7 @@ func run() error {
 		// Dynamic pages
 		mux.HandleFunc("GET /{$}", s.handleHome)
 		mux.HandleFunc("GET /meetings/{$}", s.handleMeetings)
+		mux.HandleFunc("GET /meetings/{number}", s.handleMeetingDetail)
 		mux.HandleFunc("GET /brief/{$}", s.handleBriefIndex)
 
 		// Static brief content
@@ -192,6 +206,35 @@ func (s *site) handleMeetings(w http.ResponseWriter, r *http.Request) {
 	s.render(w, "meetings.html", MeetingsData{Upcoming: up, Past: past})
 }
 
+func (s *site) handleMeetingDetail(w http.ResponseWriter, r *http.Request) {
+	numStr := r.PathValue("number")
+	num, err := strconv.Atoi(numStr)
+	if err != nil || num < 1 {
+		http.NotFound(w, r)
+		return
+	}
+
+	meeting := meetingByNumber(num)
+	if meeting == nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	// Load recap HTML
+	recapPath := filepath.Join(s.recapsDir, fmt.Sprintf("%d.html", num))
+	recapBytes, err := os.ReadFile(recapPath)
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	s.render(w, "meeting-detail.html", MeetingDetailData{
+		Number:    num,
+		Date:      meeting.Date,
+		RecapHTML: template.HTML(recapBytes),
+	})
+}
+
 func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 	s.mu.RLock()
 	briefs := s.briefs
@@ -204,36 +247,39 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 
 var meetingSchedule = []struct {
-	Year  int
-	Month time.Month
-	Day   int
+	Number int // 0 means not yet numbered
+	Year   int
+	Month  time.Month
+	Day    int
 }{
-	{2026, time.March, 27},
-	{2026, time.April, 17},
-	{2026, time.May, 15},
-	{2026, time.June, 26},
-	{2026, time.July, 17},
-	{2026, time.August, 14},
-	{2026, time.September, 18},
-	{2026, time.October, 16},
-	{2026, time.November, 13},
-	{2026, time.December, 18},
+	{1, 2026, time.March, 27},
+	{0, 2026, time.April, 17},
+	{0, 2026, time.May, 15},
+	{0, 2026, time.June, 26},
+	{0, 2026, time.July, 17},
+	{0, 2026, time.August, 14},
+	{0, 2026, time.September, 18},
+	{0, 2026, time.October, 16},
+	{0, 2026, time.November, 13},
+	{0, 2026, time.December, 18},
 }
 
-func buildMeeting(year int, month time.Month, day int, now time.Time) Meeting {
+func buildMeeting(number, year int, month time.Month, day int, now time.Time) Meeting {
 	t := time.Date(year, month, day, 0, 0, 0, 0, time.Local)
 	return Meeting{
+		Number:   number,
 		Date:     t.Format("Monday, January 2, 2006"),
 		Short:    t.Format("Jan 2"),
 		DatePath: fmt.Sprintf("%d/%02d/%02d", year, month, day),
 		IsPast:   t.Before(now.Truncate(24 * time.Hour)),
+		HasRecap: number > 0,
 	}
 }
 
 func nextMeeting() *Meeting {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Year, m.Month, m.Day, now)
+		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
 		if !mt.IsPast {
 			return &mt
 		}
@@ -244,7 +290,7 @@ func nextMeeting() *Meeting {
 func splitMeetings() (upcoming, past []Meeting) {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Year, m.Month, m.Day, now)
+		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
 		if mt.IsPast {
 			past = append(past, mt)
 		} else {
@@ -256,6 +302,17 @@ func splitMeetings() (upcoming, past []Meeting) {
 		past[i], past[j] = past[j], past[i]
 	}
 	return
+}
+
+func meetingByNumber(num int) *Meeting {
+	now := time.Now()
+	for _, m := range meetingSchedule {
+		if m.Number == num {
+			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+			return &mt
+		}
+	}
+	return nil
 }
 
 // ---------------------------------------------------------------------------
