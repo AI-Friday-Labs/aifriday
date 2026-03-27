@@ -1100,6 +1100,13 @@ blockquote {
   border-top: 1px solid var(--border-subtle);
 }
 
+.recap-photo {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--line);
+}
+
 .recap-tools,
 .recap-attendees {
   list-style: none;
