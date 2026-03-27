@@ -183,7 +183,7 @@ blockquote {
   gap: var(--space-md);
   padding: var(--space-lg) 0;
   border-bottom: 1px solid var(--line);
-  margin-bottom: var(--space-lg);
+  margin-bottom: 0;
 }
 
 .nav-logo {
@@ -261,7 +261,7 @@ blockquote {
 
 /* --- Intro Section (Home) ------------------------------------------------ */
 .intro-section {
-  padding: var(--space-xl) 0;
+  padding: var(--space-lg) 0;
   border-bottom: 1px solid var(--line);
   margin-bottom: 0;
 }
