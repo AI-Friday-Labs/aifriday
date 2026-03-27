@@ -271,7 +271,7 @@ func buildMeeting(number, year int, month time.Month, day int, now time.Time) Me
 		Date:     t.Format("Monday, January 2, 2006"),
 		Short:    t.Format("Jan 2"),
 		DatePath: fmt.Sprintf("%d/%02d/%02d", year, month, day),
-		IsPast:   t.Before(now.Truncate(24 * time.Hour)),
+		IsPast:   !t.After(now.Truncate(24 * time.Hour)),
 		HasRecap: number > 0,
 	}
 }
