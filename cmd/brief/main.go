@@ -312,6 +312,7 @@ Important:
 - The "lede" field uses HTML (not Markdown)  
 - The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <url|text> for links. Every item MUST have a <url|linked headline>. Use --- between sections. No HTML.
 - Do NOT include any footer like 'details in thread' or 'full brief' in slack_text — the system appends the website URL automatically
+- MULTI-LINK STORYTELLING: For big stories, don't just link one article. Pull in multiple relevant links to tell the full picture — the original source, a good analysis, a deep-dive, a visual guide, an HN discussion. Weave them naturally into the narrative. Example Slack style: "The story everyone's talking about: <url|Claude Code's source leaked> via an NPM mistake. <url|This deep-dive> and <url|this visual guide> are both worth your time." Example HTML body style: "<a href='url'>This deep-dive writeup</a> and <a href='url'>this visual guide</a> break down what's inside." This pattern makes each item much more valuable than a single link ever could.
 - Diversify sources: don't let more than half the items come from Hacker News. Pull from tech press, newsletters, blogs, and community links too
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
