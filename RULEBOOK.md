@@ -19,6 +19,10 @@ and want practical things they can apply. Not researchers, not executives — **
 - **Diverse sources.** Don't let HN dominate. Pull from tech press, newsletters,
   community links, and blogs. If more than half the items come from one source,
   rebalance.
+- **Diverse content types.** Every brief should have a good mix: new tools people can try,
+  how-to's and tutorials, industry news, and interesting reads. Don't lean too heavily
+  into any one category. If the brief is all model releases and infrastructure news,
+  it's too technical. If it's all business news, it's too dry. Aim for the sweet spot.
 
 ## Accessibility & Tone Calibration
 
@@ -69,6 +73,9 @@ Every item should pass these filters before publishing:
 - **Interesting demos and Show HNs** — cool things people built
 - **Funding rounds >$50M** — signals where the industry is heading (briefly, no hype)
 - **Community links** — anything shared by AI Friday Slack members gets a strong boost
+- **How-to's and tutorials** — practical guides for using AI tools, building workflows, prompt tips
+- **Creative uses of AI** — interesting non-obvious applications, art, music, writing, design
+- **"I tried X" posts** — real-world experience reports from people actually using AI tools
 
 ### ❌ EXCLUDE
 - Hype pieces with no substance ("AI will change everything")
@@ -81,6 +88,9 @@ Every item should pass these filters before publishing:
 - Rumor-only stories with no credible sourcing
 - Crypto/Web3 projects that slapped "AI" on the label
 - Opinion pieces about whether AI is good or bad
+- Deep technical papers unless the practical takeaway is obvious in one sentence
+- Model architecture details (attention mechanisms, training techniques, quantization methods)
+- Infrastructure/DevOps-focused content (GPU clusters, serving frameworks, CUDA optimizations)
 
 ## Formatting Rules
 
@@ -205,7 +215,7 @@ These community-sourced links get a scoring boost (+2) and appear in a dedicated
 - The Rundown AI (Beehiiv, no public feed)
 
 ## Cadence
-- **Daily, 7 days a week** at **7:00 AM CT** (Central Time, New Orleans)
+- **Daily, 7 days a week** at **5:00 AM CT** (Central Time, New Orleans)
 - Weekend briefs can be lighter if the news is lighter
 - Weekend recap on Monday if needed
 

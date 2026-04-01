@@ -10,6 +10,7 @@ import (
 	"mime"
 	"mime/multipart"
 	"mime/quotedprintable"
+	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -493,8 +494,13 @@ func unwrapTrackingURL(rawURL string) string {
 	// TLDR short links: links.tldrnewsletter.com/XXXXX — these are fine as-is,
 	// they'll redirect when users click them
 
-	// Beehiiv: link.mail.beehiiv.com/ss/... — opaque tokens, can't unwrap
-	// server-side. Keep as-is; the link text provides the article title.
+	// For tracking URLs we can't decode statically (beehiiv, convertkit, etc.),
+	// resolve via HTTP HEAD request to follow redirects to the real destination.
+	if isTrackingURL(rawURL) {
+		if resolved := resolveTrackingURL(rawURL); resolved != rawURL {
+			return resolved
+		}
+	}
 
 	return rawURL
 }
@@ -508,6 +514,93 @@ func b64Decode(s string) (string, error) {
 		}
 	}
 	return "", fmt.Errorf("base64 decode failed")
+}
+
+// trackingDomains are domain suffixes/patterns that indicate a tracking redirect URL.
+// These services wrap real article URLs behind opaque tokens and redirect on click.
+var trackingDomains = []string{
+	"link.mail.beehiiv.com",
+	"links.beehiiv.com",
+	"clicks.convertkit.com",
+	"click.convertkit-mail.com",
+	"click.convertkit-mail2.com",
+	"email.mg.",            // Mailgun-based senders
+	"clicks.mlsend.com",    // MailerLite
+	"clicks.aweber.com",
+	"links.iterable.com",
+	"click.mailerlite.com",
+	"trk.klclick",          // Klaviyo
+	"track.customer.io",
+	"links.chtbl.com",      // Chartable
+	"link.sbstck.com",      // Substack tracking (non /redirect/ style)
+	"em.beehiiv.com",
+}
+
+// isTrackingURL returns true if the URL appears to be from a tracking/redirect
+// service that wraps real destination URLs behind opaque tokens.
+func isTrackingURL(rawURL string) bool {
+	u, err := url.Parse(rawURL)
+	if err != nil {
+		return false
+	}
+	host := strings.ToLower(u.Hostname())
+	for _, domain := range trackingDomains {
+		if host == domain || strings.HasSuffix(host, "."+domain) || strings.Contains(host, domain) {
+			return true
+		}
+	}
+	return false
+}
+
+// resolveTrackingURL performs an HTTP HEAD request following redirects to
+// discover the final destination URL. Returns the original URL on any error.
+func resolveTrackingURL(rawURL string) string {
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+		// Use a CheckRedirect that records the final URL but still follows redirects.
+		// Stop after 10 redirects to avoid loops.
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			if len(via) >= 10 {
+				return http.ErrUseLastResponse
+			}
+			return nil
+		},
+	}
+
+	req, err := http.NewRequest("HEAD", rawURL, nil)
+	if err != nil {
+		slog.Debug("resolveTrackingURL: bad request", "url", rawURL, "error", err)
+		return rawURL
+	}
+	// Some servers reject HEAD with no User-Agent or return different results.
+	req.Header.Set("User-Agent", "Mozilla/5.0 (compatible; AiFridayBot/1.0)")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		// HEAD failed — try GET as some servers don't support HEAD for redirects.
+		req.Method = "GET"
+		resp, err = client.Do(req)
+		if err != nil {
+			slog.Debug("resolveTrackingURL: request failed", "url", rawURL, "error", err)
+			return rawURL
+		}
+	}
+	defer resp.Body.Close()
+
+	finalURL := resp.Request.URL.String()
+
+	// Sanity check: the resolved URL should be a valid HTTP(S) URL and
+	// not still be a tracking domain.
+	if !strings.HasPrefix(finalURL, "http") {
+		return rawURL
+	}
+
+	// If we resolved to something different, log it.
+	if finalURL != rawURL {
+		slog.Debug("resolveTrackingURL: resolved", "from", rawURL, "to", finalURL)
+	}
+
+	return finalURL
 }
 
 func cleanNewsletterURL(rawURL string) string {
@@ -617,6 +710,14 @@ func NewsletterArticles(db *sql.DB, since time.Duration) ([]Article, error) {
 			title = subject
 		}
 
+		// Skip articles with unresolvable tracking URLs and low-quality titles.
+		// Beehiiv and similar services block server-side resolution (Cloudflare),
+		// so we can't get real URLs. Only keep these if the title is a genuine
+		// article headline (long enough, not a fragment or emoji rating).
+		if isTrackingURL(articleURL) && !isGoodNewsletterTitle(title) {
+			continue
+		}
+
 		pubTime := time.Now()
 		if t, err := time.Parse("Mon, 02 Jan 2006 15:04:05 -0700", dateStr); err == nil {
 			pubTime = t
@@ -640,4 +741,44 @@ func NewsletterArticles(db *sql.DB, since time.Duration) ([]Article, error) {
 	}
 
 	return articles, rows.Err()
+}
+
+// isGoodNewsletterTitle returns true if the title looks like a real article headline
+// rather than a navigation fragment, emoji rating, or generic link text.
+// Used to filter out low-quality newsletter articles with unresolvable tracking URLs.
+func isGoodNewsletterTitle(title string) bool {
+	// Must be reasonably long — real headlines are typically 30+ chars
+	if len(title) < 30 {
+		return false
+	}
+
+	// Skip emoji-heavy titles (e.g. "🐾🐾🐾 Good, not great")
+	emojiCount := 0
+	alphaCount := 0
+	for _, r := range title {
+		if r > 0x1F00 { // rough emoji range
+			emojiCount++
+		}
+		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') {
+			alphaCount++
+		}
+	}
+	if emojiCount > 3 || (alphaCount > 0 && emojiCount*3 > alphaCount) {
+		return false
+	}
+
+	// Skip if it looks like a sentence fragment rather than a headline
+	lower := strings.ToLower(title)
+	fragmentPrefixes := []string{
+		"and ", "but ", "or ", "the full ", "our deep dive",
+		"sounds kinda", "sounds like", "started ",
+		"lost a ", "and a whole",
+	}
+	for _, p := range fragmentPrefixes {
+		if strings.HasPrefix(lower, p) {
+			return false
+		}
+	}
+
+	return true
 }

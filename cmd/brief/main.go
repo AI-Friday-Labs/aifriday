@@ -239,7 +239,7 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 	// Format articles for the prompt
 	var articleList strings.Builder
 	for i, a := range articles {
-		if i >= 50 { // Cap at 50 to keep prompt reasonable
+		if i >= 75 { // Cap at 75 to keep prompt reasonable
 			break
 		}
 		fmt.Fprintf(&articleList, "%d. [%s] %s\n   URL: %s\n", i+1, a.Source, a.Title, a.URL)
@@ -301,11 +301,12 @@ Generate the daily brief as a JSON object. The JSON must have this exact structu
   "sources": [
     {"name": "Source Name", "url": "https://..."}
   ],
-  "slack_text": "Conversational Slack message for #daily-brief. Write like a smart friend catching people up over coffee. Start with a warm greeting ('Good morning, NOLA!' or similar) + date + a 1-2 sentence vibe-check on the day. Then 2-3 sections separated by --- with emoji headers. Each item gets a bullet with a <url|linked headline> plus 1-3 conversational sentences about WHY it matters. Not a dry list — give personality and editorial voice. Aim for 8-10 linked items total. Use Slack mrkdwn (*bold*, _italic_, <url|text>). No HTML. The system appends the website link automatically — do NOT add one."
+  "slack_text": "Conversational Slack message for #daily-brief. Write like a smart friend catching people up over coffee. Start with a warm greeting ('Good morning, NOLA!' or similar) + date + a 1-2 sentence vibe-check on the day. Then 2-3 sections separated by --- with emoji headers. Each item gets a bullet with a <url|linked headline> plus 1-3 conversational sentences about WHY it matters. Not a dry list — give personality and editorial voice. Aim for 8-10 linked items total. Mix it up: new tools, interesting reads, business moves, how-to's. Don't let it get too techy — most readers use AI tools but don't train models. Use Slack mrkdwn (*bold*, _italic_, <url|text>). No HTML. The system appends the website link automatically — do NOT add one."
 }
 
 Important:
-- Pick 5-10 items for the main sections, plus 3-5 quick links
+- Pick 8-12 items for the main sections, plus 8-12 quick links
+- The quick_links section is valuable real estate — use it generously. Include anything interesting that didn't make the main sections. Readers love having a longer list to scan.
 - The "body" field in items uses HTML (not Markdown)
 - The "lede" field uses HTML (not Markdown)  
 - The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <url|text> for links. Every item MUST have a <url|linked headline>. Use --- between sections. No HTML.
@@ -338,7 +339,7 @@ Community Links:
 	// Call Claude
 	reqBody := map[string]any{
 		"model":      "claude-sonnet-4-5-20250929",
-		"max_tokens": 8192,
+		"max_tokens": 12000,
 		"messages": []map[string]string{
 			{"role": "user", "content": prompt},
 		},

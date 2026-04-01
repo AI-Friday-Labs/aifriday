@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday &mdash; Monday, March 30, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="nav-logo"><span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span></a>
+      <div class="nav-links"><a href="/brief/" class="nav-back">&larr; All Briefs</a></div>
+    </nav>
+    <header class="brief-header">
+      <h1 class="brief-date">Monday, March 30, 2026</h1>
+    </header>
+    <div class="brief-lede">Monday morning brings a reality check on AI coding tools: <a href='https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/'>GitHub Copilot is now injecting ads into pull requests</a>, and <a href='https://github.com/anthropics/claude-code/issues/40710'>Claude Code has a bug that nukes your repo every 10 minutes</a>. On the more practical side, Simon Willison released a <a href='https://simonwillison.net/2026/Mar/29/python-vulnerability-lookup/#atom-everything'>Python vulnerability lookup tool</a>, and there's an interesting essay on <a href='https://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/'>how coding agents might revive free software</a>.</div>
+    <div class="brief-content">
+      <section class="brief-section">
+  <h2>⚠️ Growing Pains</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/">Copilot edited an ad into my PR</a></h3>
+  <div class="item-body">A developer discovered GitHub Copilot's autocomplete suggestions now include <strong>promotional content for Microsoft Azure services</strong> embedded directly into code suggestions. The ad appeared as a comment block suggesting Azure deployment options—not exactly what you want when you're trying to focus on writing code. <a href='https://news.ycombinator.com/item?id=47570269'>Popular discussion on HN</a> with developers debating whether this crosses a line.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://github.com/anthropics/claude-code/issues/40710">Claude Code has a devastating bug</a></h3>
+  <div class="item-body">Users discovered that Claude Code runs <code>git reset --hard origin/main</code> against your project repo <strong>every 10 minutes</strong>, wiping out any uncommitted work. This is the kind of bug that makes you want to back up everything before trying new AI coding tools. Anthropic hasn't commented publicly yet, but the GitHub issue is getting a lot of attention.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://www.buchodi.com/chatgpt-wont-let-you-type-until-cloudflare-reads-your-react-state-i-decrypted-the-program-that-does-it/">ChatGPT&#x27;s aggressive anti-bot measures</a></h3>
+  <div class="item-body">A developer reverse-engineered ChatGPT's Cloudflare security system and found it <strong>blocks typing until it reads your React application state</strong>. The piece breaks down how OpenAI is using increasingly aggressive bot detection that can feel intrusive even for legitimate users. Interesting read if you're curious about the arms race between AI services and scrapers.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>🛠️ Tools Worth Trying</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/29/python-vulnerability-lookup/#atom-everything">Python Vulnerability Lookup</a></h3>
+  <div class="item-body">Simon Willison built a simple HTML tool that checks Python dependencies for known vulnerabilities using the OSV.dev API. Paste in your <code>requirements.txt</code> or <code>pyproject.toml</code> (or just a GitHub repo URL) and get an instant security report. No installation needed—it's just a single HTML file that runs in your browser.</div>
+  <span class="item-via">Simon Willison</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://github.com/austin-weeks/miasma">Miasma: Trap AI scrapers in an endless poison pit</a></h3>
+  <div class="item-body">An open-source tool that detects AI web scrapers and <strong>feeds them an infinite stream of garbage data</strong> to waste their resources. It's like a honeypot specifically designed to mess with bots training on web content. Probably more useful as a form of protest than actual protection, but it's a creative approach to the scraping problem.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://simonwillison.net/2026/Mar/29/pretext/#atom-everything">Pretext: Calculate text layout without touching the DOM</a></h3>
+  <div class="item-body">New browser library from ex-React core developer Cheng Lou that calculates the height of line-wrapped text <strong>without actually rendering it to the DOM</strong>. This solves a common performance problem in UI work where you need layout calculations before paint. Smart approach to a problem that usually requires expensive DOM manipulation.</div>
+  <span class="item-via">Simon Willison</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>💭 Worth Reading</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/">Coding agents could make free software matter again</a></h3>
+  <div class="item-body">Thoughtful essay arguing that AI coding agents might shift the balance back toward open-source software. The idea: if an agent can quickly adapt any codebase to your needs, the <strong>freedom to modify becomes more valuable than polish</strong>. Whether you buy the thesis or not, it's an interesting lens on how AI tools might reshape software economics.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://theadamcolton.github.io/can-ai-exit-vim">Can AI Exit Vim?</a></h3>
+  <div class="item-body">A lighthearted but genuinely informative test of whether various AI coding assistants can figure out how to exit Vim. Spoiler: results are mixed. It's a fun read that also touches on the broader question of whether these tools actually understand context or just pattern-match.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+      <section class="brief-section quick-links">
+        <h2>Also</h2>
+        <ul><li><a href="https://openai.com/index/helping-disaster-response-teams-asia">OpenAI workshop on AI for disaster response in Asia</a> &mdash; <span class="ql-note">Partnership with Gates Foundation</span></li>
+<li><a href="https://adlrocha.substack.com/p/adlrocha-what-if-ai-doesnt-need-more">What if AI doesn&#x27;t need more RAM but better math?</a> &mdash; <span class="ql-note">Technical deep-dive</span></li>
+<li><a href="https://medium.com/ai-advances/anthropic-claude-mythos-leak-analysis-b77c1b304eb8">Anthropic Mythos leak: 3k files exposed</a> &mdash; <span class="ql-note">Analysis of what the leaked docs revealed</span></li></ul>
+      </section>
+    </div>
+    <section class="sources">
+      <h2 class="sources-title">Today&rsquo;s Sources</h2>
+      <ul class="sources-list"><li><a href="https://news.ycombinator.com">Hacker News</a></li>
+<li><a href="https://simonwillison.net">Simon Willison&#x27;s Blog</a></li>
+<li><a href="https://openai.com/blog">OpenAI Blog</a></li></ul>
+    </section>
+    <nav class="brief-nav"><a href="/brief/2026/03/29/" class="brief-nav-link brief-nav-link--prev">
+        <span class="brief-nav-label">&larr; Previous</span>
+        <span class="brief-nav-date">2026/03/29</span>
+      </a><div class="brief-nav-placeholder"></div></nav>
+
+  </div>
+</body>
+</html>

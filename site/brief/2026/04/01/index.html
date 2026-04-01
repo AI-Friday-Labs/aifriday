@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Friday &mdash; Wednesday, April 1, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="nav-logo"><span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span></a>
+      <div class="nav-links"><a href="/brief/" class="nav-back">&larr; All Briefs</a></div>
+    </nav>
+    <header class="brief-header">
+      <h1 class="brief-date">Wednesday, April 1, 2026</h1>
+    </header>
+    <div class="brief-lede">Today's a wild one: <a href='https://twitter.com/Fried_rice/status/2038894956459290963'>Claude Code's source code leaked</a> via an NPM packaging mistake, revealing everything from fake tools to "frustration regexes." Meanwhile, <a href='https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/'>GitHub killed their Copilot PR ads</a> after serious backlash, and <a href='https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html'>OpenAI closed a massive $122B funding round</a> at an $852B valuation. Also: <a href='https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/'>Google's Veo 3.1 Lite</a> is now available for devs, and <a href='https://prismml.com/'>the first commercially viable 1-bit LLMs</a> just dropped.</div>
+    <div class="brief-content">
+      <section class="brief-section">
+  <h2>🔍 The Big Leak</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://twitter.com/Fried_rice/status/2038894956459290963">Claude Code&#x27;s source code leaked via NPM map file</a></h3>
+  <div class="item-body">Anthropic accidentally shipped a source map in their NPM package that revealed the full Claude Code codebase. The leak shows everything from how they handle tool calls to internal debugging features like "undercover mode" and regex patterns for detecting user frustration. <a href='https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/'>This deep-dive writeup</a> and <a href='https://ccunpacked.dev/'>this visual guide</a> break down what's inside. It's a rare peek under the hood of a production AI coding assistant. <a href='https://news.ycombinator.com/item?id=47584540'>Big discussion on HN</a>.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/">Claude Code users hitting usage limits way faster than expected</a></h3>
+  <div class="item-body">Turns out there are some gnarly bugs in Claude Code that can silently 10-20x your API costs and burn through usage limits. The community is <a href='https://old.reddit.com/r/ClaudeCode/comments/1s7mitf/psa_claude_code_has_two_cache_bugs_that_can'>tracking cache bugs</a> that are causing the problem. If you're using Claude Code heavily, worth checking your usage patterns.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>💰 Big Moves</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html">OpenAI closes $122B funding round at $852B valuation</a></h3>
+  <div class="item-body">OpenAI just raised $122 billion in new funding to expand frontier AI globally, invest in next-generation compute infrastructure, and meet growing demand for ChatGPT, Codex, and enterprise AI products. The round values the company at $852 billion. That's a staggering number that signals where institutional money thinks AI is heading. <a href='https://news.ycombinator.com/item?id=47592755'>HN discussion here</a>.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/">GitHub kills Copilot PR ads after backlash</a></h3>
+  <div class="item-body">GitHub tried injecting ads into Copilot pull request suggestions and the developer community <em>hated</em> it. After significant pushback, they're backing down and removing the feature. Good reminder that even Microsoft isn't immune to missteps when it comes to developer tools. <a href='https://news.ycombinator.com/item?id=47582984'>The HN thread</a> has some spicy takes.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>🛠️ Tools &amp; Releases</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/">Google launches Veo 3.1 Lite, their most cost-effective video generation model</a></h3>
+  <div class="item-body">Veo 3.1 Lite is now available in paid preview through the Gemini API and Google AI Studio. This is Google's answer to making video generation accessible for developers who want to prototype without breaking the bank. If you've been curious about generated video in your app, this lowers the barrier significantly.</div>
+  <span class="item-via">Google AI Blog</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://prismml.com/">1-Bit Bonsai: The first commercially viable 1-bit LLMs</a></h3>
+  <div class="item-body">Prism ML just released 1-Bit Bonsai models — these are large language models that use 1-bit weights (think extreme compression) while staying commercially viable. The practical upshot: you can run bigger models on smaller hardware. Early days, but this could be a real unlock for edge deployment. <a href='https://news.ycombinator.com/item?id=47593422'>Show HN discussion</a>.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+<div class="item">
+  <h3 class="item-title"><a href="https://huggingface.co/blog/tiiuae/falcon-perception">Falcon Perception: TII&#x27;s new multimodal model for enterprise documents</a></h3>
+  <div class="item-body">The Technology Innovation Institute released Falcon Perception, a compact multimodal model designed specifically for understanding enterprise documents. If you're building anything that needs to parse invoices, contracts, or other business docs, this is worth checking out.</div>
+  <span class="item-via">Hugging Face Blog</span>
+</div>
+</section>
+<section class="brief-section">
+  <h2>⚠️ Also Watching</h2>
+  <div class="item">
+  <h3 class="item-title"><a href="https://www.microsoft.com/en-us/microsoft-copilot/for-individuals/termsofuse">Microsoft quietly updates Copilot terms: &quot;for entertainment purposes only&quot;</a></h3>
+  <div class="item-body">Microsoft's Copilot terms of use now include language saying it's "for entertainment purposes only." That's... quite a hedge for a tool marketed as a productivity assistant. <a href='https://news.ycombinator.com/item?id=47587866'>HN is having a field day with this one</a>.</div>
+  <span class="item-via">Hacker News</span>
+</div>
+</section>
+      <section class="brief-section quick-links">
+        <h2>Also</h2>
+        <ul><li><a href="https://github.com/califio/publications/blob/main/MADBugs/CVE-2026-4747/write-up.md">Claude wrote a full FreeBSD kernel exploit with root shell</a> &mdash; <span class="ql-note">Someone used Claude to find and exploit CVE-2026-4747</span></li>
+<li><a href="https://github.com/drona23/claude-token-efficient">Universal Claude.md to cut Claude output tokens</a> &mdash; <span class="ql-note">Config file to make Claude more token-efficient</span></li>
+<li><a href="https://simonwillison.net/2026/Mar/31/supply-chain-attack-on-axios/#atom-everything">Supply chain attack on Axios pulls malicious dependency from NPM</a> &mdash; <span class="ql-note">101M weekly downloads affected, good writeup from Simon</span></li>
+<li><a href="https://huggingface.co/blog/ibm-granite/granite-4-vision">IBM Granite 4.0 3B Vision released</a> &mdash; <span class="ql-note">Compact multimodal model for enterprise use</span></li></ul>
+      </section>
+    </div>
+    <section class="sources">
+      <h2 class="sources-title">Today&rsquo;s Sources</h2>
+      <ul class="sources-list"><li><a href="https://news.ycombinator.com">Hacker News</a></li>
+<li><a href="https://blog.google/technology/ai/">Google AI Blog</a></li>
+<li><a href="https://huggingface.co/blog">Hugging Face Blog</a></li>
+<li><a href="https://simonwillison.net">Simon Willison</a></li>
+<li><a href="https://openai.com/blog">OpenAI Blog</a></li></ul>
+    </section>
+    <nav class="brief-nav"><a href="/brief/2026/03/31/" class="brief-nav-link brief-nav-link--prev">
+        <span class="brief-nav-label">&larr; Previous</span>
+        <span class="brief-nav-date">2026/03/31</span>
+      </a><div class="brief-nav-placeholder"></div></nav>
+
+  </div>
+</body>
+</html>

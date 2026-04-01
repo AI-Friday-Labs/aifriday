@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Friday Brief — {{.Date}}</title>
+  <title>AI Friday Brief &mdash; {{.Date}}</title>
   <meta name="description" content="AI Friday daily brief for {{.Date}}. Curated AI news and links.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=2">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -23,12 +23,13 @@
         <span class="logo-ai">AI</span><span class="logo-friday">&thinsp;Friday</span>
       </a>
       <div class="nav-links">
-        <a href="/" class="nav-back">← Home</a>
+        <a href="/brief/" class="nav-back">&larr; All Briefs</a>
       </div>
     </nav>
 
     <!-- Brief Header -->
     <header class="brief-header">
+      <div class="mono">Daily brief</div>
       <h1 class="brief-date">{{.Date}}</h1>
       {{if .Theme}}
       <p class="brief-theme">{{.Theme}}</p>
@@ -58,7 +59,7 @@
     <!-- Sources -->
     {{if .Sources}}
     <section class="sources">
-      <h2 class="sources-title">Today’s Sources</h2>
+      <h2 class="sources-title">Today&rsquo;s Sources</h2>
       <ul class="sources-list">
         {{range .Sources}}
         <li><a href="{{.URL}}" target="_blank" rel="noopener">{{.Name}}</a></li>
@@ -71,7 +72,7 @@
     <nav class="brief-nav">
       {{if .PrevDate}}
       <a href="/brief/{{.PrevDate}}" class="brief-nav-link brief-nav-link--prev">
-        <span class="brief-nav-label">← Previous</span>
+        <span class="brief-nav-label">&larr; Previous</span>
         <span class="brief-nav-date">{{.PrevDate}}</span>
       </a>
       {{else}}
@@ -80,7 +81,7 @@
 
       {{if .NextDate}}
       <a href="/brief/{{.NextDate}}" class="brief-nav-link brief-nav-link--next">
-        <span class="brief-nav-label">Next →</span>
+        <span class="brief-nav-label">Next &rarr;</span>
         <span class="brief-nav-date">{{.NextDate}}</span>
       </a>
       {{else}}
@@ -90,7 +91,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <span class="footer-fleur">⚜️</span>
+      <span class="footer-fleur">&#9884;&#65039;</span>
       New Orleans, LA
     </footer>
 
