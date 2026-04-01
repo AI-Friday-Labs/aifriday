@@ -340,7 +340,7 @@ Community Links:
 
 	// Call Claude
 	reqBody := map[string]any{
-		"model":      "claude-sonnet-4-5-20250929",
+		"model":      "claude-3-5-haiku-20241022",
 		"max_tokens": 12000,
 		"messages": []map[string]string{
 			{"role": "user", "content": prompt},
