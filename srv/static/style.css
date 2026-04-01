@@ -572,6 +572,26 @@ blockquote {
   margin-bottom: var(--space-sm);
 }
 
+.get-in-touch {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--muted);
+}
+
+.get-in-touch a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+.get-in-touch a:hover {
+  text-decoration-color: var(--fg);
+}
+
 /* --- Brief Page ---------------------------------------------------------- */
 .brief-header {
   padding: var(--space-xl) 0 var(--space-lg);
