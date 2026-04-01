@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"log/slog"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -164,7 +165,7 @@ func run() error {
 		}
 
 		slog.Info("starting HTTP server", "addr", *flagListenAddr, "site_dir", siteDir)
-		errCh <- http.ListenAndServe(*flagListenAddr, mux)
+		errCh <- http.ListenAndServe(*flagListenAddr, wwwRedirect(mux))
 	}()
 
 	go func() {
@@ -259,6 +260,22 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 // SEO handlers
 // ---------------------------------------------------------------------------
+
+// wwwRedirect redirects www.aifri.day to aifri.day to avoid duplicate content.
+func wwwRedirect(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		host := r.Host
+		if h, _, err := net.SplitHostPort(host); err == nil {
+			host = h
+		}
+		if strings.HasPrefix(host, "www.") {
+			target := "https://" + strings.TrimPrefix(host, "www.") + r.URL.RequestURI()
+			http.Redirect(w, r, target, http.StatusMovedPermanently)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
 
 func handleRobots(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
