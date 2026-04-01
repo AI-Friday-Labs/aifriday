@@ -75,10 +75,12 @@ def render_brief(data):
   <meta property="og:description" content="{brief_preview}">
   <meta property="og:url" content="https://aifri.day/brief/{date_path}/">
   <meta property="og:type" content="article">
+  <meta property="og:image" content="https://aifri.day/og-default.png">
   <meta property="og:site_name" content="AI Friday">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AI Friday Brief — {escaped_date}">
   <meta name="twitter:description" content="{brief_preview}">
+  <meta name="twitter:image" content="https://aifri.day/og-default.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -171,13 +173,15 @@ def render_index(briefs):
   <link rel="canonical" href="https://aifri.day/brief/">
   <link rel="alternate" type="application/rss+xml" title="AI Friday Daily Brief" href="https://aifri.day/feed.xml">
   <meta property="og:title" content="AI Friday — Daily Briefs">
-  <meta property="og:description" content="Curated AI news and tools for builders. Updated daily.">
+  <meta property="og:description" content="Curated AI news, tools, and analysis for builders — updated daily by the AI Friday community in New Orleans.">
   <meta property="og:url" content="https://aifri.day/brief/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aifri.day/og-default.png">
   <meta property="og:site_name" content="AI Friday">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AI Friday — Daily Briefs">
-  <meta name="twitter:description" content="Curated AI news and tools for builders. Updated daily.">
+  <meta name="twitter:description" content="Curated AI news, tools, and analysis for builders — updated daily by the AI Friday community in New Orleans.">
+  <meta name="twitter:image" content="https://aifri.day/og-default.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -237,6 +241,7 @@ def render_year_index(year, months_with_days):
   <meta property="og:description" content="AI Friday daily briefs from {year}.">
   <meta property="og:url" content="https://aifri.day/brief/{year}/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aifri.day/og-default.png">
   <meta property="og:site_name" content="AI Friday">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"html/template"
 	"log/slog"
+	"compress/gzip"
+	"io"
 	"net"
 	"net/http"
 	"os"
@@ -157,7 +159,7 @@ func run() error {
 			http.FileServer(http.Dir(filepath.Join(siteDir, "static")))))
 
 		// Root-level static files
-		for _, name := range []string{"favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png"} {
+		for _, name := range []string{"favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "og-default.png"} {
 			n := name
 			mux.HandleFunc("GET /"+n, func(w http.ResponseWriter, r *http.Request) {
 				http.ServeFile(w, r, filepath.Join(siteDir, n))
@@ -165,7 +167,7 @@ func run() error {
 		}
 
 		slog.Info("starting HTTP server", "addr", *flagListenAddr, "site_dir", siteDir)
-		errCh <- http.ListenAndServe(*flagListenAddr, wwwRedirect(mux))
+		errCh <- http.ListenAndServe(*flagListenAddr, wwwRedirect(gzipHandler(mux)))
 	}()
 
 	go func() {
@@ -260,6 +262,37 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 // SEO handlers
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Middleware
+// ---------------------------------------------------------------------------
+
+type gzipResponseWriter struct {
+	http.ResponseWriter
+	Writer io.Writer
+}
+
+func (w *gzipResponseWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
+}
+
+func gzipHandler(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+			next.ServeHTTP(w, r)
+			return
+		}
+		gz, err := gzip.NewWriterLevel(w, gzip.DefaultCompression)
+		if err != nil {
+			next.ServeHTTP(w, r)
+			return
+		}
+		defer gz.Close()
+		w.Header().Set("Content-Encoding", "gzip")
+		w.Header().Del("Content-Length")
+		next.ServeHTTP(&gzipResponseWriter{ResponseWriter: w, Writer: gz}, r)
+	})
+}
 
 // wwwRedirect redirects www.aifri.day to aifri.day to avoid duplicate content.
 func wwwRedirect(next http.Handler) http.Handler {
