@@ -305,8 +305,9 @@ Generate the daily brief as a JSON object. The JSON must have this exact structu
 }
 
 Important:
-- Pick 8-12 items for the main sections, plus 8-12 quick links
+- For the WEBSITE (sections + quick_links): pick 10-15 items for the main sections, plus 8-12 quick links. The web brief can be expansive — readers came to read.
 - The quick_links section is valuable real estate — use it generously. Include anything interesting that didn't make the main sections. Readers love having a longer list to scan.
+- For SLACK (slack_text): keep it to 8-12 linked items total. Slack is a quick scan, not a deep read. Pick the best stuff.
 - The "body" field in items uses HTML (not Markdown)
 - The "lede" field uses HTML (not Markdown)  
 - The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <url|text> for links. Every item MUST have a <url|linked headline>. Use --- between sections. No HTML.
