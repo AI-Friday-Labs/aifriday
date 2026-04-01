@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/xml"
 	"flag"
 	"fmt"
 	"html/template"
@@ -55,8 +56,9 @@ type MeetingsData struct {
 }
 
 type MeetingDetailData struct {
-	Number   int
-	Date     string
+	Number    int
+	Date      string
+	DateISO   string
 	RecapHTML template.HTML
 }
 
@@ -139,6 +141,11 @@ func run() error {
 		mux.HandleFunc("GET /meetings/{$}", s.handleMeetings)
 		mux.HandleFunc("GET /meetings/{number}", s.handleMeetingDetail)
 		mux.HandleFunc("GET /brief/{$}", s.handleBriefIndex)
+
+		// SEO: robots.txt, sitemap, RSS feed
+		mux.HandleFunc("GET /robots.txt", handleRobots)
+		mux.HandleFunc("GET /sitemap.xml", s.handleSitemap)
+		mux.HandleFunc("GET /feed.xml", s.handleFeed)
 
 		// Static brief content
 		mux.Handle("GET /brief/", http.StripPrefix("/brief/",
@@ -228,9 +235,16 @@ func (s *site) handleMeetingDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Parse DatePath to get ISO date
+	var dateISO string
+	if t, err := time.Parse("2006/01/02", meeting.DatePath); err == nil {
+		dateISO = t.Format("2006-01-02")
+	}
+
 	s.render(w, "meeting-detail.html", MeetingDetailData{
 		Number:    num,
 		Date:      meeting.Date,
+		DateISO:   dateISO,
 		RecapHTML: template.HTML(recapBytes),
 	})
 }
@@ -240,6 +254,152 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 	briefs := s.briefs
 	s.mu.RUnlock()
 	s.render(w, "brief-index.html", BriefIndexData{Briefs: briefs})
+}
+
+// ---------------------------------------------------------------------------
+// SEO handlers
+// ---------------------------------------------------------------------------
+
+func handleRobots(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	fmt.Fprint(w, "User-agent: *\nAllow: /\n\nSitemap: https://aifri.day/sitemap.xml\n")
+}
+
+// Sitemap XML types
+type sitemapURL struct {
+	XMLName    xml.Name `xml:"url"`
+	Loc        string   `xml:"loc"`
+	LastMod    string   `xml:"lastmod,omitempty"`
+	ChangeFreq string   `xml:"changefreq,omitempty"`
+	Priority   string   `xml:"priority,omitempty"`
+}
+
+type sitemapURLSet struct {
+	XMLName xml.Name     `xml:"urlset"`
+	XMLNS   string       `xml:"xmlns,attr"`
+	URLs    []sitemapURL `xml:"url"`
+}
+
+func (s *site) handleSitemap(w http.ResponseWriter, r *http.Request) {
+	urls := []sitemapURL{
+		{Loc: "https://aifri.day/", ChangeFreq: "weekly", Priority: "1.0"},
+		{Loc: "https://aifri.day/brief/", ChangeFreq: "daily", Priority: "0.8"},
+		{Loc: "https://aifri.day/meetings/", ChangeFreq: "monthly", Priority: "0.6"},
+	}
+
+	// Add individual brief pages
+	s.mu.RLock()
+	briefs := s.briefs
+	s.mu.RUnlock()
+	for _, b := range briefs {
+		var lastmod string
+		if t, err := time.Parse("2006/01/02", b.DatePath); err == nil {
+			lastmod = t.Format("2006-01-02")
+		}
+		urls = append(urls, sitemapURL{
+			Loc:        "https://aifri.day/brief/" + b.DatePath + "/",
+			LastMod:    lastmod,
+			ChangeFreq: "monthly",
+			Priority:   "0.7",
+		})
+	}
+
+	// Add meeting detail pages (only those with recaps)
+	now := time.Now()
+	for _, m := range meetingSchedule {
+		if m.Number > 0 {
+			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+			if mt.HasRecap {
+				var lastmod string
+				if t, err := time.Parse("2006/01/02", mt.DatePath); err == nil {
+					lastmod = t.Format("2006-01-02")
+				}
+				urls = append(urls, sitemapURL{
+					Loc:        fmt.Sprintf("https://aifri.day/meetings/%d", mt.Number),
+					LastMod:    lastmod,
+					ChangeFreq: "yearly",
+					Priority:   "0.5",
+				})
+			}
+		}
+	}
+
+	sitemap := sitemapURLSet{
+		XMLNS: "http://www.sitemaps.org/schemas/sitemap/0.9",
+		URLs:  urls,
+	}
+
+	w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+	w.Write([]byte(xml.Header))
+	enc := xml.NewEncoder(w)
+	enc.Indent("", "  ")
+	if err := enc.Encode(sitemap); err != nil {
+		slog.Error("encode sitemap", "error", err)
+	}
+}
+
+// RSS feed types
+type rssItem struct {
+	Title       string `xml:"title"`
+	Link        string `xml:"link"`
+	Description string `xml:"description"`
+	PubDate     string `xml:"pubDate"`
+	GUID        string `xml:"guid"`
+}
+
+type rssChannel struct {
+	Title       string    `xml:"title"`
+	Link        string    `xml:"link"`
+	Description string    `xml:"description"`
+	Language    string    `xml:"language"`
+	Items       []rssItem `xml:"item"`
+}
+
+type rssFeed struct {
+	XMLName xml.Name   `xml:"rss"`
+	Version string     `xml:"version,attr"`
+	Channel rssChannel `xml:"channel"`
+}
+
+func (s *site) handleFeed(w http.ResponseWriter, r *http.Request) {
+	s.mu.RLock()
+	briefs := s.briefs
+	s.mu.RUnlock()
+
+	var items []rssItem
+	for _, b := range briefs {
+		var pubDate string
+		if t, err := time.Parse("2006/01/02", b.DatePath); err == nil {
+			pubDate = t.Format(time.RFC1123Z)
+		}
+		link := "https://aifri.day/brief/" + b.DatePath + "/"
+		items = append(items, rssItem{
+			Title:       b.Date,
+			Link:        link,
+			Description: b.Preview,
+			PubDate:     pubDate,
+			GUID:        link,
+		})
+	}
+
+	feed := rssFeed{
+		Version: "2.0",
+		Channel: rssChannel{
+			Title:       "AI Friday \u2014 Daily Brief",
+			Link:        "https://aifri.day/brief/",
+			Description: "Curated AI news for builders. From the AI Friday meetup in New Orleans.",
+			Language:    "en-us",
+			Items:       items,
+		},
+	}
+
+	w.Header().Set("Content-Type", "application/rss+xml; charset=utf-8")
+	w.Write([]byte(xml.Header))
+	enc := xml.NewEncoder(w)
+	enc.Indent("", "  ")
+	if err := enc.Encode(feed); err != nil {
+		slog.Error("encode feed", "error", err)
+	}
 }
 
 // ---------------------------------------------------------------------------

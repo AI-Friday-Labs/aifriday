@@ -2,6 +2,7 @@
 """Generate static HTML for all briefs and index pages."""
 import json
 import os
+import re
 import sys
 from html import escape
 from pathlib import Path
@@ -40,12 +41,44 @@ def render_brief(data):
 
     lede_html = data.get("lede", "")
 
+    # SEO metadata
+    brief_preview_raw = re.sub(r'<[^>]+>', '', lede_html)[:160]
+    if len(brief_preview_raw) >= 160:
+        brief_preview_raw = brief_preview_raw[:brief_preview_raw.rfind(' ')] + '…'
+    brief_preview = escape(brief_preview_raw)
+    date_path = data["date_path"]
+    escaped_date = escape(data["date"])
+    iso_date = date_path.replace('/', '-')
+    json_ld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": f"AI Friday Brief — {data['date']}",
+        "datePublished": iso_date,
+        "url": f"https://aifri.day/brief/{date_path}/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "AI Friday",
+            "url": "https://aifri.day"
+        }
+    }, indent=2)
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI Friday &mdash; {escape(data["date"])}</title>
+  <title>AI Friday &mdash; {escaped_date}</title>
+  <meta name="description" content="{brief_preview}">
+  <link rel="canonical" href="https://aifri.day/brief/{date_path}/">
+  <link rel="alternate" type="application/rss+xml" title="AI Friday Daily Brief" href="https://aifri.day/feed.xml">
+  <meta property="og:title" content="AI Friday Brief — {escaped_date}">
+  <meta property="og:description" content="{brief_preview}">
+  <meta property="og:url" content="https://aifri.day/brief/{date_path}/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AI Friday">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Friday Brief — {escaped_date}">
+  <meta name="twitter:description" content="{brief_preview}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -54,6 +87,9 @@ def render_brief(data):
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+  <script type="application/ld+json">
+  {json_ld}
+  </script>
 </head>
 <body>
   <div class="container">
@@ -77,7 +113,10 @@ def render_brief(data):
       <ul class="sources-list">{sources_html}</ul>
     </section>
     <nav class="brief-nav">{prev_html}{next_html}</nav>
-
+    <footer class="footer">
+      <span class="footer-fleur">&#9884;&#65039;</span>
+      New Orleans, LA
+    </footer>
   </div>
 </body>
 </html>'''
@@ -111,7 +150,6 @@ def render_index(briefs):
     for b in sorted(briefs, key=lambda x: x["date_path"], reverse=True):
         lede_text = b.get("lede", "").replace("<strong>", "").replace("</strong>", "")
         # Strip HTML for preview
-        import re
         preview = re.sub(r'<[^>]+>', '', lede_text)[:200]
         if len(preview) >= 200:
             preview = preview[:preview.rfind(' ')] + '...'
@@ -128,6 +166,17 @@ def render_index(briefs):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Friday &mdash; Daily Briefs</title>
+  <meta name="description" content="Curated AI news and tools for builders. Updated daily by the AI Friday community in New Orleans.">
+  <link rel="canonical" href="https://aifri.day/brief/">
+  <link rel="alternate" type="application/rss+xml" title="AI Friday Daily Brief" href="https://aifri.day/feed.xml">
+  <meta property="og:title" content="AI Friday — Daily Briefs">
+  <meta property="og:description" content="Curated AI news and tools for builders. Updated daily.">
+  <meta property="og:url" content="https://aifri.day/brief/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AI Friday">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Friday — Daily Briefs">
+  <meta name="twitter:description" content="Curated AI news and tools for builders. Updated daily.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -150,7 +199,10 @@ def render_index(briefs):
     <div class="index-list">
       {chr(10).join(items)}
     </div>
-
+    <footer class="footer">
+      <span class="footer-fleur">&#9884;&#65039;</span>
+      New Orleans, LA
+    </footer>
   </div>
 </body>
 </html>'''
@@ -177,6 +229,13 @@ def render_year_index(year, months_with_days):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Friday &mdash; {year} Briefs</title>
+  <meta name="description" content="AI Friday daily briefs from {year}. Curated AI news for builders.">
+  <link rel="canonical" href="https://aifri.day/brief/{year}/">
+  <meta property="og:title" content="AI Friday — {year} Briefs">
+  <meta property="og:description" content="AI Friday daily briefs from {year}.">
+  <meta property="og:url" content="https://aifri.day/brief/{year}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AI Friday">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -198,7 +257,10 @@ def render_year_index(year, months_with_days):
     <div class="brief-content">
       {chr(10).join(items)}
     </div>
-
+    <footer class="footer">
+      <span class="footer-fleur">&#9884;&#65039;</span>
+      New Orleans, LA
+    </footer>
   </div>
 </body>
 </html>'''
@@ -259,7 +321,6 @@ def build_all(data_dir):
         home = SITE_DIR / "index.html"
         if home.exists():
             content = home.read_text()
-            import re
             content = re.sub(
                 r'href="/brief/[^"]*"(.*?)Latest Brief',
                 f'href="/brief/{latest["date_path"]}/"\\1Latest Brief',
