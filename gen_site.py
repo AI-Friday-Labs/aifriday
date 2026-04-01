@@ -87,6 +87,7 @@ def render_brief(data):
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="23HVW+pAWhX3mLQMX/nA5A" async></script>
   <script type="application/ld+json">
   {json_ld}
   </script>
@@ -185,6 +186,7 @@ def render_index(briefs):
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="23HVW+pAWhX3mLQMX/nA5A" async></script>
 </head>
 <body>
   <div class="container">
@@ -244,6 +246,7 @@ def render_year_index(year, months_with_days):
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="https://umami-production-d337.up.railway.app/script.js" data-website-id="3a8001f6-6312-473a-b2bd-38dae609847c"></script>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="23HVW+pAWhX3mLQMX/nA5A" async></script>
 </head>
 <body>
   <div class="container">
