@@ -46,21 +46,20 @@ func DefaultFeeds() []FeedSource {
 			URL:  "https://openai.com/blog/rss.xml",
 			Tags: []string{"blog", "ai", "openai"},
 		},
-		// Anthropic has no RSS feed as of March 2026
 		{
 			Name: "Google AI Blog",
 			URL:  "https://blog.google/technology/ai/rss/",
 			Tags: []string{"blog", "ai", "google"},
 		},
 		{
+			Name: "Google DeepMind Blog",
+			URL:  "https://deepmind.google/discover/blog/feed/",
+			Tags: []string{"blog", "ai", "google", "research"},
+		},
+		{
 			Name: "Hugging Face Blog",
 			URL:  "https://huggingface.co/blog/feed.xml",
 			Tags: []string{"blog", "ai", "open-source"},
-		},
-		{
-			Name: "Latent Space",
-			URL:  "https://latent.space/feed",
-			Tags: []string{"newsletter", "ai"},
 		},
 
 		// --- Tech Press (AI sections) ---
@@ -87,9 +86,51 @@ func DefaultFeeds() []FeedSource {
 
 		// --- Newsletters ---
 		{
+			Name: "Latent Space",
+			URL:  "https://latent.space/feed",
+			Tags: []string{"newsletter", "ai"},
+		},
+		{
 			Name: "Ben's Bites",
 			URL:  "https://bensbites.com/feed",
 			Tags: []string{"newsletter", "ai"},
+		},
+		{
+			Name: "Import AI",
+			URL:  "https://importai.substack.com/feed",
+			Tags: []string{"newsletter", "ai", "research"},
+		},
+
+		// --- Podcasts ---
+		{
+			Name: "AI Daily Brief",
+			URL:  "https://anchor.fm/s/f7cac464/podcast/rss",
+			Tags: []string{"podcast", "ai"},
+		},
+		{
+			Name: "AI & I (Every.to)",
+			URL:  "https://every.to/podcast/feed.xml",
+			Tags: []string{"podcast", "ai"},
+		},
+		{
+			Name: "How I AI",
+			URL:  "https://anchor.fm/s/1035b1568/podcast/rss",
+			Tags: []string{"podcast", "ai"},
+		},
+		{
+			Name: "Behind the Craft",
+			URL:  "https://anchor.fm/s/f38497cc/podcast/rss",
+			Tags: []string{"podcast", "ai"},
+		},
+		{
+			Name: "AI for Humans",
+			URL:  "https://feeds.libsyn.com/469701/rss",
+			Tags: []string{"podcast", "ai"},
+		},
+		{
+			Name: "a16z AI",
+			URL:  "https://feeds.simplecast.com/Hb_IuXOo",
+			Tags: []string{"podcast", "ai", "vc"},
 		},
 	}
 }
@@ -167,11 +208,23 @@ func isAlphaNum(b byte) bool {
 	return (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || (b >= '0' && b <= '9')
 }
 
-// FetchAll fetches all configured feeds and returns articles from the last `since` duration
-func FetchAll(ctx context.Context, sources []FeedSource, since time.Duration) ([]Article, error) {
-	cutoff := time.Now().Add(-since)
-	parser := gofeed.NewParser()
+// feedLookback returns the lookback duration for a feed based on its tags.
+// Newsletters and podcasts publish less frequently, so we look back further.
+func feedLookback(tags []string, defaultSince time.Duration) time.Duration {
+	for _, t := range tags {
+		if t == "newsletter" || t == "podcast" {
+			// 7 days for weekly content
+			if defaultSince < 7*24*time.Hour {
+				return 7 * 24 * time.Hour
+			}
+		}
+	}
+	return defaultSince
+}
 
+// FetchAll fetches all configured feeds and returns articles from the last `since` duration.
+// Newsletters and podcasts automatically get a longer lookback window (7 days).
+func FetchAll(ctx context.Context, sources []FeedSource, since time.Duration) ([]Article, error) {
 	var (
 		mu       sync.Mutex
 		articles []Article
@@ -183,12 +236,16 @@ func FetchAll(ctx context.Context, sources []FeedSource, since time.Duration) ([
 		go func(s FeedSource) {
 			defer wg.Done()
 
+			// Each goroutine gets its own parser — gofeed.Parser is not thread-safe
+			parser := gofeed.NewParser()
 			feed, err := parser.ParseURLWithContext(s.URL, ctx)
 			if err != nil {
 				slog.Warn("feed fetch failed", "source", s.Name, "url", s.URL, "error", err)
 				return
 			}
 
+			cutoff := time.Now().Add(-feedLookback(s.Tags, since))
+			var matched int
 			for _, item := range feed.Items {
 				pubTime := time.Now()
 				if item.PublishedParsed != nil {
@@ -221,12 +278,13 @@ func FetchAll(ctx context.Context, sources []FeedSource, since time.Duration) ([
 					continue
 				}
 
+				matched++
 				mu.Lock()
 				articles = append(articles, a)
 				mu.Unlock()
 			}
 
-			slog.Info("feed fetched", "source", s.Name, "items", len(feed.Items))
+			slog.Info("feed fetched", "source", s.Name, "total_items", len(feed.Items), "matched", matched)
 		}(src)
 	}
 

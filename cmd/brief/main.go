@@ -297,6 +297,12 @@ Important:
 - Do NOT mention Hacker News point counts in any output (lede, body, notes, slack_text). HN points are provided to help you rank/select stories but should never appear in the published brief.
 - Output ONLY the JSON object, no markdown fences, no explanation
 
+Podcast Episodes:
+- Articles tagged as podcasts (sources like "AI Daily Brief", "How I AI", "Behind the Craft", "AI for Humans", "a16z AI", "AI & I (Every.to)") are recent podcast episodes.
+- Include 1-3 notable podcast episodes per brief in a "Worth a Listen" or "Podcasts" section (or fold into other sections if they fit).
+- For podcast items, mention the podcast name and guest/topic. Set "via" to the podcast name.
+- Only include episodes that are genuinely relevant to the day's news or particularly interesting. Don't pad the brief with filler episodes.
+
 Community Links:
 - Articles with source "AI Friday Slack" were shared by community members in the AI Friday Slack.
 - Give these a STRONG boost in selection — they reflect what the community is actually talking about.

@@ -162,30 +162,47 @@ These are things real members found interesting enough to share — that signal 
 
 ## Sources
 
-### RSS Feeds
+### Blogs & Labs
 - Simon Willison's blog
 - OpenAI blog
 - Google AI blog
+- Google DeepMind blog
 - Hugging Face blog
-- Hacker News (via Firebase API, AI-filtered, 30+ points)
+
+### Tech Press
 - TechCrunch AI
 - The Verge AI
 - Ars Technica AI
 - MIT Technology Review AI
-- Ben's Bites
+
+### Newsletters (7-day lookback)
 - Latent Space
+- Ben's Bites
+- Import AI (Jack Clark)
+
+### Podcasts (7-day lookback)
+- AI Daily Brief (Nathaniel Whittemore)
+- AI & I (Every.to / Dan Shipper)
+- How I AI (Claire Vo)
+- Behind the Craft (Peter Yang)
+- AI for Humans (Kevin Pereira & Gavin Purcell)
+- a16z AI
+
+### Other
+- Hacker News (via Firebase API, AI-filtered, 30+ points)
 
 ### AI Friday Slack Community
 The bot monitors all AI Friday Slack channels and captures links shared by members.
 These community-sourced links get a scoring boost (+2) and appear in a dedicated
 "From the Community" section on the website when included.
 
-### Future additions
-- Anthropic blog (no RSS feed as of March 2026)
-- ArXiv (cs.AI, cs.CL) — only notable papers
-- Import AI newsletter
-- The Rundown AI (Cloudflare blocks RSS)
-- every.to (no RSS feed)
+### No RSS available (monitor manually)
+- Anthropic blog (no RSS feed as of April 2026)
+- Meta AI blog
+- xAI blog (Cloudflare blocks)
+- Mistral AI blog
+- Cohere blog
+- The Rundown AI (Beehiiv, no public feed)
 
 ## Cadence
 - **Daily, 7 days a week** at **7:00 AM CT** (Central Time, New Orleans)
