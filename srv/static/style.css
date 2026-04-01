@@ -465,11 +465,7 @@ blockquote {
   border-top: 1px solid var(--line);
 }
 
-.footer-fleur {
-  font-size: 16px;
-  display: block;
-  margin-bottom: var(--space-sm);
-}
+
 
 /* --- Brief Page ---------------------------------------------------------- */
 .brief-header {
