@@ -44,8 +44,6 @@
   /* Layout */
   --max-width: 860px;
 
-  /* Shadows */
-  --shadow-card: 0 22px 52px rgba(31, 24, 19, 0.08);
 }
 
 /* --- Reset & Base -------------------------------------------------------- */
@@ -132,11 +130,6 @@ p {
 
 p:last-child {
   margin-bottom: 0;
-}
-
-.text-lg {
-  font-size: var(--text-body-lg);
-  line-height: 1.84;
 }
 
 .text-muted {
@@ -379,18 +372,6 @@ blockquote {
   color: #fff7ef;
 }
 
-.btn-secondary {
-  background: var(--secondary);
-  border-color: var(--secondary);
-  color: #f7fbf5;
-}
-
-.btn-secondary:hover {
-  background: #4d5a4c;
-  border-color: #4d5a4c;
-  color: #f7fbf5;
-}
-
 .link-quiet {
   font-family: var(--font-code);
   font-size: var(--text-mono);
@@ -414,52 +395,6 @@ blockquote {
 
 .link-arrow:hover {
   color: var(--accent-hover);
-}
-
-/* --- About / Subscribe Section ------------------------------------------- */
-.about {
-  padding: 0 0 var(--space-xl);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: var(--space-xl);
-}
-
-.about-card {
-  padding: var(--space-lg) 0;
-}
-
-.about-card h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: var(--space-md);
-}
-
-.about-card p {
-  font-size: var(--text-body-lg);
-  line-height: 1.84;
-  color: var(--text);
-  opacity: 0.9;
-}
-
-/* --- Postscript (subscribe, bottom-of-page utility) ---------------------- */
-.postscript {
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--line);
-}
-
-.postscript .mono {
-  margin-bottom: var(--space-sm);
-}
-
-.postscript h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: var(--space-md);
 }
 
 /* --- Subscribe Form ------------------------------------------------------ */
@@ -508,42 +443,6 @@ blockquote {
 .subscribe-form input[type="submit"]:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-}
-
-/* --- Latest Brief (homepage) --------------------------------------------- */
-.latest-brief {
-  padding: 0 0 var(--space-xl);
-}
-
-.latest-brief-entry {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: var(--space-md);
-  padding: var(--space-md) 0;
-  border-top: 1px solid var(--line);
-}
-
-.latest-brief-date {
-  font-family: var(--font-code);
-  font-size: var(--text-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  padding-top: 4px;
-}
-
-.latest-brief-heading {
-  margin-bottom: var(--space-sm);
-}
-
-.latest-brief-heading a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.latest-brief-heading a:hover {
-  color: var(--accent);
 }
 
 .brief-lede {
@@ -601,21 +500,6 @@ blockquote {
 /* Brief Items */
 .brief-items {
   padding: 0 0 var(--space-xl);
-}
-
-.brief-tag-group {
-  margin-bottom: var(--space-xl);
-}
-
-.brief-tag-label {
-  font-family: var(--font-code);
-  font-size: var(--text-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
-  color: var(--muted);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--line);
 }
 
 .brief-card {
@@ -896,23 +780,9 @@ blockquote {
     gap: var(--space-xs);
   }
 
-  .latest-brief-entry {
-    grid-template-columns: 1fr;
-    gap: var(--space-xs);
-  }
-
   .index-item {
     grid-template-columns: 1fr;
     gap: var(--space-xs);
-  }
-
-  .meeting-card {
-    grid-template-columns: 1fr;
-    gap: var(--space-xs);
-  }
-
-  .meeting-badge {
-    justify-self: start;
   }
 
   .brief-header {
