@@ -43,7 +43,7 @@ func DefaultFeeds() []FeedSource {
 		},
 		{
 			Name: "OpenAI Blog",
-			URL:  "https://openai.com/blog/rss.xml",
+			URL:  "https://openai.com/news/rss.xml",
 			Tags: []string{"blog", "ai", "openai"},
 		},
 		{
