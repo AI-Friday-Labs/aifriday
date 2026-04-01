@@ -2,6 +2,7 @@
 .env.*
 ai-friday-bot
 gen-brief
+/mailwatch
 db.sqlite3
 db.sqlite3-shm
 db.sqlite3-wal

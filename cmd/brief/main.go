@@ -90,8 +90,17 @@ func run() error {
 		}
 	}
 
+	// Step 0: Process any new newsletter emails
+	maildir := filepath.Join(os.Getenv("HOME"), "Maildir")
+	if _, err := os.Stat(filepath.Join(maildir, "new")); err == nil && database != nil {
+		slog.Info("processing newsletter emails...")
+		if err := feeds.ProcessMaildir(database, maildir); err != nil {
+			slog.Warn("newsletter processing failed", "error", err)
+		}
+	}
+
 	// Step 1: Fetch feeds
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
 	defer cancel()
 
 	slog.Info("fetching feeds...")
@@ -189,6 +198,17 @@ func fetchAllSources(ctx context.Context, database *sql.DB) ([]feeds.Article, er
 		} else {
 			allArticles = append(allArticles, slackArticles...)
 			slog.Info("fetched Slack community links", "count", len(slackArticles))
+		}
+	}
+
+	// Newsletter articles (last 36 hours)
+	if database != nil {
+		newsletterArticles, err := feeds.NewsletterArticles(database, 36*time.Hour)
+		if err != nil {
+			slog.Warn("Newsletter articles fetch error", "error", err)
+		} else {
+			allArticles = append(allArticles, newsletterArticles...)
+			slog.Info("fetched newsletter articles", "count", len(newsletterArticles))
 		}
 	}
 
