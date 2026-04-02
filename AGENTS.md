@@ -15,6 +15,12 @@ Posts a daily brief of curated AI news, tools, and updates to #daily-brief.
 - `RULEBOOK.md` — Editorial rules for content selection
 - `cmd/slacklinks/main.go` — Backfill tool to pull Slack links into DB
 
+## Brief Continuity
+The brief generator loads the last 3 published briefs and includes them
+as context in the LLM prompt. This lets Claude avoid duplicate headlines,
+build on running stories, and reference previous coverage naturally.
+The continuity rules are in RULEBOOK.md under "Continuity & Story Awareness".
+
 ## Slack Link Capture
 The bot captures URLs shared in all Slack channels it belongs to.
 Links are stored in the `slack_links` table and fed into the daily brief

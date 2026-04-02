@@ -60,6 +60,20 @@ Every item should pass these filters before publishing:
   is cool, you get one technical detail. Make it count. The rest should be about
   what it means for the reader.
 
+## Continuity & Story Awareness
+The brief has memory. Before writing, review the recent briefs provided as context.
+
+- **Don't repeat yourself.** If yesterday's headline was "Claude Code leaked," don't lead
+  with the same angle today. Find the update, the follow-up, the new development.
+- **Build on running stories.** Reference what we covered before: "Yesterday we flagged...",
+  "The story we've been tracking...", "If you caught Monday's brief..."
+- **Skip already-covered URLs.** If an article was a main item in a previous brief,
+  don't feature it again unless there's a meaningful update.
+- **Promote evolving stories.** Quick links from previous days can become full items if
+  the story grew. Note the escalation: "What was a footnote yesterday is now the main event."
+- **Don't force it.** Only reference previous briefs when it genuinely adds value.
+  If today's news is entirely fresh, that's great — no need to look backward.
+
 ## What Makes the Cut
 
 ### ✅ INCLUDE

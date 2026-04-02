@@ -227,6 +227,91 @@ func fetchAllSources(ctx context.Context, database *sql.DB) ([]feeds.Article, er
 // Brief generation via Claude
 // ---------------------------------------------------------------------------
 
+// loadRecentBriefs reads the last N published brief JSONs and returns a compact
+// summary suitable for inclusion in the LLM prompt. This gives Claude awareness
+// of what was previously covered so it can build continuity.
+func loadRecentBriefs(projectRoot string, currentDatePath string, maxBriefs int) string {
+	briefDir := filepath.Join(projectRoot, "briefs")
+	entries, err := os.ReadDir(briefDir)
+	if err != nil {
+		slog.Warn("could not read briefs directory", "error", err)
+		return ""
+	}
+
+	// Collect brief files sorted by name (date order)
+	var files []string
+	for _, e := range entries {
+		if !e.IsDir() && strings.HasPrefix(e.Name(), "brief_") && strings.HasSuffix(e.Name(), ".json") {
+			files = append(files, e.Name())
+		}
+	}
+	sort.Strings(files)
+
+	// Take the last N files (excluding any that match today's date)
+	currentDateFlat := strings.ReplaceAll(currentDatePath, "/", "-")
+	var recent []string
+	for i := len(files) - 1; i >= 0 && len(recent) < maxBriefs; i-- {
+		// brief_2026-04-02.json -> 2026-04-02
+		fileDate := strings.TrimPrefix(strings.TrimSuffix(files[i], ".json"), "brief_")
+		if fileDate == currentDateFlat {
+			continue
+		}
+		recent = append([]string{files[i]}, recent...)
+	}
+
+	if len(recent) == 0 {
+		return ""
+	}
+
+	var buf strings.Builder
+	for _, fname := range recent {
+		data, err := os.ReadFile(filepath.Join(briefDir, fname))
+		if err != nil {
+			slog.Warn("could not read brief file", "file", fname, "error", err)
+			continue
+		}
+
+		var brief struct {
+			Date     string `json:"date"`
+			DatePath string `json:"date_path"`
+			Lede     string `json:"lede"`
+			Sections []struct {
+				Title string `json:"title"`
+				Items []struct {
+					Title string `json:"title"`
+					URL   string `json:"url"`
+				} `json:"items"`
+			} `json:"sections"`
+			QuickLinks []struct {
+				Title string `json:"title"`
+				URL   string `json:"url"`
+			} `json:"quick_links"`
+		}
+		if err := json.Unmarshal(data, &brief); err != nil {
+			slog.Warn("could not parse brief JSON", "file", fname, "error", err)
+			continue
+		}
+
+		fmt.Fprintf(&buf, "=== %s (/%s/) ===\n", brief.Date, brief.DatePath)
+		fmt.Fprintf(&buf, "Lede: %s\n\n", brief.Lede)
+		for _, s := range brief.Sections {
+			fmt.Fprintf(&buf, "Section: %s\n", s.Title)
+			for _, item := range s.Items {
+				fmt.Fprintf(&buf, "  - %s (%s)\n", item.Title, item.URL)
+			}
+		}
+		if len(brief.QuickLinks) > 0 {
+			fmt.Fprintln(&buf, "Quick Links:")
+			for _, ql := range brief.QuickLinks {
+				fmt.Fprintf(&buf, "  - %s (%s)\n", ql.Title, ql.URL)
+			}
+		}
+		fmt.Fprintln(&buf)
+	}
+
+	return buf.String()
+}
+
 func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, datePath, prevDate, projectRoot string) ([]byte, error) {
 	// Read the rulebook
 	rulebookPath := filepath.Join(projectRoot, "RULEBOOK.md")
@@ -234,6 +319,12 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 	if err != nil {
 		slog.Warn("could not read RULEBOOK.md", "error", err)
 		rulebook = []byte("Write a concise, practical AI news brief for builders.")
+	}
+
+	// Load recent briefs for continuity context
+	recentBriefs := loadRecentBriefs(projectRoot, datePath, 3)
+	if recentBriefs != "" {
+		slog.Info("loaded recent briefs for continuity context")
 	}
 
 	// Format articles for the prompt
@@ -256,6 +347,31 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 		fmt.Fprintln(&articleList)
 	}
 
+	// Build the continuity context block
+	var continuityBlock string
+	if recentBriefs != "" {
+		continuityBlock = fmt.Sprintf(`
+--- RECENT BRIEFS (for continuity) ---
+Below are the briefs published over the last few days. Use this to:
+1. AVOID duplicating the same headline/angle on a story we already covered (find a new angle or note the update)
+2. BUILD ON continuing stories — reference what we said before ("Yesterday we covered...", "The story we flagged on Monday just got bigger...", "Previously we linked to...")
+3. SKIP articles/URLs we already featured prominently (main sections) unless there's a meaningful update
+4. Quick links from previous days CAN be promoted to full items if they've become bigger stories
+5. Keep the voice natural — a good newsletter has memory. Readers notice when you cover the same thing two days in a row without acknowledging it.
+
+Examples of good continuity:
+- "Yesterday's big story was the Claude Code source leak — today there's been a LOT more activity around it..."
+- "We linked to X on Monday; turns out it blew up and here's why..."
+- "If you caught our note about Y yesterday, the follow-up is even wilder..."
+- "This is a fresh angle on the Z story we've been tracking all week."
+
+Do NOT force continuity references if there's no real connection. Only reference previous briefs when it adds value.
+
+%s
+--- END RECENT BRIEFS ---
+`, recentBriefs)
+	}
+
 	prompt := fmt.Sprintf(`You are the editor of the AI Friday Daily Brief, a curated newsletter for the AI Friday meetup in New Orleans.
 
 Today's date: %s
@@ -265,7 +381,7 @@ Previous brief date path: %s
 Here are the editorial rules:
 
 %s
-
+%s
 Here are today's candidate articles:
 
 %s
@@ -335,6 +451,7 @@ Community Links:
 - Still apply the RULEBOOK tone and accessibility rules to community items.`,
 		dateHuman, datePath, prevDate,
 		string(rulebook),
+		continuityBlock,
 		articleList.String(),
 		dateHuman, datePath, prevDate)
 
