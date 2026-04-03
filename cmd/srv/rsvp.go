@@ -163,7 +163,7 @@ func SendCalendarInvite(meeting MeetingInfo, toEmail, toName, fastmailPassword s
 	fmt.Fprintf(&buf, "--%s--\r\n", boundary)
 
 	// Send via Fastmail SMTP (TLS on port 465)
-	auth := smtp.PlainAuth("", from, fastmailPassword, "smtp.fastmail.com")
+	auth := smtp.PlainAuth("", "andrew@dunn.us", fastmailPassword, "smtp.fastmail.com")
 
 	tlsConfig := &tls.Config{ServerName: "smtp.fastmail.com"}
 	conn, err := tls.Dial("tcp", "smtp.fastmail.com:465", tlsConfig)
