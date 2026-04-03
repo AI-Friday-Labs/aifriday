@@ -14,6 +14,28 @@ type Migration struct {
 	ExecutedAt      time.Time `json:"executed_at"`
 }
 
+type NewsletterArticle struct {
+	ID           int64  `json:"id"`
+	Url          string `json:"url"`
+	Title        string `json:"title"`
+	Summary      string `json:"summary"`
+	Newsletter   string `json:"newsletter"`
+	EmailSubject string `json:"email_subject"`
+	EmailDate    string `json:"email_date"`
+	EmailFile    string `json:"email_file"`
+	CreatedAt    string `json:"created_at"`
+}
+
+type Rsvp struct {
+	ID              int64     `json:"id"`
+	MeetingNumber   int64     `json:"meeting_number"`
+	Name            string    `json:"name"`
+	Email           string    `json:"email"`
+	NewsletterOptIn bool      `json:"newsletter_opt_in"`
+	Responses       string    `json:"responses"`
+	CreatedAt       time.Time `json:"created_at"`
+}
+
 type SlackLink struct {
 	ID          int64     `json:"id"`
 	Url         string    `json:"url"`
