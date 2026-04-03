@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=3">
+  <link rel="stylesheet" href="/static/style.css?v=7">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -35,6 +35,7 @@
         <span class="logo-location">New Orleans</span>
       </a>
       <div class="nav-links">
+        <a href="/meetings/">Meetings</a>
         <a href="/brief/">Briefs</a>
       </div>
     </nav>
@@ -46,16 +47,35 @@
 
     {{if .Upcoming}}
     <section class="log-entries">
+      {{range $i, $m := .Upcoming}}
+      {{if eq $i 0}}
       <div class="log-entry">
-        <div class="log-label">Upcoming</div>
+        <div class="log-label">Next</div>
         <div class="log-content">
-          {{range .Upcoming}}
-          <div class="meeting-row">
-            <h3 class="meeting-date">{{.Date}}</h3>
-          </div>
+          <h3 class="log-heading">{{$m.Date}}</h3>
+          {{if $m.Start}}
+          <p>{{$m.Start}} &ndash; {{$m.End}}{{if $m.Location}} &middot; {{$m.Location}}{{end}}</p>
+          <a href="/meetings/{{$m.Number}}" class="btn btn-primary" style="margin-top: var(--space-sm);">Count Me In</a>
+          {{else}}
+          <p class="text-muted">Details coming soon.</p>
           {{end}}
         </div>
       </div>
+      {{else}}
+      {{if eq $i 1}}
+      <div class="log-entry">
+        <div class="log-label">Later</div>
+        <div class="log-content">
+      {{end}}
+          <div class="meeting-row">
+            <p class="meeting-date-future">{{$m.Date}}</p>
+          </div>
+      {{end}}
+      {{end}}
+      {{if gt (len .Upcoming) 1}}
+        </div>
+      </div>
+      {{end}}
     </section>
     {{end}}
 
@@ -67,10 +87,10 @@
           {{range .Past}}
           <div class="meeting-row meeting-row--past">
             {{if .HasRecap}}
-            <h3 class="meeting-date"><a href="/meetings/{{.Number}}">AI Friday #{{.Number}}</a></h3>
+            <p class="meeting-date"><a href="/meetings/{{.Number}}">AI Friday #{{.Number}}</a></p>
             <p class="meeting-date-sub">{{.Date}}</p>
             {{else}}
-            <h3 class="meeting-date">{{.Date}}</h3>
+            <p class="meeting-date-sub">{{.Date}}</p>
             {{end}}
           </div>
           {{end}}
@@ -78,7 +98,6 @@
       </div>
     </section>
     {{end}}
-
 
   </div>
 </body>

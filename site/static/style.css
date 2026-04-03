@@ -750,6 +750,12 @@ blockquote {
   font-weight: 400;
 }
 
+.meeting-date-future {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  padding: var(--space-xs) 0;
+}
+
 /* --- Responsive ---------------------------------------------------------- */
 @media (max-width: 640px) {
   :root {

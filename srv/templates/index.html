@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=4">
+  <link rel="stylesheet" href="/static/style.css?v=7">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -58,7 +58,12 @@
         <div class="log-label">Next Meeting</div>
         <div class="log-content">
           <h3 class="log-heading">{{.NextMeeting.Date}}</h3>
-          <a href="/meetings/" class="link-quiet">See schedule &rarr;</a>
+          {{if .NextMeeting.Start}}
+          <p>{{.NextMeeting.Start}} &ndash; {{.NextMeeting.End}}{{if .NextMeeting.Location}} &middot; {{.NextMeeting.Location}}{{end}}</p>
+          <a href="/meetings/{{.NextMeeting.Number}}" class="btn btn-primary" style="margin-top: var(--space-sm);">Count Me In</a>
+          {{else}}
+          <p class="text-muted">Details coming soon.</p>
+          {{end}}
         </div>
       </div>
       {{end}}
