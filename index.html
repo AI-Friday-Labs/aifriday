@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Friday — New Orleans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid #1a1a1a;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    nav a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: line-through;
+    }
+
+    /* HEADER / LOGO */
+    header {
+      margin-bottom: 3rem;
+    }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(4rem, 12vw, 7.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.15em;
+    }
+
+    .logo em {
+      font-style: italic;
+    }
+
+    .tagline {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    /* RULE */
+    hr {
+      border: none;
+      border-top: 5px solid #1a1a1a;
+      margin: 2.5rem 0;
+    }
+
+    /* SECTION HEADERS */
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.2rem;
+      background: #d14b2f;
+      color: #f5f0e8;
+      display: inline-block;
+      padding: 0.2em 0.5em;
+    }
+
+    /* BODY TEXT */
+    .body-text {
+      margin-bottom: 2.5rem;
+    }
+
+    .body-text .headline {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .body-text p {
+      margin-bottom: 1.2rem;
+      max-width: 60ch;
+    }
+
+    /* LINKS SECTION */
+    .links {
+      border: 3px solid #1a1a1a;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .links a {
+      display: block;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.6rem 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .links a + a {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .links a span.arrow {
+      color: #d14b2f;
+      margin-left: 0.3em;
+    }
+
+    .links a:hover {
+      color: #d14b2f;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 4rem;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #999;
+    }
+
+    footer span {
+      color: #d14b2f;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .page {
+        padding: 1.2rem 1rem 3rem;
+      }
+
+      nav {
+        margin-bottom: 2rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      hr {
+        margin: 2rem 0;
+      }
+
+      .links {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <nav>
+      <a href="#briefs">Briefs</a>
+    </nav>
+
+    <header>
+      <div class="logo">AI&nbsp;<em>Friday</em></div>
+      <div class="tagline">New Orleans, LA</div>
+    </header>
+
+    <hr>
+
+    <div class="body-text">
+      <div class="section-label">What is this</div>
+      <h1 class="headline">A Friday morning meetup in New&nbsp;Orleans</h1>
+      <p>
+        We get together once a month to show what we're building with AI,
+        help each other get unstuck, and talk about what's new. Some people
+        demo things. Some people ask questions. It's low-key.
+      </p>
+      <p>
+        Mostly startup founders and people who work at startups. You don't
+        need to be technical. You don't need to have something to show. You
+        just need to be curious enough to give up a Friday morning.
+      </p>
+    </div>
+
+    <div class="links">
+      <a href="#slack">Join us on Slack <span class="arrow">&rarr;</span></a>
+      <a href="#brief">Latest Brief <span class="arrow">&rarr;</span></a>
+    </div>
+
+    <footer>
+      <span>&bull;</span> Friday mornings <span>&bull;</span> once a month <span>&bull;</span> New Orleans
+    </footer>
+
+  </div>
+</body>
+</html>

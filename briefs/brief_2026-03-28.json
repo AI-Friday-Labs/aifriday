@@ -1,0 +1,93 @@
+{
+  "date": "Saturday, March 28, 2026",
+  "date_path": "2026/03/28",
+  "lede": "Saturday morning, and the AI world keeps moving. \u003ca href='https://blog.dailydoseofds.com/p/anatomy-of-the-claude-folder'\u003eClaude's mysterious \u003ccode\u003e.claude/\u003c/code\u003e folder\u003c/a\u003e gets a teardown, \u003ca href='https://simonwillison.net/2026/Mar/27/vibe-coding-swiftui/'\u003evibe coding SwiftUI apps\u003c/a\u003e is turning into a legit workflow, and a team used AI to \u003ca href='https://simonwillison.net/2026/Mar/27/vine-porting-jsonata/'\u003erewrite an entire language implementation in a day\u003c/a\u003e. Meanwhile, \u003ca href='https://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/'\u003eLinux kernel maintainers say AI bug reports suddenly got useful\u003c/a\u003e.",
+  "next_date": "",
+  "prev_date": "2026/03/27",
+  "quick_links": [
+    {
+      "note": "Thoughtful take on the gaps between hype and reality",
+      "title": "Some uncomfortable truths about AI coding agents",
+      "url": "https://standupforme.app/blog/some-uncomfortable-truths-about-ai-coding-agents/"
+    },
+    {
+      "note": "Cool but niche — hardware-level AI for particle physics",
+      "title": "CERN uses tiny AI models burned into silicon for real-time LHC data filtering",
+      "url": "https://theopenreader.org/Journalism:CERN_Uses_Tiny_AI_Models_Burned_into_Silicon_for_Real-Time_LHC_Data_Filtering"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "If you've been using Claude's desktop app, you might've noticed a \u003ccode\u003e.claude/\u003c/code\u003e folder appearing in your projects. This breakdown explains what's actually in there — context files, project settings, and how Claude uses them to maintain state across sessions. Useful if you're trying to understand how to work \u003cem\u003ewith\u003c/em\u003e Claude's memory instead of against it. \u003ca href='https://news.ycombinator.com/item?id=47543139'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "Anatomy of the .claude/ folder",
+          "url": "https://blog.dailydoseofds.com/p/anatomy-of-the-claude-folder",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Simon Willison got a new M5 MacBook Pro and decided to build custom Activity Monitor replacements using local LLMs and SwiftUI. The whole post is a nice case study in \"vibe coding\" — using AI to rapidly prototype GUI apps in unfamiliar frameworks. If you've been curious about building native Mac apps but never learned Swift, this is a convincing demo that the barrier is now much lower.",
+          "title": "Vibe coding SwiftUI apps is a lot of fun",
+          "url": "https://simonwillison.net/2026/Mar/27/vibe-coding-swiftui/",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "A team used AI to port JSONata (a JSON query language similar to jq) from JavaScript to Go in about a day, apparently saving half a million in annual costs. The framing is a bit hyperbolic, but it's another data point in the \"vibe porting\" trend — using LLMs to translate entire codebases between languages. The time savings here are wild if the numbers hold up.",
+          "title": "We rewrote JSONata with AI in a day, saved $500K/year",
+          "url": "https://simonwillison.net/2026/Mar/27/vine-porting-jsonata/",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "🛠 Tools \u0026 Workflows"
+    },
+    {
+      "items": [
+        {
+          "body": "Someone built a delightful Animal Crossing–inspired interface for working with Claude's coding agents. It's open source and actually looks fun to use — a reminder that developer tools don't have to be all terminal windows and JSON logs. Worth checking out if you're building anything with AI agents and want inspiration for better UX. \u003ca href='https://news.ycombinator.com/item?id=47545642'\u003eHN thread\u003c/a\u003e.",
+          "title": "Open-source Animal Crossing–style UI for Claude code agents",
+          "url": "https://github.com/outworked/outworked/releases/tag/v0.3.0",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "📦 Releases \u0026 Updates"
+    },
+    {
+      "items": [
+        {
+          "body": "Greg Kroah-Hartman, a Linux kernel maintainer, says AI-generated bug reports suddenly got useful — they went from noise to actually actionable. This is noteworthy because kernel maintainers have famously low tolerance for BS, so if they're saying AI tools crossed a quality threshold, that's a real signal. The article doesn't say which tools made the leap, but it's a useful marker for where we are.",
+          "title": "AI bug reports went from junk to legit overnight, says Linux kernel czar",
+          "url": "https://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Anthropic's Claude slipped below 99% uptime this quarter for the first time. It's a small data point, but worth noting if you're building anything mission-critical on top of it. Reliability is table stakes as these tools move from \"cool demos\" to \"things people depend on.\" \u003ca href='https://news.ycombinator.com/item?id=47543189'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Claude loses its \u003e99% uptime in Q1 2026",
+          "url": "https://bsky.app/profile/teropa.bsky.social/post/3mi2dbt27m226",
+          "via": "Hacker News"
+        },
+        {
+          "body": "STADLER, a manufacturing company founded in 1796, rolled out ChatGPT to 650 employees and is seeing measurable productivity gains. It's a case study, so take it with a grain of salt, but interesting to see a very old-school industrial company betting this hard on AI for knowledge work. The details on how they're actually using it are worth skimming.",
+          "title": "STADLER reshapes knowledge work at a 230-year-old company",
+          "url": "https://openai.com/index/stadler",
+          "via": "OpenAI Blog"
+        }
+      ],
+      "title": "💬 Industry \u0026 Takes"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Saturday, March 28. Today's vibe: AI tools crossing quality thresholds — from bug reports that kernel maintainers actually trust to vibe coding workflows that feel legitimately productive.\n\n---\n\n🛠 *Tools \u0026 Workflows*\n\n• If you've been using Claude's desktop app, \u003chttps://blog.dailydoseofds.com/p/anatomy-of-the-claude-folder|this breakdown of the .claude/ folder\u003e explains what's actually happening under the hood. Useful for understanding how Claude maintains context across sessions.\n\n• Simon Willison got a new M5 MacBook and went full \u003chttps://simonwillison.net/2026/Mar/27/vibe-coding-swiftui/|vibe coding on SwiftUI apps\u003e — building custom Activity Monitor tools with local LLMs. If you've been curious about native Mac apps but never learned Swift, this is a convincing demo that the barrier just dropped.\n\n• A team \u003chttps://simonwillison.net/2026/Mar/27/vine-porting-jsonata/|ported an entire JSON query language from JS to Go in a day\u003e using AI, claiming $500K in annual savings. The framing is hyperbolic but the time savings are wild if the numbers hold.\n\n• Someone built an \u003chttps://github.com/outworked/outworked/releases/tag/v0.3.0|Animal Crossing–style UI for Claude code agents\u003e. It's open source and actually delightful — a good reminder that dev tools don't have to look like terminal windows.\n\n---\n\n💬 *Industry Notes*\n\n• Linux kernel maintainer Greg Kroah-Hartman says \u003chttps://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/|AI bug reports suddenly got useful\u003e — they crossed from noise to actionable overnight. Coming from someone with famously low tolerance for BS, that's a real signal.\n\n• \u003chttps://bsky.app/profile/teropa.bsky.social/post/3mi2dbt27m226|Claude dropped below 99% uptime in Q1\u003e for the first time. Small data point, but reliability matters as these tools move from demos to dependencies.\n\n• \u003chttps://openai.com/index/stadler|STADLER, a 230-year-old manufacturing company\u003e, rolled out ChatGPT to 650 employees and is seeing productivity gains. Interesting to see old-school industrial companies betting this hard on AI for knowledge work.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/blog"
+    }
+  ]
+}

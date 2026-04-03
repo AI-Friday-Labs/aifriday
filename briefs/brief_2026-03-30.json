@@ -1,0 +1,104 @@
+{
+  "date": "Monday, March 30, 2026",
+  "date_path": "2026/03/30",
+  "lede": "Monday morning brings a reality check on AI coding tools: \u003ca href='https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/'\u003eGitHub Copilot is now injecting ads into pull requests\u003c/a\u003e, and \u003ca href='https://github.com/anthropics/claude-code/issues/40710'\u003eClaude Code has a bug that nukes your repo every 10 minutes\u003c/a\u003e. On the more practical side, Simon Willison released a \u003ca href='https://simonwillison.net/2026/Mar/29/python-vulnerability-lookup/#atom-everything'\u003ePython vulnerability lookup tool\u003c/a\u003e, and there's an interesting essay on \u003ca href='https://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/'\u003ehow coding agents might revive free software\u003c/a\u003e.",
+  "next_date": "",
+  "prev_date": "2026/03/29",
+  "quick_links": [
+    {
+      "note": "Partnership with Gates Foundation",
+      "title": "OpenAI workshop on AI for disaster response in Asia",
+      "url": "https://openai.com/index/helping-disaster-response-teams-asia"
+    },
+    {
+      "note": "Technical deep-dive",
+      "title": "What if AI doesn't need more RAM but better math?",
+      "url": "https://adlrocha.substack.com/p/adlrocha-what-if-ai-doesnt-need-more"
+    },
+    {
+      "note": "Analysis of what the leaked docs revealed",
+      "title": "Anthropic Mythos leak: 3k files exposed",
+      "url": "https://medium.com/ai-advances/anthropic-claude-mythos-leak-analysis-b77c1b304eb8"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "A developer discovered GitHub Copilot's autocomplete suggestions now include \u003cstrong\u003epromotional content for Microsoft Azure services\u003c/strong\u003e embedded directly into code suggestions. The ad appeared as a comment block suggesting Azure deployment options—not exactly what you want when you're trying to focus on writing code. \u003ca href='https://news.ycombinator.com/item?id=47570269'\u003ePopular discussion on HN\u003c/a\u003e with developers debating whether this crosses a line.",
+          "title": "Copilot edited an ad into my PR",
+          "url": "https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Users discovered that Claude Code runs \u003ccode\u003egit reset --hard origin/main\u003c/code\u003e against your project repo \u003cstrong\u003eevery 10 minutes\u003c/strong\u003e, wiping out any uncommitted work. This is the kind of bug that makes you want to back up everything before trying new AI coding tools. Anthropic hasn't commented publicly yet, but the GitHub issue is getting a lot of attention.",
+          "title": "Claude Code has a devastating bug",
+          "url": "https://github.com/anthropics/claude-code/issues/40710",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A developer reverse-engineered ChatGPT's Cloudflare security system and found it \u003cstrong\u003eblocks typing until it reads your React application state\u003c/strong\u003e. The piece breaks down how OpenAI is using increasingly aggressive bot detection that can feel intrusive even for legitimate users. Interesting read if you're curious about the arms race between AI services and scrapers.",
+          "title": "ChatGPT's aggressive anti-bot measures",
+          "url": "https://www.buchodi.com/chatgpt-wont-let-you-type-until-cloudflare-reads-your-react-state-i-decrypted-the-program-that-does-it/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "⚠️ Growing Pains"
+    },
+    {
+      "items": [
+        {
+          "body": "Simon Willison built a simple HTML tool that checks Python dependencies for known vulnerabilities using the OSV.dev API. Paste in your \u003ccode\u003erequirements.txt\u003c/code\u003e or \u003ccode\u003epyproject.toml\u003c/code\u003e (or just a GitHub repo URL) and get an instant security report. No installation needed—it's just a single HTML file that runs in your browser.",
+          "title": "Python Vulnerability Lookup",
+          "url": "https://simonwillison.net/2026/Mar/29/python-vulnerability-lookup/#atom-everything",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "An open-source tool that detects AI web scrapers and \u003cstrong\u003efeeds them an infinite stream of garbage data\u003c/strong\u003e to waste their resources. It's like a honeypot specifically designed to mess with bots training on web content. Probably more useful as a form of protest than actual protection, but it's a creative approach to the scraping problem.",
+          "title": "Miasma: Trap AI scrapers in an endless poison pit",
+          "url": "https://github.com/austin-weeks/miasma",
+          "via": "Hacker News"
+        },
+        {
+          "body": "New browser library from ex-React core developer Cheng Lou that calculates the height of line-wrapped text \u003cstrong\u003ewithout actually rendering it to the DOM\u003c/strong\u003e. This solves a common performance problem in UI work where you need layout calculations before paint. Smart approach to a problem that usually requires expensive DOM manipulation.",
+          "title": "Pretext: Calculate text layout without touching the DOM",
+          "url": "https://simonwillison.net/2026/Mar/29/pretext/#atom-everything",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "🛠️ Tools Worth Trying"
+    },
+    {
+      "items": [
+        {
+          "body": "Thoughtful essay arguing that AI coding agents might shift the balance back toward open-source software. The idea: if an agent can quickly adapt any codebase to your needs, the \u003cstrong\u003efreedom to modify becomes more valuable than polish\u003c/strong\u003e. Whether you buy the thesis or not, it's an interesting lens on how AI tools might reshape software economics.",
+          "title": "Coding agents could make free software matter again",
+          "url": "https://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A lighthearted but genuinely informative test of whether various AI coding assistants can figure out how to exit Vim. Spoiler: results are mixed. It's a fun read that also touches on the broader question of whether these tools actually understand context or just pattern-match.",
+          "title": "Can AI Exit Vim?",
+          "url": "https://theadamcolton.github.io/can-ai-exit-vim",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "💭 Worth Reading"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Monday, March 30, 2026. Today's vibe: AI coding tools are showing their rough edges.\n\n---\n\n⚠️ *Growing Pains*\n\n• The big yikes: \u003chttps://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/|GitHub Copilot is now injecting ads into pull requests\u003e. A developer found promotional content for Azure services embedded in code suggestions. Not exactly what you want when you're trying to focus. \u003chttps://news.ycombinator.com/item?id=47570269|Popular discussion on HN\u003e.\n\n• Even worse: \u003chttps://github.com/anthropics/claude-code/issues/40710|Claude Code has a bug that runs `git reset --hard` every 10 minutes\u003e, wiping out uncommitted work. This is the kind of thing that makes you want to back up everything before trying new AI tools.\n\n• And ChatGPT is getting aggressive with bot detection—\u003chttps://www.buchodi.com/chatgpt-wont-let-you-type-until-cloudflare-reads-your-react-state-i-decrypted-the-program-that-does-it/|it won't let you type until Cloudflare reads your React state\u003e. Interesting reverse-engineering breakdown of the security measures.\n\n---\n\n🛠️ *Tools Worth Trying*\n\n• Simon Willison built a \u003chttps://simonwillison.net/2026/Mar/29/python-vulnerability-lookup/#atom-everything|Python vulnerability lookup tool\u003e that checks your dependencies against the OSV.dev database. Paste in your requirements.txt or a GitHub repo URL, get instant security reports. No install needed—just HTML.\n\n• \u003chttps://github.com/austin-weeks/miasma|Miasma\u003e is a new open-source tool that traps AI scrapers in an endless stream of garbage data. More protest than protection, but creative.\n\n• \u003chttps://simonwillison.net/2026/Mar/29/pretext/#atom-everything|Pretext\u003e is a browser library from ex-React core dev Cheng Lou that calculates text layout without touching the DOM. Solves a common performance problem in UI work.\n\n---\n\n💭 *Worth Reading*\n\n• Interesting essay on \u003chttps://www.gjlondon.com/blog/ai-agents-could-make-free-software-matter-again/|how coding agents might make free software matter again\u003e. The thesis: if agents can quickly adapt any codebase, the freedom to modify becomes more valuable than polish.\n\n• Lighthearted but informative: \u003chttps://theadamcolton.github.io/can-ai-exit-vim|Can AI exit Vim?\u003e Tests whether coding assistants can figure out the classic problem.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison's Blog",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/blog"
+    }
+  ]
+}

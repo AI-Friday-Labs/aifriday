@@ -1,0 +1,230 @@
+{
+  "date": "Thursday, April 2, 2026",
+  "date_path": "2026/04/02",
+  "lede": "The big story today: \u003ca href='https://ccunpacked.dev/'\u003eClaude Code's entire source code leaked\u003c/a\u003e through a misconfigured file, and the internet had a field day reverse-engineering Anthropic's plans. \u003ca href='https://build.ms/2026/4/1/the-claude-code-leak/'\u003eAnalysis pieces\u003c/a\u003e and \u003ca href='https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/'\u003edetailed breakdowns\u003c/a\u003e reveal what's coming: persistent agents, stealth mode, and even a virtual pet named Buddy. Meanwhile, \u003ca href='https://www.theverge.com/tech/905021/elgato-stream-deck-mcp-ai-agent-update'\u003eElgato added AI control to Stream Deck\u003c/a\u003e, \u003ca href='https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/'\u003egig workers are training humanoid robots from home\u003c/a\u003e, and \u003ca href='https://www.theverge.com/ai-artificial-intelligence/905012/baidu-apollo-robotaxi-freeze-china'\u003eBaidu's robotaxis froze in traffic\u003c/a\u003e, trapping passengers.",
+  "next_date": "",
+  "prev_date": "2026/04/01",
+  "quick_links": [
+    {
+      "note": "New model release from Hugging Face",
+      "title": "Holo3: Breaking the Computer Use Frontier",
+      "url": "https://huggingface.co/blog/Hcompany/holo3"
+    },
+    {
+      "note": "Another model release",
+      "title": "Falcon Perception",
+      "url": "https://huggingface.co/blog/tiiuae/falcon-perception"
+    },
+    {
+      "note": "AI-powered deforestation monitoring",
+      "title": "Google partnered with Brazil on satellite imagery to protect forests",
+      "url": "https://blog.google/products-and-platforms/products/earth/satellite-imagery-brazilian-deforestation/"
+    },
+    {
+      "note": "Monthly roundup",
+      "title": "Google's AI updates from March 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-march-2026/"
+    },
+    {
+      "note": "Company culture shift",
+      "title": "Zapier now requires AI fluency for every hire",
+      "url": "https://link.mail.beehiiv.com/ss/c/u001.rwlZotN_cVe3uelKKhm10O5fEPffmNCYicYqJRJwytBL8d-4lh2fVHJIOPG93HpPhB1XpR3RUXE70BA9uR02TwO2GQ2cxdaWg_sIJ04Gic21pvWlS-ilWBmqUUwY33gJjuZR4VhWhLpNqfRb5S6m-VWa6K898fLuv9HF9mqgkDrqcOueViWH-8fjA-frCo4PvLuCYt8oLrZwQoYSV0ojPZ7uaapqiHNOLeS0cTxbUFQn0kitX8orO7obUr-p4e7XtdQCHQj3cSVQ01OJdKv0qXYiPuyXqjmOrcMz8reg-tvudIvhP18iCodhMxvAmpcmIWYo5L9qthV55gandxB65Q/4pf/G5UPHIxDQL66_g4yLG4QKA/h41/h001.KFNG5lmmwc__idSrS-nysjiHLQ-BwQl-lmgL58BHVlY"
+    },
+    {
+      "note": "Layoffs in tech",
+      "title": "Oracle is cutting thousands of jobs",
+      "url": "https://link.mail.beehiiv.com/ss/c/u001.26HABC69RFxgG0sCL9wUtSB9nUp4bbwtEbPSk5LuJc2T6v9D4qnl4XA-9I0otLYdyLBO2z2P4Wgk-J8jSKiRa3bXMbCjhdGANFX0FVwynRTrXDrHTz873UwhbXkh8W_a59TohxQ_Gvqcs0gC4xxaXIXCd4l4cS57tv3X9CyTkvlHnLkIs5CYJFGyaOrpiwGwn9P70NyzzpSPLnFusArJCDHf81vkjFgAau-BRQNzKJ-FUnOdPUz1_cD11DMxVDZX4AwQm0io-441DFtL9l_WcHVCGUcPBM5_iq2UYMm8leYPLQ5PlTQKZ7h0oh4h5QRNYbEcHUqVlCpV6qLJsOU5SA/4pf/G5UPHIxDQL66_g4yLG4QKA/h42/h001.iYU_4XxjRjHwJgHX6gMzAM0A5Aw-_scggh1x8-mKO2Q"
+    },
+    {
+      "note": "Security implications",
+      "title": "AI can deobfuscate any minified JavaScript code",
+      "url": "https://www.afterpack.dev/blog/claude-code-source-leak"
+    },
+    {
+      "note": "Community backlash",
+      "title": "r/programming bans all LLM programming discussion",
+      "url": "https://old.reddit.com/r/programming/comments/1s9jkzi/announcement_temporary_llm_content_ban/"
+    },
+    {
+      "note": "Market shift",
+      "title": "OpenAI demand sinks on secondary market as Anthropic runs hot",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-01/openai-demand-sinks-on-secondary-market-as-anthropic-runs-hot"
+    },
+    {
+      "note": "End of an era",
+      "title": "ZomboCom stolen by hacker, now has AI-generated makeover",
+      "url": "https://old.reddit.com/r/oldinternet/comments/1raiz8v/zombocom_was_stolen_by_hacker_put_up_for_sale_and/"
+    },
+    {
+      "note": "Agentic engineering patterns, streaming experts with MoE on Mac",
+      "title": "Simon Willison's March 2026 sponsors-only newsletter",
+      "url": "https://simonwillison.net/2026/Apr/2/march-newsletter/"
+    },
+    {
+      "note": "Model config improvements",
+      "title": "Datasette-LLM 0.1a6 released",
+      "url": "https://simonwillison.net/2026/Apr/1/datasette-llm-2/"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "When Anthropic accidentally exposed Claude Code's source via a misconfigured .map file, the community jumped on it. This interactive visual guide breaks down what was found inside — including plans for persistent agents, an \"Undercover\" stealth mode, and a virtual assistant pet called Buddy. If you want to understand what Anthropic is building, this is the best place to start. \u003ca href='https://news.ycombinator.com/item?id=47597085'\u003ePopular discussion on Hacker News\u003c/a\u003e.",
+          "title": "Claude Code Unpacked: A Visual Guide to the Leak",
+          "url": "https://ccunpacked.dev/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Ars Technica's deep-dive into the leak covers the roadmap features hidden in the code: a persistent agent that can run autonomously, stealth mode for undercover operations, and integration plans that go way beyond coding. The article also explores what this means for the AI coding assistant race. Worth reading alongside \u003ca href='https://build.ms/2026/4/1/the-claude-code-leak/'\u003ethis analysis from Build.ms\u003c/a\u003e for the full picture.",
+          "title": "What the Claude Code Leak Reveals About Anthropic's Plans",
+          "url": "https://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/",
+          "via": "Ars Technica"
+        },
+        {
+          "body": "In their rush to contain the leak, Anthropic filed DMCA takedowns that nuked thousands of GitHub repos — including many that had nothing to do with the leak. The company says it was an accident and retracted most of the notices, but it's a reminder that automated takedown tools can cause serious collateral damage. The internet was not amused.",
+          "title": "Anthropic's Accidental GitHub Takedown Spree",
+          "url": "https://techcrunch.com/2026/04/01/anthropic-took-down-thousands-of-github-repos-trying-to-yank-its-leaked-source-code-a-move-the-company-says-was-an-accident/",
+          "via": "TechCrunch"
+        }
+      ],
+      "title": "The Claude Code Leak"
+    },
+    {
+      "items": [
+        {
+          "body": "With all the Claude Code buzz, someone built a real-time monitoring dashboard for teams of AI coding agents. Track what your agents are doing, see their collaboration patterns, and debug when things go sideways. Open source and ready to try if you're running multi-agent workflows. \u003ca href='https://news.ycombinator.com/item?id=47602986'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "Real-Time Dashboard for Claude Code Agent Teams",
+          "url": "https://github.com/simple10/agents-observe",
+          "via": "Hacker News"
+        },
+        {
+          "body": "In a delightful piece of minimalist engineering, someone took Claude Code's core loop and rewrote it as a bash script. No TypeScript, no npm dependencies, just shell scripting and API calls. It's a fun reminder that a lot of \"AI agents\" are really just loops with good prompts. \u003ca href='https://news.ycombinator.com/item?id=47594804'\u003eHN thread\u003c/a\u003e.",
+          "title": "Claude Code Rewritten as a Bash Script",
+          "url": "https://github.com/jdcodes1/claude-sh",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A security researcher used Claude to write a complete remote kernel exploit for FreeBSD, including a root shell. The write-up walks through the process and what it means for security research — AI tools are now capable of writing sophisticated exploits with guidance. This is both impressive and slightly terrifying. \u003ca href='https://news.ycombinator.com/item?id=47597119'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Claude Wrote a Full FreeBSD Kernel Exploit",
+          "url": "https://github.com/califio/publications/blob/main/MADBugs/CVE-2026-4747/write-up.md",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Things People Built"
+    },
+    {
+      "items": [
+        {
+          "body": "Elgato's Stream Deck 7.4 update adds Model Context Protocol support, which means you can now let Claude or ChatGPT control your Stream Deck buttons instead of pushing them yourself. Want your AI assistant to switch scenes during a stream or trigger shortcuts? Now you can. It's a small feature, but it shows how MCP is quietly becoming the glue between AI and everything else.",
+          "title": "Stream Deck Now Lets AI Push Your Buttons",
+          "url": "https://www.theverge.com/tech/905021/elgato-stream-deck-mcp-ai-agent-update",
+          "via": "The Verge"
+        },
+        {
+          "body": "MIT Tech Review profiles the growing gig economy of people who strap iPhones to their heads, record themselves doing everyday tasks, and get paid to train humanoid robots. It's oddly dystopian and fascinating — like Mechanical Turk, but for teaching robots how to move like humans. The data they're creating will power the next generation of home robots.",
+          "title": "Gig Workers Are Training Humanoid Robots at Home",
+          "url": "https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/",
+          "via": "MIT Technology Review"
+        },
+        {
+          "body": "Multiple Baidu robotaxis in Wuhan froze mid-route on Tuesday, stranding passengers on highways and causing at least one accident in the chaos. Police confirmed multiple reports. This is the kind of failure mode that makes people nervous about autonomous vehicles — when software freezes, you can't just reboot and keep driving. Baidu hasn't commented yet on what caused the mass failure.",
+          "title": "Baidu's Robotaxis Froze in Traffic, Trapping Passengers",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/905012/baidu-apollo-robotaxi-freeze-china",
+          "via": "The Verge"
+        }
+      ],
+      "title": "AI in the Wild"
+    },
+    {
+      "items": [
+        {
+          "body": "Cognichip just raised $60M to build AI tools that design the chips powering AI. The company claims it can cut chip development costs by 75% and timelines by more than half. If it works, it could accelerate the hardware side of AI development significantly. The meta-loop of AI designing AI chips is here.",
+          "title": "Cognichip Raises $60M to Use AI for Chip Design",
+          "url": "https://techcrunch.com/2026/04/01/cognichip-wants-ai-to-design-the-chips-that-power-ai-and-just-raised-60m-to-try/",
+          "via": "TechCrunch"
+        },
+        {
+          "body": "Meta's upcoming Hyperion AI data center will be powered by 10 new natural gas plants. For context, that's enough energy to power the entire state of South Dakota. The scale of energy infrastructure being built for AI is staggering, and it's raising serious questions about sustainability and carbon impact.",
+          "title": "Meta's Natural Gas Binge Could Power South Dakota",
+          "url": "https://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/",
+          "via": "TechCrunch"
+        }
+      ],
+      "title": "Big Moves \u0026 Money"
+    },
+    {
+      "items": [
+        {
+          "body": "A practical guide to writing better prompts, written for people who actually use AI tools day-to-day — not researchers. Covers structure, context, and common pitfalls with examples you can steal. If you're still treating AI like a search engine, this will level you up. \u003ca href='https://news.ycombinator.com/item?id=47594816'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Prompt Engineering for Humans",
+          "url": "https://michaelheap.com/prompt-engineering-for-humans/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Forbes compiled a list of all the OpenAI deals and products that were announced but never shipped or quietly died. It's a longer list than you'd think — including partnerships, features, and entire product lines that vanished without explanation. A useful reminder that even the biggest AI companies ship less than they promise.",
+          "title": "The OpenAI Graveyard Keeps Growing",
+          "url": "https://www.forbes.com/sites/phoebeliu/2026/03/31/openai-graveyard-deals-and-products-havent-happened-openai/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Reads \u0026 Resources"
+    },
+    {
+      "items": [
+        {
+          "body": "The \u003cstrong\u003eAI for Humans\u003c/strong\u003e podcast breaks down the Claude Code leak and what it reveals about where AI agents are heading — always-on autonomy, dream modes, and yes, virtual pets. Kevin and Gavin do a good job connecting the technical details to what it means for regular people using these tools.",
+          "title": "The Claude Code Leak: What It Tells Us About AI's Future",
+          "url": "https://www.aiforhumans.show/",
+          "via": "AI for Humans"
+        },
+        {
+          "body": "a16z's \u003cstrong\u003eAI podcast\u003c/strong\u003e talks to Peter Doyle, CEO of Treeline, about how AI is changing the managed service provider industry. The conversation covers how they're combining human technicians with AI automation, and why the $100B MSP market is ripe for disruption.",
+          "title": "How AI Is Reshaping IT Services from the Inside",
+          "url": "https://ai-a16z.simplecast.com/episodes/how-ai-is-reshaping-it-services-from-the-inside-6zsGh8Aa",
+          "via": "a16z AI"
+        }
+      ],
+      "title": "Worth a Listen"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Thursday, April 2, 2026. Today's vibe: Anthropic accidentally showed us the future, and the internet took notes.\n\n---\n\n🔓 *The Leak Heard 'Round the Valley*\n\n• The big one: \u003chttps://ccunpacked.dev/|Claude Code's entire source leaked\u003e through a misconfigured file, and it's a goldmine. We're talking persistent agents, stealth \"Undercover\" mode, and a virtual pet named Buddy. \u003chttps://arstechnica.com/ai/2026/04/heres-what-that-claude-code-source-leak-reveals-about-anthropics-plans/|This Ars breakdown\u003e and \u003chttps://build.ms/2026/4/1/the-claude-code-leak/|this analysis\u003e are both worth your time.\n\n• In their panic to contain it, \u003chttps://techcrunch.com/2026/04/01/anthropic-took-down-thousands-of-github-repos-trying-to-yank-its-leaked-source-code-a-move-the-company-says-was-an-accident/|Anthropic nuked thousands of GitHub repos\u003e with automated DMCA notices. They say it was an accident. The collateral damage was real.\n\n• People are already building on it: Someone made a \u003chttps://github.com/simple10/agents-observe|real-time dashboard for Claude Code agent teams\u003e, and another person \u003chttps://github.com/jdcodes1/claude-sh|rewrote the whole thing as a bash script\u003e. The open source community works fast.\n\n---\n\n🤖 *AI in the Real World*\n\n• \u003chttps://www.theverge.com/tech/905021/elgato-stream-deck-mcp-ai-agent-update|Elgato Stream Deck now lets AI push your buttons\u003e. The 7.4 update adds Model Context Protocol support, so Claude or ChatGPT can control your Stream Deck for you. It's a small thing, but MCP is quietly becoming the glue between AI and everything else.\n\n• Fascinating read from MIT Tech Review: \u003chttps://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/|Gig workers are training humanoid robots at home\u003e by strapping iPhones to their heads and recording everyday tasks. The data they're creating will power the next generation of home robots.\n\n• Not great: \u003chttps://www.theverge.com/ai-artificial-intelligence/905012/baidu-apollo-robotaxi-freeze-china|Baidu's robotaxis froze in traffic in Wuhan\u003e, trapping passengers on highways and causing at least one accident. When autonomous vehicles fail, they fail in scary ways.\n\n---\n\n💰 *Money Moves*\n\n• \u003chttps://techcrunch.com/2026/04/01/cognichip-wants-ai-to-design-the-chips-that-power-ai-and-just-raised-60m-to-try/|Cognichip raised $60M\u003e to use AI to design the chips that power AI. They claim 75% cost reduction and half the timeline. The meta-loop is real.\n\n• Meanwhile, \u003chttps://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/|Meta's new AI data center\u003e will be powered by 10 new natural gas plants — enough energy to power South Dakota. The scale of AI infrastructure is wild.\n\n---\n\n📚 *Worth Reading*\n\n• \u003chttps://michaelheap.com/prompt-engineering-for-humans/|Prompt Engineering for Humans\u003e is a practical guide to writing better prompts, written for people who use AI tools daily, not researchers. Good examples you can steal.\n\n• \u003chttps://www.forbes.com/sites/phoebeliu/2026/03/31/openai-graveyard-deals-and-products-havent-happened-openai/|Forbes compiled the OpenAI graveyard\u003e — all the deals and products that were announced but never shipped. It's a longer list than you'd think.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/category/artificial-intelligence/"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com/ai/"
+    },
+    {
+      "name": "MIT Technology Review",
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "The Neuron",
+      "url": "https://www.theneurondaily.com"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/"
+    }
+  ]
+}

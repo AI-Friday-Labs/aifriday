@@ -1,0 +1,122 @@
+{
+  "date": "Wednesday, April 1, 2026",
+  "date_path": "2026/04/01",
+  "lede": "Today's a wild one: \u003ca href='https://twitter.com/Fried_rice/status/2038894956459290963'\u003eClaude Code's source code leaked\u003c/a\u003e via an NPM packaging mistake, revealing everything from fake tools to \"frustration regexes.\" Meanwhile, \u003ca href='https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/'\u003eGitHub killed their Copilot PR ads\u003c/a\u003e after serious backlash, and \u003ca href='https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html'\u003eOpenAI closed a massive $122B funding round\u003c/a\u003e at an $852B valuation. Also: \u003ca href='https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/'\u003eGoogle's Veo 3.1 Lite\u003c/a\u003e is now available for devs, and \u003ca href='https://prismml.com/'\u003ethe first commercially viable 1-bit LLMs\u003c/a\u003e just dropped.",
+  "next_date": "",
+  "prev_date": "2026/03/31",
+  "quick_links": [
+    {
+      "note": "Someone used Claude to find and exploit CVE-2026-4747",
+      "title": "Claude wrote a full FreeBSD kernel exploit with root shell",
+      "url": "https://github.com/califio/publications/blob/main/MADBugs/CVE-2026-4747/write-up.md"
+    },
+    {
+      "note": "Config file to make Claude more token-efficient",
+      "title": "Universal Claude.md to cut Claude output tokens",
+      "url": "https://github.com/drona23/claude-token-efficient"
+    },
+    {
+      "note": "101M weekly downloads affected, good writeup from Simon",
+      "title": "Supply chain attack on Axios pulls malicious dependency from NPM",
+      "url": "https://simonwillison.net/2026/Mar/31/supply-chain-attack-on-axios/#atom-everything"
+    },
+    {
+      "note": "Compact multimodal model for enterprise use",
+      "title": "IBM Granite 4.0 3B Vision released",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-4-vision"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "Anthropic accidentally shipped a source map in their NPM package that revealed the full Claude Code codebase. The leak shows everything from how they handle tool calls to internal debugging features like \"undercover mode\" and regex patterns for detecting user frustration. \u003ca href='https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/'\u003eThis deep-dive writeup\u003c/a\u003e and \u003ca href='https://ccunpacked.dev/'\u003ethis visual guide\u003c/a\u003e break down what's inside. It's a rare peek under the hood of a production AI coding assistant. \u003ca href='https://news.ycombinator.com/item?id=47584540'\u003eBig discussion on HN\u003c/a\u003e.",
+          "title": "Claude Code's source code leaked via NPM map file",
+          "url": "https://twitter.com/Fried_rice/status/2038894956459290963",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Turns out there are some gnarly bugs in Claude Code that can silently 10-20x your API costs and burn through usage limits. The community is \u003ca href='https://old.reddit.com/r/ClaudeCode/comments/1s7mitf/psa_claude_code_has_two_cache_bugs_that_can'\u003etracking cache bugs\u003c/a\u003e that are causing the problem. If you're using Claude Code heavily, worth checking your usage patterns.",
+          "title": "Claude Code users hitting usage limits way faster than expected",
+          "url": "https://www.theregister.com/2026/03/31/anthropic_claude_code_limits/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "🔍 The Big Leak"
+    },
+    {
+      "items": [
+        {
+          "body": "OpenAI just raised $122 billion in new funding to expand frontier AI globally, invest in next-generation compute infrastructure, and meet growing demand for ChatGPT, Codex, and enterprise AI products. The round values the company at $852 billion. That's a staggering number that signals where institutional money thinks AI is heading. \u003ca href='https://news.ycombinator.com/item?id=47592755'\u003eHN discussion here\u003c/a\u003e.",
+          "title": "OpenAI closes $122B funding round at $852B valuation",
+          "url": "https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html",
+          "via": "Hacker News"
+        },
+        {
+          "body": "GitHub tried injecting ads into Copilot pull request suggestions and the developer community \u003cem\u003ehated\u003c/em\u003e it. After significant pushback, they're backing down and removing the feature. Good reminder that even Microsoft isn't immune to missteps when it comes to developer tools. \u003ca href='https://news.ycombinator.com/item?id=47582984'\u003eThe HN thread\u003c/a\u003e has some spicy takes.",
+          "title": "GitHub kills Copilot PR ads after backlash",
+          "url": "https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "💰 Big Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "Veo 3.1 Lite is now available in paid preview through the Gemini API and Google AI Studio. This is Google's answer to making video generation accessible for developers who want to prototype without breaking the bank. If you've been curious about generated video in your app, this lowers the barrier significantly.",
+          "title": "Google launches Veo 3.1 Lite, their most cost-effective video generation model",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/",
+          "via": "Google AI Blog"
+        },
+        {
+          "body": "Prism ML just released 1-Bit Bonsai models — these are large language models that use 1-bit weights (think extreme compression) while staying commercially viable. The practical upshot: you can run bigger models on smaller hardware. Early days, but this could be a real unlock for edge deployment. \u003ca href='https://news.ycombinator.com/item?id=47593422'\u003eShow HN discussion\u003c/a\u003e.",
+          "title": "1-Bit Bonsai: The first commercially viable 1-bit LLMs",
+          "url": "https://prismml.com/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "The Technology Innovation Institute released Falcon Perception, a compact multimodal model designed specifically for understanding enterprise documents. If you're building anything that needs to parse invoices, contracts, or other business docs, this is worth checking out.",
+          "title": "Falcon Perception: TII's new multimodal model for enterprise documents",
+          "url": "https://huggingface.co/blog/tiiuae/falcon-perception",
+          "via": "Hugging Face Blog"
+        }
+      ],
+      "title": "🛠️ Tools \u0026 Releases"
+    },
+    {
+      "items": [
+        {
+          "body": "Microsoft's Copilot terms of use now include language saying it's \"for entertainment purposes only.\" That's... quite a hedge for a tool marketed as a productivity assistant. \u003ca href='https://news.ycombinator.com/item?id=47587866'\u003eHN is having a field day with this one\u003c/a\u003e.",
+          "title": "Microsoft quietly updates Copilot terms: \"for entertainment purposes only\"",
+          "url": "https://www.microsoft.com/en-us/microsoft-copilot/for-individuals/termsofuse",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "⚠️ Also Watching"
+    }
+  ],
+  "slack_text": "🌞 Good morning, NOLA! Wednesday, April 1, 2026. Today's vibe: absolute chaos in the best way — major leaks, bigger funding rounds, and some genuinely useful new tools.\n\n---\n\n🔍 *The Big Leak*\n\n• The story everyone's talking about: \u003chttps://twitter.com/Fried_rice/status/2038894956459290963|Claude Code's entire source code leaked\u003e via an NPM packaging mistake. Turns out they have \"frustration regexes\" and a secret \"undercover mode.\" \u003chttps://alex000kim.com/posts/2026-03-31-claude-code-source-leak/|This deep-dive\u003e and \u003chttps://ccunpacked.dev/|this visual guide\u003e are both worth your time.\n\n• Meanwhile, \u003chttps://www.theregister.com/2026/03/31/anthropic_claude_code_limits/|Claude Code users are hitting usage limits way faster than expected\u003e. There are some nasty cache bugs that can 10-20x your API costs silently. Check your usage if you're a heavy user.\n\n---\n\n💰 *Big Moves*\n\n• OpenAI just closed a \u003chttps://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html|$122B funding round at an $852B valuation\u003e. That's not a typo. The money's going toward frontier AI, compute infrastructure, and meeting ChatGPT/Codex demand.\n\n• GitHub tried putting ads in Copilot pull requests and developers revolted. \u003chttps://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/|They're backing down and killing the feature\u003e. Score one for the community.\n\n---\n\n🛠️ *Tools \u0026 Releases*\n\n• Google dropped \u003chttps://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/|Veo 3.1 Lite\u003e — their most cost-effective video generation model yet. Available now in the Gemini API and AI Studio. If you've been wanting to prototype with generated video, barrier just got lower.\n\n• \u003chttps://prismml.com/|1-Bit Bonsai just launched\u003e — the first commercially viable 1-bit LLMs (think extreme model compression). Practical upshot: run bigger models on smaller hardware.\n\n• TII released \u003chttps://huggingface.co/blog/tiiuae/falcon-perception|Falcon Perception\u003e, a compact multimodal model built specifically for enterprise documents. Good for invoices, contracts, that kind of thing.\n\n---\n\n⚠️ *Also Watching*\n\n• Microsoft quietly updated Copilot's terms to say it's \u003chttps://www.microsoft.com/en-us/microsoft-copilot/for-individuals/termsofuse|\"for entertainment purposes only.\"\u003e That's quite a hedge for a productivity tool.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/blog"
+    }
+  ]
+}

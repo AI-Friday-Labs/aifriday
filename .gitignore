@@ -7,6 +7,11 @@ db.sqlite3
 db.sqlite3-shm
 db.sqlite3-wal
 *.db
+*.db-shm
+*.db-wal
+__pycache__/
+/brief
+/slacklinks
 /output_rewritten.html
 /rewritten-brief.html
 /rewritten_brief_*.html

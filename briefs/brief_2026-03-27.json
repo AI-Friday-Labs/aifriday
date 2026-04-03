@@ -1,0 +1,104 @@
+{
+  "date": "Friday, March 27, 2026",
+  "date_path": "2026/03/27",
+  "lede": "Good morning! Google just dropped \u003ca href='https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/'\u003eGemini 3.1 Flash Live\u003c/a\u003e with more natural audio AI, and they're rolling out \u003ca href='https://blog.google/products-and-platforms/products/search/search-live-global-expansion/'\u003eSearch Live globally\u003c/a\u003e. Meanwhile, someone built \u003ca href='https://github.com/itigges22/ATLAS'\u003ea $500 GPU setup that beats Claude Sonnet on coding benchmarks\u003c/a\u003e, and a team \u003ca href='https://www.reco.ai/blog/we-rewrote-jsonata-with-ai'\u003eused AI to rewrite JSONata in a day\u003c/a\u003e and claims $500k/year in savings. Plus a clever \u003ca href='https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/'\u003eAI agent running on a $7/month VPS using IRC\u003c/a\u003e.",
+  "next_date": "",
+  "prev_date": "2026/03/26",
+  "quick_links": [
+    {
+      "note": "Essay on using oracles to validate LLM-generated code",
+      "title": "Taming LLMs: Using executable checks to prevent bad code",
+      "url": "https://john.regehr.org/writing/zero_dof_programming.html"
+    },
+    {
+      "note": "Interactive essay on how model quantization works",
+      "title": "Quantization explained from the ground up",
+      "url": "https://simonwillison.net/2026/Mar/26/quantization-from-the-ground-up/"
+    },
+    {
+      "note": "Latest episode of Google's Dialogues series",
+      "title": "LL COOL J. and James Manyika discuss AI and creativity",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/ll-cool-j-dialogues/"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "Google's new Gemini 3.1 Flash Live is now available across Google products, promising more natural and reliable audio interactions. This is Google's push to make voice-based AI feel less robotic and more conversational. If you've been frustrated with clunky voice AI, this might be worth testing.",
+          "title": "Gemini 3.1 Flash Live makes audio AI more natural",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/",
+          "via": "Google AI Blog"
+        },
+        {
+          "body": "Google's Search Live feature is now available in all languages and locations where AI Mode is available. This is the conversational search interface that lets you ask follow-up questions naturally. Big accessibility win for non-English speakers.",
+          "title": "Search Live expanding globally",
+          "url": "https://blog.google/products-and-platforms/products/search/search-live-global-expansion/",
+          "via": "Google AI Blog"
+        },
+        {
+          "body": "Google Translate's live translation feature for headphones is officially on iOS now, and expanding to more countries on both platforms. Pop in your earbuds and get real-time translation of conversations around you. Practical for travel or multilingual meetings.",
+          "title": "Live translation in your headphones comes to iOS",
+          "url": "https://blog.google/products-and-platforms/products/translate/live-translate-with-headphones/",
+          "via": "Google AI Blog"
+        }
+      ],
+      "title": "🚀 Big Releases"
+    },
+    {
+      "items": [
+        {
+          "body": "Someone claims their $500 GPU setup beats Claude Sonnet on coding tasks. The GitHub repo is called ATLAS, though details are light. If true, this is a big deal for anyone who wants to run powerful coding assistance locally without subscriptions. \u003ca href='https://news.ycombinator.com/item?id=47533297'\u003eLots of skepticism and questions on HN\u003c/a\u003e about methodology, so take with a grain of salt until more testing.",
+          "title": "$500 GPU outperforms Claude Sonnet on coding benchmarks",
+          "url": "https://github.com/itigges22/ATLAS",
+          "via": "Hacker News"
+        },
+        {
+          "body": "This is legitimately clever: someone built an AI agent that lives on a cheap VPS and uses IRC (yes, the chat protocol from the '90s) as its communication layer. It's a great example of using old, reliable protocols for new AI workflows. The writeup walks through the whole architecture and why IRC actually makes sense here.",
+          "title": "AI agent on a $7/month VPS using IRC as transport",
+          "url": "https://georgelarson.me/writing/2026-03-23-nullclaw-doorman/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A new TypeScript library for extracting structured data from websites using LLMs. If you've been scraping sites and wrestling with brittle selectors, this takes a different approach by letting the model figure out what to extract. Worth a look if you're building anything that needs to pull data from varied web sources.",
+          "title": "Robust LLM extractor for websites in TypeScript",
+          "url": "https://github.com/lightfeed/extractor",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "🛠️ Things People Built"
+    },
+    {
+      "items": [
+        {
+          "body": "A team at Reco used AI to port JSONata (a JSON query language) from JavaScript to Go in a single day, claiming it saves them $500k annually in infrastructure costs. This is another case study in \"vibe porting\" — using AI to rewrite code in a different language without fully understanding every detail. \u003ca href='https://simonwillison.net/2026/Mar/27/vine-porting-jsonata/'\u003eSimon Willison has good context\u003c/a\u003e on what makes this interesting beyond the clickbait framing.",
+          "title": "Team rewrote JSONata with AI in a day, claims $500k/year savings",
+          "url": "https://www.reco.ai/blog/we-rewrote-jsonata-with-ai",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Callum McMahon shares his minute-by-minute response to discovering malware in the LiteLLM Python package, including the Claude transcripts he used to confirm the vulnerability and decide what to do. It's a fascinating look at using AI as a thinking partner during a security incident. Claude even suggested the right PyPI security contact.",
+          "title": "Responding to a supply chain attack with Claude's help",
+          "url": "https://simonwillison.net/2026/Mar/26/response-to-the-litellm-malware-attack/",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "💼 How Teams Are Using AI"
+    }
+  ],
+  "slack_text": "🌞 Good morning, NOLA! Friday, March 27, 2026. Today's vibe: Google's shipping product updates while builders are getting creative with cheap infrastructure.\n\n---\n\n🚀 *Big Releases*\n\n• \u003chttps://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/|Gemini 3.1 Flash Live\u003e just dropped with more natural audio AI. Google's pushing to make voice interactions feel less robotic — now available across their products.\n\n• \u003chttps://blog.google/products-and-platforms/products/search/search-live-global-expansion/|Search Live is going global\u003e, expanding to all languages where AI Mode works. Conversational search for everyone.\n\n• \u003chttps://blog.google/products-and-platforms/products/translate/live-translate-with-headphones/|Live translation in your headphones\u003e is officially on iOS now. Pop in your earbuds and get real-time translation.\n\n---\n\n🛠️ *Things People Built*\n\n• Someone claims their \u003chttps://github.com/itigges22/ATLAS|$500 GPU setup beats Claude Sonnet on coding\u003e. The HN thread is full of healthy skepticism about methodology, but if even half-true, this is interesting for local development.\n\n• This is clever: \u003chttps://georgelarson.me/writing/2026-03-23-nullclaw-doorman/|an AI agent running on a $7/month VPS using IRC\u003e as its transport layer. Sometimes the old protocols are the best protocols.\n\n• New \u003chttps://github.com/lightfeed/extractor|TypeScript library for extracting data from websites\u003e using LLMs. If you're tired of brittle CSS selectors, this takes a different approach.\n\n---\n\n💼 *How Teams Are Using AI*\n\n• Reco claims they \u003chttps://www.reco.ai/blog/we-rewrote-jsonata-with-ai|used AI to rewrite JSONata in a day\u003e and saved $500k/year in infrastructure costs. Hyperbolic framing aside, it's another solid case study in \"vibe porting\" code between languages.\n\n• Great writeup: \u003chttps://simonwillison.net/2026/Mar/26/response-to-the-litellm-malware-attack/|responding to a supply chain attack with Claude's help\u003e. Minute-by-minute transcript of using AI as a thinking partner during a security incident.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google"
+    }
+  ]
+}

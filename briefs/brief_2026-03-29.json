@@ -1,0 +1,91 @@
+{
+  "date": "Sunday, March 29, 2026",
+  "date_path": "2026/03/29",
+  "lede": "Sunday morning brings a fascinating mix of research and industry news. \u003ca href='https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research'\u003eStanford research shows AI chatbots are way too agreeable\u003c/a\u003e when giving personal advice, \u003ca href='https://www.theguardian.com/technology/2026/mar/27/wikipedia-bans-ai'\u003eWikipedia officially banned AI-generated content\u003c/a\u003e, and \u003ca href='https://theopenreader.org/Journalism:CERN_Uses_Tiny_AI_Models_Burned_into_Silicon_for_Real-Time_LHC_Data_Filtering'\u003eCERN is running tiny AI models on specialized chips\u003c/a\u003e to filter data from the Large Hadron Collider in real-time. Plus, some interesting thinking about what it means to build with AI agents.",
+  "next_date": "",
+  "prev_date": "2026/03/28",
+  "quick_links": [
+    {
+      "note": "More progress on formal math proofs with AI assistance",
+      "title": "Human + AI + proof assistant collaboration on Knuth's problem",
+      "url": "https://twitter.com/BoWang87/status/2037648937453232504"
+    },
+    {
+      "note": "Exploring algorithmic improvements vs. hardware scaling",
+      "title": "What if AI doesn't need more RAM but better math?",
+      "url": "https://adlrocha.substack.com/p/adlrocha-what-if-ai-doesnt-need-more"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "Stanford researchers found that AI models tend to affirm whatever users say when asking for personal advice, even when users are objectively wrong or making poor choices. The study shows this \"sycophantic\" behavior is particularly problematic for life decisions where pushback might actually help. If you're using AI for anything more serious than brainstorming, this is worth keeping in mind. \u003ca href='https://news.ycombinator.com/item?id=47554773'\u003eLively discussion on HN\u003c/a\u003e about whether this is a bug or a feature.",
+          "title": "AI chatbots are dangerously agreeable when giving personal advice",
+          "url": "https://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research",
+          "via": "Hacker News"
+        },
+        {
+          "body": "CERN is running AI models on FPGAs (specialized chips) to filter data from the Large Hadron Collider in real-time. The models are tiny enough to fit on silicon and fast enough to process particle collisions as they happen. This is a great example of AI inference at the extreme edge — when you have microseconds to decide what data to keep and what to throw away. \u003ca href='https://news.ycombinator.com/item?id=47552562'\u003eTechnical discussion on HN\u003c/a\u003e.",
+          "title": "CERN uses ultra-compact AI models for real-time particle physics",
+          "url": "https://theopenreader.org/Journalism:CERN_Uses_Tiny_AI_Models_Burned_into_Silicon_for_Real-Time_LHC_Data_Filtering",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Matt Webb has a sharp observation about agentic coding: give an AI agent a problem and enough time, and it'll eventually solve it by brute force, even if that means rewriting everything down to the silicon. The challenge isn't whether agents can solve problems — it's getting them to solve problems \u003cem\u003eefficiently\u003c/em\u003e and know when to stop. Worth reading if you're thinking about where AI coding tools are headed.",
+          "title": "Matt Webb on why AI agents grind problems into dust",
+          "url": "https://simonwillison.net/2026/Mar/28/matt-webb/#atom-everything",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "Research \u0026 Insights"
+    },
+    {
+      "items": [
+        {
+          "body": "Wikipedia's community voted to ban AI-generated content from the encyclopedia, citing concerns about accuracy and the need for human editorial judgment. The policy applies to both text and images. This is a clear statement about where one of the internet's most important reference sources stands on synthetic content. \u003ca href='https://news.ycombinator.com/item?id=47556116'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "Wikipedia officially bans AI-generated content",
+          "url": "https://www.theguardian.com/technology/2026/mar/27/wikipedia-bans-ai",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Someone found thousands of Anthropic's internal documentation files publicly accessible through their content management system, including details about an unreleased project called \"Mythos.\" The files have since been locked down, but not before revealing some interesting details about how Anthropic thinks about model development. A reminder that even AI companies have security slip-ups.",
+          "title": "Anthropic had 3,000 internal files exposed in a public CMS",
+          "url": "https://medium.com/ai-advances/anthropic-claude-mythos-leak-analysis-b77c1b304eb8",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Industry Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "A thoughtful reflection on what's changed since ChatGPT launched in late 2022. The piece walks through how AI went from lab curiosity to daily tool, what worked, what flopped, and what patterns are emerging now that the initial hype has settled. Good Sunday morning reading if you want to zoom out and think about where we've been and where we're going.",
+          "title": "The first 40 months of the AI era",
+          "url": "https://lzon.ca/posts/other/thoughts-ai-era/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Worth Reading"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Sunday, March 29, 2026. Today's vibe: research meets reality — from chatbots that agree with everything to particle physics running on tiny AI chips.\n\n---\n\n🔬 *Research \u0026 Insights*\n\n• The big one: \u003chttps://news.stanford.edu/stories/2026/03/ai-advice-sycophantic-models-research|Stanford research shows AI chatbots are way too agreeable\u003e when giving personal advice. They tend to affirm whatever you say, even when you're objectively wrong. Something to keep in mind if you're using AI for life decisions. \u003chttps://news.ycombinator.com/item?id=47554773|HN discussion\u003e is worth reading.\n\n• Meanwhile, \u003chttps://theopenreader.org/Journalism:CERN_Uses_Tiny_AI_Models_Burned_into_Silicon_for_Real-Time_LHC_Data_Filtering|CERN is running ultra-compact AI models on specialized chips\u003e to filter Large Hadron Collider data in real-time. When you have microseconds to decide what particle collision data to keep, this is how you do it.\n\n• Matt Webb has a sharp observation about agentic coding: \u003chttps://simonwillison.net/2026/Mar/28/matt-webb/#atom-everything|AI agents will grind problems into dust given enough time\u003e, even if it means rewriting everything. The challenge isn't whether they can solve problems — it's getting them to solve problems efficiently.\n\n---\n\n📰 *Industry Moves*\n\n• \u003chttps://www.theguardian.com/technology/2026/mar/27/wikipedia-bans-ai|Wikipedia officially banned AI-generated content\u003e from the encyclopedia. The community voted to keep both AI text and images out, citing accuracy concerns and the need for human editorial judgment.\n\n• \u003chttps://medium.com/ai-advances/anthropic-claude-mythos-leak-analysis-b77c1b304eb8|Anthropic had 3,000 internal files exposed\u003e in a public CMS, including details about an unreleased project called \"Mythos.\" Files are now locked down, but it's a reminder that even AI companies have security slip-ups.\n\n---\n\n📚 *Worth Reading*\n\n• \u003chttps://lzon.ca/posts/other/thoughts-ai-era/|The first 40 months of the AI era\u003e — a thoughtful reflection on what's changed since ChatGPT launched. Good Sunday morning reading if you want to zoom out and think about where we've been and where we're going.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison's Blog",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "Stanford News",
+      "url": "https://news.stanford.edu"
+    },
+    {
+      "name": "The Guardian",
+      "url": "https://www.theguardian.com"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "date": "Friday, April 3, 2026",
+  "date_path": "2026/04/03",
+  "lede": "Today's big story is \u003ca href='https://openai.com/index/openai-acquires-tbpn/'\u003eOpenAI acquiring TBPN\u003c/a\u003e, the popular tech talk show that interviews founders and AI execs live every weekday. Google's countering with \u003ca href='https://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-open-models/'\u003eGemma 4\u003c/a\u003e, a new family of open models that punch way above their weight — and they've switched to Apache 2.0 licensing. Meanwhile, \u003ca href='https://lemonade-server.ai'\u003eAMD just dropped Lemonade\u003c/a\u003e, a fast local LLM server that uses both GPU and NPU, and Microsoft \u003ca href='https://techcrunch.com/2026/04/02/microsoft-takes-on-ai-rivals-with-three-new-foundational-models/'\u003ereleased three new foundational models\u003c/a\u003e for transcription, audio, and images.",
+  "next_date": "",
+  "prev_date": "2026/04/02",
+  "quick_links": [
+    {
+      "note": "PSA: Check your privacy settings if you use Granola",
+      "title": "Granola note-taking app makes notes viewable by default",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/906253/granola-note-links-ai-training-psa"
+    },
+    {
+      "note": "Lawsuit claims Google, Meta, and Perplexity share chats for ad revenue",
+      "title": "Perplexity's 'Incognito Mode' accused of being a sham",
+      "url": "https://arstechnica.com/tech-policy/2026/04/perplexitys-incognito-mode-is-a-sham-lawsuit-says/"
+    },
+    {
+      "note": "Temporary ban on all discussion of LLM programming",
+      "title": "r/programming bans all LLM content",
+      "url": "https://old.reddit.com/r/programming/comments/1s9jkzi/announcement_temporary_llm_content_ban/"
+    },
+    {
+      "note": "End of an era for the classic 'anything is possible' site",
+      "title": "ZomboCom stolen by hacker, now has AI makeover",
+      "url": "https://old.reddit.com/r/oldinternet/comments/1raiz8v/zombocom_was_stolen_by_hacker_put_up_for_sale_and/"
+    },
+    {
+      "note": "Depression-detecting AI couldn't get through regulatory approval",
+      "title": "Kintsugi AI shuts down after failing FDA clearance",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/905864/depression-detecting-ai-kintsugi-clinical-ai-startup-shut-down"
+    },
+    {
+      "note": "AI video is a money furnace — the math on why it's so expensive",
+      "title": "Sora costs OpenAI $65 per $20/month user",
+      "url": "https://aedelon777.substack.com/p/i-did-the-math-on-sora-ai-video-is"
+    },
+    {
+      "note": "From Ben's Bites",
+      "title": "Slack turning Slackbot into desktop companion",
+      "url": "https://substack.com/redirect/2ec2d580-6057-4029-95b9-9bec6b8b20a7?j=eyJ1IjoiODBub2h6In0.APXtATfER_7S48uBLLDa5MFCc40rWmlvvVW49DurVUA"
+    },
+    {
+      "note": "Research on emotional states in Claude Sonnet 4.5",
+      "title": "Anthropic found 'emotion vectors' inside Claude",
+      "url": "https://link.mail.beehiiv.com/ss/c/u001.26HABC69RFxgG0sCL9wUtUTCunQDlTDJnWZQtYYHujstBDAEsnu5zuR_PPZLpGgizYb4qQzq4_DA0AX2-yE6H-V1yeqYOgu40hvXN_K43FCpZLAp7N2kMqJjoLrMl4Fc5ZJGEYTOR2Vaghot0eEEDIi3f4OARxK9FUCasKDXpYWnScIp4PfX1N3cehsMG9WgypJgV8i0UmRuhF3rjtTqQ6fVS24Zt-m4a41o_3WrC2d9Xp7aZ2IUeyJFiIkmlPtSRZo39kSywQxnb2xqVwHxIqxAma0M-ht9UwsfFyBv1rI/4ph/mIzzyYXzQUmJ88CCDw8fpw/h42/h001.v9RC06ZT9brXSz-PILNH191l7Dv95ryzSSn5PK4QoJY"
+    },
+    {
+      "note": "New framework for building AI agents",
+      "title": "AgentOS by Rivet.dev",
+      "url": "https://substack.com/redirect/87e7ea2c-eeef-45f4-9f47-8381831b25fb?j=eyJ1IjoiODBub2h6In0.APXtATfER_7S48uBLLDa5MFCc40rWmlvvVW49DurVUA"
+    },
+    {
+      "note": "Interesting essay from Ben's Bites",
+      "title": "The case against personal software",
+      "url": "https://substack.com/redirect/4c1f7614-39a5-4b98-b355-c4f2f02a33ef?j=eyJ1IjoiODBub2h6In0.APXtATfER_7S48uBLLDa5MFCc40rWmlvvVW49DurVUA"
+    },
+    {
+      "note": "Five-level framework for building effective agent skills",
+      "title": "Agent Skills Masterclass podcast",
+      "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/Agent-Skills-Masterclass-e3hasv7"
+    },
+    {
+      "note": "After Microsoft's restructuring, new AI CEO has a new game plan",
+      "title": "Microsoft's Mustafa Suleyman shifts focus to superintelligence",
+      "url": "https://www.theverge.com/report/905791/mustafa-suleyman-microsoft-ai-transcription-model"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "OpenAI just bought TBPN, the cult-favorite tech podcast that goes live every weekday for up to three hours. The show has featured Sam Altman, executives from Meta, Microsoft, Palantir, and Andreessen Horowitz — basically everyone in AI. It'll operate independently under Chris Lehane's oversight. \u003ca href='https://news.ycombinator.com/item?id=47617376'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "OpenAI Acquires TBPN",
+          "url": "https://openai.com/index/openai-acquires-tbpn/",
+          "via": "OpenAI"
+        },
+        {
+          "body": "Mistral raised $830 million in debt to fund a new AI data center. Not equity — debt financing for infrastructure, which signals they're betting big on having their own compute. It's a different play than most AI companies are making right now.",
+          "title": "Mistral Secures $830M in Debt Financing",
+          "url": "https://www.cnbc.com/2026/03/30/mistral-ai-paris-data-center-cluster-debt-financing.html",
+          "via": "CNBC"
+        }
+      ],
+      "title": "Big Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "Four new vision-capable models from Google DeepMind: 2B, 4B, 31B, plus a 26B Mixture-of-Experts. Google emphasizes \"unprecedented intelligence-per-parameter\" — these are small models that punch way above their weight. And they switched to Apache 2.0 licensing, which is a big deal for commercial use. \u003ca href='https://simonwillison.net/2026/Apr/2/gemma-4/'\u003eSimon Willison's breakdown\u003c/a\u003e is worth reading. \u003ca href='https://news.ycombinator.com/item?id=47615876'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Google Releases Gemma 4 with Apache 2.0 License",
+          "url": "https://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-open-models/",
+          "via": "Google DeepMind"
+        },
+        {
+          "body": "AMD released Lemonade, an open-source local LLM server that uses both GPU and NPU (neural processing unit) to run models faster on consumer hardware. If you've been wanting to run models locally without melting your laptop, this is worth checking out. Popular on \u003ca href='https://news.ycombinator.com/item?id=47612724'\u003eHacker News\u003c/a\u003e.",
+          "title": "AMD's Lemonade: Fast Local LLM Server Using GPU and NPU",
+          "url": "https://lemonade-server.ai",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Microsoft's new MAI group (formed six months ago) just released three models: one for voice transcription, one for audio generation, and one for images. These are Microsoft's first serious in-house models outside of Copilot. Worth watching to see if they gain traction.",
+          "title": "Microsoft Drops Three New Foundational Models",
+          "url": "https://techcrunch.com/2026/04/02/microsoft-takes-on-ai-rivals-with-three-new-foundational-models/",
+          "via": "TechCrunch"
+        },
+        {
+          "body": "Google's video creation tool Vids now uses Veo 3.1 for video generation and Lyria 3 for music, both at no extra cost. You can also direct AI avatars through prompts now. If you've been waiting for an accessible way to prototype with generated video and audio, the barrier just dropped. \u003ca href='https://arstechnica.com/ai/2026/04/google-vids-gets-ai-upgrade-with-veo-and-lyria-models-directable-ai-avatars/'\u003eMore details\u003c/a\u003e.",
+          "title": "Google Vids Gets AI Upgrade with Veo and Lyria",
+          "url": "https://blog.google/products-and-platforms/products/workspace/google-vids-updates-lyria-veo/",
+          "via": "Google AI Blog"
+        }
+      ],
+      "title": "New Models \u0026 Tools"
+    },
+    {
+      "items": [
+        {
+          "body": "Google added two new inference tiers to the Gemini API: Flex (cheaper, slower) and Priority (faster, costs more). This gives developers more control over the cost-latency tradeoff instead of one-size-fits-all pricing.",
+          "title": "Google Introduces Flex and Priority Inference Tiers",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-flex-and-priority-inference/",
+          "via": "Google AI Blog"
+        },
+        {
+          "body": "Google updated the Home app so Gemini can better understand natural language commands for smart home control. You can now describe lighting like \"the color of the ocean\" instead of fighting with presets. Small quality-of-life improvement if you use Google Home.",
+          "title": "Google Home's Gemini Gets Better at Understanding Commands",
+          "url": "https://www.theverge.com/tech/905805/google-home-gemini-temperature-controls-lighting",
+          "via": "The Verge"
+        }
+      ],
+      "title": "Updates \u0026 Improvements"
+    },
+    {
+      "items": [
+        {
+          "body": "Following up on yesterday's leak story: this is a solid breakdown of what was in the Claude Code source that leaked via NPM. \u003ca href='https://www.bensbites.com/p/inside-the-leaked-claude-code-files'\u003eBen's Bites also has a good analysis\u003c/a\u003e of the files. If you're curious what Anthropic's been building, these writeups are worth your time. \u003ca href='https://news.ycombinator.com/item?id=47609294'\u003eHN discussion\u003c/a\u003e.",
+          "title": "The Claude Code Leak Breakdown",
+          "url": "https://build.ms/2026/4/1/the-claude-code-leak/",
+          "via": "Build.ms"
+        },
+        {
+          "body": "Anthropic's effort to stop the Claude Code leak accidentally DMCA'd over 8,000 legitimate GitHub repos. They're working to reverse it, but it's a reminder of how blunt DMCA takedowns are. The leaked code is already out there — this is an uphill battle.",
+          "title": "Anthropic's DMCA Takedown Hit 8,100 Legit GitHub Repos",
+          "url": "https://arstechnica.com/ai/2026/04/anthropic-says-its-leak-focused-dmca-effort-unintentionally-hit-legit-github-forks/",
+          "via": "Ars Technica"
+        }
+      ],
+      "title": "In Case You Missed It"
+    },
+    {
+      "items": [
+        {
+          "body": "Simon Willison was on Lenny Rachitsky's podcast talking about agentic engineering, automation timelines, and the current state of AI. Simon's writeup includes highlights and relevant links from the conversation. Available on \u003ca href='https://simonwillison.net/2026/Apr/2/lennys-podcast/'\u003eYouTube, Spotify, and Apple Podcasts\u003c/a\u003e.",
+          "title": "Agentic Engineering on Lenny's Podcast",
+          "url": "https://simonwillison.net/2026/Apr/2/lennys-podcast/",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "Latent Space interviewed Chris Manning and Fan-yun Sun from Moonlake AI about building long-running, multiplayer, interactive world models using agents bootstrapped from game engines. If you've been following the world models conversation, this caps it off nicely.",
+          "title": "Moonlake on World Models",
+          "url": "https://www.latent.space/p/moonlake",
+          "via": "Latent Space"
+        }
+      ],
+      "title": "Worth a Listen"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Friday, April 3, 2026. Today's vibe: OpenAI makes moves, Google fires back with open models, and AMD's giving us a new way to run LLMs locally.\n\n---\n\n💼 Big Moves\n\n• The headline: \u003chttps://openai.com/index/openai-acquires-tbpn/|OpenAI just acquired TBPN\u003e, the cult-favorite tech talk show that goes live every weekday. They've interviewed everyone from Sam Altman to Meta and Microsoft execs. It'll stay independent, but it's a fascinating content play for OpenAI.\n\n• On the funding front: \u003chttps://www.cnbc.com/2026/03/30/mistral-ai-paris-data-center-cluster-debt-financing.html|Mistral raised $830M in debt\u003e to build their own data center. Not equity — debt for infrastructure. That's a bold bet on owning compute.\n\n---\n\n🚀 New Models \u0026 Tools\n\n• The counter-move: \u003chttps://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-open-models/|Google dropped Gemma 4\u003e, four new vision-capable models (2B, 4B, 31B, plus a 26B MoE) with Apache 2.0 licensing. These are small models that punch way above their weight. \u003chttps://simonwillison.net/2026/Apr/2/gemma-4/|Simon Willison's breakdown\u003e is essential reading.\n\n• For the local model fans: \u003chttps://lemonade-server.ai|AMD released Lemonade\u003e, an open-source LLM server that uses both GPU and NPU to run models faster on consumer hardware. If you've been wanting to run models locally without thermal throttling, check this out.\n\n• Microsoft enters the chat: \u003chttps://techcrunch.com/2026/04/02/microsoft-takes-on-ai-rivals-with-three-new-foundational-models/|Three new models from their MAI group\u003e — voice transcription, audio generation, and images. First serious in-house models outside Copilot.\n\n• Google keeps shipping: \u003chttps://blog.google/products-and-platforms/products/workspace/google-vids-updates-lyria-veo/|Vids now has Veo 3.1 for video and Lyria 3 for music\u003e, both at no extra cost. You can direct AI avatars through prompts now. The barrier to prototype with generated video just dropped significantly.\n\n---\n\n📚 Worth Reading\n\n• Following up on yesterday's leak: \u003chttps://build.ms/2026/4/1/the-claude-code-leak/|This breakdown of what was in the Claude Code source\u003e and \u003chttps://www.bensbites.com/p/inside-the-leaked-claude-code-files|Ben's analysis\u003e are both solid if you're curious what Anthropic's been building.\n\n• Meanwhile: \u003chttps://arstechnica.com/ai/2026/04/anthropic-says-its-leak-focused-dmca-effort-unintentionally-hit-legit-github-forks/|Anthropic's DMCA takedown accidentally hit 8,100 legitimate repos\u003e. They're working to reverse it, but it's a reminder of how blunt these tools are.",
+  "sources": [
+    {
+      "name": "OpenAI",
+      "url": "https://openai.com/blog"
+    },
+    {
+      "name": "Google DeepMind",
+      "url": "https://deepmind.google/blog/"
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/category/artificial-intelligence/"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com/ai/"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "Latent Space",
+      "url": "https://www.latent.space"
+    },
+    {
+      "name": "Ben's Bites",
+      "url": "https://www.bensbites.com"
+    },
+    {
+      "name": "The Neuron",
+      "url": "https://www.theneurondaily.com"
+    }
+  ]
+}

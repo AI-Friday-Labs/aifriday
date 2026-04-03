@@ -1,0 +1,96 @@
+{
+  "date": "Tuesday, March 31, 2026",
+  "date_path": "2026/03/31",
+  "lede": "Today's a wild one. \u003ca href='https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/'\u003eGitHub Copilot started injecting ads into pull requests\u003c/a\u003e, then \u003ca href='https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/'\u003ebacked down after major backlash\u003c/a\u003e. Meanwhile, \u003ca href='https://www.wsj.com/tech/ai/the-sudden-fall-of-openais-most-hyped-product-since-chatgpt-64c730c9'\u003eSora is apparently struggling\u003c/a\u003e, and someone built \u003ca href='https://simonwillison.net/2026/Mar/30/mr-chatterbox/#atom-everything'\u003ea language model trained entirely on Victorian-era books\u003c/a\u003e. Plus a helpful tool to \u003ca href='https://github.com/drona23/claude-token-efficient'\u003ecut Claude's output tokens\u003c/a\u003e and an interactive way to \u003ca href='https://claude.nagdy.me/'\u003elearn Claude Code by doing\u003c/a\u003e.",
+  "next_date": "",
+  "prev_date": "2026/03/30",
+  "quick_links": [
+    {
+      "note": "Security oops from Anthropic",
+      "title": "Claude Code's source code leaked via NPM map file",
+      "url": "https://twitter.com/Fried_rice/status/2038894956459290963"
+    },
+    {
+      "note": "PSA if you're using Claude Code heavily",
+      "title": "Claude Code cache bug can 10-20x your API costs",
+      "url": "https://old.reddit.com/r/ClaudeCode/comments/1s7mitf/psa_claude_code_has_two_cache_bugs_that_can"
+    },
+    {
+      "note": "Hallucination research for vision models",
+      "title": "Stanford study: AI vision models invent images they never see",
+      "url": "https://arxiv.org/abs/2603.21687"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "Developers discovered that GitHub Copilot was editing promotional content directly into their pull request suggestions. The backlash was swift and loud — within hours, \u003ca href='https://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/'\u003eGitHub killed the feature\u003c/a\u003e. It's a good reminder that even big tech companies can misread the room spectacularly. \u003ca href='https://news.ycombinator.com/item?id=47570269'\u003ePopular discussion on HN\u003c/a\u003e.",
+          "title": "GitHub Copilot injected ads into pull requests, then reversed course",
+          "url": "https://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "WSJ reports that OpenAI's video generation tool isn't finding traction despite being first to market. Turns out being early doesn't guarantee success when competitors catch up fast. Worth reading if you're thinking about product strategy in fast-moving AI markets.",
+          "title": "Sora's struggling after a year on the market",
+          "url": "https://www.wsj.com/tech/ai/the-sudden-fall-of-openais-most-hyped-product-since-chatgpt-64c730c9",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "🔥 Big Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "This GitHub repo provides a reusable configuration file that makes Claude's responses more concise and token-efficient. Drop it in your project and Claude will be less chatty by default. Simple but useful if you're burning through API credits. \u003ca href='https://news.ycombinator.com/item?id=47581701'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "Cut Claude's output tokens with a universal claude.md file",
+          "url": "https://github.com/drona23/claude-token-efficient",
+          "via": "Hacker News"
+        },
+        {
+          "body": "An interactive learning site that teaches you Claude Code through hands-on exercises. If you've been meaning to try Claude's coding features but don't want to wade through docs, this is a good starting point. \u003ca href='https://news.ycombinator.com/item?id=47579229'\u003eHN discussion here\u003c/a\u003e.",
+          "title": "Learn Claude Code by doing, not reading",
+          "url": "https://claude.nagdy.me/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Trip Venturella built a language model using only out-of-copyright books from the British Library — over 28,000 Victorian texts. It's not going to replace GPT-4, but it's a fascinating experiment in what you can train without modern data. You can run it locally with Simon's \u003ca href='https://simonwillison.net/2026/Mar/30/llm-mrchatterbox-2/#atom-everything'\u003ellm-mrchatterbox plugin\u003c/a\u003e.",
+          "title": "Mr. Chatterbox: A language model trained entirely on Victorian-era text",
+          "url": "https://simonwillison.net/2026/Mar/30/mr-chatterbox/#atom-everything",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "🛠️ Tools \u0026 Releases"
+    },
+    {
+      "items": [
+        {
+          "body": "A developer used an AI agent to convert a hand-drawn sketch into a fully functional 3D-printed pegboard for their kid. The repo shows the whole workflow. It's a nice example of using AI for practical, one-off design tasks. \u003ca href='https://news.ycombinator.com/item?id=47580910'\u003eShow HN discussion\u003c/a\u003e.",
+          "title": "Turn a sketch into a 3D-printable pegboard with an AI agent",
+          "url": "https://github.com/virpo/pegboard",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "🎨 Things People Built"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Tuesday, March 31, 2026. Today's vibe: chaos and course corrections.\n\n---\n\n🔥 *Big Moves*\n\n• GitHub really stepped in it: \u003chttps://notes.zachmanson.com/copilot-edited-an-ad-into-my-pr/|Copilot started injecting ads into pull requests\u003e, then \u003chttps://www.theregister.com/2026/03/30/github_copilot_ads_pull_requests/|quickly reversed course\u003e after developers lost their minds. Even big tech companies can completely misread the room.\n\n• Meanwhile, \u003chttps://www.wsj.com/tech/ai/the-sudden-fall-of-openais-most-hyped-product-since-chatgpt-64c730c9|WSJ reports Sora is struggling\u003e a year after launch. First-mover advantage doesn't mean much when the competition catches up fast.\n\n---\n\n🛠️ *Tools Worth Trying*\n\n• If you're burning through Claude tokens, check out \u003chttps://github.com/drona23/claude-token-efficient|this universal claude.md file\u003e that makes responses more concise by default. Simple config, real savings.\n\n• Want to learn Claude Code? \u003chttps://claude.nagdy.me/|This interactive site\u003e teaches you through hands-on exercises instead of docs. Much better way to learn.\n\n• This is delightful: \u003chttps://simonwillison.net/2026/Mar/30/mr-chatterbox/#atom-everything|Mr. Chatterbox is a language model\u003e trained entirely on Victorian-era books from the British Library. You can run it locally. It's not powerful, but it's a cool experiment.\n\n---\n\n🎨 *Things People Built*\n\n• Someone used an AI agent to \u003chttps://github.com/virpo/pegboard|turn a sketch into a 3D-printed pegboard\u003e for their kid. The whole workflow is in the repo — nice example of using AI for practical, one-off design tasks.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "The Register",
+      "url": "https://www.theregister.com"
+    },
+    {
+      "name": "WSJ",
+      "url": "https://www.wsj.com"
+    }
+  ]
+}
