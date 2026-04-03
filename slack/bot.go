@@ -315,3 +315,48 @@ func (b *Bot) PostDailyBrief(date, briefText string) error {
 	)
 	return err
 }
+
+// PostRSVPNotification sends an RSVP notification to the given channel.
+func (b *Bot) PostRSVPNotification(channel string, meetingNumber int, meetingShort string, name, email string, newsletterOptIn bool, isUpdate bool, responses map[string]string) error {
+	label := "New RSVP"
+	emoji := "📋"
+	if isUpdate {
+		label = "Updated RSVP"
+		emoji = "🔄"
+	}
+
+	var sb strings.Builder
+	fmt.Fprintf(&sb, "%s %s — Meeting #%d (%s)\n\n", emoji, label, meetingNumber, meetingShort)
+	fmt.Fprintf(&sb, "Name: %s\n", name)
+	fmt.Fprintf(&sb, "Email: %s\n", email)
+	if newsletterOptIn {
+		sb.WriteString("Newsletter: ✅\n")
+	}
+
+	type field struct {
+		key   string
+		emoji string
+		label string
+	}
+	fields := []field{
+		{"learn_or_discuss", "💬", "Learn/discuss"},
+		{"demo_built", "🎪", "Demo something built"},
+		{"demo_tool", "🛠️", "Demo a tool"},
+	}
+	hasAny := false
+	for _, f := range fields {
+		if v, ok := responses[f.key]; ok && strings.TrimSpace(v) != "" {
+			if !hasAny {
+				sb.WriteString("\n")
+				hasAny = true
+			}
+			fmt.Fprintf(&sb, "%s %s: \"%s\"\n", f.emoji, f.label, v)
+		}
+	}
+
+	_, _, err := b.API.PostMessage(channel,
+		slack.MsgOptionText(sb.String(), false),
+		slack.MsgOptionDisableLinkUnfurl(),
+	)
+	return err
+}
