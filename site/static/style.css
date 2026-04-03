@@ -1020,49 +1020,8 @@ blockquote {
 }
 
 /* --- RSVP Form ----------------------------------------------------------- */
-.rsvp-meeting-info {
-  margin-bottom: var(--space-xl);
-}
-
-.meeting-time {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: var(--space-xs);
-}
-
-.meeting-location {
-  font-size: var(--text-body);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-}
-
-.meeting-vibe {
-  font-size: var(--text-body);
-  color: var(--muted);
-  font-style: italic;
-}
-
 .rsvp-form-section {
-  margin-bottom: var(--space-xl);
-}
-
-.rsvp-form-section h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  font-weight: 700;
-  margin-bottom: var(--space-md);
-}
-
-.rsvp-form-section h3 {
-  font-family: var(--font-body);
-  font-size: var(--text-small);
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-md);
+  padding: var(--space-lg) 0 var(--space-xl);
 }
 
 .rsvp-form {
@@ -1102,13 +1061,14 @@ blockquote {
   border-color: var(--accent);
 }
 
-.rsvp-field input::placeholder {
+.rsvp-field input::placeholder,
+.rsvp-field textarea::placeholder {
   color: var(--muted);
 }
 
 .rsvp-field textarea {
   resize: vertical;
-  min-height: 48px;
+  min-height: 44px;
 }
 
 .rsvp-hint {
@@ -1116,11 +1076,10 @@ blockquote {
   font-size: var(--text-small);
   color: var(--muted);
   margin-top: 2px;
-  margin-bottom: var(--space-xs);
 }
 
 .rsvp-checkbox {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .rsvp-checkbox label {
@@ -1138,10 +1097,15 @@ blockquote {
   accent-color: var(--accent);
 }
 
-.rsvp-divider {
-  border: none;
+.rsvp-section-label {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-sm);
   border-top: 1px solid var(--line);
-  margin: var(--space-md) 0;
 }
 
 .rsvp-rotating-hint {

@@ -39,109 +39,100 @@
       </div>
     </nav>
 
+    {{if .IsPast}}
     <section class="intro-section">
       <h1 class="page-title">AI Friday #{{.Number}}</h1>
       <p class="intro-text text-muted">{{.Date}}</p>
     </section>
 
-    {{if .IsPast}}
-      <!-- Past meeting: show recap -->
-      <section class="meeting-recap">
-        {{.RecapHTML}}
-      </section>
+    <section class="meeting-recap">
+      {{.RecapHTML}}
+    </section>
 
     {{else if .RSVPSubmitted}}
-      <!-- Confirmation -->
-      {{if .HasDetails}}
-      <section class="rsvp-meeting-info">
-        <p class="meeting-time">{{.Start}} – {{.End}}</p>
-        <p class="meeting-location">{{.Location}}</p>
-      </section>
+    <section class="intro-section">
+      <h1 class="page-title">AI Friday #{{.Number}}</h1>
+      <p class="intro-text text-muted">{{.Date}}{{if .HasDetails}} &middot; {{.Start}} &ndash; {{.End}}{{end}}</p>
+      {{if .HasDetails}}<p class="intro-text text-muted">{{.Location}}</p>{{end}}
+    </section>
+
+    <section class="rsvp-confirmation">
+      {{if .IsUpdate}}
+      <h2>Updated!</h2>
+      <p>We&rsquo;ve sent a fresh calendar invite to your email.</p>
+      {{else}}
+      <h2>You&rsquo;re in!</h2>
+      <p>Check your email for a calendar invite.</p>
       {{end}}
 
-      <section class="rsvp-confirmation">
-        {{if .IsUpdate}}
-        <h2>Updated!</h2>
-        <p>We&rsquo;ve sent a fresh calendar invite to your email.</p>
-        {{else}}
-        <h2>You&rsquo;re in!</h2>
-        <p>Check your email for a calendar invite.</p>
-        {{end}}
-
-        <div class="rsvp-calendar-links">
-          <a href="/meetings/{{.Number}}/invite.ics" class="btn">Download .ics</a>
-          <a href="{{.GoogleCalendarURL}}" target="_blank" rel="noopener" class="btn">Add to Google Calendar</a>
-        </div>
-      </section>
+      <div class="rsvp-calendar-links">
+        <a href="/meetings/{{.Number}}/invite.ics" class="btn">Download .ics</a>
+        <a href="{{.GoogleCalendarURL}}" target="_blank" rel="noopener" class="btn">Add to Google Calendar</a>
+      </div>
+    </section>
 
     {{else if .HasDetails}}
-      <!-- Upcoming meeting with details: show RSVP form -->
-      <section class="rsvp-meeting-info">
-        <p class="meeting-time">{{.Start}} – {{.End}}</p>
-        <p class="meeting-location">{{.Location}}</p>
-        <p class="meeting-vibe">All meetings are informal and are about learning and sharing.</p>
-      </section>
+    <section class="intro-section">
+      <h1 class="page-title">AI Friday #{{.Number}}</h1>
+      <p class="intro-text text-muted">{{.Date}} &middot; {{.Start}} &ndash; {{.End}}</p>
+      <p class="intro-text text-muted">{{.Location}}</p>
+    </section>
 
-      <section class="rsvp-form-section">
-        <h2>RSVP</h2>
+    <section class="rsvp-form-section">
+      {{if .FormError}}
+      <p class="rsvp-error">{{.FormError}}</p>
+      {{end}}
 
-        {{if .FormError}}
-        <p class="rsvp-error">{{.FormError}}</p>
+      <form action="/meetings/{{.Number}}/rsvp" method="POST" class="rsvp-form">
+        <div class="rsvp-field">
+          <label for="rsvp-name">Name</label>
+          <input type="text" id="rsvp-name" name="name" required value="{{.FormName}}">
+        </div>
+
+        <div class="rsvp-field">
+          <label for="rsvp-email">Email</label>
+          <input type="email" id="rsvp-email" name="email" required value="{{.FormEmail}}" placeholder="you@example.com">
+          <span class="rsvp-hint">We&rsquo;ll send a calendar invite here. No spam.</span>
+        </div>
+
+        <div class="rsvp-checkbox">
+          <label>
+            <input type="checkbox" name="newsletter">
+            Subscribe to the AI Friday newsletter
+          </label>
+        </div>
+
+        <p class="rsvp-section-label">Optional &mdash; help us plan the agenda</p>
+
+        <div class="rsvp-field">
+          <label for="rsvp-learn">Anything you&rsquo;d like to learn, get help with, or discuss?</label>
+          <textarea id="rsvp-learn" name="learn_or_discuss" rows="2"></textarea>
+        </div>
+
+        <div class="rsvp-field">
+          <label for="rsvp-demo-built">Want to demo something you&rsquo;ve built?</label>
+          <textarea id="rsvp-demo-built" name="demo_built" rows="2" placeholder="Doesn't need to be polished. 10–15 min."></textarea>
+        </div>
+
+        <div class="rsvp-field">
+          <label for="rsvp-demo-tool">Want to demo a tool or setup you&rsquo;ve been using?</label>
+          <textarea id="rsvp-demo-tool" name="demo_tool" rows="2" placeholder="AI app, plugin, workflow — any experience level."></textarea>
+        </div>
+
+        {{if .Hint}}
+        <p class="rsvp-rotating-hint">{{.Hint}}</p>
         {{end}}
 
-        <form action="/meetings/{{.Number}}/rsvp" method="POST" class="rsvp-form">
-          <div class="rsvp-field">
-            <label for="rsvp-name">Name</label>
-            <input type="text" id="rsvp-name" name="name" required value="{{.FormName}}">
-          </div>
-
-          <div class="rsvp-field">
-            <label for="rsvp-email">Email</label>
-            <input type="email" id="rsvp-email" name="email" required value="{{.FormEmail}}" placeholder="you@example.com">
-            <span class="rsvp-hint">This is where we&rsquo;ll send the invite. No spam.</span>
-          </div>
-
-          <div class="rsvp-checkbox">
-            <label>
-              <input type="checkbox" name="newsletter">
-              Subscribe to the AI Friday newsletter
-            </label>
-          </div>
-
-          <hr class="rsvp-divider">
-
-          <h3>Optional &mdash; help us plan the agenda</h3>
-
-          <div class="rsvp-field">
-            <label for="rsvp-learn">Is there anything you&rsquo;d like to learn about, get help with, or discuss?</label>
-            <textarea id="rsvp-learn" name="learn_or_discuss" rows="2"></textarea>
-          </div>
-
-          <div class="rsvp-field">
-            <label for="rsvp-demo-built">Would you like to demo something you&rsquo;ve built?</label>
-            <span class="rsvp-hint">Doesn&rsquo;t need to be polished or finished. 10&ndash;15 minutes.</span>
-            <textarea id="rsvp-demo-built" name="demo_built" rows="2"></textarea>
-          </div>
-
-          <div class="rsvp-field">
-            <label for="rsvp-demo-tool">Would you like to demo a tool or setup you&rsquo;ve been using?</label>
-            <span class="rsvp-hint">AI app, skill, plugin &mdash; even a few hours of experience puts you ahead of most people in the room.</span>
-            <textarea id="rsvp-demo-tool" name="demo_tool" rows="2"></textarea>
-          </div>
-
-          {{if .Hint}}
-          <p class="rsvp-rotating-hint">{{.Hint}}</p>
-          {{end}}
-
-          <button type="submit" class="btn btn-primary rsvp-submit">RSVP</button>
-        </form>
-      </section>
+        <button type="submit" class="btn btn-primary rsvp-submit">RSVP</button>
+      </form>
+    </section>
 
     {{else}}
-      <!-- Upcoming meeting without details yet -->
-      <section class="rsvp-meeting-info">
-        <p class="meeting-vibe">Details coming soon. Check back closer to the date.</p>
-      </section>
+    <section class="intro-section">
+      <h1 class="page-title">AI Friday #{{.Number}}</h1>
+      <p class="intro-text text-muted">{{.Date}}</p>
+      <p class="intro-text text-muted" style="font-style: italic;">Details coming soon.</p>
+    </section>
     {{end}}
 
   </div>
