@@ -318,39 +318,26 @@ func (b *Bot) PostDailyBrief(date, briefText string) error {
 
 // PostRSVPNotification sends an RSVP notification to the given channel.
 func (b *Bot) PostRSVPNotification(channel string, meetingNumber int, meetingShort string, name, email string, newsletterOptIn bool, isUpdate bool, responses map[string]string) error {
-	label := "New RSVP"
-	emoji := "📋"
+	label := "RSVP"
 	if isUpdate {
-		label = "Updated RSVP"
-		emoji = "🔄"
+		label = "RSVP (updated)"
 	}
 
 	var sb strings.Builder
-	fmt.Fprintf(&sb, "%s %s — Meeting #%d (%s)\n\n", emoji, label, meetingNumber, meetingShort)
-	fmt.Fprintf(&sb, "Name: %s\n", name)
-	fmt.Fprintf(&sb, "Email: %s\n", email)
+	fmt.Fprintf(&sb, "*%s* — %s <%s>", label, name, email)
 	if newsletterOptIn {
-		sb.WriteString("Newsletter: ✅\n")
+		sb.WriteString(" + newsletter")
 	}
+	sb.WriteString("\n")
 
-	type field struct {
-		key   string
-		emoji string
-		label string
+	surveyFields := []struct{ key, label string }{
+		{"learn_or_discuss", "Learn/discuss"},
+		{"demo_built", "Demo (built)"},
+		{"demo_tool", "Demo (tool)"},
 	}
-	fields := []field{
-		{"learn_or_discuss", "💬", "Learn/discuss"},
-		{"demo_built", "🎪", "Demo something built"},
-		{"demo_tool", "🛠️", "Demo a tool"},
-	}
-	hasAny := false
-	for _, f := range fields {
+	for _, f := range surveyFields {
 		if v, ok := responses[f.key]; ok && strings.TrimSpace(v) != "" {
-			if !hasAny {
-				sb.WriteString("\n")
-				hasAny = true
-			}
-			fmt.Fprintf(&sb, "%s %s: \"%s\"\n", f.emoji, f.label, v)
+			fmt.Fprintf(&sb, "> *%s:* %s\n", f.label, v)
 		}
 	}
 

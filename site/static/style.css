@@ -1045,30 +1045,32 @@ blockquote {
 }
 
 .rsvp-form-section {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .rsvp-form-section h2 {
   font-family: var(--font-display);
   font-size: var(--text-h2);
   font-weight: 700;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-form-section h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
   font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-form {
-  max-width: 560px;
+  max-width: 480px;
 }
 
 .rsvp-field {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-field label {
@@ -1076,18 +1078,18 @@ blockquote {
   font-size: var(--text-body);
   font-weight: 600;
   color: var(--text);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .rsvp-field input[type="text"],
 .rsvp-field input[type="email"],
 .rsvp-field textarea {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 12px;
   font-family: var(--font-body);
   font-size: var(--text-body);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--surface);
   color: var(--text);
   outline: none;
@@ -1106,56 +1108,51 @@ blockquote {
 
 .rsvp-field textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 48px;
 }
 
 .rsvp-hint {
   display: block;
   font-size: var(--text-small);
   color: var(--muted);
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-sm);
+  margin-top: 2px;
+  margin-bottom: var(--space-xs);
 }
 
 .rsvp-checkbox {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-checkbox label {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  font-size: var(--text-body);
-  color: var(--text);
+  font-size: var(--text-small);
+  color: var(--muted);
   cursor: pointer;
 }
 
 .rsvp-checkbox input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   accent-color: var(--accent);
 }
 
 .rsvp-divider {
   border: none;
   border-top: 1px solid var(--line);
-  margin: var(--space-xl) 0;
+  margin: var(--space-md) 0;
 }
 
 .rsvp-rotating-hint {
-  font-size: var(--text-body);
+  font-size: var(--text-small);
   color: var(--accent);
   font-style: italic;
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
-  background: var(--surface-soft);
-  border-radius: 8px;
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-submit {
-  margin-top: var(--space-md);
-  padding: 14px 40px;
-  font-size: var(--text-body-lg);
+  padding: 10px 32px;
 }
 
 .rsvp-error {
