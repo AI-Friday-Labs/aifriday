@@ -209,7 +209,7 @@ func SendCalendarInvite(meeting MeetingInfo, toEmail, toName, fastmailPassword s
 
 // SubscribeToButtondown adds an email to the Buttondown newsletter.
 func SubscribeToButtondown(ctx context.Context, email, apiKey string) error {
-	body, _ := json.Marshal(map[string]string{"email_address": email})
+	body, _ := json.Marshal(map[string]string{"email_address": email, "type": "regular"})
 	req, err := http.NewRequestWithContext(ctx, "POST", "https://api.buttondown.com/v1/subscribers", bytes.NewReader(body))
 	if err != nil {
 		return err
