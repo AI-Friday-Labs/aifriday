@@ -121,20 +121,6 @@ func run() error {
 
 	var s *site
 
-	if err := s.scanBriefs(); err != nil {
-		slog.Warn("initial brief scan", "error", err)
-	}
-
-	go func() {
-		ticker := time.NewTicker(5 * time.Minute)
-		defer ticker.Stop()
-		for range ticker.C {
-			if err := s.scanBriefs(); err != nil {
-				slog.Warn("brief rescan", "error", err)
-			}
-		}
-	}()
-
 	// Open database for Slack link capture
 	dbPath := filepath.Join(projectRoot, "aifriday.db")
 	database, err := db.Open(dbPath)
@@ -163,6 +149,20 @@ func run() error {
 			SlackRSVPChannel: os.Getenv("SLACK_RSVP_CHANNEL"),
 		},
 	}
+
+	if err := s.scanBriefs(); err != nil {
+		slog.Warn("initial brief scan", "error", err)
+	}
+
+	go func() {
+		ticker := time.NewTicker(5 * time.Minute)
+		defer ticker.Stop()
+		for range ticker.C {
+			if err := s.scanBriefs(); err != nil {
+				slog.Warn("brief rescan", "error", err)
+			}
+		}
+	}()
 
 	errCh := make(chan error, 2)
 

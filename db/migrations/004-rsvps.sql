@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS rsvps (
 
 CREATE INDEX IF NOT EXISTS idx_rsvps_meeting ON rsvps(meeting_number);
 
-INSERT INTO migrations (migration_number) VALUES (4);
+INSERT INTO migrations (migration_number, migration_name) VALUES (4, '004-rsvps');
