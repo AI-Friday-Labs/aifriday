@@ -1018,3 +1018,183 @@ blockquote {
   white-space: nowrap;
   border: 0;
 }
+
+/* --- RSVP Form ----------------------------------------------------------- */
+.rsvp-meeting-info {
+  margin-bottom: var(--space-xl);
+}
+
+.meeting-time {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-xs);
+}
+
+.meeting-location {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.meeting-vibe {
+  font-size: var(--text-body);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.rsvp-form-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.rsvp-form-section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-form-section h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-form {
+  max-width: 560px;
+}
+
+.rsvp-field {
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-field label {
+  display: block;
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.rsvp-field input[type="text"],
+.rsvp-field input[type="email"],
+.rsvp-field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.rsvp-field input:focus,
+.rsvp-field textarea:focus {
+  border-color: var(--accent);
+}
+
+.rsvp-field input::placeholder {
+  color: var(--muted);
+}
+
+.rsvp-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.rsvp-hint {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--muted);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.rsvp-checkbox {
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-body);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.rsvp-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.rsvp-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: var(--space-xl) 0;
+}
+
+.rsvp-rotating-hint {
+  font-size: var(--text-body);
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--surface-soft);
+  border-radius: 8px;
+}
+
+.rsvp-submit {
+  margin-top: var(--space-md);
+  padding: 14px 40px;
+  font-size: var(--text-body-lg);
+}
+
+.rsvp-error {
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: #fdf2f0;
+  border: 1px solid #e8c4be;
+  border-radius: 8px;
+}
+
+/* --- RSVP Confirmation --------------------------------------------------- */
+.rsvp-confirmation {
+  margin-bottom: var(--space-2xl);
+}
+
+.rsvp-confirmation h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.rsvp-confirmation p {
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-calendar-links {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .rsvp-calendar-links {
+    flex-direction: column;
+  }
+}
