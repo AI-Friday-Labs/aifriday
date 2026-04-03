@@ -102,26 +102,9 @@
           </label>
         </div>
 
-        <div class="rsvp-optional-section">
-          <p class="rsvp-section-label">Optional &mdash; help us plan</p>
-          {{if .Hint}}
-          <p class="rsvp-rotating-hint">{{.Hint}}</p>
-          {{end}}
-
-          <div class="rsvp-field">
-            <label for="rsvp-learn">Anything to learn, get help with, or discuss?</label>
-            <textarea id="rsvp-learn" name="learn_or_discuss" rows="2"></textarea>
-          </div>
-
-          <div class="rsvp-field">
-            <label for="rsvp-demo-built">Got something to demo? (10&ndash;15 min)</label>
-            <textarea id="rsvp-demo-built" name="demo_built" rows="2" placeholder="Doesn't need to be polished or finished."></textarea>
-          </div>
-
-          <div class="rsvp-field">
-            <label for="rsvp-demo-tool">Any tools or setups worth sharing?</label>
-            <textarea id="rsvp-demo-tool" name="demo_tool" rows="2" placeholder="AI app, plugin, workflow — any experience level."></textarea>
-          </div>
+        <div class="rsvp-field">
+          <label for="rsvp-agenda">Anything you want to share, demo, or put on the agenda? <span class="text-muted">(optional)</span></label>
+          <textarea id="rsvp-agenda" name="agenda" rows="2"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary rsvp-submit">Count Me In</button>

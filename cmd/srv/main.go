@@ -350,9 +350,7 @@ func (s *site) handleRSVPSubmit(w http.ResponseWriter, r *http.Request) {
 	email := strings.TrimSpace(r.FormValue("email"))
 	newsletterOptIn := r.FormValue("newsletter") == "on"
 	responses := RSVPResponses{
-		LearnOrDiscuss: strings.TrimSpace(r.FormValue("learn_or_discuss")),
-		DemoBuilt:      strings.TrimSpace(r.FormValue("demo_built")),
-		DemoTool:       strings.TrimSpace(r.FormValue("demo_tool")),
+		Agenda: strings.TrimSpace(r.FormValue("agenda")),
 	}
 
 	// Validate
@@ -431,9 +429,7 @@ func (s *site) handleRSVPSubmit(w http.ResponseWriter, r *http.Request) {
 	// Step 3: Notify Slack (best-effort)
 	if s.bot != nil && s.rsvpCfg.SlackRSVPChannel != "" {
 		respMap := map[string]string{
-			"learn_or_discuss": responses.LearnOrDiscuss,
-			"demo_built":       responses.DemoBuilt,
-			"demo_tool":        responses.DemoTool,
+			"agenda": responses.Agenda,
 		}
 		if err := s.bot.PostRSVPNotification(s.rsvpCfg.SlackRSVPChannel, num, meeting.Short, name, email, newsletterOptIn, isUpdate, respMap); err != nil {
 			slog.Error("Slack RSVP notification failed", "error", err)

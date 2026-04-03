@@ -15,9 +15,7 @@ import (
 
 // RSVPResponses is the JSON blob stored in the responses column.
 type RSVPResponses struct {
-	LearnOrDiscuss string `json:"learn_or_discuss"`
-	DemoBuilt      string `json:"demo_built"`
-	DemoTool       string `json:"demo_tool"`
+	Agenda string `json:"agenda,omitempty"`
 }
 
 // RSVPConfig holds env-based configuration for RSVP integrations.

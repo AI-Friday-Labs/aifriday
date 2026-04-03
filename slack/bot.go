@@ -330,15 +330,8 @@ func (b *Bot) PostRSVPNotification(channel string, meetingNumber int, meetingSho
 	}
 	sb.WriteString("\n")
 
-	surveyFields := []struct{ key, label string }{
-		{"learn_or_discuss", "Learn/discuss"},
-		{"demo_built", "Demo (built)"},
-		{"demo_tool", "Demo (tool)"},
-	}
-	for _, f := range surveyFields {
-		if v, ok := responses[f.key]; ok && strings.TrimSpace(v) != "" {
-			fmt.Fprintf(&sb, "> *%s:* %s\n", f.label, v)
-		}
+	if agenda := strings.TrimSpace(responses["agenda"]); agenda != "" {
+		fmt.Fprintf(&sb, "> %s\n", agenda)
 	}
 
 	_, _, err := b.API.PostMessage(channel,
