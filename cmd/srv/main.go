@@ -37,6 +37,10 @@ type Meeting struct {
 	DatePath string // "2026/03/27"
 	IsPast   bool
 	HasRecap bool   // true if a recap file exists
+	Start    string // "9:30 AM" — empty if not yet announced
+	End      string // "11:00 AM"
+	Location string // full address
+	Hint     string // rotating survey hint, optional
 }
 
 // BriefSummary is extracted from a brief's static HTML.
@@ -59,10 +63,22 @@ type MeetingsData struct {
 }
 
 type MeetingDetailData struct {
-	Number    int
-	Date      string
-	DateISO   string
-	RecapHTML template.HTML
+	Number            int
+	Date              string
+	DateISO           string
+	IsPast            bool
+	HasDetails        bool          // true if Start/Location are set
+	Start             string
+	End               string
+	Location          string
+	Hint              string
+	RecapHTML         template.HTML
+	RSVPSubmitted     bool
+	IsUpdate          bool
+	FormError         string
+	FormName          string
+	FormEmail         string
+	GoogleCalendarURL string
 }
 
 type BriefIndexData struct {
@@ -230,25 +246,43 @@ func (s *site) handleMeetingDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Load recap HTML
-	recapPath := filepath.Join(s.recapsDir, fmt.Sprintf("%d.html", num))
-	recapBytes, err := os.ReadFile(recapPath)
-	if err != nil {
-		http.NotFound(w, r)
-		return
-	}
-
 	// Parse DatePath to get ISO date
 	var dateISO string
 	if t, err := time.Parse("2006/01/02", meeting.DatePath); err == nil {
 		dateISO = t.Format("2006-01-02")
 	}
 
+	hasDetails := meeting.Start != "" && meeting.Location != ""
+
+	if meeting.IsPast {
+		// Load recap HTML for past meetings
+		recapPath := filepath.Join(s.recapsDir, fmt.Sprintf("%d.html", num))
+		recapBytes, err := os.ReadFile(recapPath)
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		s.render(w, "meeting-detail.html", MeetingDetailData{
+			Number:    num,
+			Date:      meeting.Date,
+			DateISO:   dateISO,
+			IsPast:    true,
+			RecapHTML: template.HTML(recapBytes),
+		})
+		return
+	}
+
+	// Upcoming meeting — show RSVP form
 	s.render(w, "meeting-detail.html", MeetingDetailData{
-		Number:    num,
-		Date:      meeting.Date,
-		DateISO:   dateISO,
-		RecapHTML: template.HTML(recapBytes),
+		Number:     num,
+		Date:       meeting.Date,
+		DateISO:    dateISO,
+		IsPast:     false,
+		HasDetails: hasDetails,
+		Start:      meeting.Start,
+		End:        meeting.End,
+		Location:   meeting.Location,
+		Hint:       meeting.Hint,
 	})
 }
 
@@ -358,7 +392,7 @@ func (s *site) handleSitemap(w http.ResponseWriter, r *http.Request) {
 	now := time.Now()
 	for _, m := range meetingSchedule {
 		if m.Number > 0 {
-			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now, m.Start, m.End, m.Location, m.Hint)
 			if mt.HasRecap {
 				var lastmod string
 				if t, err := time.Parse("2006/01/02", mt.DatePath); err == nil {
@@ -457,24 +491,30 @@ func (s *site) handleFeed(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 
 var meetingSchedule = []struct {
-	Number int // 0 means not yet numbered
-	Year   int
-	Month  time.Month
-	Day    int
+	Number   int // 0 means not yet numbered
+	Year     int
+	Month    time.Month
+	Day      int
+	Start    string // "9:30 AM"
+	End      string // "11:00 AM"
+	Location string
+	Hint     string
 }{
-	{1, 2026, time.March, 27},
-	{0, 2026, time.April, 17},
-	{0, 2026, time.May, 15},
-	{0, 2026, time.June, 26},
-	{0, 2026, time.July, 17},
-	{0, 2026, time.August, 14},
-	{0, 2026, time.September, 18},
-	{0, 2026, time.October, 16},
-	{0, 2026, time.November, 13},
-	{0, 2026, time.December, 18},
+	{1, 2026, time.March, 27, "", "", "", ""},
+	{2, 2026, time.April, 17, "9:30 AM", "11:00 AM",
+		"RentCheck, 1582 Magazine St, New Orleans, LA 70130",
+		"This month we'd especially love to see: image generation, design tools, AI beyond Claude Code & Codex"},
+	{0, 2026, time.May, 15, "", "", "", ""},
+	{0, 2026, time.June, 26, "", "", "", ""},
+	{0, 2026, time.July, 17, "", "", "", ""},
+	{0, 2026, time.August, 14, "", "", "", ""},
+	{0, 2026, time.September, 18, "", "", "", ""},
+	{0, 2026, time.October, 16, "", "", "", ""},
+	{0, 2026, time.November, 13, "", "", "", ""},
+	{0, 2026, time.December, 18, "", "", "", ""},
 }
 
-func buildMeeting(number, year int, month time.Month, day int, now time.Time) Meeting {
+func buildMeeting(number, year int, month time.Month, day int, now time.Time, start, end, location, hint string) Meeting {
 	t := time.Date(year, month, day, 0, 0, 0, 0, time.Local)
 	return Meeting{
 		Number:   number,
@@ -483,13 +523,17 @@ func buildMeeting(number, year int, month time.Month, day int, now time.Time) Me
 		DatePath: fmt.Sprintf("%d/%02d/%02d", year, month, day),
 		IsPast:   !t.After(now.Truncate(24 * time.Hour)),
 		HasRecap: number > 0,
+		Start:    start,
+		End:      end,
+		Location: location,
+		Hint:     hint,
 	}
 }
 
 func nextMeeting() *Meeting {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now, m.Start, m.End, m.Location, m.Hint)
 		if !mt.IsPast {
 			return &mt
 		}
@@ -500,7 +544,7 @@ func nextMeeting() *Meeting {
 func splitMeetings() (upcoming, past []Meeting) {
 	now := time.Now()
 	for _, m := range meetingSchedule {
-		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+		mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now, m.Start, m.End, m.Location, m.Hint)
 		if mt.IsPast {
 			past = append(past, mt)
 		} else {
@@ -518,7 +562,7 @@ func meetingByNumber(num int) *Meeting {
 	now := time.Now()
 	for _, m := range meetingSchedule {
 		if m.Number == num {
-			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now)
+			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now, m.Start, m.End, m.Location, m.Hint)
 			return &mt
 		}
 	}
