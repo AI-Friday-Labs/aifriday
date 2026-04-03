@@ -1,13 +1,15 @@
 package main
 
 import (
+	"compress/gzip"
+	"database/sql"
+	"encoding/json"
 	"encoding/xml"
 	"flag"
 	"fmt"
 	"html/template"
-	"log/slog"
-	"compress/gzip"
 	"io"
+	"log/slog"
 	"net"
 	"net/http"
 	"os"
@@ -91,6 +93,9 @@ type site struct {
 	recapsDir   string
 	mu          sync.RWMutex
 	briefs      []BriefSummary
+	db          *sql.DB
+	bot         *slackbot.Bot
+	rsvpCfg     RSVPConfig
 }
 
 func main() {
@@ -114,11 +119,7 @@ func run() error {
 
 	recapsDir := filepath.Join(projectRoot, "srv", "recaps")
 
-	s := &site{
-		siteDir:     siteDir,
-		templateDir: templateDir,
-		recapsDir:   recapsDir,
-	}
+	var s *site
 
 	if err := s.scanBriefs(); err != nil {
 		slog.Warn("initial brief scan", "error", err)
@@ -150,6 +151,19 @@ func run() error {
 		return fmt.Errorf("create slack bot: %w", err)
 	}
 
+	s = &site{
+		siteDir:     siteDir,
+		templateDir: templateDir,
+		recapsDir:   recapsDir,
+		db:          database,
+		bot:         bot,
+		rsvpCfg: RSVPConfig{
+			FastmailPassword: os.Getenv("FASTMAIL_APP_PASSWORD"),
+			ButtondownAPIKey: os.Getenv("BUTTONDOWN_API_KEY"),
+			SlackRSVPChannel: os.Getenv("SLACK_RSVP_CHANNEL"),
+		},
+	}
+
 	errCh := make(chan error, 2)
 
 	go func() {
@@ -159,6 +173,9 @@ func run() error {
 		mux.HandleFunc("GET /{$}", s.handleHome)
 		mux.HandleFunc("GET /meetings/{$}", s.handleMeetings)
 		mux.HandleFunc("GET /meetings/{number}", s.handleMeetingDetail)
+		mux.HandleFunc("GET /rsvp", s.handleRSVPRedirect)
+		mux.HandleFunc("POST /meetings/{number}/rsvp", s.handleRSVPSubmit)
+		mux.HandleFunc("GET /meetings/{number}/invite.ics", s.handleICSDownload)
 		mux.HandleFunc("GET /brief/{$}", s.handleBriefIndex)
 
 		// SEO: robots.txt, sitemap, RSS feed
@@ -296,6 +313,195 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 // ---------------------------------------------------------------------------
 // SEO handlers
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// RSVP handlers
+// ---------------------------------------------------------------------------
+
+func (s *site) handleRSVPRedirect(w http.ResponseWriter, r *http.Request) {
+	next := nextMeeting()
+	if next == nil || next.Number == 0 {
+		http.Redirect(w, r, "/meetings/", http.StatusFound)
+		return
+	}
+	http.Redirect(w, r, fmt.Sprintf("/meetings/%d", next.Number), http.StatusFound)
+}
+
+func (s *site) handleRSVPSubmit(w http.ResponseWriter, r *http.Request) {
+	numStr := r.PathValue("number")
+	num, err := strconv.Atoi(numStr)
+	if err != nil || num < 1 {
+		http.NotFound(w, r)
+		return
+	}
+
+	meeting := meetingByNumber(num)
+	if meeting == nil || meeting.IsPast {
+		http.NotFound(w, r)
+		return
+	}
+
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Bad Request", 400)
+		return
+	}
+
+	name := strings.TrimSpace(r.FormValue("name"))
+	email := strings.TrimSpace(r.FormValue("email"))
+	newsletterOptIn := r.FormValue("newsletter") == "on"
+	responses := RSVPResponses{
+		LearnOrDiscuss: strings.TrimSpace(r.FormValue("learn_or_discuss")),
+		DemoBuilt:      strings.TrimSpace(r.FormValue("demo_built")),
+		DemoTool:       strings.TrimSpace(r.FormValue("demo_tool")),
+	}
+
+	// Validate
+	if name == "" || email == "" {
+		var dateISO string
+		if t, err := time.Parse("2006/01/02", meeting.DatePath); err == nil {
+			dateISO = t.Format("2006-01-02")
+		}
+		s.render(w, "meeting-detail.html", MeetingDetailData{
+			Number:     num,
+			Date:       meeting.Date,
+			DateISO:    dateISO,
+			IsPast:     false,
+			HasDetails: meeting.Start != "" && meeting.Location != "",
+			Start:      meeting.Start,
+			End:        meeting.End,
+			Location:   meeting.Location,
+			Hint:       meeting.Hint,
+			FormError:  "Name and email are required.",
+			FormName:   name,
+			FormEmail:  email,
+		})
+		return
+	}
+
+	// Step 1: Check if this is an update, then upsert
+	ctx := r.Context()
+	responsesJSON, _ := json.Marshal(responses)
+	isUpdate := false
+
+	if s.db != nil {
+		var count int64
+		err := s.db.QueryRowContext(ctx,
+			"SELECT COUNT(*) FROM rsvps WHERE meeting_number = ? AND email = ?",
+			num, email).Scan(&count)
+		if err == nil && count > 0 {
+			isUpdate = true
+		}
+
+		_, err = s.db.ExecContext(ctx,
+			`INSERT INTO rsvps (meeting_number, name, email, newsletter_opt_in, responses)
+			 VALUES (?, ?, ?, ?, ?)
+			 ON CONFLICT(meeting_number, email) DO UPDATE SET
+			 name = excluded.name, newsletter_opt_in = excluded.newsletter_opt_in, responses = excluded.responses`,
+			num, name, email, newsletterOptIn, string(responsesJSON))
+		if err != nil {
+			slog.Error("RSVP upsert failed", "error", err)
+			http.Error(w, "Something went wrong. Please try again.", 500)
+			return
+		}
+	}
+
+	meetingInfo := MeetingInfo{
+		Number:   num,
+		Date:     meeting.Date,
+		Short:    meeting.Short,
+		Start:    meeting.Start,
+		End:      meeting.End,
+		Location: meeting.Location,
+	}
+
+	// Step 2: Send calendar invite (best-effort)
+	if s.rsvpCfg.FastmailPassword != "" {
+		icsData, err := GenerateICS(meetingInfo)
+		if err != nil {
+			slog.Error("ICS generation failed", "error", err)
+		} else {
+			if err := SendCalendarInvite(meetingInfo, email, name, s.rsvpCfg.FastmailPassword, icsData); err != nil {
+				slog.Error("calendar email failed", "error", err, "to", email)
+			} else {
+				slog.Info("calendar invite sent", "to", email, "meeting", num)
+			}
+		}
+	}
+
+	// Step 3: Notify Slack (best-effort)
+	if s.bot != nil && s.rsvpCfg.SlackRSVPChannel != "" {
+		respMap := map[string]string{
+			"learn_or_discuss": responses.LearnOrDiscuss,
+			"demo_built":       responses.DemoBuilt,
+			"demo_tool":        responses.DemoTool,
+		}
+		if err := s.bot.PostRSVPNotification(s.rsvpCfg.SlackRSVPChannel, num, meeting.Short, name, email, newsletterOptIn, isUpdate, respMap); err != nil {
+			slog.Error("Slack RSVP notification failed", "error", err)
+		}
+	}
+
+	// Step 4: Buttondown subscribe (best-effort)
+	if newsletterOptIn && s.rsvpCfg.ButtondownAPIKey != "" {
+		if err := SubscribeToButtondown(ctx, email, s.rsvpCfg.ButtondownAPIKey); err != nil {
+			slog.Error("Buttondown subscribe failed", "error", err, "email", email)
+		}
+	}
+
+	// Render confirmation
+	var dateISO string
+	if t, err := time.Parse("2006/01/02", meeting.DatePath); err == nil {
+		dateISO = t.Format("2006-01-02")
+	}
+	s.render(w, "meeting-detail.html", MeetingDetailData{
+		Number:            num,
+		Date:              meeting.Date,
+		DateISO:           dateISO,
+		IsPast:            false,
+		HasDetails:        meeting.Start != "" && meeting.Location != "",
+		Start:             meeting.Start,
+		End:               meeting.End,
+		Location:          meeting.Location,
+		Hint:              meeting.Hint,
+		RSVPSubmitted:     true,
+		IsUpdate:          isUpdate,
+		GoogleCalendarURL: GoogleCalendarURL(meetingInfo),
+	})
+}
+
+func (s *site) handleICSDownload(w http.ResponseWriter, r *http.Request) {
+	numStr := r.PathValue("number")
+	num, err := strconv.Atoi(numStr)
+	if err != nil || num < 1 {
+		http.NotFound(w, r)
+		return
+	}
+
+	meeting := meetingByNumber(num)
+	if meeting == nil || meeting.Start == "" {
+		http.NotFound(w, r)
+		return
+	}
+
+	info := MeetingInfo{
+		Number:   num,
+		Date:     meeting.Date,
+		Short:    meeting.Short,
+		Start:    meeting.Start,
+		End:      meeting.End,
+		Location: meeting.Location,
+	}
+
+	icsData, err := GenerateICS(info)
+	if err != nil {
+		slog.Error("ICS generation failed", "error", err)
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/calendar; charset=utf-8")
+	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=aifriday-meeting-%d.ics", num))
+	w.Write(icsData)
+}
 
 // ---------------------------------------------------------------------------
 // Middleware
