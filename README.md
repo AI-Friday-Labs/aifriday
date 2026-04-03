@@ -1,6 +1,6 @@
 # AI Friday NOLA
 
-The web app and Slack bot for [AI Friday](https://aifri.day), a weekly AI meetup in New Orleans.
+The web app and Slack bot for [AI Friday](https://aifri.day), a weekly AI meetup in New Orleans. Built to run on exe.dev.
 
 ## What it does
 
@@ -74,7 +74,3 @@ Editorial guidelines are in [RULEBOOK.md](RULEBOOK.md).
 ## Deployment
 
 Runs as a systemd service (`srv`) on an [exe.dev](https://exe.dev) VM, proxied to [aifri.day](https://aifri.day). The database is SQLite (`aifriday.db`), stored locally.
-
-## License
-
-Private project for the AI Friday NOLA community.
