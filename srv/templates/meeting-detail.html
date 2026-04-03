@@ -72,10 +72,10 @@
     </section>
 
     {{else if .HasDetails}}
-    <section class="intro-section">
-      <h1 class="page-title">AI Friday #{{.Number}}</h1>
-      <p class="intro-text text-muted">{{.Date}} &middot; {{.Start}} &ndash; {{.End}}</p>
-      <p class="intro-text text-muted">{{.Location}}</p>
+    <section class="intro-section rsvp-header">
+      <p class="rsvp-meeting-badge">AI Friday #{{.Number}}</p>
+      <p class="rsvp-date">{{.Date}} &middot; {{.Start}} &ndash; {{.End}}</p>
+      <p class="rsvp-location">{{.Location}}</p>
     </section>
 
     <section class="rsvp-form-section">
@@ -86,7 +86,7 @@
       <form action="/meetings/{{.Number}}/rsvp" method="POST" class="rsvp-form">
         <div class="rsvp-field">
           <label for="rsvp-name">Name</label>
-          <input type="text" id="rsvp-name" name="name" required value="{{.FormName}}">
+          <input type="text" id="rsvp-name" name="name" required value="{{.FormName}}" placeholder="First name is fine">
         </div>
 
         <div class="rsvp-field">
@@ -98,32 +98,33 @@
         <div class="rsvp-checkbox">
           <label>
             <input type="checkbox" name="newsletter">
-            Subscribe to the AI Friday newsletter
+            Get AI Friday event updates. No spam.
           </label>
         </div>
 
-        <p class="rsvp-section-label">Optional &mdash; help us plan the agenda</p>
+        <div class="rsvp-optional-section">
+          <p class="rsvp-section-label">Optional &mdash; help us plan</p>
+          {{if .Hint}}
+          <p class="rsvp-rotating-hint">{{.Hint}}</p>
+          {{end}}
 
-        <div class="rsvp-field">
-          <label for="rsvp-learn">Anything you&rsquo;d like to learn, get help with, or discuss?</label>
-          <textarea id="rsvp-learn" name="learn_or_discuss" rows="2"></textarea>
+          <div class="rsvp-field">
+            <label for="rsvp-learn">Anything to learn, get help with, or discuss?</label>
+            <textarea id="rsvp-learn" name="learn_or_discuss" rows="2"></textarea>
+          </div>
+
+          <div class="rsvp-field">
+            <label for="rsvp-demo-built">Got something to demo? (10&ndash;15 min)</label>
+            <textarea id="rsvp-demo-built" name="demo_built" rows="2" placeholder="Doesn't need to be polished or finished."></textarea>
+          </div>
+
+          <div class="rsvp-field">
+            <label for="rsvp-demo-tool">Any tools or setups worth sharing?</label>
+            <textarea id="rsvp-demo-tool" name="demo_tool" rows="2" placeholder="AI app, plugin, workflow — any experience level."></textarea>
+          </div>
         </div>
 
-        <div class="rsvp-field">
-          <label for="rsvp-demo-built">Want to demo something you&rsquo;ve built?</label>
-          <textarea id="rsvp-demo-built" name="demo_built" rows="2" placeholder="Doesn't need to be polished. 10–15 min."></textarea>
-        </div>
-
-        <div class="rsvp-field">
-          <label for="rsvp-demo-tool">Want to demo a tool or setup you&rsquo;ve been using?</label>
-          <textarea id="rsvp-demo-tool" name="demo_tool" rows="2" placeholder="AI app, plugin, workflow — any experience level."></textarea>
-        </div>
-
-        {{if .Hint}}
-        <p class="rsvp-rotating-hint">{{.Hint}}</p>
-        {{end}}
-
-        <button type="submit" class="btn btn-primary rsvp-submit">RSVP</button>
+        <button type="submit" class="btn btn-primary rsvp-submit">Count Me In</button>
       </form>
     </section>
 

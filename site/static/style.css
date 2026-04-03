@@ -1019,9 +1019,37 @@ blockquote {
   border: 0;
 }
 
+/* --- RSVP Header --------------------------------------------------------- */
+.rsvp-header {
+  padding-bottom: var(--space-md);
+}
+
+.rsvp-meeting-badge {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+.rsvp-date {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-xs);
+}
+
+.rsvp-location {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+}
+
 /* --- RSVP Form ----------------------------------------------------------- */
 .rsvp-form-section {
-  padding: var(--space-lg) 0 var(--space-xl);
+  padding: var(--space-lg) 0 var(--space-2xl);
 }
 
 .rsvp-form {
@@ -1079,7 +1107,7 @@ blockquote {
 }
 
 .rsvp-checkbox {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .rsvp-checkbox label {
@@ -1097,15 +1125,24 @@ blockquote {
   accent-color: var(--accent);
 }
 
+.rsvp-optional-section {
+  padding: var(--space-md);
+  background: var(--surface-soft);
+  border-radius: 8px;
+  margin-bottom: var(--space-lg);
+}
+
+.rsvp-optional-section .rsvp-field:last-child {
+  margin-bottom: 0;
+}
+
 .rsvp-section-label {
   font-size: var(--text-small);
   font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--space-md);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--line);
+  margin-bottom: var(--space-sm);
 }
 
 .rsvp-rotating-hint {
