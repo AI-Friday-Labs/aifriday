@@ -416,7 +416,7 @@ func (s *site) handleRSVPSubmit(w http.ResponseWriter, r *http.Request) {
 
 	// Step 2: Send calendar invite (best-effort)
 	if s.rsvpCfg.FastmailPassword != "" {
-		icsData, err := GenerateICS(meetingInfo)
+		icsData, err := GenerateICS(meetingInfo, email)
 		if err != nil {
 			slog.Error("ICS generation failed", "error", err)
 		} else {
@@ -491,7 +491,7 @@ func (s *site) handleICSDownload(w http.ResponseWriter, r *http.Request) {
 		Location: meeting.Location,
 	}
 
-	icsData, err := GenerateICS(info)
+	icsData, err := GenerateICS(info, "")
 	if err != nil {
 		slog.Error("ICS generation failed", "error", err)
 		http.Error(w, "Internal Server Error", 500)

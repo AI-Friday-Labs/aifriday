@@ -40,7 +40,9 @@ type MeetingInfo struct {
 // --- Calendar (.ics) Generation ---
 
 // GenerateICS creates an .ics calendar file for a meeting.
-func GenerateICS(meeting MeetingInfo) ([]byte, error) {
+// If attendeeEmail is non-empty, an ATTENDEE line is added so mail clients
+// present yes/no/maybe buttons.
+func GenerateICS(meeting MeetingInfo, attendeeEmail string) ([]byte, error) {
 	central, err := time.LoadLocation("America/Chicago")
 	if err != nil {
 		return nil, fmt.Errorf("load timezone: %w", err)
@@ -81,6 +83,9 @@ func GenerateICS(meeting MeetingInfo) ([]byte, error) {
 	w(fmt.Sprintf("LOCATION:%s", meeting.Location))
 	w(fmt.Sprintf("DESCRIPTION:Monthly AI meetup. Informal — learning and sharing.\\nhttps://aifri.day/meetings/%d", meeting.Number))
 	w("ORGANIZER;CN=AI Friday:mailto:andrew@aifri.day")
+	if attendeeEmail != "" {
+		w(fmt.Sprintf("ATTENDEE;RSVP=TRUE;PARTSTAT=ACCEPTED;ROLE=REQ-PARTICIPANT:mailto:%s", attendeeEmail))
+	}
 	w(fmt.Sprintf("URL:https://aifri.day/meetings/%d", meeting.Number))
 	w("END:VEVENT")
 	w("END:VCALENDAR")
@@ -140,7 +145,7 @@ func SendCalendarInvite(meeting MeetingInfo, toEmail, toName, fastmailPassword s
 	fmt.Fprintf(&buf, "To: %s <%s>\r\n", toName, toEmail)
 	fmt.Fprintf(&buf, "Subject: %s\r\n", subject)
 	buf.WriteString("MIME-Version: 1.0\r\n")
-	fmt.Fprintf(&buf, "Content-Type: multipart/mixed; boundary=%s\r\n", boundary)
+	fmt.Fprintf(&buf, "Content-Type: multipart/alternative; boundary=%s\r\n", boundary)
 	buf.WriteString("\r\n")
 
 	// Plain text body
@@ -153,10 +158,9 @@ func SendCalendarInvite(meeting MeetingInfo, toEmail, toName, fastmailPassword s
 	fmt.Fprintf(&buf, "https://aifri.day/meetings/%d\r\n", meeting.Number)
 	buf.WriteString("\r\n")
 
-	// .ics attachment
+	// Calendar body — inline text/calendar so mail clients show yes/no/maybe
 	fmt.Fprintf(&buf, "--%s\r\n", boundary)
-	buf.WriteString("Content-Type: text/calendar; charset=utf-8; method=REQUEST\r\n")
-	buf.WriteString("Content-Disposition: attachment; filename=invite.ics\r\n\r\n")
+	buf.WriteString("Content-Type: text/calendar; charset=utf-8; method=REQUEST\r\n\r\n")
 	buf.Write(icsData)
 	buf.WriteString("\r\n")
 
