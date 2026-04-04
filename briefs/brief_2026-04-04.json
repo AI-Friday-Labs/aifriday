@@ -1,258 +1,205 @@
 {
   "date": "Saturday, April 4, 2026",
   "date_path": "2026/04/04",
-  "lede": "\u003cstrong\u003eGood Saturday morning, NOLA.\u003c/strong\u003e Today's a quieter day news-wise, but there's genuinely interesting stuff happening: \u003ca href='https://apfel.franzai.com'\u003eApfel, a free AI that runs natively on your Mac\u003c/a\u003e, is getting attention; \u003ca href='https://mtlynch.io/claude-code-found-linux-vulnerability/'\u003eClaude Code just found a hidden Linux vulnerability from 2003\u003c/a\u003e; and \u003ca href='https://www.anthropic.com/research/emotion-concepts-function'\u003eAnthropic published research on emotion vectors inside Claude\u003c/a\u003e. Meanwhile, the vulnerability research community is seeing a seismic shift as AI agents become capable exploit developers, and there's real concern about what happens when \u003ca href='https://arstechnica.com/ai/2026/04/research-finds-ai-users-scarily-willing-to-surrender-their-cognition-to-llms/'\u003eusers stop thinking critically around AI suggestions\u003c/a\u003e.",
+  "lede": "\u003cstrong\u003eGood Saturday, NOLA.\u003c/strong\u003e Today's a quieter day after a huge week, but there's still plenty to dig into. The big threads: \u003ca href='https://apfel.franzai.com'\u003eApfel brings free AI to your Mac\u003c/a\u003e, \u003ca href='https://mtlynch.io/claude-code-found-linux-vulnerability/'\u003eClaude Code just found a 23-year-old Linux vulnerability\u003c/a\u003e, and \u003ca href='https://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban'\u003eAnthropic is making OpenClaw significantly more expensive\u003c/a\u003e. We've also got new research on how AI affects human thinking, plus some solid takes on where the vulnerability research field is headed.",
   "next_date": "",
   "prev_date": "2026/04/03",
   "quick_links": [
     {
-      "note": "Sobering look at unsustainable AI spending and margin compression. Worth reading if you care about the business side of the boom.",
+      "note": "Real-time tracker of MCP (Model Context Protocol) adoption and sentiment. Handy if you're tracking the ecosystem.",
+      "title": "Ismcpdead.com: Live MCP Adoption Dashboard",
+      "url": "https://ismcpdead.com"
+    },
+    {
+      "note": "GitHub CEO says platform activity is surging — 275M commits per week. The AI agent boom is real.",
+      "title": "GitHub's Insane Growth: 275M Commits Per Week",
+      "url": "https://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything"
+    },
+    {
+      "note": "A provocative take on AI startups built on shaky foundations. Worth reading if you're evaluating whether your favorite AI company has real moat.",
       "title": "The Subprime AI Crisis Is Here",
       "url": "https://www.wheresyoured.at/the-subprime-ai-crisis-is-here/"
     },
     {
-      "note": "GitHub Actions usage doubling year-over-year. Signal of either huge developer growth or AI-assisted codegen running wild. Probably both.",
-      "title": "GitHub Activity Is Surging: 14 Billion Commits Projected for 2026",
-      "url": "https://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything"
+      "note": "The Verge on the cultural shift: everything looks like AI now, and we're going to need proof systems to verify human authorship. Weird future.",
+      "title": "Really, You Made This Without AI? Prove It",
+      "url": "https://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content"
     },
     {
-      "note": "Linux kernel security list seeing 5-10 reports per day now (up from 2-3 per week). The tsunami shifted from AI slop to real exploits. Kernel maintainers are spending hours per day on this.",
-      "title": "Vulnerability Researchers Drowning in Reports",
+      "note": "Internal reorganization at OpenAI. Fidji Simo (AGI deployment CEO) is taking leave; Kate Rouch (CMO) stepping back for health reasons.",
+      "title": "OpenAI Executive Shuffle: Brad Lightcap Gets 'Special Projects' Role",
+      "url": "https://techcrunch.com/2026/04/03/openai-executive-shuffle-new-roles-coo-brad-lightcap-fidji-simo-kate-rouch/"
+    },
+    {
+      "note": "More detail on the executive moves. Fidji Simo (who was leading AGI deployment initiatives) is stepping back temporarily.",
+      "title": "OpenAI's AGI Boss Takes Leave of Absence",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/906965/openais-agi-boss-is-taking-a-leave-of-absence"
+    },
+    {
+      "note": "Transparency issue: child safety orgs were working with what they thought was an independent coalition, but OpenAI was secretly funding it.",
+      "title": "Kids Safety Groups Didn't Know OpenAI Was Backing Their Coalition",
+      "url": "https://sfstandard.com/2026/04/01/openai-ai-kids-safety-coalition/"
+    },
+    {
+      "note": "AMD's approach to local inference — using both GPU and NPU for speed. Worth checking out if you're doing edge AI work.",
+      "title": "AMD's Lemonade: Fast Local LLM Server with GPU + NPU",
+      "url": "https://lemonade-server.ai"
+    },
+    {
+      "note": "Linux kernel maintainers are seeing a huge spike in security reports — many AI-generated, some legitimate, all require manual triage. The vulnerability research world is adjusting in real-time.",
+      "title": "Open-Source Vulnerability Research Is Being Flooded with AI-Generated Reports",
       "url": "https://simonwillison.net/2026/Apr/3/willy-tarreau/#atom-everything"
     },
     {
-      "note": "The viral agentic tool let attackers silently gain admin access. If you've deployed it, assume compromise.",
-      "title": "OpenClaw Gives Users Yet Another Reason to Be Freaked About Security",
-      "url": "https://arstechnica.com/security/2026/04/heres-why-its-prudent-for-openclaw-users-to-assume-compromise/"
+      "note": "Anthropic is getting serious about policy. New PAC to back candidates aligned with the company's agenda. Sign of an industry maturing into politics.",
+      "title": "Anthropic Launches Political Action Committee",
+      "url": "https://techcrunch.com/2026/04/03/anthropic-ramps-up-its-political-activities-with-a-new-pac/"
     },
     {
-      "note": "Ben's Bites breakdown of what was actually in the Claude Code source dump. Docs, markdown editor updates, April Fools jokes.",
-      "title": "Inside the Leaked Claude Code Files",
-      "url": "https://www.bensbites.com/p/inside-the-leaked-claude-code-files"
-    },
-    {
-      "note": "Chris Manning and Fan-yun Sun on building long-running, multiplayer world models with agents bootstrapped from game engines. Fascinating research direction.",
-      "title": "Moonlake: Causal World Models, Multimodal and Interactive",
-      "url": "https://www.latent.space/p/moonlake"
-    },
-    {
-      "note": "Latent Space interview with pmarca reflecting on what's changing in the AI era. Longer form, good for a weekend read.",
-      "title": "Marc Andreessen on The Death of the Browser, Pi + OpenClaw",
-      "url": "https://www.latent.space/p/pmarca"
-    },
-    {
-      "note": "Security research on sandbox escapes. If you're building Claude Artifacts-like tools, this is directly relevant.",
-      "title": "Can JavaScript Escape a CSP Meta Tag Inside an Iframe?",
-      "url": "https://simonwillison.net/2026/Apr/3/test-csp-iframe-escape/#atom-everything"
-    },
-    {
-      "note": "Postmortem on how attackers compromised an Axios maintainer directly. Sophisticated social engineering, not just technical exploits.",
-      "title": "The Axios Supply Chain Attack Used Targeted Social Engineering",
-      "url": "https://simonwillison.net/2026/Apr/3/supply-chain-social-engineering/#atom-everything"
-    },
-    {
-      "note": "State delegation of clinical authority to AI. Second time in the US. Doctors are skeptical about opacity. Worth thinking about what delegation really means.",
-      "title": "Utah AI System Now Prescribes Psychiatric Drugs",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/906525/ai-chatbot-prescribe-refill-psychiatric-drugs"
-    },
-    {
-      "note": "New poll on infrastructure politics. Data centers are losing the PR battle. This matters for where companies can actually build compute.",
-      "title": "People Would Rather Have an Amazon Warehouse Than a Data Center",
-      "url": "https://techcrunch.com/2026/04/03/people-would-rather-have-an-amazon-warehouse-in-their-backyard-than-a-data-center"
-    },
-    {
-      "note": "Meta, Microsoft, Google betting big on natural gas. Long-term bet on AI compute demand, but infrastructure lock-in. Interesting energy economics.",
-      "title": "AI Companies Building Huge Natural Gas Plants",
+      "note": "Meta, Google, Microsoft all building massive natural gas infrastructure for AI. Long-term bet on energy or a mistake they'll regret?",
+      "title": "AI Companies Betting Billions on Natural Gas Plants — What Could Go Wrong?",
       "url": "https://techcrunch.com/2026/04/03/ai-companies-are-building-huge-natural-gas-plants-to-power-data-centers-what-could-go-wrong/"
+    },
+    {
+      "note": "Polling data on public opinion about AI infrastructure. The data center debate is far from settled.",
+      "title": "People Would Rather Have an Amazon Warehouse Than a Data Center in Their Backyard",
+      "url": "https://techcrunch.com/2026/04/03/people-would-rather-have-an-amazon-warehouse-in-their-backyard-than-a-data-center/"
     }
   ],
   "sections": [
     {
       "items": [
         {
-          "body": "No subscription, no cloud dependence — Apfel runs natively on macOS and gets featured attention on HN. If you've been waiting for a practical, zero-friction way to run AI locally on Apple hardware, this is worth a shot. Clean, simple, and one less tool to pay for. \u003ca href='https://news.ycombinator.com/item?id=47624645'\u003eHN discussion here.\u003c/a\u003e",
+          "body": "\u003ca href='https://news.ycombinator.com/item?id=47624645'\u003ePopular on HN\u003c/a\u003e — Apfel is a Mac app that gives you free access to AI models you already have installed locally. No subscriptions, no API keys, no sending data anywhere. If you've been hesitant to try local inference, this is a dead-simple entry point. Works with open-source models like Llama and Mistral.",
           "title": "Apfel: Free AI Already on Your Mac",
           "url": "https://apfel.franzai.com",
           "via": "Hacker News"
         },
         {
-          "body": "New dev environment built specifically for agentic workflows. Think of it as a scaffold for building and testing agents — context management, tool definitions, agent orchestration all built in. Early stage but the concept is solid for teams prototyping agent systems. \u003ca href='https://news.ycombinator.com/item?id=47626598'\u003eHN thread.\u003c/a\u003e",
-          "title": "ctx: An Agentic Development Environment (ADE)",
+          "body": "A fresh take on how you structure AI agent projects. \u003ccode\u003ectx\u003c/code\u003e is built for developers who want their agents to have better context awareness and reasoning. Think of it as scaffolding for the agent-builder workflow — structured prompts, memory management, and tool orchestration baked in. \u003ca href='https://news.ycombinator.com/item?id=47626598'\u003eDiscussion here\u003c/a\u003e.",
+          "title": "ctx: An Agentic Development Environment",
           "url": "https://ctx.rs",
           "via": "Hacker News"
         },
         {
-          "body": "Open-source toolkit that uses AI to search travel points and plan trips. Practical and shareable — the kind of thing you can fork and customize. Great example of AI as a productivity multiplier for a specific use case.",
-          "title": "Travel Hacking Toolkit: Points Search and Trip Planning with AI",
+          "body": "A handy open-source project that uses AI to help you maximize frequent flyer points and find better travel deals. It's the kind of practical tool that shows how AI can save you real money on something people actually care about. \u003ca href='https://news.ycombinator.com/item?id=47635033'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Travel Hacking Toolkit: Points Search + Trip Planning with AI",
           "url": "https://github.com/borski/travel-hacking-toolkit",
           "via": "Hacker News"
         }
       ],
-      "title": "🛠️ Tools \u0026 Apps"
+      "title": "New Tools \u0026 Things You Can Try"
     },
     {
       "items": [
         {
-          "body": "Claude Code automatically discovered a real security flaw in the Linux kernel that's been hidden since 2003. This isn't a toy — it's a signal that AI agents are now doing genuine vulnerability research work. The \u003ca href='https://news.ycombinator.com/item?id=47633855'\u003eHN discussion\u003c/a\u003e is full of security researchers grappling with what this means for the field.",
-          "title": "Claude Code Found a 23-Year-Old Linux Vulnerability",
+          "body": "This is the story that's dominating the vulnerability research world right now. Claude Code spotted a real security flaw in the Linux kernel that humans missed for over two decades — and it did it by reading through old code comments. \u003ca href='https://simonwillison.net/2026/Apr/3/vulnerability-research-is-cooked/'\u003eSimon Willison's take\u003c/a\u003e captures the bigger picture: frontier models have fundamentally changed the game for security researchers. \u003ca href='https://news.ycombinator.com/item?id=47633855'\u003eHN thread\u003c/a\u003e.",
+          "title": "Claude Code Found a Linux Vulnerability Hidden for 23 Years",
           "url": "https://mtlynch.io/claude-code-found-linux-vulnerability/",
           "via": "Hacker News"
         },
         {
-          "body": "Anthropic published a research paper showing that Claude has identifiable internal structures that correspond to emotional concepts — happiness, sadness, etc. Fascinating not from a \"do AIs have feelings\" angle, but from an interpretability perspective. Understanding these vectors might help us steer models better. \u003ca href='https://news.ycombinator.com/item?id=47636435'\u003eHN discussion.\u003c/a\u003e",
-          "title": "Anthropic Found 'Emotion Vectors' Inside Claude",
-          "url": "https://www.anthropic.com/research/emotion-concepts-function",
-          "via": "Anthropic"
-        },
-        {
-          "body": "Thomas Ptacek's take: frontier models have fundamentally changed exploit development economics in the span of months. The work that took days now takes minutes. Open source projects are being flooded with real, high-quality vulnerability reports for the first time — not slop, but actual exploits. This is a tectonic shift.",
-          "title": "Vulnerability Research Is Cooked",
-          "url": "https://simonwillison.net/2026/Apr/3/vulnerability-research-is-cooked/",
-          "via": "Simon Willison"
+          "body": "Starting today, Anthropic is making it much harder to use OpenClaw (a popular AI agent tool) with Claude on paid plans. Users will need to use a different model or pay extra. This is a notable move: Anthropic essentially deciding that OpenClaw posed enough of a security or policy risk that they'd restrict access rather than ban it outright. \u003ca href='https://arstechnica.com/security/2026/04/heres-why-its-prudent-for-openclaw-users-to-assume-compromise/'\u003eArs Technica's security perspective\u003c/a\u003e is worth reading too.",
+          "title": "Anthropic Bans OpenClaw, Makes It Expensive for Claude Users",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban",
+          "via": "The Verge"
         }
       ],
-      "title": "🔬 AI Internals \u0026 Research"
+      "title": "Claude Code \u0026 Security"
     },
     {
       "items": [
         {
-          "body": "Experiments show large majorities accepting \"faulty\" AI answers without question. When an LLM confidently gives you a wrong answer, most people just... trust it. This is a real cognitive risk: \u003cstrong\u003ewe're outsourcing judgment to systems that hallucinate\u003c/strong\u003e. Not doom, but it's the kind of research that should make you pause before handing everything to an agent.",
-          "title": "\"Cognitive Surrender\": Research Finds AI Users Abandon Critical Thinking",
+          "body": "New research shows that when people use AI to answer questions, they're surprisingly willing to accept incorrect answers without fact-checking. Large majorities in experiments just... trusted the AI and moved on. It's the kind of finding that should make product builders think hard about how to surface confidence levels, uncertainty, and sources. Not doom — just a design challenge.",
+          "title": "Cognitive Surrender: AI Users Abandon Logical Thinking",
           "url": "https://arstechnica.com/ai/2026/04/research-finds-ai-users-scarily-willing-to-surrender-their-cognition-to-llms/",
           "via": "Ars Technica"
         },
         {
-          "body": "Short but sharp: what does it mean for your coding skills when an agent can write 80% of your code? Simon Willison flags the podcast clip that went viral (1.1M views) — a conversation with Lenny Rachitsky about whether this is liberation or atrophy. Worth 48 seconds of your time.",
-          "title": "The Cognitive Impact of Coding Agents",
-          "url": "https://simonwillison.net/2026/Apr/3/cognitive-cost/",
-          "via": "Simon Willison"
+          "body": "A solid hands-on review of Claude Code's new features and where they shine. If you're building with agents or thinking about upgrading your coding workflow, this gives you the real-world view of what's actually useful versus what's hype.",
+          "title": "How Claude Code's Superpowers Actually Work",
+          "url": "https://emschwartz.me/a-rave-review-of-superpowers-for-claude-code/",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Anthropic's research team dug into how LLMs represent and reason about emotion-related concepts. It's mechanistic interpretability work, but the practical angle is worth it: understanding how models handle nuance and context actually matters for building better prompts and detecting when models are confabulating.",
+          "title": "Emotion Concepts and Their Function in Large Language Models",
+          "url": "https://www.anthropic.com/research/emotion-concepts-function",
+          "via": "Hacker News"
         }
       ],
-      "title": "⚠️ The Cognitive Cost of AI"
+      "title": "Research \u0026 Thinking"
     },
     {
       "items": [
         {
-          "body": "Anthropic is going vertical — acquiring a stealth biotech startup that applies AI to drug discovery and biology. This signals Anthropic's play: don't just build foundation models, own domain-specific applications where you can capture value. First major acquisition.",
-          "title": "Anthropic Buys Coefficient Bio for $400M",
+          "body": "Anthropic is betting big on biotech. Coefficient Bio is a stealth startup, so details are thin, but the size of the deal ($400M in stock) signals that Anthropic sees real opportunity in applying AI to biology and drug discovery. This follows a pattern: AI labs are expanding beyond language into verticals where domain expertise + reasoning = huge value.",
+          "title": "Anthropic Acquires Coefficient Bio for $400M",
           "url": "https://techcrunch.com/2026/04/03/anthropic-buys-biotech-startup-coefficient-bio-in-400m-deal-reports/",
           "via": "TechCrunch"
         },
         {
-          "body": "Secondary market traders are betting hard on Anthropic. OpenAI's valuation momentum has stalled while Anthropic keeps climbing. SpaceX's looming IPO could reshape the landscape for everyone. This is where the smart money is actually going.",
-          "title": "Anthropic Is Hot on the Secondary Market; OpenAI Losing Ground",
+          "body": "Secondary market trading for Anthropic shares is hotter than ever. Meanwhile, OpenAI's trading is cooling. The narrative: Anthropic is seen as having momentum, execution, and diversification (now with biotech). That's real signal in where smart money thinks the race is headed.",
+          "title": "Anthropic Heats Up Private Markets; Hiring, Fundraising, Expanding",
           "url": "https://techcrunch.com/2026/04/03/anthropic-is-having-a-moment-in-the-private-markets-spacex-could-spoil-the-party/",
           "via": "TechCrunch"
         },
         {
-          "body": "OpenAI's reorganizing again: COO Brad Lightcap moving to lead \"special projects,\" CMO Kate Rouch stepping back for health reasons, and \u003ca href='https://www.theverge.com/ai-artificial-intelligence/906965/openais-agi-boss-is-taking-a-leave-of-absence'\u003eFidji Simo (AGI deployment lead) taking medical leave\u003c/a\u003e. Quiet reshuffle, but signals internal focus shifting.",
-          "title": "OpenAI Executive Shuffle: Brad Lightcap Leads Special Projects",
-          "url": "https://techcrunch.com/2026/04/03/openai-executive-shuffle-new-roles-coo-brad-lightcap-fidji-simo-kate-rouch/",
-          "via": "TechCrunch"
-        },
-        {
-          "body": "Starting April 4th, using OpenClaw (the viral third-party tool) with Claude now costs extra — you lose your subscription limit benefits. Smart business move (protects their API margins), but it's a subtle way of saying \"use our tools, not theirs.\"",
-          "title": "Anthropic Essentially Bans OpenClaw by Charging Extra",
-          "url": "https://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban",
-          "via": "The Verge"
-        },
-        {
-          "body": "Anthropic's sweetening the deal for subscribers — extra tokens on Pro, Max, and Team plans. Nice timing alongside the OpenClaw restrictions.",
-          "title": "Claude Pro/Max/Team Gets Extra Usage Credit",
+          "body": "Anthropic rolled out new subscription tiers and is handing out extra usage credits to celebrate. If you've been on the fence about paying for Claude, now's the time to lock in bonus value.",
+          "title": "Claude Pro/Max/Team Launches with Bonus Credits",
           "url": "https://support.claude.com/en/articles/14246053-extra-usage-credit-for-pro-max-and-team-plans",
-          "via": "Anthropic Support"
+          "via": "Hacker News"
         }
       ],
-      "title": "💰 Big Moves \u0026 Business"
+      "title": "Big Moves \u0026 Business"
     },
     {
       "items": [
         {
-          "body": "Nufar Gaspar breaks down a five-level framework for agent skills — from basics to advanced patterns like skill chaining and dispatchers. If you're building agents, this is practical and well-structured. Great mental model for organizing agent capabilities.",
-          "title": "Agent Skills Masterclass — AI Daily Brief Podcast",
-          "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/Agent-Skills-Masterclass-e3hasv7",
-          "via": "AI Daily Brief"
+          "body": "Long-form podcast where Andreessen reflects on how AI is reshaping the web, the threat (and potential) of agentic tools like OpenClaw, and why he thinks AI's impact is fundamentally different from previous waves. Worth listening if you're thinking about product strategy or worried about what happens when agents can automate everything.",
+          "title": "Marc Andreessen on the Death of the Browser, AI Agents, and Why This Time Is Different",
+          "url": "https://www.latent.space/p/pmarca",
+          "via": "Latent Space"
         },
         {
-          "body": "The underrated friction point in the agentic era: every new agent requires you to re-explain yourself. This episode walks through building a personal context portfolio — structured markdown files that travel with you across tools. Practical and immediately useful.",
-          "title": "How to Build a Personal Context Portfolio and MCP Server",
-          "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/How-to-Build-a-Personal-Context-Portfolio-and-MCP-Server-e3hcfrl",
+          "body": "A creative case study: using Gemini, NotebookLM, and Google's other AI tools to build an entire multimedia project (YouTube channel + strategy game) in a single afternoon. If you're curious about what's possible with modern tooling, this is a fun listen.",
+          "title": "The Masked Medici: Building YouTube Content + Games with Google AI in One Afternoon",
+          "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/The-Masked-Medici-How-to-Build-a-Faceless-Youtube-Channel-and-Companion-1990s-Strategy-Game-in-a-Single-Afternoon-with-Google-AI-e3he3ld",
           "via": "AI Daily Brief"
-        },
-        {
-          "body": "Joe Schmidt interviews Peter Doyle, CEO of Treeline, on why the $100B managed services market is a decade behind on AI adoption and how to fix it. Business-focused, not technical — good for understanding where the real money moves next.",
-          "title": "How AI Is Reshaping IT Services from the Inside",
-          "url": "https://ai-a16z.simplecast.com/episodes/how-ai-is-reshaping-it-services-from-the-inside-6zsGh8Aa",
-          "via": "a16z AI"
         }
       ],
-      "title": "📚 Worth a Listen"
-    },
-    {
-      "items": [
-        {
-          "body": "Cultural moment: as generative AI gets better, people are skeptical of anything creative. The Verge explores the new anxiety: \"That looks AI.\" What does authenticity even mean anymore? Thought-provoking read on attribution and trust.",
-          "title": "Really, You Made This Without AI? Prove It",
-          "url": "https://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content",
-          "via": "The Verge"
-        },
-        {
-          "body": "Community-built tracker showing whether \u003ca href='https://news.ycombinator.com/item?id=47631030'\u003eModel Context Protocol is actually taking off\u003c/a\u003e. Real-time sentiment and adoption metrics. Fun meta-commentary on a standard that was supposed to be transformative.",
-          "title": "Ismcpdead.com: Live Dashboard Tracking MCP Adoption",
-          "url": "https://ismcpdead.com",
-          "via": "Hacker News"
-        },
-        {
-          "body": "Em Schwartz's honest take on Claude Code's best features now that the source has leaked. Practical review from someone actually using it day-to-day.",
-          "title": "Superpowers for Claude Code: A Rave Review",
-          "url": "https://emschwartz.me/a-rave-review-of-superpowers-for-claude-code/",
-          "via": "Hacker News"
-        }
-      ],
-      "title": "🎺 Also Worth Your Time"
+      "title": "Podcasts \u0026 Long-Form"
     }
   ],
-  "slack_text": "☕ Good morning, NOLA! Saturday, April 4th. Quiet news day, but some genuinely fascinating stuff bubbling up — vulnerability research is having a moment, and there's new research on how AI is reshaping what we think about critical thinking.\n\n---\n\n🛠️ New Tools \u0026 Open Source\n\n• \u003curl|Apfel is free AI already on your Mac\u003e — no subscription, no cloud. Runs natively. Clean and simple if you've been waiting for zero-friction local AI.\n\n• \u003curl|ctx is a new agentic development environment\u003e — built specifically for agent workflows with context management and tool orchestration baked in. Early but solid concept for teams prototyping agents.\n\n• \u003curl|Travel Hacking Toolkit uses AI for points search\u003e — open source, fork it, customize it. The kind of AI project that's immediately useful.\n\n---\n\n🔬 The AI Research Angle\n\n• Claude Code just found \u003curl|a 23-year-old Linux vulnerability\u003e\u003e that was hiding since 2003. This is real security research work happening in real time. The vulnerability research community is grappling with what this means.\n\n• \u003curl|Anthropic found \"emotion vectors\" inside Claude\u003e\u003e — they identified internal structures that correspond to emotional concepts. Fascinating from an interpretability angle. Understanding these might help us steer models better.\n\n• \u003curl|Research: users are surrendering cognitive judgment to AI\u003e\u003e — experiments show most people accept wrong AI answers without question. Worth a read on what happens when we outsource critical thinking.\n\n---\n\n💰 Big Moves\n\n• \u003curl|Anthropic bought Coefficient Bio for $400M\u003e\u003e — first major acquisition signals they're going vertical: own domain-specific applications where you can capture real value.\n\n• \u003curl|Anthropic is hot on secondary markets; OpenAI losing momentum\u003e\u003e. Smart money is betting on Anthropic's trajectory.\n\n• \u003curl|Anthropic basically banned OpenClaw by charging extra\u003e\u003e — starting today, third-party tools lose subscription benefits. Smart business, subtle messaging.\n\n---\n\n📚 Worth Your Time\n\n• \u003curl|Agent Skills Masterclass podcast\u003e\u003e — Nufar Gaspar on a five-level framework for agent skills. If you're building agents, this is practical and well-structured.\n\n• \u003curl|How to build a personal context portfolio\u003e\u003e — solves the real friction point: every new agent requires you to re-explain yourself. Markdown files that travel with you.\n\n• \u003curl|Really, you made this without AI? Prove it\u003e\u003e — The Verge on cultural anxiety around authenticity in the age of generative AI. Thought-provoking read on what \"human-made\" even means anymore.\n\nHave a great weekend! 🎺",
+  "slack_text": "☕ Good Saturday, NOLA! April 4, 2026. It's a quieter day after a wild week, but there's still solid stuff worth your time.\n\n---\n\n🛠 New \u0026 Tryable\n\n• \u003chttps://apfel.franzai.com|Apfel brings free AI straight to your Mac\u003e. No API keys, no subscriptions — just local models running natively. Dead simple entry point if you've been curious about local inference. \u003chttps://news.ycombinator.com/item?id=47624645|Trending on HN\u003e.\n\n• \u003chttps://ctx.rs|ctx is a new agentic development environment\u003e for building smarter AI agents. Handles context awareness, memory, and tool orchestration so you don't have to reinvent it. \u003chttps://news.ycombinator.com/item?id=47626598|Discussion\u003e.\n\n• \u003chttps://github.com/borski/travel-hacking-toolkit|Travel Hacking Toolkit\u003e: AI helping you max out frequent flyer points and find better deals. Practical use case that actually saves you money.\n\n---\n\n🔐 Claude Code \u0026 Security News\n\n• Claude Code just \u003chttps://mtlynch.io/claude-code-found-linux-vulnerability/|found a 23-year-old Linux vulnerability\u003e that humans completely missed. This is the story reshaping how security researchers think about their work. \u003chttps://simonwillison.net/2026/Apr/3/vulnerability-research-is-cooked/|Simon's deep-dive on why \"vulnerability research is cooked\" is essential reading.\u003e\n\n• \u003chttps://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban|Anthropic is making OpenClaw significantly more expensive for Claude users\u003e. Effective today — you can still use it, but it'll cost extra. The security/policy angle is worth thinking about.\n\n---\n\n💭 Research \u0026 Thinking\n\n• New research: \u003chttps://arstechnica.com/ai/2026/04/research-finds-ai-users-scarily-willing-to-surrender-their-cognition-to-llms/|AI users are willing to abandon logical thinking and just trust wrong answers\u003e\u003e. Not doom — just a design challenge. How do you surface uncertainty and sources so people stay engaged?\n\n• \u003chttps://www.latent.space/p/pmarca|Marc Andreessen on the death of the browser, agentic AI, and why this time is different\u003e\u003e. Long but worth it if you're thinking about product strategy in an agent-heavy future.\n\n---\n\n💼 Business Moves\n\n• \u003chttps://techcrunch.com/2026/04/03/anthropic-buys-biotech-startup-coefficient-bio-in-400m-deal-reports/|Anthropic just acquired Coefficient Bio for $400M\u003e\u003e. Stealth biotech startup. Signals: AI labs are expanding beyond language into verticals where domain expertise + reasoning = real moat.\n\n• \u003chttps://techcrunch.com/2026/04/03/anthropic-is-having-a-moment-in-the-private-markets-spacex-could-spoil-the-party/|Anthropic's on fire in private market trading\u003e\u003e while OpenAI's cooling. Where smart money sees momentum matters.\n\n• GitHub had \u003chttps://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything|275 million commits last week\u003e\u003e. The AI agent boom is showing up in raw platform activity.",
   "sources": [
     {
       "name": "Hacker News",
       "url": "https://news.ycombinator.com"
     },
     {
-      "name": "Anthropic",
-      "url": "https://www.anthropic.com"
+      "name": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/ai"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com/ai"
     },
     {
       "name": "Simon Willison",
       "url": "https://simonwillison.net"
     },
     {
-      "name": "Ars Technica",
-      "url": "https://arstechnica.com"
-    },
-    {
-      "name": "TechCrunch",
-      "url": "https://techcrunch.com"
-    },
-    {
-      "name": "The Verge",
-      "url": "https://www.theverge.com"
-    },
-    {
-      "name": "AI Daily Brief Podcast",
-      "url": "https://podcasters.spotify.com/pod/show/nlw"
-    },
-    {
-      "name": "a16z AI",
-      "url": "https://ai-a16z.simplecast.com"
-    },
-    {
       "name": "Latent Space",
       "url": "https://www.latent.space"
     },
     {
-      "name": "Ben's Bites",
-      "url": "https://www.bensbites.com"
+      "name": "Anthropic",
+      "url": "https://www.anthropic.com"
     }
   ]
 }
