@@ -38,7 +38,10 @@ const (
 	maxContinuityItems  = 6
 )
 
-var slackLinkRe = regexp.MustCompile(`<([^>|]+)\|([^>]+)>`)
+var (
+	slackLinkRe      = regexp.MustCompile(`<([^>|]+)\|([^>]+)>`)
+	extraAngleLinkRe = regexp.MustCompile(`(<https?://[^>|]+\|[^>]+>)>`)
+)
 
 var (
 	flagDate    = flag.String("date", "", "date to generate brief for (YYYY-MM-DD), defaults to today")
@@ -654,7 +657,7 @@ func briefLooksValid(briefData map[string]any) bool {
 }
 
 func hydrateSlackLinks(text string, urlMap map[string]string) string {
-	return slackLinkRe.ReplaceAllStringFunc(text, func(match string) string {
+	text = slackLinkRe.ReplaceAllStringFunc(text, func(match string) string {
 		parts := slackLinkRe.FindStringSubmatch(match)
 		if len(parts) != 3 {
 			return match
@@ -669,6 +672,8 @@ func hydrateSlackLinks(text string, urlMap map[string]string) string {
 		}
 		return html.EscapeString(label)
 	})
+	text = extraAngleLinkRe.ReplaceAllString(text, "$1")
+	return text
 }
 
 func normalizeSlackLabel(s string) string {
