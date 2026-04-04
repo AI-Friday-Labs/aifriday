@@ -27,7 +27,10 @@ import (
 	slackbot "srv.exe.dev/slack"
 )
 
-const llmGateway = "http://169.254.169.254/gateway/llm/anthropic/v1/messages"
+const (
+	llmGateway        = "http://169.254.169.254/gateway/llm/anthropic/v1/messages"
+	defaultBriefModel = "claude-haiku-4-5"
+)
 
 var (
 	flagDate    = flag.String("date", "", "date to generate brief for (YYYY-MM-DD), defaults to today")
@@ -455,9 +458,14 @@ Community Links:
 		articleList.String(),
 		dateHuman, datePath, prevDate)
 
-	// Call Claude
+	model := strings.TrimSpace(os.Getenv("BRIEF_MODEL"))
+	if model == "" {
+		model = defaultBriefModel
+	}
+	slog.Info("calling LLM", "model", model)
+
 	reqBody := map[string]any{
-		"model":      "claude-3-5-haiku-20241022",
+		"model":      model,
 		"max_tokens": 12000,
 		"messages": []map[string]string{
 			{"role": "user", "content": prompt},
