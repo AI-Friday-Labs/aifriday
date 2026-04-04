@@ -5,21 +5,22 @@ package main
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"html"
 	"io"
 	"log/slog"
 	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
 	"time"
-
-	"database/sql"
 
 	"github.com/joho/godotenv"
 	"srv.exe.dev/db"
@@ -28,9 +29,16 @@ import (
 )
 
 const (
-	llmGateway        = "http://169.254.169.254/gateway/llm/anthropic/v1/messages"
-	defaultBriefModel = "claude-haiku-4-5"
+	llmGateway          = "http://169.254.169.254/gateway/llm/anthropic/v1/messages"
+	defaultBriefModel   = "claude-haiku-4-5"
+	fallbackBriefModel  = "claude-sonnet-4-5"
+	maxPromptArticles   = 40
+	maxSummaryChars     = 180
+	maxContinuityBriefs = 2
+	maxContinuityItems  = 6
 )
+
+var slackLinkRe = regexp.MustCompile(`<([^>|]+)\|([^>]+)>`)
 
 var (
 	flagDate    = flag.String("date", "", "date to generate brief for (YYYY-MM-DD), defaults to today")
@@ -295,17 +303,29 @@ func loadRecentBriefs(projectRoot string, currentDatePath string, maxBriefs int)
 			continue
 		}
 
+		lede := strings.TrimSpace(brief.Lede)
+		if len(lede) > 220 {
+			lede = lede[:220] + "..."
+		}
 		fmt.Fprintf(&buf, "=== %s (/%s/) ===\n", brief.Date, brief.DatePath)
-		fmt.Fprintf(&buf, "Lede: %s\n\n", brief.Lede)
+		fmt.Fprintf(&buf, "Lede: %s\n", lede)
 		for _, s := range brief.Sections {
 			fmt.Fprintf(&buf, "Section: %s\n", s.Title)
-			for _, item := range s.Items {
+			for i, item := range s.Items {
+				if i >= maxContinuityItems {
+					fmt.Fprintln(&buf, "  - ...")
+					break
+				}
 				fmt.Fprintf(&buf, "  - %s (%s)\n", item.Title, item.URL)
 			}
 		}
 		if len(brief.QuickLinks) > 0 {
 			fmt.Fprintln(&buf, "Quick Links:")
-			for _, ql := range brief.QuickLinks {
+			for i, ql := range brief.QuickLinks {
+				if i >= maxContinuityItems {
+					fmt.Fprintln(&buf, "  - ...")
+					break
+				}
 				fmt.Fprintf(&buf, "  - %s (%s)\n", ql.Title, ql.URL)
 			}
 		}
@@ -325,7 +345,7 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 	}
 
 	// Load recent briefs for continuity context
-	recentBriefs := loadRecentBriefs(projectRoot, datePath, 3)
+	recentBriefs := loadRecentBriefs(projectRoot, datePath, maxContinuityBriefs)
 	if recentBriefs != "" {
 		slog.Info("loaded recent briefs for continuity context")
 	}
@@ -333,17 +353,21 @@ func generateBrief(ctx context.Context, articles []feeds.Article, dateHuman, dat
 	// Format articles for the prompt
 	var articleList strings.Builder
 	for i, a := range articles {
-		if i >= 75 { // Cap at 75 to keep prompt reasonable
+		if i >= maxPromptArticles {
 			break
 		}
 		fmt.Fprintf(&articleList, "%d. [%s] %s\n   URL: %s\n", i+1, a.Source, a.Title, a.URL)
 		if a.Points > 0 {
-			fmt.Fprintf(&articleList, "   HN Points: %d (internal use only — do NOT include in output) | Comments: %s\n", a.Points, a.CommentURL)
+			fmt.Fprintf(&articleList, "   HN Points: %d (internal use only — do NOT include in output)", a.Points)
+			if a.CommentURL != "" {
+				fmt.Fprintf(&articleList, " | Comments: %s", a.CommentURL)
+			}
+			fmt.Fprintln(&articleList)
 		}
 		if a.Summary != "" {
-			summary := a.Summary
-			if len(summary) > 300 {
-				summary = summary[:300] + "..."
+			summary := strings.TrimSpace(a.Summary)
+			if len(summary) > maxSummaryChars {
+				summary = summary[:maxSummaryChars] + "..."
 			}
 			fmt.Fprintf(&articleList, "   Summary: %s\n", summary)
 		}
@@ -420,7 +444,7 @@ Generate the daily brief as a JSON object. The JSON must have this exact structu
   "sources": [
     {"name": "Source Name", "url": "https://..."}
   ],
-  "slack_text": "Conversational Slack message for #daily-brief. Write like a smart friend catching people up over coffee. Start with a warm greeting ('Good morning, NOLA!' or similar) + date + a 1-2 sentence vibe-check on the day. Then 2-3 sections separated by --- with emoji headers. Each item gets a bullet with a <url|linked headline> plus 1-3 conversational sentences about WHY it matters. Not a dry list — give personality and editorial voice. Aim for 8-10 linked items total. Mix it up: new tools, interesting reads, business moves, how-to's. Don't let it get too techy — most readers use AI tools but don't train models. Use Slack mrkdwn (*bold*, _italic_, <url|text>). No HTML. The system appends the website link automatically — do NOT add one."
+  "slack_text": "Conversational Slack message for #daily-brief. Write like a smart friend catching people up over coffee. Start with a warm greeting ('Good morning, NOLA!' or similar) + date + a 1-2 sentence vibe-check on the day. Then 2-3 sections separated by --- with emoji headers. Each item gets a bullet with a real Slack link like <https://example.com/story|linked headline> plus 1-3 conversational sentences about WHY it matters. Not a dry list — give personality and editorial voice. Aim for 8-10 linked items total. Mix it up: new tools, interesting reads, business moves, how-to's. Don't let it get too techy — most readers use AI tools but don't train models. Use Slack mrkdwn (*bold*, _italic_, <https://example.com|text>). No HTML. The system appends the website link automatically — do NOT add one."
 }
 
 Important:
@@ -429,9 +453,9 @@ Important:
 - For SLACK (slack_text): keep it to 8-12 linked items total. Slack is a quick scan, not a deep read. Pick the best stuff.
 - The "body" field in items uses HTML (not Markdown)
 - The "lede" field uses HTML (not Markdown)  
-- The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <url|text> for links. Every item MUST have a <url|linked headline>. Use --- between sections. No HTML.
+- The "slack_text" field is conversational Slack mrkdwn. Write it like a friend, not a news ticker. Use *bold*, _italic_, <https://actual-url|text> for links. NEVER use placeholder links like <url|text> or <link|text>. Every linked item MUST include the real URL inline. Use --- between sections. No HTML.
 - Do NOT include any footer like 'details in thread' or 'full brief' in slack_text — the system appends the website URL automatically
-- MULTI-LINK STORYTELLING: For big stories, don't just link one article. Pull in multiple relevant links to tell the full picture — the original source, a good analysis, a deep-dive, a visual guide, an HN discussion. Weave them naturally into the narrative. Example Slack style: "The story everyone's talking about: <url|Claude Code's source leaked> via an NPM mistake. <url|This deep-dive> and <url|this visual guide> are both worth your time." Example HTML body style: "<a href='url'>This deep-dive writeup</a> and <a href='url'>this visual guide</a> break down what's inside." This pattern makes each item much more valuable than a single link ever could.
+- MULTI-LINK STORYTELLING: For big stories, don't just link one article. Pull in multiple relevant links to tell the full picture — the original source, a good analysis, a deep-dive, a visual guide, an HN discussion. Weave them naturally into the narrative. Example Slack style: "The story everyone's talking about: <https://example.com/main|Claude Code's source leaked> via an NPM mistake. <https://example.com/deep-dive|This deep-dive> and <https://example.com/visual-guide|this visual guide> are both worth your time." Example HTML body style: "<a href='url'>This deep-dive writeup</a> and <a href='url'>this visual guide</a> break down what's inside." This pattern makes each item much more valuable than a single link ever could.
 - Diversify sources: don't let more than half the items come from Hacker News. Pull from tech press, newsletters, blogs, and community links too
 - Group items into 2-4 sections with descriptive titles
 - The lede should reference the most important stories with links
@@ -462,8 +486,84 @@ Community Links:
 	if model == "" {
 		model = defaultBriefModel
 	}
-	slog.Info("calling LLM", "model", model)
+	models := []string{model}
+	if model != fallbackBriefModel {
+		models = append(models, fallbackBriefModel)
+	}
 
+	var lastErr error
+	for i, modelName := range models {
+		slog.Info("calling LLM", "model", modelName, "attempt", i+1)
+		briefJSON, err := callBriefLLM(ctx, prompt, modelName)
+		if err != nil {
+			lastErr = err
+			slog.Warn("LLM generation failed", "model", modelName, "error", err)
+			continue
+		}
+		return briefJSON, nil
+	}
+
+	return nil, lastErr
+}
+
+// ---------------------------------------------------------------------------
+// Slack posting
+// ---------------------------------------------------------------------------
+
+func postToSlack(briefJSON []byte, datePath string) error {
+	var data struct {
+		SlackText string `json:"slack_text"`
+		Sections  []struct {
+			Items []struct {
+				Title string `json:"title"`
+				URL   string `json:"url"`
+			} `json:"items"`
+		} `json:"sections"`
+		QuickLinks []struct {
+			Title string `json:"title"`
+			URL   string `json:"url"`
+		} `json:"quick_links"`
+	}
+	if err := json.Unmarshal(briefJSON, &data); err != nil {
+		return fmt.Errorf("parse brief JSON: %w", err)
+	}
+
+	if data.SlackText == "" {
+		return fmt.Errorf("no slack_text in brief JSON")
+	}
+
+	urlMap := make(map[string]string)
+	for _, section := range data.Sections {
+		for _, item := range section.Items {
+			if item.URL != "" && item.Title != "" {
+				urlMap[normalizeSlackLabel(item.Title)] = item.URL
+			}
+		}
+	}
+	for _, item := range data.QuickLinks {
+		if item.URL != "" && item.Title != "" {
+			urlMap[normalizeSlackLabel(item.Title)] = item.URL
+		}
+	}
+
+	slackText := hydrateSlackLinks(data.SlackText, urlMap)
+	if strings.Contains(slackText, "<url|") {
+		return fmt.Errorf("slack_text still contains unresolved <url|...> placeholders")
+	}
+
+	bot, err := slackbot.New(nil)
+	if err != nil {
+		return fmt.Errorf("create slack bot: %w", err)
+	}
+
+	return bot.PostDailyBrief(datePath, slackText)
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+func callBriefLLM(ctx context.Context, prompt, model string) ([]byte, error) {
 	reqBody := map[string]any{
 		"model":      model,
 		"max_tokens": 12000,
@@ -499,7 +599,6 @@ Community Links:
 		return nil, fmt.Errorf("LLM returned %d: %s", resp.StatusCode, string(body))
 	}
 
-	// Parse Claude's response
 	var claudeResp struct {
 		Content []struct {
 			Text string `json:"text"`
@@ -508,30 +607,29 @@ Community Links:
 	if err := json.Unmarshal(body, &claudeResp); err != nil {
 		return nil, fmt.Errorf("parse LLM response: %w", err)
 	}
-
 	if len(claudeResp.Content) == 0 {
 		return nil, fmt.Errorf("empty LLM response")
 	}
 
-	// Extract JSON from Claude's response (strip markdown fences if present)
 	text := strings.TrimSpace(claudeResp.Content[0].Text)
 	if strings.HasPrefix(text, "```") {
 		lines := strings.Split(text, "\n")
-		// Remove first and last line
 		if len(lines) > 2 {
 			text = strings.Join(lines[1:len(lines)-1], "\n")
 		}
 	}
 
-	// Validate it's valid JSON
 	var briefData map[string]any
 	if err := json.Unmarshal([]byte(text), &briefData); err != nil {
-		// Save the raw response for debugging
 		os.WriteFile("/tmp/brief_raw_response.txt", []byte(text), 0644)
 		return nil, fmt.Errorf("invalid JSON from LLM (saved to /tmp/brief_raw_response.txt): %w", err)
 	}
 
-	// Pretty-print
+	if !briefLooksValid(briefData) {
+		os.WriteFile("/tmp/brief_validation_failed.json", []byte(text), 0644)
+		return nil, fmt.Errorf("LLM response missing required brief fields")
+	}
+
 	pretty, err := json.MarshalIndent(briefData, "", "  ")
 	if err != nil {
 		return []byte(text), nil
@@ -539,33 +637,70 @@ Community Links:
 	return pretty, nil
 }
 
-// ---------------------------------------------------------------------------
-// Slack posting
-// ---------------------------------------------------------------------------
-
-func postToSlack(briefJSON []byte, datePath string) error {
-	var data struct {
-		SlackText string `json:"slack_text"`
+func briefLooksValid(briefData map[string]any) bool {
+	lede, _ := briefData["lede"].(string)
+	slackText, _ := briefData["slack_text"].(string)
+	sections, ok := briefData["sections"].([]any)
+	if !ok {
+		return false
 	}
-	if err := json.Unmarshal(briefJSON, &data); err != nil {
-		return fmt.Errorf("parse brief JSON: %w", err)
+	if strings.TrimSpace(lede) == "" || strings.TrimSpace(slackText) == "" {
+		return false
 	}
-
-	if data.SlackText == "" {
-		return fmt.Errorf("no slack_text in brief JSON")
+	if len(sections) == 0 {
+		return false
 	}
-
-	bot, err := slackbot.New(nil)
-	if err != nil {
-		return fmt.Errorf("create slack bot: %w", err)
-	}
-
-	return bot.PostDailyBrief(datePath, data.SlackText)
+	return true
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+func hydrateSlackLinks(text string, urlMap map[string]string) string {
+	return slackLinkRe.ReplaceAllStringFunc(text, func(match string) string {
+		parts := slackLinkRe.FindStringSubmatch(match)
+		if len(parts) != 3 {
+			return match
+		}
+		urlPart := strings.TrimSpace(parts[1])
+		label := strings.TrimSpace(parts[2])
+		if urlPart != "" && urlPart != "url" {
+			return fmt.Sprintf("<%s|%s>", urlPart, label)
+		}
+		if url, ok := urlMap[normalizeSlackLabel(label)]; ok {
+			return fmt.Sprintf("<%s|%s>", url, label)
+		}
+		return html.EscapeString(label)
+	})
+}
+
+func normalizeSlackLabel(s string) string {
+	s = html.UnescapeString(strings.ToLower(strings.TrimSpace(s)))
+	s = strings.ReplaceAll(s, "’", "'")
+	s = strings.ReplaceAll(s, "‘", "'")
+	s = strings.ReplaceAll(s, "“", `"`)
+	s = strings.ReplaceAll(s, "”", `"`)
+	replacer := strings.NewReplacer(
+		"—", " ",
+		"–", " ",
+		"…", " ",
+		">", " ",
+		"<", " ",
+		"|", " ",
+		"/", " ",
+		":", " ",
+		";", " ",
+		",", " ",
+		".", " ",
+		"!", " ",
+		"?", " ",
+		"(", " ",
+		")", " ",
+		"[", " ",
+		"]", " ",
+		"{", " ",
+		"}", " ",
+	)
+	s = replacer.Replace(s)
+	return strings.Join(strings.Fields(s), " ")
+}
 
 func findPrevBrief(projectRoot, currentDatePath string) string {
 	briefDir := filepath.Join(projectRoot, "site", "brief")
