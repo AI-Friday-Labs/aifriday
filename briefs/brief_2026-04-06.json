@@ -1,0 +1,187 @@
+{
+  "date": "Monday, April 6, 2026",
+  "date_path": "2026/04/06",
+  "lede": "\u003cstrong\u003eGood Monday, NOLA.\u003c/strong\u003e Today's vibe: the Claude Code story keeps reshaping what's possible—a developer just shipped a project in three months that took eight years of dreaming, and the industry keeps proving that agentic engineering is the real deal. Meanwhile, \u003ca href='https://lalitm.com/post/building-syntaqlite-ai/'\u003ebuilding with AI is getting genuinely faster\u003c/a\u003e, \u003ca href='https://ai.georgeliu.com/p/running-google-gemma-4-locally-with'\u003erunning big models locally is getting easier\u003c/a\u003e, and there's a whole ecosystem of tools making AI more practical by the day.",
+  "next_date": "",
+  "prev_date": "2026/04/05",
+  "quick_links": [
+    {
+      "note": "For folks interested in model training infrastructure—a minimal, efficient setup.",
+      "title": "Show HN: Nanocode—Training an LLM on TPUs with JAX",
+      "url": "https://github.com/salmanmohammadi/nanocode/discussions/1"
+    },
+    {
+      "note": "Interesting milestone in model scale and demand—shows which models are actually getting used at scale.",
+      "title": "Qwen-3.6-Plus: First Model to Hit 1 Trillion Tokens/Day",
+      "url": "https://twitter.com/openrouter/status/2040239467865489874"
+    },
+    {
+      "note": "Iranian IRGC released satellite imagery of what they claim is OpenAI's $30B datacenter. Worth the skeptical read.",
+      "title": "OpenAI's Stargate Datacenter: Real or Hype?",
+      "url": "https://newclawtimes.com/articles/iran-irgc-satellite-imagery-openai-stargate-abu-dhabi-datacenter-threat/"
+    },
+    {
+      "note": "Research on 'cognitive surrender'—why people trust AI outputs even when they're obviously wrong. Self-awareness matters.",
+      "title": "Why You Can't Trust AI Outputs (And Why That's OK)",
+      "url": "https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595"
+    },
+    {
+      "note": "A thoughtful take on what matters when designing with LLMs. Even if you don't build models, the thinking is useful.",
+      "title": "Andrej Karpathy's 'Idea File': How to Think About LLM Design",
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+    },
+    {
+      "note": "1 billion commits happened in 2025. We're on pace for 14 billion in 2026. AI-assisted coding is reshaping what 'productivity' means.",
+      "title": "GitHub Commits Surging: 14 Billion Projected for 2026",
+      "url": "https://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything"
+    },
+    {
+      "note": "An interesting observation: AI struggles with Lisp-style code. Why? The terseness and syntactic flexibility confuse models trained on Python/JavaScript.",
+      "title": "Writing Lisp Is AI Resistant (And That's Weird)",
+      "url": "https://blog.djhaskin.com/blog/writing-lisp-is-ai-resistant-and-im-sad/"
+    },
+    {
+      "note": "A wild example of AI-generated content at scale—12,000 posts in a single commit. Questions about signal vs. noise in AI content remain.",
+      "title": "OneUptime Committed 12k AI-Generated Blog Posts at Once",
+      "url": "https://github.com/OneUptime/blog/commit/30cd2384794c897d95aca77d173db44af51ca849"
+    },
+    {
+      "note": "As AI content becomes ubiquitous, 'made by humans' becomes a competitive advantage. Weird timeline.",
+      "title": "Proof of Human Authorship: Why We Need It Now",
+      "url": "https://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content"
+    },
+    {
+      "note": "Financial numbers on OpenAI's cap table leaked. Microsoft's doing very well. Sam Altman owns almost nothing despite running the company.",
+      "title": "OpenAI Cap Table Leak: Microsoft's 18x Return, SoftBank's $50B Gain",
+      "url": "https://www.forbes.com/sites/josipamajic/2026/04/02/openai-cap-table-leak-reveals-microsofts-18x-return-softbanks-50b-gain-and-a-ceo-who-owns-nothing/"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://lalitm.com/post/building-syntaqlite-ai/'\u003eLalit Maganti's deep-dive\u003c/a\u003e is one of the best accounts we've seen of what AI-assisted development actually looks like at scale. They spent eight years thinking about building a SQL playground, then Claude Code shipped it in three months. The post walks through real prompts, failures, iteration cycles—not theory, but the actual workflow of working with an AI agent on a complex project. \u003ca href='https://news.ycombinator.com/item?id=47648828'\u003eDiscussion on HN\u003c/a\u003e.",
+          "title": "Eight Years of Wanting, Three Months of Building with AI",
+          "url": "https://lalitm.com/post/building-syntaqlite-ai/",
+          "via": "Simon Willison / Hacker News"
+        },
+        {
+          "body": "The actual product from that story above. It's a web-based SQL environment where you can query live data, save queries, and share them. The fact that this exists at all—as a polished, usable product—is the point. This is what happens when you have a good prompt, a patient developer, and Claude Code doing the heavy lifting.",
+          "title": "Syntaqlite: A SQL Playground Built in Three Months",
+          "url": "https://syntaqlite.com/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "The Big Story: Agentic Engineering Works"
+    },
+    {
+      "items": [
+        {
+          "body": "Google's Gemma 4 models (the E2B and E4B versions) are now small enough to run on your own machine. This post walks through setting them up with \u003ca href='https://lmstudio.ai/'\u003eLM Studio\u003c/a\u003e (a GUI for local inference) and using Claude Code to prototype with them. The barrier to running serious models locally just dropped again. \u003ca href='https://news.ycombinator.com/item?id=47651540'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Google Dropped Gemma 4 Locally—With LM Studio and Claude Code",
+          "url": "https://ai.georgeliu.com/p/running-google-gemma-4-locally-with",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Google's official app for running Gemma models directly on your machine. Terrible name, legitimately useful app. If you want to experiment with on-device AI without messing with the CLI, this is the path of least resistance.",
+          "title": "Google AI Edge Gallery: Run Gemma on Your Mac (No API Keys)",
+          "url": "https://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/#atom-everything",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "A working demo of real-time voice I/O running on a MacBook. You talk to it, it talks back, no cloud calls. Uses Gemma and E2B (a model format optimized for edge inference). This is the \"AI on your laptop\" future people have been talking about—it's actually here. \u003ca href='https://news.ycombinator.com/item?id=47652007'\u003eHN thread\u003c/a\u003e.",
+          "title": "Real-Time Audio/Video AI on an M3 Pro (Parlor)",
+          "url": "https://github.com/fikrikarim/parlor",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Running AI Locally: It's Getting Real"
+    },
+    {
+      "items": [
+        {
+          "body": "A CLI tool that scans your codebase for accidentally committed API keys and secrets. New in 0.3: a \u003ccode\u003e--redact\u003c/code\u003e flag that finds matches, asks for confirmation, and auto-replaces them. Run this before pushing to GitHub if you've been sloppy with `.env` files.",
+          "title": "scan-for-secrets 0.3: Catch Leaked API Keys Before They Leak",
+          "url": "https://simonwillison.net/2026/Apr/6/scan-for-secrets/#atom-everything",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "Embed Gemma directly in a web browser. No API keys, no cloud calls, no backend. Everything runs client-side using WebAssembly. Wild for prototyping lightweight AI experiences or building demo apps that don't require a server.",
+          "title": "Gemma Gem: Run AI Models in Your Browser (No Backend)",
+          "url": "https://github.com/kessler/gemma-gem",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A small utility for spinning up multiple local services on different ports. Useful if you're prototyping something complex locally and need Redis, a database, and a web server all talking to each other. No longer requires Datasette—works standalone.",
+          "title": "datasette-ports: Run Multiple Local Services from One CLI",
+          "url": "https://simonwillison.net/2026/Apr/6/datasette-ports-2/#atom-everything",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "Tools \u0026 Releases You Can Use Today"
+    },
+    {
+      "items": [
+        {
+          "body": "A minimal, readable implementation of a language model from scratch. If you've ever wondered what's actually happening inside Claude or GPT, this is a great way to build intuition without wading through 10,000 lines of production code. \u003ca href='https://news.ycombinator.com/item?id=47655408'\u003eHN discussion\u003c/a\u003e.",
+          "title": "Building a Tiny LLM to Understand How Language Models Actually Work",
+          "url": "https://github.com/arman-bd/guppylm",
+          "via": "Hacker News"
+        },
+        {
+          "body": "A breakdown of what goes into a system like Claude Code: prompt engineering, function calling, context management, error handling. This is genuinely useful if you're trying to understand where the magic ends and the engineering begins.",
+          "title": "How Coding Agents Actually Work (And What It Means for Your Team)",
+          "url": "https://magazine.sebastianraschka.com/p/components-of-a-coding-agent",
+          "via": "Sebastian Raschka's Magazine"
+        },
+        {
+          "body": "Anthropic published research showing that Claude has identifiable internal representations of emotional concepts (like 'sadness' or 'joy'). It's not that Claude has feelings—it's that these abstract concepts have consistent mathematical structure inside the model. Interesting for understanding how LLMs actually work under the hood.",
+          "title": "Anthropic Research: Emotions as Function Vectors in Claude",
+          "url": "https://www.anthropic.com/research/emotion-concepts-function",
+          "via": "Anthropic Research"
+        }
+      ],
+      "title": "Learning \u0026 Understanding AI"
+    },
+    {
+      "items": [
+        {
+          "body": "Microsoft's terms of service literally say Copilot is for entertainment. The reminder: AI companies themselves are telling you not to blindly trust their outputs. This isn't AI skepticism—it's coming straight from the vendor.",
+          "title": "Microsoft's Copilot Is \"For Entertainment Purposes Only\" (Actually)",
+          "url": "https://techcrunch.com/2026/04/05/copilot-is-for-entertainment-purposes-only-according-to-microsofts-terms-of-service/",
+          "via": "TechCrunch"
+        },
+        {
+          "body": "A folk musician's voice got cloned by an AI company. Then someone filed a copyright claim against *her* using the AI clone. This is the chaos frontier of AI-generated content: it's not just 'will AI replace creators,' it's 'who gets blamed when AI fakes your work?'",
+          "title": "The Musician vs. The AI Company: Copyright Trolling in Real Time",
+          "url": "https://www.theverge.com/entertainment/907111/murphy-campbell-folk-music-ai-copyright",
+          "via": "The Verge"
+        }
+      ],
+      "title": "Industry \u0026 Culture"
+    }
+  ],
+  "slack_text": "☕ Good Monday, NOLA! Today's vibe: agentic engineering just proved itself at scale—a developer shipped a three-month project that took eight years of dreaming, and the whole ecosystem is moving faster because of it.\n\n---\n\n🚀 The Big Story\n\n• \u003chttps://lalitm.com/post/building-syntaqlite-ai/|Eight years of wanting, three months of building\u003e — this is one of the best accounts we've seen of what AI-assisted development actually looks like. Lalit Maganti took a project they'd been thinking about for years and Claude Code shipped it. The post walks through real prompts, failures, iteration—not hype, just the actual workflow. Worth reading if you're curious how these tools actually work in practice. \u003chttps://news.ycombinator.com/item?id=47648828|Discussion here\u003e.\n\n---\n\n💻 Running AI Locally (It's Real Now)\n\n• \u003chttps://ai.georgeliu.com/p/running-google-gemma-4-locally-with|Google Gemma 4 is here and it runs on your Mac\u003e — with LM Studio and a little Claude Code magic, you can be running serious models locally without touching an API. \u003chttps://news.ycombinator.com/item?id=47651540|HN thread\u003e.\n\n• \u003chttps://github.com/fikrikarim/parlor|Real-time voice AI on an M3 Pro\u003e — plug in a mic, talk to a model, it talks back. No cloud. No latency beyond what your laptop can handle. \u003chttps://news.ycombinator.com/item?id=47652007|HN discussion\u003e.\n\n• \u003chttps://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/#atom-everything|Google's AI Edge Gallery\u003e — their official app for running Gemma locally. Terrible name, genuinely useful.\n\n---\n\n🛠️ Tools Worth Your Time\n\n• \u003chttps://simonwillison.net/2026/Apr/6/scan-for-secrets/#atom-everything|scan-for-secrets 0.3\u003e — finds accidentally committed API keys and secrets in your codebase. New `--redact` flag automates the cleanup. Run this before pushing to GitHub.\n\n• \u003chttps://github.com/kessler/gemma-gem|Gemma Gem\u003e — embed an AI model directly in a browser, no backend needed. Everything runs client-side.\n\n---\n\n📚 Deep Dives\n\n• \u003chttps://magazine.sebastianraschka.com/p/components-of-a-coding-agent|How Coding Agents Actually Work\u003e — a solid breakdown of what's inside systems like Claude Code. Not theory—the real engineering pieces that make it go.\n\n• \u003chttps://techcrunch.com/2026/04/05/copilot-is-for-entertainment-purposes-only-according-to-microsofts-terms-of-service/|Microsoft's Copilot: \"For Entertainment Purposes Only\"\u003e — the company's own terms say don't blindly trust the output. Reminder that even vendors aren't claiming these are foolproof.\n\n• \u003chttps://www.theverge.com/entertainment/907111/murphy-campbell-folk-music-ai-copyright|The Musician vs. The AI Company\u003e — voice cloning, fake recordings, and copyright claims filed against the original artist. The weird edge cases are here.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com/newest"
+    },
+    {
+      "name": "Simon Willison's Blog",
+      "url": "https://simonwillison.net/"
+    },
+    {
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence"
+    },
+    {
+      "name": "Anthropic Research",
+      "url": "https://www.anthropic.com/research"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "date": "Sunday, April 5, 2026",
+  "date_path": "2026/04/05",
+  "lede": "\u003cstrong\u003eGood Sunday, NOLA.\u003c/strong\u003e The Claude Code vulnerability story keeps deepening—AI is now genuinely accelerating security research in unexpected ways. Meanwhile, the industry is quietly shipping solid tools: Simon Willison released \u003ca href='https://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything'\u003escan-for-secrets\u003c/a\u003e, a CLI for finding leaked API keys in your codebase. And if you're curious about the mechanics of coding agents, there's some solid thinking out there on how they actually work.",
+  "next_date": "",
+  "prev_date": "2026/04/04",
+  "quick_links": [
+    {
+      "note": "Andrej Karpathy shared a design philosophy doc for building LLM systems. Worth skimming if you're thinking about architecture.",
+      "title": "Karpathy's 'Idea File': How to Think About LLM Design",
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+    },
+    {
+      "note": "GitHub's Kyle Daigle noted platform activity is exploding. Signals massive growth in code generation and automation.",
+      "title": "GitHub Commits Surging: 1 Billion in 2025, 14 Billion Pace for 2026",
+      "url": "https://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything"
+    },
+    {
+      "note": "A wild example of AI-at-scale content generation. Sparked discussions about content strategy and authenticity.",
+      "title": "OneUptime Added 12k AI-Generated Blog Posts in a Single Commit",
+      "url": "https://github.com/OneUptime/blog/commit/30cd2384794c897d95aca77d173db44af51ca849"
+    },
+    {
+      "note": "Another twist in the AI music generation copyright saga. The irony is hard to miss.",
+      "title": "AI That Copied a Musician Then Filed Copyright Claim Against Her",
+      "url": "https://twitter.com/VladTheInflator/status/2039577001531768906"
+    },
+    {
+      "note": "A developer reflects on why LLMs struggle with Lisp code generation—and what that means for the ecosystem.",
+      "title": "Writing Lisp Is AI Resistant (And That's a Problem)",
+      "url": "https://blog.djhaskin.com/blog/writing-lisp-is-ai-resistant-and-im-sad/"
+    },
+    {
+      "note": "A leaked cap table showed just how lucrative the OpenAI bet has been for its investors—and how little Sam Altman actually owns.",
+      "title": "OpenAI Cap Table Leak: Microsoft's 18x Return, SoftBank's $50B Gain",
+      "url": "https://www.forbes.com/sites/josipamajic/2026/04/02/openai-cap-table-leak-reveals-microsofts-18x-return-softbanks-50b-gain-and-a-ceo-who-owns-nothing/"
+    },
+    {
+      "note": "Transparency concern: child advocacy groups discovered OpenAI was funding and directing a safety initiative without full disclosure.",
+      "title": "Kids Safety Groups Didn't Know OpenAI Was Behind Their Coalition",
+      "url": "https://sfstandard.com/2026/04/01/openai-ai-kids-safety-coalition/"
+    },
+    {
+      "note": "MedVi founders discuss building a $1.8B healthcare startup with minimal team and heavy AI collaboration. Real-world example of the AI-augmented founder story.",
+      "title": "Two People Vibe Coded a $1.8B Company with AI",
+      "url": "https://www.aiforhumans.show/"
+    },
+    {
+      "note": "Nufar Gaspar walks through a framework for building and organizing agent skills—from understanding what they are to building skill libraries at scale.",
+      "title": "Agent Skills Masterclass: A Five-Level Framework",
+      "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/Agent-Skills-Masterclass-e3hasv7"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://magazine.sebastianraschka.com/p/components-of-a-coding-agent'\u003eSebastian Raschka breaks down\u003c/a\u003e the anatomy of a coding agent—parsing, planning, execution, feedback loops. If you've been using Claude Code or similar tools and wondering what's actually happening under the hood, this is a practical explainer without the PhD-level jargon. Good for anyone building with or around these tools.",
+          "title": "How Coding Agents Actually Work (And What That Means for Your Team)",
+          "url": "https://magazine.sebastianraschka.com/p/components-of-a-coding-agent",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Tey Bannerman counted them: \u003ca href='https://teybannerman.com/strategy/2026/03/31/how-many-microsoft-copilot-are-there.html'\u003eMicrosoft has at least 15 products called Copilot\u003c/a\u003e across different divisions and markets. It's a fun case study in brand sprawl and what happens when a company moves fast without internal coordination. Not exactly a technical read, but a solid reminder that naming matters.",
+          "title": "Microsoft's Copilot Naming Problem: How Many Products Share the Same Name?",
+          "url": "https://teybannerman.com/strategy/2026/03/31/how-many-microsoft-copilot-are-there.html",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "AI \u0026 Security: The New Frontier"
+    },
+    {
+      "items": [
+        {
+          "body": "Simon Willison released \u003ca href='https://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything'\u003escan-for-secrets 0.2\u003c/a\u003e, a Python CLI that scans directories for accidentally committed secrets (API keys, tokens, etc.). The latest version streams results as it finds them instead of waiting until the end—much better for large codebases. If you publish transcripts of your Claude Code sessions (or any local work), this is exactly the paranoia you need.",
+          "title": "scan-for-secrets: CLI Tool to Find Leaked API Keys Before They Hurt You",
+          "url": "https://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything",
+          "via": "Simon Willison"
+        },
+        {
+          "body": "\u003ca href='https://simonwillison.net/2026/Apr/5/research-llm-apis/#atom-everything'\u003eSimon is shipping a major revision\u003c/a\u003e to his LLM Python library and CLI tool, which abstracts over hundreds of different LLM endpoints. If you've been using this to standardize API calls across OpenAI, Anthropic, local models, and others, this update is worth watching.",
+          "title": "research-llm-apis: Major Updates to Simon's LLM Library",
+          "url": "https://simonwillison.net/2026/Apr/5/research-llm-apis/#atom-everything",
+          "via": "Simon Willison"
+        }
+      ],
+      "title": "Tools \u0026 Releases"
+    },
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content'\u003eThe Verge explores\u003c/a\u003e the weird social pressure now forming around human-made creative work. Writers, designers, and photographers are increasingly asked to prove their work is \u003cem\u003eactually\u003c/em\u003e human-made. It's a thoughtful piece on authenticity, skepticism, and the uncanny valley we're living in.",
+          "title": "Really, You Made This Without AI? Why We Need Proof Now",
+          "url": "https://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content",
+          "via": "The Verge"
+        },
+        {
+          "body": "\u003ca href='https://www.theverge.com/entertainment/907111/murphy-campbell-folk-music-ai-copyright'\u003eMurphy Campbell discovered fake versions\u003c/a\u003e of her songs on Spotify—AI-generated versions that weren't hers. Then came the kicker: she got hit with a copyright claim from someone claiming to own the rights to her own music. It's a cautionary tale about the intersection of AI-generated content, platform moderation, and IP law.",
+          "title": "A Folk Musician Became a Target for AI Fakes and Copyright Trolls",
+          "url": "https://www.theverge.com/entertainment/907111/murphy-campbell-folk-music-ai-copyright",
+          "via": "The Verge"
+        },
+        {
+          "body": "\u003ca href='https://www.anthropic.com/research/emotion-concepts-function'\u003eAnthropic researchers explored\u003c/a\u003e how LLMs represent and use emotion concepts internally. It's mechanistic interpretability work, but the practical angle is interesting: understanding how models think about emotions helps us build more reliable systems. Not light reading, but worthwhile if you're curious about how these systems actually work.",
+          "title": "Emotional Concepts in Large Language Models: New Anthropic Research",
+          "url": "https://www.anthropic.com/research/emotion-concepts-function",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Interesting Reads \u0026 Culture"
+    },
+    {
+      "items": [
+        {
+          "body": "The Operators team (presented by Google) walked through a fun, constrained build challenge: use Gemini, Notebook LM, Stitch, and Google AI Studio to take a Renaissance history passion project end-to-end. Great if you want to hear real examples of how modern AI tools actually chain together for content creation.",
+          "title": "Building a Faceless YouTube Channel \u0026 1990s Game in One Afternoon with Google AI",
+          "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/The-Masked-Medici-How-to-Build-a-Faceless-Youtube-Channel-and-Companion-1990s-Strategy-Game-in-a-Single-Afternoon-with-Google-AI-e3he3ld",
+          "via": "AI Daily Brief / Operators"
+        },
+        {
+          "body": "\u003ca href='https://podcasters.spotify.com/pod/show/nlw/episodes/How-to-Build-a-Personal-Context-Portfolio-and-MCP-Server-e3hcfrl'\u003eThe AI Daily Brief team digs into\u003c/a\u003e one of the real friction points in the agentic era: every new agent or project requires you to re-explain your context. Building a personal context portfolio (and potentially your own MCP server) solves this. Practical and tactical.",
+          "title": "How to Build a Personal Context Portfolio and MCP Server",
+          "url": "https://podcasters.spotify.com/pod/show/nlw/episodes/How-to-Build-a-Personal-Context-Portfolio-and-MCP-Server-e3hcfrl",
+          "via": "AI Daily Brief"
+        }
+      ],
+      "title": "Worth a Listen"
+    }
+  ],
+  "slack_text": "☕ Good Sunday, NOLA! April 5, 2026. Today's vibe: it's a quieter day, but there's some genuinely useful stuff to dig into if you're building with AI.\n\n---\n\n🛠️ Tools Worth Your Time\n\n• Simon Willison just dropped \u003chttps://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything|scan-for-secrets 0.2\u003e. If you're publishing transcripts of your Claude Code sessions (or any local work), this CLI scans for accidentally committed API keys before they become a problem. The latest version streams results as it finds them—much nicer for big directories.\n\n• \u003chttps://magazine.sebastianraschka.com/p/components-of-a-coding-agent|Sebastian Raschka broke down\u003e how coding agents actually work under the hood. If you've been using Claude Code and wondering what's really happening, this is a great practical explainer—no PhD required.\n\n---\n\n💭 Interesting Reads\n\n• \u003chttps://www.theverge.com/tech/906453/human-made-ai-free-logo-creative-content|The Verge on \"Really, you made this without AI?\"\u003e. Designers and writers are increasingly asked to prove their work is human-made. It's a thoughtful piece on authenticity in the age of generative AI.\n\n• \u003chttps://www.theverge.com/entertainment/907111/murphy-campbell-folk-music-ai-copyright|Folk musician Murphy Campbell's weird copyright nightmare\u003e: AI-generated versions of her songs appeared on Spotify, then she got hit with a copyright claim for her own music. Cautionary tale about IP and platform moderation colliding.\n\n---\n\n🎙️ Worth a Listen\n\n• \u003chttps://podcasters.spotify.com/pod/show/nlw/episodes/The-Masked-Medici-How-to-Build-a-Faceless-Youtube-Channel-and-Companion-1990s-Strategy-Game-in-a-Single-Afternoon-with-Google-AI-e3he3ld|The Operators team walked through\u003e building a Renaissance history project end-to-end with Gemini, Notebook LM, and Google AI Studio in one afternoon. Great practical demo of how these tools actually chain together.\n\n• \u003chttps://podcasters.spotify.com/pod/show/nlw/episodes/How-to-Build-a-Personal-Context-Portfolio-and-MCP-Server-e3hcfrl|How to Build a Personal Context Portfolio\u003e\u003e tackles one of the real friction points with agents: every new project requires you to re-explain your context. Building a personal portfolio (or MCP server) solves this. Tactical stuff.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net"
+    },
+    {
+      "name": "The Verge",
+      "url": "https://www.theverge.com"
+    },
+    {
+      "name": "Anthropic",
+      "url": "https://anthropic.com"
+    },
+    {
+      "name": "AI Daily Brief",
+      "url": "https://podcasters.spotify.com/pod/show/nlw"
+    },
+    {
+      "name": "AI for Humans",
+      "url": "https://www.aiforhumans.show"
+    }
+  ]
+}

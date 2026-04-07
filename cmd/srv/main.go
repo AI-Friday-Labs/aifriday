@@ -84,7 +84,8 @@ type MeetingDetailData struct {
 }
 
 type BriefIndexData struct {
-	Briefs []BriefSummary
+	Latest  *BriefSummary
+	Archive []BriefSummary
 }
 
 type site struct {
@@ -307,7 +308,12 @@ func (s *site) handleBriefIndex(w http.ResponseWriter, r *http.Request) {
 	s.mu.RLock()
 	briefs := s.briefs
 	s.mu.RUnlock()
-	s.render(w, "brief-index.html", BriefIndexData{Briefs: briefs})
+	data := BriefIndexData{}
+	if len(briefs) > 0 {
+		data.Latest = &briefs[0]
+		data.Archive = briefs[1:]
+	}
+	s.render(w, "brief-index.html", data)
 }
 
 // ---------------------------------------------------------------------------

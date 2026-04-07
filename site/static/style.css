@@ -1202,3 +1202,372 @@ blockquote {
     flex-direction: column;
   }
 }
+
+/* --- Breadcrumbs --------------------------------------------------------- */
+.breadcrumbs {
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.breadcrumbs li + li::before {
+  content: '/';
+  margin: 0 6px;
+  color: var(--border);
+}
+
+.bc-link {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.bc-link:hover {
+  color: var(--accent);
+}
+
+.bc-current {
+  color: var(--text-secondary);
+}
+
+/* --- Brief Index Header -------------------------------------------------- */
+.brief-index-header {
+  padding: var(--space-xl) 0 var(--space-lg);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--space-xl);
+}
+
+.brief-index-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-md);
+}
+
+.brief-index-desc {
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+
+.brief-index-years {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.brief-index-years a {
+  color: var(--muted);
+}
+
+.brief-index-years a:hover {
+  color: var(--accent);
+}
+
+/* --- Today's Brief Card -------------------------------------------------- */
+.brief-latest-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.blc-label {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+}
+
+.blc-date {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: var(--space-sm);
+}
+
+.blc-date:hover {
+  color: var(--accent);
+}
+
+.blc-preview {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.blc-cta {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.blc-cta:hover {
+  color: var(--accent-hover);
+}
+
+/* --- Sources Section (Brief Index) --------------------------------------- */
+.brief-sources-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+  margin-bottom: var(--space-2xl);
+}
+
+.brief-sources-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.brief-sources-desc {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.sources-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-xl) var(--space-xl);
+}
+
+.sources-group-label {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.sources-group .sources-list {
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.sources-group .sources-list a {
+  border: none;
+  background: none;
+  padding: 2px 0;
+  border-radius: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-body);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.sources-group .sources-list a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* --- Year Grid (calendar view) ------------------------------------------ */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-2xl) var(--space-xl);
+  padding: var(--space-lg) 0 var(--space-2xl);
+}
+
+.year-month-block {}
+
+.ymb-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.ymb-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.ymb-title a:hover {
+  color: var(--accent);
+}
+
+/* --- Mini Calendar (year view) ------------------------------------------ */
+.mini-cal {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--text-small);
+  margin-bottom: var(--space-md);
+}
+
+.mini-cal th {
+  font-family: var(--font-code);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 4px 2px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.mini-cal td {
+  text-align: center;
+  padding: 4px 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mini-cal td.cal-has-brief a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.mini-cal td.cal-has-brief a:hover {
+  background: var(--accent-hover);
+}
+
+.year-month-snippets {
+  list-style: none;
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.year-month-snippets li {
+  line-height: 1.5;
+}
+
+.year-month-snippets a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.year-month-snippets a:hover {
+  color: var(--accent-hover);
+}
+
+/* --- Month Calendar (month view) ---------------------------------------- */
+.month-cal {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+.month-cal th {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: var(--space-sm) var(--space-xs);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.month-cal td {
+  text-align: center;
+  padding: var(--space-sm) var(--space-xs);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-body);
+  color: var(--muted);
+}
+
+.month-cal td.cal-has-brief a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.month-cal td.cal-has-brief a:hover {
+  background: var(--accent-hover);
+  transform: scale(1.08);
+}
+
+.month-cal td.cal-pad {
+  background: var(--paper);
+}
+
+/* --- Month Nav ----------------------------------------------------------- */
+.month-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-small);
+}
+
+.month-nav a {
+  font-family: var(--font-code);
+  font-size: var(--text-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.month-nav a:hover {
+  color: var(--accent);
+}
+
+/* --- Responsive additions ------------------------------------------------ */
+@media (max-width: 640px) {
+  .sources-groups {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .year-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-index-title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+}
