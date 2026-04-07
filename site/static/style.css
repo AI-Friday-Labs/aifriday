@@ -1210,7 +1210,9 @@ blockquote {
 }
 
 .breadcrumbs ol {
-  list-style: none;
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1220,6 +1222,12 @@ blockquote {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
+}
+
+.breadcrumbs li {
+  list-style: none !important;
+  display: inline-flex;
+  align-items: center;
 }
 
 .breadcrumbs li + li::before {
@@ -1285,10 +1293,10 @@ blockquote {
 .brief-latest-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
+  border-left: 4px solid var(--accent);
   border-radius: 6px;
-  padding: var(--space-lg) var(--space-xl);
-  margin-bottom: var(--space-xl);
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) calc(var(--space-lg) - 4px);
+  margin: var(--space-lg) 0 var(--space-xl);
 }
 
 .blc-label {
@@ -1297,7 +1305,7 @@ blockquote {
   text-transform: uppercase;
   letter-spacing: 0.11em;
   color: var(--accent);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 .blc-date {
@@ -1308,6 +1316,7 @@ blockquote {
   color: var(--text);
   text-decoration: none;
   margin-bottom: var(--space-sm);
+  line-height: 1.2;
 }
 
 .blc-date:hover {
@@ -1319,6 +1328,7 @@ blockquote {
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: var(--space-md);
+  margin-top: 0;
 }
 
 .blc-cta {
@@ -1569,5 +1579,18 @@ blockquote {
 
   .brief-index-title {
     font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .brief-latest-card {
+    padding: var(--space-md);
+    padding-left: calc(var(--space-md) - 4px);
+  }
+
+  .blc-date {
+    font-size: var(--text-h3);
+  }
+
+  .brief-index-header {
+    padding: var(--space-lg) 0 var(--space-md);
   }
 }
