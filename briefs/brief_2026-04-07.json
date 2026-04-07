@@ -1,0 +1,159 @@
+{
+  "date": "Tuesday, April 7, 2026",
+  "date_path": "2026/04/07",
+  "lede": "\u003cstrong\u003eGood Tuesday, NOLA.\u003c/strong\u003e Today's vibe: Claude Code keeps proving itself despite hiccups, the compute arms race is getting real, and \u003ca href='https://www.anthropic.com/news/google-broadcom-partnership-compute'\u003eAnthropic just locked down major hardware partnerships\u003c/a\u003e to fuel its ambitions. We're also seeing practical tools ship fast—\u003ca href='https://www.freestyle.sh/'\u003esandboxes for coding agents\u003c/a\u003e, \u003ca href='https://github.com/kitfunso/hippo-memory'\u003ememory systems for AI\u003c/a\u003e, and more builders getting serious about agentic workflows.",
+  "next_date": "",
+  "prev_date": "2026/04/06",
+  "quick_links": [
+    {
+      "note": "Intel's answer to the AI compute crunch. Hardware race intensifying.",
+      "title": "Intel Going All-In on Advanced Chip Packaging",
+      "url": "https://arstechnica.com/gadgets/2026/04/intel-is-going-all-in-on-advanced-chip-packaging/"
+    },
+    {
+      "note": "Rare media play for OpenAI. Building its own content pipeline?",
+      "title": "OpenAI Buys Tech Talk Show TBPN",
+      "url": "https://link.mail.beehiiv.com/v1/c/t7grPUOihEqW%2B71NCD70alg5nKhtQFJHaK%2B2vIJz5vtkAAvsxc7Rwva53p6S%0AXb8ExBsGiGdQAnNJT0ALboDsL5LH4G%2B89%2BqMlbFQ%2BOknYWQcZW7zrSbG1vcD%0A2%2B31fPx5BdEzJX3LxZuvkmXmdQFaiMCRyavmjj2cTVftOB0pzyNAPsHlI1Rz%0Ab7%2FOuSk3ZoPd%0A/65da9e88b8dbe055"
+    },
+    {
+      "note": "Org changes at OpenAI: CFO Brad Lightcap gets new role, CEO \u0026 COO reshuffle.",
+      "title": "OpenAI COO \u0026 CEO Shuffle Amid $122B Round",
+      "url": "https://link.mail.beehiiv.com/v1/c/ephCWkywNc0yYRs3IhU3dQO3G5lJEieGqIboAFEH8k8NEubvE%2FM5CdmvvvUI%0A6nLK4CC2ZGVXj00cr%2BYxBlJw%2BmVImPczw0yAKFsO%2BpPDhdWm%2B66PUj%2FZ5Pko%0ANYCIjue4%2FmLr4i%2B8pTFNflQ5Em6Ae8lwWyEvSkaxVb%2FUe5nAvh0SBRF7OYln%0Acpfymlve%2FD43%0A/87ddff6f3199cd2d"
+    },
+    {
+      "note": "Leadership tension: Sam Altman and CFO Zaremba are on different timelines for going public.",
+      "title": "CEO \u0026 CFO Diverge on IPO Timing",
+      "url": "https://link.mail.beehiiv.com/v1/c/y3rmBRvyJlJCFLHbWyutMlJr8r1jAjgrRegsmcPgzLbMnzbod%2B9aYJ3AlmyT%0AAO%2FLw46G7DfSdnT4Jo2du%2BP0DF9HTqSWu7fVEfdimp3dLM79iqZsGMlD62fJ%0AWYJXs9DOycLn5GpzMCqYdWPgyaj4gLkAOvFkCPr87OgmhYlSLo1PuEdDwlZG%0Az3KXBGGHysUs%0A/64f14733fcde8727"
+    },
+    {
+      "note": "CFO says OpenAI is turning away deals because it doesn't have enough compute. The real bottleneck.",
+      "title": "OpenAI Says It's Compute-Constrained",
+      "url": "https://link.mail.beehiiv.com/v1/c/HjB%2B61nmeqg21Hli74AW3p%2FaIipCiZHsN%2BVzYOtnbGzzZ%2FC0db5XKDmnwGS5%0ANrXE6F77nWh1mXA%2Bk33DZxVfkytHTodiemkEM2EhO4bylmB6bJedtvOzemGq%0AsTv1YaMDKkxepOzJDz70Si0VrfgUCjwLB8Smg5rnfapLniVfAtREQoW57O4U%0AvgtgWIw5GYz5%0A/58ad21c997cb88dd"
+    },
+    {
+      "note": "Buried in the TOS: Microsoft disclaiming actual usefulness. Legal CYA gone wild.",
+      "title": "Microsoft Copilot Is \"For Entertainment Purposes Only\" (Per Legal)",
+      "url": "https://techcrunch.com/2026/04/05/copilot-is-for-entertainment-purposes-only-according-to-microsofts-terms-of-service/"
+    },
+    {
+      "note": "AI agents hitting Wikipedia en masse. The platform wars are coming to knowledge bases.",
+      "title": "Wikipedia Grapples with AI Agent Spam",
+      "url": "https://www.malwarebytes.com/blog/ai/2026/04/wikipedias-ai-agent-row-likely-just-the-beginning-of-the-bot-ocalypse"
+    }
+  ],
+  "sections": [
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://www.anthropic.com/news/google-broadcom-partnership-compute'\u003eAnthropic announced a strategic partnership with Google and Broadcom\u003c/a\u003e to develop custom AI chips and accelerate compute for the next generation of Claude models. This is a big signal that the compute arms race is real—and Anthropic is securing its supply chain. If you've been watching the industry consolidate around infrastructure, this is a major piece of that puzzle.",
+          "title": "Anthropic Lands Google \u0026 Broadcom Partnership for Next-Gen Compute",
+          "url": "https://www.anthropic.com/news/google-broadcom-partnership-compute",
+          "via": "Anthropic"
+        },
+        {
+          "body": "Despite the hype, developers are reporting that \u003ca href='https://github.com/anthropics/claude-code/issues/42796'\u003eClaude Code struggles with complex engineering tasks when using February-era model updates\u003c/a\u003e. The thread is worth reading for context on what's working and what's not. This is the natural follow-up to last week's story—the honeymoon period is over, and now we're in the \"what are the real limits\" phase.",
+          "title": "Claude Code Still Has Issues with Complex Engineering Tasks",
+          "url": "https://github.com/anthropics/claude-code/issues/42796",
+          "via": "GitHub / Hacker News"
+        },
+        {
+          "body": "\u003ca href='https://www.freestyle.sh/'\u003eFreestyle is a new platform offering secure sandboxes designed specifically for AI coding agents\u003c/a\u003e to run, test, and iterate code safely. Think of it as a playground where agents can actually execute without breaking production. If you're building agentic workflows, this solves a real pain point.",
+          "title": "Freestyle: Sandboxes Built for Coding Agents",
+          "url": "https://www.freestyle.sh/",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "The Big Stories"
+    },
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://github.com/kitfunso/hippo-memory'\u003eHippo is a biologically-inspired memory architecture for AI agents\u003c/a\u003e—inspired by how the hippocampus works in humans. It's open source and designed to help agents retain context and learn from past interactions over time. This is the kind of infrastructure that'll make long-running agents actually practical.",
+          "title": "Hippo: Memory System for AI Agents",
+          "url": "https://github.com/kitfunso/hippo-memory",
+          "via": "Hacker News"
+        },
+        {
+          "body": "Want to actually understand how language models work under the hood? \u003ca href='https://github.com/arman-bd/guppylm'\u003eGuppyLM is a minimal LLM built from scratch to demystify the internals\u003c/a\u003e. It's not production-grade, but it's brilliant for learning. Code walkthrough included.",
+          "title": "Building a Tiny LLM to Understand How Models Work",
+          "url": "https://github.com/arman-bd/guppylm",
+          "via": "Hacker News"
+        },
+        {
+          "body": "We covered this in quick links yesterday, but it deserves a full mention: \u003ca href='https://github.com/kessler/gemma-gem'\u003eGemma Gem lets you embed Google's Gemma models directly in the browser with zero API keys or backend\u003c/a\u003e. This is a practical demo of how local inference is becoming dead simple.",
+          "title": "Gemma Gem: Run AI Models in Your Browser",
+          "url": "https://github.com/kessler/gemma-gem",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Tools \u0026 Code You Can Try Now"
+    },
+    {
+      "items": [
+        {
+          "body": "OpenAI's \u003ca href='https://link.mail.beehiiv.com/v1/c/3tAU5aG91HsN%2BY6krPsewxnQ6%2FWcCc9mpc1BnnIWmHx57kRX1f%2BBSdi6LvDY%0AV7ofsWvUt%2BdJw6cfMs4QuT7sUrF821yTr8f1FWLOJRpmwlmuz6zat%2Bw1liCi%0AVsx64W32%2FcFrMEYerzTwMJ03%2Fkdv%2FYHBts5vEPUtfbWblNbTxY4dA8bt8tkM%0AY9Mta%2BiNEPRP%0A/c982c5c9030c91ae'\u003emassive $122 billion funding round just closed\u003c/a\u003e, valuing the company at \u003ca href='https://link.mail.beehiiv.com/v1/c/3tAU5aG91HsN%2BY6krPsewxnQ6%2FWcCc9mpc1BnnIWmHx57kRX1f%2BBSdi6LvDY%0AV7ofsWvUt%2BdJw6cfMs4QuT7sUrF821yTr8f1FWLOJRpmwlmuz6zat%2Bw1liCi%0AVsx64W32%2FcFrMEYerzTwMJ03%2Fkdv%2FYHBts5vEPUtfbWblNbTxY4dA8bt8tkM%0AY9Mta%2BiNEPRP%0A/c982c5c9030c91ae'\u003e$852 billion\u003c/a\u003e. However, secondary market reports suggest investor enthusiasm is cooling—\u003ca href='https://link.mail.beehiiv.com/v1/c/L0CE8r2lKNwTZUP9TlnrGfwD9G5ux63wQcxi10FKZblYAfR2DNeexj1RefSi%0AGHvt7WKvIz1v2Fnaea4jeBoQH0UNnxt8pvUetRQkWcExmsib2RzxSkJINVCW%0AnOkcVeipZ2VEOttlspFlOx%2F89FaEy%2BJFYiUZgEA9bUUXwAnOLuZorx5L%2Fwm0%0Aqtxb3OsQY%2B%2FG%0A/6d24e397ceb98513'\u003esome secondary buyers are passing\u003c/a\u003e. That's interesting—the mega-round gets headlines, but the follow-up tells a different story about where confidence actually sits.",
+          "title": "OpenAI's Investor Momentum Continues: $122B Round Closed",
+          "url": "https://link.mail.beehiiv.com/v1/c/3tAU5aG91HsN%2BY6krPsewxnQ6%2FWcCc9mpc1BnnIWmHx57kRX1f%2BBSdi6LvDY%0AV7ofsWvUt%2BdJw6cfMs4QuT7sUrF821yTr8f1FWLOJRpmwlmuz6zat%2Bw1liCi%0AVsx64W32%2FcFrMEYerzTwMJ03%2Fkdv%2FYHBts5vEPUtfbWblNbTxY4dA8bt8tkM%0AY9Mta%2BiNEPRP%0A/c982c5c9030c91ae",
+          "via": "AI Daily Brief"
+        },
+        {
+          "body": "\u003ca href='https://techcrunch.com/2026/04/06/indian-startup-rocket-wants-its-ai-to-do-mckinsey-style-consulting-at-a-fraction-of-the-cost/'\u003eIndian startup Rocket is using AI to generate strategic consulting reports\u003c/a\u003e—competitive intelligence, product strategy, market analysis—at a tiny fraction of traditional consulting fees. This is the real disruption: not code generation, but higher-margin professional services getting automated.",
+          "title": "Rocket: AI Consulting Reports at Fraction of McKinsey Cost",
+          "url": "https://techcrunch.com/2026/04/06/indian-startup-rocket-wants-its-ai-to-do-mckinsey-style-consulting-at-a-fraction-of-the-cost/",
+          "via": "TechCrunch"
+        },
+        {
+          "body": "An AI-generated singer called Eddie Dalton now \u003ca href='https://www.showbiz411.com/2026/04/05/itunes-takeover-by-fake-ai-singer-eddie-dalton-now-occupies-eleven-spots-on-chart-despite-not-being-human-or-real-exclusive'\u003eoccupies eleven spots on the iTunes singles chart\u003c/a\u003e. This is wild and sad at the same time—it's a visceral example of how quickly AI can flood attention-based markets. The music industry is watching this closely.",
+          "title": "AI Singer 'Eddie Dalton' Now Dominates iTunes Chart",
+          "url": "https://www.showbiz411.com/2026/04/05/itunes-takeover-by-fake-ai-singer-eddie-dalton-now-occupies-eleven-spots-on-chart-despite-not-being-human-or-real-exclusive",
+          "via": "Hacker News"
+        }
+      ],
+      "title": "Industry \u0026 Business Moves"
+    },
+    {
+      "items": [
+        {
+          "body": "\u003ca href='https://ben.page/microservices'\u003eThis piece explores whether AI coding agents naturally gravitate toward microservice architectures\u003c/a\u003e—and what that means for system design. It's a thoughtful architectural question that goes beyond \"AI writes code faster.\"",
+          "title": "Does Coding with LLMs Actually Lead to More Microservices?",
+          "url": "https://ben.page/microservices",
+          "via": "Hacker News"
+        },
+        {
+          "body": "\u003ca href='https://www.latent.space/p/ainews-gemma-4-crosses-2-million'\u003eGoogle's Gemma 4 just hit 2 million downloads\u003c/a\u003e—a genuinely massive success for an open-source model. Not flashy, but the adoption numbers tell you where the community is actually building.",
+          "title": "Gemma 4 Quietly Crossed 2 Million Downloads",
+          "url": "https://www.latent.space/p/ainews-gemma-4-crosses-2-million",
+          "via": "Latent Space"
+        }
+      ],
+      "title": "Worth Reading \u0026 Learning"
+    }
+  ],
+  "slack_text": "☕ Good morning, NOLA! Tuesday, April 7. Today's vibe: the compute wars are heating up, Claude Code is real but imperfect, and builders are shipping fast.\n\n---\n\n🔧 Big Moves\n\n• \u003chttps://www.anthropic.com/news/google-broadcom-partnership-compute|Anthropic just locked down Google \u0026 Broadcom for custom AI chips\u003e. This is the real story—not hype, actual infrastructure. They're securing their compute supply chain while everyone else scrambles.\n\n• \u003chttps://www.freestyle.sh/|Freestyle launched sandboxes built for coding agents\u003e. Finally, a platform where AI agents can actually run code safely without risking production. If you're building agentic workflows, this solves a real problem.\n\n• \u003chttps://github.com/anthropics/claude-code/issues/42796|Claude Code is struggling with complex engineering tasks\u003e. The honeymoon's over—developers are hitting real limits with February-era models. Worth reading the thread to understand what's working and what's not.\n\n---\n\n⚙️ Tools You Can Use Today\n\n• \u003chttps://github.com/kitfunso/hippo-memory|Hippo is a memory system for AI agents\u003e inspired by how brains actually work. Open source, designed to help agents retain context over time. This is the infrastructure that makes long-running agents practical.\n\n• \u003chttps://github.com/kessler/gemma-gem|Gemma Gem lets you run Google's AI models in your browser\u003e—no API keys, no backend. Local inference just got dead simple.\n\n---\n\n💼 Industry\n\n• \u003chttps://link.mail.beehiiv.com/v1/c/3tAU5aG91HsN%2BY6krPsewxnQ6%2FWcCc9mpc1BnnIWmHx57kRX1f%2BBSdi6LvDY%0AV7ofsWvUt%2BdJw6cfMs4QuT7sUrF821yTr8f1FWLOJRpmwlmuz6zat%2Bw1liCi%0AVsx64W32%2FcFrMEYerzTwMJ03%2Fkdv%2FYHBts5vEPUtfbWblNbTxY4dA8bt8tkM%0AY9Mta%2BiNEPRP%0A/c982c5c9030c91ae|OpenAI's $122B round closed\u003e. The headline sounds good, but \u003chttps://link.mail.beehiiv.com/v1/c/L0CE8r2lKNwTZUP9TlnrGfwD9G5ux63wQcxi10FKZblYAfR2DNeexj1RefSi%0AGHvt7WKvIz1v2Fnaea4jeBoQH0UNnxt8pvUetRQkWcExmsib2RzxSkJINVCW%0AnOkcVeipZ2VEOttlspFlOx%2F89FaEy%2BJFYiUZgEA9bUUXwAnOLuZorx5L%2Fwm0%0Aqtxb3OsQY%2B%2FG%0A/6d24e397ceb98513|secondary market buyers are passing\u003e. When institutional money slows down, that tells you something.\n\n• \u003chttps://techcrunch.com/2026/04/06/indian-startup-rocket-wants-its-ai-to-do-mckinsey-style-consulting-at-a-fraction-of-the-cost/|Rocket is using AI for McKinsey-style consulting reports\u003e at a fraction of the cost. Higher-margin professional services getting disrupted is the real story.\n\n• An \u003chttps://www.showbiz411.com/2026/04/05/itunes-takeover-by-fake-ai-singer-eddie-dalton-now-occupies-eleven-spots-on-chart-despite-not-being-human-or-real-exclusive|AI-generated artist just took eleven spots on iTunes\u003e. Wild and slightly terrifying example of how fast AI floods attention markets.",
+  "sources": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com"
+    },
+    {
+      "name": "Anthropic",
+      "url": "https://www.anthropic.com"
+    },
+    {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com"
+    },
+    {
+      "name": "Latent Space",
+      "url": "https://www.latent.space"
+    },
+    {
+      "name": "AI Daily Brief",
+      "url": "https://www.beehiiv.com"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com"
+    }
+  ]
+}

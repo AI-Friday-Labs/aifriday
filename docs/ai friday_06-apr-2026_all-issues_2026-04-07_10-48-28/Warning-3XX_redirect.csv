@@ -1,0 +1,33 @@
+PR,URL,Title,Content type,Is rendered page,HTTP status code,Organic traffic,Redirect URL,Redirect URL code,Redirect chain URLs,Redirect chain URLs codes,Is redirect loop,No. of all inlinks,No. of redirect inlinks,First found at
+1,https://www.aifri.day/,,text/html; charset=utf-8,false,301,0,https://aifri.day/,200,https://aifri.day/,200,false,1,1,
+1,https://www.aifri.day/robots.txt,,text/html; charset=utf-8,false,301,0,https://aifri.day/robots.txt,200,https://aifri.day/robots.txt,200,false,2,2,
+0,https://www.aifri.day/brief/2026/03/27/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/27/,200,https://aifri.day/brief/2026/03/27/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/static/style.css,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/style.css,200,https://aifri.day/static/style.css,200,false,0,0,https://www.aifri.day/brief/2026/04/01/
+0,https://www.aifri.day/static/style.css?v=5,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/style.css?v=5,200,https://aifri.day/static/style.css?v=5,200,false,0,0,https://www.aifri.day/meetings/1
+0,https://www.aifri.day/brief/2026/03/24/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/24/,200,https://aifri.day/brief/2026/03/24/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/,200,https://aifri.day/brief/,200,false,0,0,https://www.aifri.day/
+0,https://www.aifri.day/static/meetings/1-whitley.jpg,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/meetings/1-whitley.jpg,200,https://aifri.day/static/meetings/1-whitley.jpg,200,false,0,0,https://www.aifri.day/meetings/1
+0,http://www.aifri.day/,,text/html; charset=utf-8,false,301,0,https://www.aifri.day/,301,"https://www.aifri.day/
+https://aifri.day/","301
+200",false,0,0,
+0,https://www.aifri.day/static/style.css?v=4,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/style.css?v=4,200,https://aifri.day/static/style.css?v=4,200,false,0,0,https://www.aifri.day/
+0,https://www.aifri.day/brief/2026/03/30/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/30/,200,https://aifri.day/brief/2026/03/30/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/2026/03/26/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/26/,200,https://aifri.day/brief/2026/03/26/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/static/style.css?v=3,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/style.css?v=3,200,https://aifri.day/static/style.css?v=3,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/2026/03/23/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/23/,200,https://aifri.day/brief/2026/03/23/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/2026/04/01/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/04/01/,200,https://aifri.day/brief/2026/04/01/,200,false,0,0,https://www.aifri.day/
+0,https://www.aifri.day/static/meetings/1-eli.jpg,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/meetings/1-eli.jpg,200,https://aifri.day/static/meetings/1-eli.jpg,200,false,0,0,https://www.aifri.day/meetings/1
+0,https://www.aifri.day/brief/2026/03/29/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/29/,200,https://aifri.day/brief/2026/03/29/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/static/style.css?v=2,,text/html; charset=utf-8,false,301,0,https://aifri.day/static/style.css?v=2,200,https://aifri.day/static/style.css?v=2,200,false,0,0,https://www.aifri.day/brief/2026/03/22/
+0,https://www.aifri.day/meetings/,,text/html; charset=utf-8,false,301,0,https://aifri.day/meetings/,200,https://aifri.day/meetings/,200,false,0,0,https://www.aifri.day/
+0,https://www.aifri.day/brief/2026/03/22/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/22/,200,https://aifri.day/brief/2026/03/22/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/2026/03/21/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/21/,200,https://aifri.day/brief/2026/03/21/,200,false,0,0,https://www.aifri.day/brief/
+0,http://aifri.day/,,text/html; charset=utf-8,false,301,0,https://aifri.day/,200,https://aifri.day/,200,false,0,0,
+0,https://www.aifri.day/brief/2026/03/25/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/25/,200,https://aifri.day/brief/2026/03/25/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/meetings/1,,text/html; charset=utf-8,false,301,0,https://aifri.day/meetings/1,200,https://aifri.day/meetings/1,200,false,0,0,https://www.aifri.day/meetings/
+0,http://www.aifri.day/robots.txt,,text/html; charset=utf-8,false,301,0,https://www.aifri.day/robots.txt,301,"https://www.aifri.day/robots.txt
+https://aifri.day/robots.txt","301
+200",false,0,0,
+0,https://www.aifri.day/brief/2026/03/31/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/31/,200,https://aifri.day/brief/2026/03/31/,200,false,0,0,https://www.aifri.day/brief/
+0,https://www.aifri.day/brief/2026/03/28/,,text/html; charset=utf-8,false,301,0,https://aifri.day/brief/2026/03/28/,200,https://aifri.day/brief/2026/03/28/,200,false,0,0,https://www.aifri.day/brief/
+0,http://aifri.day/robots.txt,,text/html; charset=utf-8,false,301,0,https://aifri.day/robots.txt,200,https://aifri.day/robots.txt,200,false,0,0,

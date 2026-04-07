@@ -1,0 +1,3 @@
+Link type,Is nofollow,Source URL,Source HTTP status code,Target URL,Target HTTP status code,Anchor,Target final redirect URL,Target final redirect HTTP status code,Is source canonical,Is source noindex,Is link internal
+Href link,false,https://aifri.day/brief/2026/04/,200,https://aifri.day/brief/2026/05/,404,May 2026 →,,,true,false,true
+Href link,false,https://aifri.day/brief/2026/03/,200,https://aifri.day/brief/2026/02/,404,← February 2026,,,true,false,true

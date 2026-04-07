@@ -1,0 +1,2 @@
+Link type,Is nofollow,Source URL,Source HTTP status code,Target URL,Target HTTP status code,Anchor,No. of dofollow inlinks to target,No. of nofollow inlinks to target,Is source canonical,Is source noindex,Is target canonical,Is target noindex,Is link internal
+Href link,false,https://aifri.day/meetings/,200,https://aifri.day/meetings/1,200,AI Friday #1,1,0,true,false,true,false,true

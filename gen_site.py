@@ -69,8 +69,13 @@ SOURCES = {
 }
 
 
-def _head(title, description, canonical, og_type="website", extra_meta="", json_ld=None):
-    ld_block = f'\n  <script type="application/ld+json">\n  {json_ld}\n  </script>' if json_ld else ""
+def _head(title, description, canonical, og_type="website", extra_meta="", json_ld=None, json_ld_blocks=None):
+    if json_ld_blocks:
+        ld_block = "".join(f'\n  <script type="application/ld+json">\n  {block}\n  </script>' for block in json_ld_blocks)
+    elif json_ld:
+        ld_block = f'\n  <script type="application/ld+json">\n  {json_ld}\n  </script>'
+    else:
+        ld_block = ""
     return f"""  <title>{title}</title>
   <meta name="description" content="{description}">
   <link rel="canonical" href="{canonical}">
@@ -196,8 +201,6 @@ def render_brief(data):
             "url": "https://aifri.day"
         }
     }, indent=2)
-    json_ld = bc_json + "\n  " + article_json
-
     bc_html = _breadcrumbs([
         ("Brief", "/brief/"),
         (year, f"/brief/{year}/"),
@@ -214,7 +217,7 @@ def render_brief(data):
       brief_preview,
       f"https://aifri.day/brief/{date_path}/",
       og_type="article",
-      json_ld=bc_json + "\n" + article_json,
+      json_ld_blocks=[bc_json, article_json],
   )}
 </head>
 <body>
@@ -329,7 +332,8 @@ def render_index(briefs):
             {"@type": "ListItem", "position": 2, "name": "Daily Brief", "item": "https://aifri.day/brief/"},
         ]
     }
-    json_ld = json.dumps(item_list, indent=2) + "\n" + json.dumps(bc_list, indent=2)
+    item_list_json = json.dumps(item_list, indent=2)
+    bc_list_json = json.dumps(bc_list, indent=2)
 
     bc_html = _breadcrumbs([("AI Friday", "/"), ("Daily Brief", None)])
 
@@ -341,7 +345,7 @@ def render_index(briefs):
       "AI Friday — Daily Brief",
       "Curated AI news, tools, and analysis for builders — updated daily by the AI Friday community in New Orleans.",
       "https://aifri.day/brief/",
-      json_ld=json_ld,
+      json_ld_blocks=[item_list_json, bc_list_json],
   )}
 </head>
 <body>
@@ -444,7 +448,7 @@ def render_year_index(year, months_with_days, brief_map):
   {HEAD_COMMON}
   {_head(
       f"AI Friday Daily Brief — {year}",
-      f"Browse {total_briefs} AI Friday daily briefs from {year}. Curated AI news for builders.",
+      f"Browse {total_briefs} AI Friday daily briefs from {year}. Curated AI news, tools, and analysis for startup founders and builders.",
       f"https://aifri.day/brief/{year}/",
       json_ld=bc_json,
   )}
@@ -469,7 +473,7 @@ def render_year_index(year, months_with_days, brief_map):
 # Month index: /brief/YYYY/MM/
 # ---------------------------------------------------------------------------
 
-def render_month_index(year, month, days_with_data, brief_map):
+def render_month_index(year, month, days_with_data, brief_map, all_year_months=None):
     """Render /brief/YYYY/MM/ — full calendar + list of briefs."""
     month_name = MONTH_NAMES[int(month)]
     year_int, month_int = int(year), int(month)
@@ -508,7 +512,7 @@ def render_month_index(year, month, days_with_data, brief_map):
   </a>
 </article>''')
 
-    # Prev/next month nav
+    # Prev/next month nav — only link to months that have briefs
     prev_m = month_int - 1
     prev_y = year_int
     if prev_m == 0:
@@ -519,11 +523,15 @@ def render_month_index(year, month, days_with_data, brief_map):
     if next_m == 13:
         next_m = 1
         next_y += 1
-    prev_path = f"/brief/{prev_y}/{prev_m:02d}/"
-    next_path = f"/brief/{next_y}/{next_m:02d}/"
+    prev_key = f"{prev_y}/{prev_m:02d}"
+    next_key = f"{next_y}/{next_m:02d}"
+    has_prev = all_year_months and prev_key in all_year_months
+    has_next = all_year_months and next_key in all_year_months
+    prev_link = f'<a href="/brief/{prev_key}/" class="month-nav-prev">&larr; {MONTH_NAMES[prev_m]} {prev_y}</a>' if has_prev else '<span></span>'
+    next_link = f'<a href="/brief/{next_key}/" class="month-nav-next">{MONTH_NAMES[next_m]} {next_y} &rarr;</a>' if has_next else '<span></span>'
     month_nav = f'''<div class="month-nav">
-  <a href="{prev_path}" class="month-nav-prev">&larr; {MONTH_NAMES[prev_m]} {prev_y}</a>
-  <a href="{next_path}" class="month-nav-next">{MONTH_NAMES[next_m]} {next_y} &rarr;</a>
+  {prev_link}
+  {next_link}
 </div>'''
 
     bc_json = json.dumps({
@@ -552,7 +560,7 @@ def render_month_index(year, month, days_with_data, brief_map):
   {HEAD_COMMON}
   {_head(
       f"AI Friday Daily Brief — {month_name} {year}",
-      f"{total} AI Friday brief{"s" if total != 1 else ""} from {month_name} {year}. Curated AI news for builders.",
+      f"{total} AI Friday daily brief{"s" if total != 1 else ""} from {month_name} {year}. Curated AI news, tools, and analysis for startup founders and builders.",
       f"https://aifri.day/brief/{year}/{month}/",
       json_ld=bc_json,
   )}
@@ -651,6 +659,12 @@ def build_all(data_dir):
         years[year].setdefault(month, [])
         years[year][month].append(day)
 
+    # Build set of all year/month combos for prev/next nav
+    all_year_months = set()
+    for y, ms in years.items():
+        for m in ms:
+            all_year_months.add(f"{y}/{m}")
+
     for year, months in years.items():
         # Year index
         year_dir = SITE_DIR / "brief" / year
@@ -662,7 +676,7 @@ def build_all(data_dir):
         for month, days in months.items():
             month_dir = SITE_DIR / "brief" / year / month
             month_dir.mkdir(parents=True, exist_ok=True)
-            (month_dir / "index.html").write_text(render_month_index(year, month, days, brief_map))
+            (month_dir / "index.html").write_text(render_month_index(year, month, days, brief_map, all_year_months))
             print(f"  Generated brief/{year}/{month}/index.html")
 
     # Sitemap

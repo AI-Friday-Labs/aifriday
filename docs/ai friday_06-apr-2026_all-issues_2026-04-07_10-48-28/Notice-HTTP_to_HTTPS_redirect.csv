@@ -1,0 +1,9 @@
+PR,URL,Title,Content type,Is rendered page,HTTP status code,Organic traffic,Redirect chain URLs,Redirect chain URLs codes,Is redirect loop,No. of all inlinks,No. of redirect inlinks,First found at
+0,http://www.aifri.day/,,text/html; charset=utf-8,false,301,0,"https://www.aifri.day/
+https://aifri.day/","301
+200",false,0,0,
+0,http://aifri.day/,,text/html; charset=utf-8,false,301,0,https://aifri.day/,200,false,0,0,
+0,http://www.aifri.day/robots.txt,,text/html; charset=utf-8,false,301,0,"https://www.aifri.day/robots.txt
+https://aifri.day/robots.txt","301
+200",false,0,0,
+0,http://aifri.day/robots.txt,,text/html; charset=utf-8,false,301,0,https://aifri.day/robots.txt,200,false,0,0,

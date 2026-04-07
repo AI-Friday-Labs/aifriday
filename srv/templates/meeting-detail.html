@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Friday #{{.Number}} &mdash; {{if .IsPast}}Recap{{else}}RSVP{{end}}</title>
-  <meta name="description" content="{{if .IsPast}}Recap and notes from AI Friday meeting #{{.Number}} in New Orleans.{{else}}RSVP for AI Friday meeting #{{.Number}} in New Orleans — {{.Date}}.{{end}}">
+  <meta name="description" content="{{if .IsPast}}Recap, notes, and takeaways from AI Friday meeting #{{.Number}} — a monthly Friday morning meetup for startup founders and operators building with AI in New Orleans.{{else}}RSVP for AI Friday meeting #{{.Number}} in New Orleans on {{.Date}}. A monthly Friday morning meetup for startup founders and operators figuring out AI together.{{end}}">
   <link rel="canonical" href="https://aifri.day/meetings/{{.Number}}">
   <meta property="og:title" content="AI Friday #{{.Number}} — {{.Date}}">
-  <meta property="og:description" content="{{if .IsPast}}Recap and notes from AI Friday meeting #{{.Number}}.{{else}}RSVP for AI Friday meeting #{{.Number}} — {{.Date}}.{{end}}">
+  <meta property="og:description" content="{{if .IsPast}}Recap, notes, and takeaways from AI Friday meeting #{{.Number}} — a monthly Friday morning meetup for startup founders and operators building with AI in New Orleans.{{else}}RSVP for AI Friday meeting #{{.Number}} in New Orleans on {{.Date}}. A monthly Friday morning meetup for startup founders and operators.{{end}}">
   <meta property="og:url" content="https://aifri.day/meetings/{{.Number}}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://aifri.day/og-default.png">
   <meta property="og:site_name" content="AI Friday">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AI Friday #{{.Number}} — {{.Date}}">
-  <meta name="twitter:description" content="{{if .IsPast}}Recap and notes from AI Friday meeting #{{.Number}}.{{else}}RSVP for AI Friday meeting #{{.Number}} — {{.Date}}.{{end}}">
+  <meta name="twitter:description" content="{{if .IsPast}}Recap, notes, and takeaways from AI Friday meeting #{{.Number}} — a monthly Friday morning meetup for startup founders and operators building with AI in New Orleans.{{else}}RSVP for AI Friday meeting #{{.Number}} in New Orleans on {{.Date}}. A monthly Friday morning meetup for startup founders and operators.{{end}}">
   <meta name="twitter:image" content="https://aifri.day/og-default.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +73,7 @@
 
     {{else if .HasDetails}}
     <section class="intro-section rsvp-header">
+      <h1 class="sr-only">AI Friday #{{.Number}} — RSVP</h1>
       <p class="rsvp-meeting-badge">AI Friday #{{.Number}}</p>
       <p class="rsvp-date">{{.Date}} &middot; {{.Start}} &ndash; {{.End}}</p>
       <p class="rsvp-location">{{.Location}}</p>

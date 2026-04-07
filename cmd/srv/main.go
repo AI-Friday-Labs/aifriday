@@ -579,12 +579,20 @@ func (s *site) handleSitemap(w http.ResponseWriter, r *http.Request) {
 		{Loc: "https://aifri.day/meetings/", ChangeFreq: "monthly", Priority: "0.6"},
 	}
 
-	// Add individual brief pages
+	// Add individual brief pages and collect year/month combos
 	s.mu.RLock()
 	briefs := s.briefs
 	s.mu.RUnlock()
+	yearMonths := map[string]map[string]bool{} // year -> set of months
 	for _, b := range briefs {
 		var lastmod string
+		parts := strings.SplitN(b.DatePath, "/", 3)
+		if len(parts) == 3 {
+			if yearMonths[parts[0]] == nil {
+				yearMonths[parts[0]] = map[string]bool{}
+			}
+			yearMonths[parts[0]][parts[1]] = true
+		}
 		if t, err := time.Parse("2006/01/02", b.DatePath); err == nil {
 			lastmod = t.Format("2006-01-02")
 		}
@@ -596,12 +604,28 @@ func (s *site) handleSitemap(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	// Add meeting detail pages (only those with recaps)
+	// Add brief year and month index pages
+	for year, months := range yearMonths {
+		urls = append(urls, sitemapURL{
+			Loc:        "https://aifri.day/brief/" + year + "/",
+			ChangeFreq: "monthly",
+			Priority:   "0.6",
+		})
+		for month := range months {
+			urls = append(urls, sitemapURL{
+				Loc:        "https://aifri.day/brief/" + year + "/" + month + "/",
+				ChangeFreq: "monthly",
+				Priority:   "0.6",
+			})
+		}
+	}
+
+	// Add meeting detail pages (numbered meetings with recaps or upcoming with details)
 	now := time.Now()
 	for _, m := range meetingSchedule {
 		if m.Number > 0 {
 			mt := buildMeeting(m.Number, m.Year, m.Month, m.Day, now, m.Start, m.End, m.Location, m.Hint)
-			if mt.HasRecap {
+			if mt.HasRecap || mt.Start != "" {
 				var lastmod string
 				if t, err := time.Parse("2006/01/02", mt.DatePath); err == nil {
 					lastmod = t.Format("2006-01-02")
@@ -609,7 +633,7 @@ func (s *site) handleSitemap(w http.ResponseWriter, r *http.Request) {
 				urls = append(urls, sitemapURL{
 					Loc:        fmt.Sprintf("https://aifri.day/meetings/%d", mt.Number),
 					LastMod:    lastmod,
-					ChangeFreq: "yearly",
+					ChangeFreq: "monthly",
 					Priority:   "0.5",
 				})
 			}

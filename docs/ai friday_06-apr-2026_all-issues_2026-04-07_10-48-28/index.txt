@@ -1,0 +1,17 @@
+Error-404_page-links.csv
+Error-404_page.csv
+Error-4XX_page-links.csv
+Error-4XX_page.csv
+Error-indexable-Page_has_links_to_broken_page-links.csv
+Error-indexable-Page_has_links_to_broken_page.csv
+Notice-HTTP_to_HTTPS_redirect.csv
+Notice-Indexable_page_not_in_sitemap.csv
+Notice-Pages_to_submit_to_IndexNow.csv
+Notice-Redirect_chain.csv
+Notice-Structured_data_has_schema.org_validation_error.csv
+Notice-indexable-Page_has_only_one_dofollow_incoming_internal_link-links.csv
+Notice-indexable-Page_has_only_one_dofollow_incoming_internal_link.csv
+Warning-3XX_redirect.csv
+Warning-Slow_page.csv
+Warning-indexable-H1_tag_missing_or_empty.csv
+Warning-indexable-Meta_description_too_short.csv

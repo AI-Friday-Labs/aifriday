@@ -1,0 +1,52 @@
+PR,URL,Title,Content type,Is rendered page,HTTP status code,Organic traffic,Is indexable page,Meta description,H1,H2,No. of content words,No. of internal outlinks,No. of external outlinks,Page text,Extracted text (raw <body>) (length),Text hash,First found at
+40,https://aifri.day/,AI Friday — New Orleans AI Meetup,text/html; charset=utf-8,false,200,0,true,A monthly Friday morning meetup for startup founders and operators figuring out AI together. New Orleans.,AI Friday — New Orleans AI Meetup,,196,4,3,<truncated>,1145,948576329252723829,
+37,https://aifri.day/brief/,AI Friday — Daily Briefs,text/html; charset=utf-8,false,200,0,true,"Curated AI news, tools, and analysis for builders — updated daily by the AI Friday community in New Orleans.",Daily Briefs,,539,19,0,<truncated>,3384,3744722243428174360,
+24,https://aifri.day/brief/2026/,AI Friday Daily Brief — 2026,text/html; charset=utf-8,false,200,0,true,Browse 12 AI Friday daily briefs from 2026. Curated AI news for builders.,2026,"April 2026
+March 2026",235,16,0,<truncated>,1212,2470807878537884698,https://aifri.day/brief/2026/03/28/
+24,https://aifri.day/brief/2026/03/31/,"AI Friday — Tuesday, March 31, 2026",text/html; charset=utf-8,false,200,0,true,"Today's a wild one. GitHub Copilot started injecting ads into pull requests, then backed down after major backlash. Meanwhile, Sora is apparently struggling,…","Tuesday, March 31, 2026","🔥 Big Moves
+🛠️ Tools & Releases
+🎨 Things People Built
+Also
+Today’s Sources",476,5,19,<truncated>,2935,14525227641911322088,
+24,https://aifri.day/brief/2026/03/,AI Friday Daily Brief — March 2026,text/html; charset=utf-8,false,200,0,true,6 AI Friday briefs from March 2026. Curated AI news for builders.,March 2026,"Tuesday, March 31, 2026
+Monday, March 30, 2026
+Sunday, March 29, 2026
+Saturday, March 28, 2026
+Friday, March 27, 2026
+Thursday, March 26, 2026",278,11,0,<truncated>,1592,15713010979032466570,https://aifri.day/brief/2026/03/28/
+24,https://aifri.day/brief/2026/03/28/,"AI Friday — Saturday, March 28, 2026",text/html; charset=utf-8,false,200,0,true,"Saturday morning, and the AI world keeps moving. Claude's mysterious .claude/ folder gets a teardown, vibe coding SwiftUI apps is turning into a legit…","Saturday, March 28, 2026","🛠 Tools & Workflows
+📦 Releases & Updates
+💬 Industry & Takes
+Also
+Today’s Sources",636,5,15,<truncated>,3811,1737977529262477192,
+24,https://aifri.day/brief/2026/03/26/,"AI Friday — Thursday, March 26, 2026",text/html; charset=utf-8,false,200,0,true,"Google just dropped TurboQuant, a breakthrough that lets you run massive AI models on regular hardware through extreme compression. Meanwhile, Ensu brings…","Thursday, March 26, 2026","💥 Big Moves
+🛠️ Tools & Releases
+📚 From the Community
+📊 Weird Data
+Also
+Today’s Sources",730,5,26,<truncated>,4668,18165708332345872639,
+23,https://aifri.day/brief/2026/04/05/,"AI Friday — Sunday, April 5, 2026",text/html; charset=utf-8,false,200,0,true,"Good Sunday, NOLA. The Claude Code vulnerability story keeps deepening—AI is now genuinely accelerating security research in unexpected ways. Meanwhile, the…","Sunday, April 5, 2026","AI & Security: The New Frontier
+Tools & Releases
+Interesting Reads & Culture
+Worth a Listen
+Also
+Today’s Sources",930,5,23,<truncated>,5986,14143145086903197891,https://aifri.day/brief/2026/04/04/
+23,https://aifri.day/brief/2026/04/06/,"AI Friday — Monday, April 6, 2026",text/html; charset=utf-8,false,200,0,true,"Good Monday, NOLA. Today's vibe: the Claude Code story keeps reshaping what's possible—a developer just shipped a project in three months that took eight years…","Monday, April 6, 2026","The Big Story: Agentic Engineering Works
+Running AI Locally: It's Getting Real
+Tools & Releases You Can Use Today
+Learning & Understanding AI
+Industry & Culture
+Also
+Today’s Sources",1129,3,33,<truncated>,7155,2721060908950276259,https://aifri.day/brief/2026/04/05/
+23,https://aifri.day/brief/2026/04/04/,"AI Friday — Saturday, April 4, 2026",text/html; charset=utf-8,false,200,0,true,"Good Saturday, NOLA. Today's vibe: the Claude Code story keeps unfolding in wild ways—vulnerability research is now genuinely accelerated by AI—while the…","Saturday, April 4, 2026","AI Changed Security Research Overnight
+New Tools You Can Try Today
+Big Moves & Market Signals
+Worth a Listen
+Also
+Today’s Sources",991,3,33,<truncated>,6394,1808822917514821893,https://aifri.day/brief/2026/04/03/
+22,https://aifri.day/brief/2026/04/,AI Friday Daily Brief — April 2026,text/html; charset=utf-8,false,200,0,true,6 AI Friday briefs from April 2026. Curated AI news for builders.,April 2026,"Monday, April 6, 2026
+Sunday, April 5, 2026
+Saturday, April 4, 2026
+Friday, April 3, 2026
+Thursday, April 2, 2026
+Wednesday, April 1, 2026",268,11,0,<truncated>,1602,1769636269156450588,https://aifri.day/brief/2026/04/05/
